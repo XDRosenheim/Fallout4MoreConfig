@@ -20,12 +20,18 @@ namespace Fallout4MoreConfig
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // TODO Save to file(s)
-            string path = Environment.ExpandEnvironmentVariables("%HOMEPATH%");
+            ///
+            /// TODO Save to file(s)
+            /// 
+            
             // HUD - opacity
-            string text = File.ReadAllText(path + "\\Documents\\My Games\\fallout4\\Fallout4Prefs.ini");
-            text = text.Replace(@"fHUDOpacity=([A-Za-z0-9\-]+)", "fHUDOpacity=" + (trackHudOpacity.Value / 100));
-            File.WriteAllText(path + "\\Documents\\My Games\\fallout4\\Fallout4Prefs.ini", text);
+            string path = Environment.ExpandEnvironmentVariables("%HOMEPATH%") + "\\Documents\\My Games\\fallout4\\Fallout4Prefs.ini";
+            string text = File.ReadAllText(path);
+            string pattern = @"fHUDOpacity=([A-Za-z0-9\-]+)";
+            string replacement = "fHUDOpacity=" + (trackHudOpacity.Value / 100);
+            Regex rgx = new Regex(pattern);
+            string result = rgx.Replace(text, replacement);
+            File.WriteAllText(path, result);
         }
 
         private void btnOMFGQUIT_Click(object sender, EventArgs e)
