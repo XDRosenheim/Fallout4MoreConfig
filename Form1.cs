@@ -37,6 +37,7 @@ namespace Fallout4MoreConfig {
             }
             return "%ERROR%";
         }
+        
         public Form1() {
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses the a point (.) in their config file...
@@ -44,12 +45,14 @@ namespace Fallout4MoreConfig {
             Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture( "en-US" );
 
             InitializeComponent();
+
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             
             //// Get values from current config
             /// Settings
             // Auto-Save
             SavingAutoSaveTextBox.Text = Convert.ToInt32( GetLineValue( fallout4PrefsLocation, "fAutosaveEveryXMins" ) ).ToString();
-
             /// HUD
             // Opacity
             HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( GetLineValue( fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 ) ) + "%";

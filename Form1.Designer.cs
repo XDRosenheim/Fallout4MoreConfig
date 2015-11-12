@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.tabLayout1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabVisuals = new System.Windows.Forms.TabPage();
             this.tabAudio = new System.Windows.Forms.TabPage();
             this.tabSaving = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.SavingAutoSaveTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabHUD = new System.Windows.Forms.TabPage();
             this.HUDColorBlueTextBox = new System.Windows.Forms.TextBox();
             this.HUDColorGreenTextBox = new System.Windows.Forms.TextBox();
@@ -67,7 +66,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.HUDColorPreviewBox = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabLayout1.SuspendLayout();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.tabControl.SuspendLayout();
             this.tabSaving.SuspendLayout();
             this.tabHUD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HUDColorBlueTrackBar)).BeginInit();
@@ -81,22 +88,25 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabLayout1
+            // tabControl
             // 
-            this.tabLayout1.Controls.Add(this.tabVisuals);
-            this.tabLayout1.Controls.Add(this.tabAudio);
-            this.tabLayout1.Controls.Add(this.tabSaving);
-            this.tabLayout1.Controls.Add(this.tabHUD);
-            this.tabLayout1.Controls.Add(this.tabPipBoy);
-            this.tabLayout1.Location = new System.Drawing.Point(5, 5);
-            this.tabLayout1.Margin = new System.Windows.Forms.Padding(0);
-            this.tabLayout1.Name = "tabLayout1";
-            this.tabLayout1.Padding = new System.Drawing.Point(9, 3);
-            this.tabLayout1.SelectedIndex = 0;
-            this.tabLayout1.Size = new System.Drawing.Size(577, 422);
-            this.tabLayout1.TabIndex = 0;
+            this.tabControl.Controls.Add(this.tabVisuals);
+            this.tabControl.Controls.Add(this.tabAudio);
+            this.tabControl.Controls.Add(this.tabSaving);
+            this.tabControl.Controls.Add(this.tabHUD);
+            this.tabControl.Controls.Add(this.tabPipBoy);
+            this.tabControl.Location = new System.Drawing.Point(5, 5);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.Padding = new System.Drawing.Point(9, 3);
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(577, 422);
+            this.tabControl.TabIndex = 0;
             // 
             // tabVisuals
             // 
@@ -129,9 +139,8 @@
             this.tabSaving.BackColor = System.Drawing.Color.White;
             this.tabSaving.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabSaving.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabSaving.Controls.Add(this.label2);
-            this.tabSaving.Controls.Add(this.SavingAutoSaveTextBox);
-            this.tabSaving.Controls.Add(this.label1);
+            this.tabSaving.Controls.Add(this.groupBox6);
+            this.tabSaving.Controls.Add(this.groupBox5);
             this.tabSaving.Location = new System.Drawing.Point(4, 22);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
@@ -142,7 +151,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 292);
+            this.label2.Location = new System.Drawing.Point(68, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 2;
@@ -150,19 +159,10 @@
             // 
             // SavingAutoSaveTextBox
             // 
-            this.SavingAutoSaveTextBox.Location = new System.Drawing.Point(74, 287);
+            this.SavingAutoSaveTextBox.Location = new System.Drawing.Point(6, 19);
             this.SavingAutoSaveTextBox.Name = "SavingAutoSaveTextBox";
             this.SavingAutoSaveTextBox.Size = new System.Drawing.Size(56, 20);
             this.SavingAutoSaveTextBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 273);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Auto-save";
             // 
             // tabHUD
             // 
@@ -240,7 +240,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 54);
+            this.label5.Location = new System.Drawing.Point(6, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 7;
@@ -249,7 +249,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 25);
+            this.label4.Location = new System.Drawing.Point(6, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 6;
@@ -260,7 +260,7 @@
             this.HUDColorRedTrackBar.AutoSize = false;
             this.HUDColorRedTrackBar.BackColor = System.Drawing.Color.White;
             this.HUDColorRedTrackBar.LargeChange = 10;
-            this.HUDColorRedTrackBar.Location = new System.Drawing.Point(40, 19);
+            this.HUDColorRedTrackBar.Location = new System.Drawing.Point(40, 18);
             this.HUDColorRedTrackBar.Maximum = 255;
             this.HUDColorRedTrackBar.Name = "HUDColorRedTrackBar";
             this.HUDColorRedTrackBar.Size = new System.Drawing.Size(100, 24);
@@ -271,7 +271,7 @@
             // HUDOpacityResult
             // 
             this.HUDOpacityResult.AutoSize = true;
-            this.HUDOpacityResult.Location = new System.Drawing.Point(115, 314);
+            this.HUDOpacityResult.Location = new System.Drawing.Point(355, 58);
             this.HUDOpacityResult.Name = "HUDOpacityResult";
             this.HUDOpacityResult.Size = new System.Drawing.Size(33, 13);
             this.HUDOpacityResult.TabIndex = 3;
@@ -280,7 +280,7 @@
             // HUDOpacityLabel
             // 
             this.HUDOpacityLabel.AutoSize = true;
-            this.HUDOpacityLabel.Location = new System.Drawing.Point(23, 293);
+            this.HUDOpacityLabel.Location = new System.Drawing.Point(246, 35);
             this.HUDOpacityLabel.Name = "HUDOpacityLabel";
             this.HUDOpacityLabel.Size = new System.Drawing.Size(43, 13);
             this.HUDOpacityLabel.TabIndex = 2;
@@ -290,7 +290,7 @@
             // 
             this.HUDOpacityTrackBar.AutoSize = false;
             this.HUDOpacityTrackBar.LargeChange = 10;
-            this.HUDOpacityTrackBar.Location = new System.Drawing.Point(20, 307);
+            this.HUDOpacityTrackBar.Location = new System.Drawing.Point(249, 53);
             this.HUDOpacityTrackBar.Maximum = 100;
             this.HUDOpacityTrackBar.Name = "HUDOpacityTrackBar";
             this.HUDOpacityTrackBar.Size = new System.Drawing.Size(100, 24);
@@ -395,7 +395,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(225, 462);
+            this.btnSave.Location = new System.Drawing.Point(12, 430);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -405,7 +405,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(306, 462);
+            this.btnDefault.Location = new System.Drawing.Point(93, 430);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -415,7 +415,7 @@
             // 
             // btnOMFGQUIT
             // 
-            this.btnOMFGQUIT.Location = new System.Drawing.Point(387, 462);
+            this.btnOMFGQUIT.Location = new System.Drawing.Point(174, 430);
             this.btnOMFGQUIT.Name = "btnOMFGQUIT";
             this.btnOMFGQUIT.Size = new System.Drawing.Size(75, 23);
             this.btnOMFGQUIT.TabIndex = 3;
@@ -425,7 +425,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(468, 462);
+            this.button4.Location = new System.Drawing.Point(255, 430);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 4;
@@ -436,12 +436,12 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.HUDColorBlueTextBox);
-            this.groupBox1.Controls.Add(this.HUDColorRedTrackBar);
-            this.groupBox1.Controls.Add(this.HUDColorGreenTextBox);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.HUDColorRedTextBox);
+            this.groupBox1.Controls.Add(this.HUDColorBlueTextBox);
+            this.groupBox1.Controls.Add(this.HUDColorGreenTextBox);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.HUDColorRedTrackBar);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.HUDColorGreenTrackBar);
@@ -455,6 +455,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.PipBoyColorRedTrackBar);
             this.groupBox2.Controls.Add(this.PipBoyColorBlueTextBox);
             this.groupBox2.Controls.Add(this.label9);
@@ -464,12 +465,12 @@
             this.groupBox2.Controls.Add(this.PipBoyColorGreenTrackBar);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.PipBoyColorBlueTrackBar);
-            this.groupBox2.Location = new System.Drawing.Point(9, 9);
+            this.groupBox2.Location = new System.Drawing.Point(8, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(179, 201);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Color";
             // 
             // groupBox3
             // 
@@ -488,24 +489,104 @@
             this.HUDColorPreviewBox.Size = new System.Drawing.Size(153, 68);
             this.HUDColorPreviewBox.TabIndex = 0;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox4.Location = new System.Drawing.Point(6, 101);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(166, 94);
+            this.groupBox4.TabIndex = 24;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Preview";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(7, 20);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(153, 68);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.SavingAutoSaveTextBox);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Location = new System.Drawing.Point(8, 8);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(118, 52);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Auto Save";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.checkBox4);
+            this.groupBox6.Controls.Add(this.checkBox3);
+            this.groupBox6.Controls.Add(this.checkBox2);
+            this.groupBox6.Controls.Add(this.checkBox1);
+            this.groupBox6.Location = new System.Drawing.Point(8, 66);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(118, 111);
+            this.groupBox6.TabIndex = 4;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Quick Save";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(56, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Pause";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 42);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(79, 17);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "Fast Travel";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 65);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(62, 17);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "Waiting";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(6, 88);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(67, 17);
+            this.checkBox4.TabIndex = 3;
+            this.checkBox4.Text = "Sleeping";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(778, 550);
+            this.ClientSize = new System.Drawing.Size(594, 459);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnOMFGQUIT);
             this.Controls.Add(this.btnDefault);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.tabLayout1);
+            this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Fallout 4 - Extended settings";
-            this.tabLayout1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabSaving.ResumeLayout(false);
-            this.tabSaving.PerformLayout();
             this.tabHUD.ResumeLayout(false);
             this.tabHUD.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HUDColorBlueTrackBar)).EndInit();
@@ -521,13 +602,18 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabLayout1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabVisuals;
         private System.Windows.Forms.TabPage tabAudio;
         private System.Windows.Forms.TabPage tabSaving;
@@ -541,7 +627,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TabPage tabPipBoy;
         private System.Windows.Forms.TextBox SavingAutoSaveTextBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox HUDColorBlueTextBox;
         private System.Windows.Forms.TextBox HUDColorGreenTextBox;
@@ -565,6 +650,14 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.FlowLayoutPanel HUDColorPreviewBox;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
 
