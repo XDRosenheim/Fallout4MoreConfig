@@ -32,12 +32,12 @@
             this.tabVisuals = new System.Windows.Forms.TabPage();
             this.tabAudio = new System.Windows.Forms.TabPage();
             this.tabSettings = new System.Windows.Forms.TabPage();
-            this.textBoxAutoSave = new System.Windows.Forms.TextBox();
+            this.SettingsTextBoxAutoSave = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabHUD = new System.Windows.Forms.TabPage();
-            this.HUDOpacityValue = new System.Windows.Forms.Label();
+            this.HUDOpacityResult = new System.Windows.Forms.Label();
             this.HUDOpacityLabel = new System.Windows.Forms.Label();
-            this.trackHudOpacity = new System.Windows.Forms.TrackBar();
+            this.HUDOpacityTrackBar = new System.Windows.Forms.TrackBar();
             this.tabPipBoy = new System.Windows.Forms.TabPage();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             this.tabControl1.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabHUD.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackHudOpacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HUDOpacityTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -94,7 +94,7 @@
             this.tabSettings.BackColor = System.Drawing.Color.Transparent;
             this.tabSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabSettings.Controls.Add(this.label2);
-            this.tabSettings.Controls.Add(this.textBoxAutoSave);
+            this.tabSettings.Controls.Add(this.SettingsTextBoxAutoSave);
             this.tabSettings.Controls.Add(this.label1);
             this.tabSettings.Location = new System.Drawing.Point(4, 22);
             this.tabSettings.Name = "tabSettings";
@@ -105,10 +105,10 @@
             // 
             // textBoxAutoSave
             // 
-            this.textBoxAutoSave.Location = new System.Drawing.Point(8, 19);
-            this.textBoxAutoSave.Name = "textBoxAutoSave";
-            this.textBoxAutoSave.Size = new System.Drawing.Size(56, 20);
-            this.textBoxAutoSave.TabIndex = 1;
+            this.SettingsTextBoxAutoSave.Location = new System.Drawing.Point(8, 19);
+            this.SettingsTextBoxAutoSave.Name = "textBoxAutoSave";
+            this.SettingsTextBoxAutoSave.Size = new System.Drawing.Size(56, 20);
+            this.SettingsTextBoxAutoSave.TabIndex = 1;
             // 
             // label1
             // 
@@ -123,9 +123,9 @@
             // 
             this.tabHUD.BackColor = System.Drawing.Color.Transparent;
             this.tabHUD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabHUD.Controls.Add(this.HUDOpacityValue);
+            this.tabHUD.Controls.Add(this.HUDOpacityResult);
             this.tabHUD.Controls.Add(this.HUDOpacityLabel);
-            this.tabHUD.Controls.Add(this.trackHudOpacity);
+            this.tabHUD.Controls.Add(this.HUDOpacityTrackBar);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabHUD.Location = new System.Drawing.Point(4, 22);
             this.tabHUD.Name = "tabHUD";
@@ -136,12 +136,12 @@
             // 
             // HUDOpacityValue
             // 
-            this.HUDOpacityValue.AutoSize = true;
-            this.HUDOpacityValue.Location = new System.Drawing.Point(104, 25);
-            this.HUDOpacityValue.Name = "HUDOpacityValue";
-            this.HUDOpacityValue.Size = new System.Drawing.Size(33, 13);
-            this.HUDOpacityValue.TabIndex = 3;
-            this.HUDOpacityValue.Text = "100%";
+            this.HUDOpacityResult.AutoSize = true;
+            this.HUDOpacityResult.Location = new System.Drawing.Point(104, 25);
+            this.HUDOpacityResult.Name = "HUDOpacityValue";
+            this.HUDOpacityResult.Size = new System.Drawing.Size(33, 13);
+            this.HUDOpacityResult.TabIndex = 3;
+            this.HUDOpacityResult.Text = "100%";
             // 
             // HUDOpacityLabel
             // 
@@ -154,16 +154,16 @@
             // 
             // trackHudOpacity
             // 
-            this.trackHudOpacity.AutoSize = false;
-            this.trackHudOpacity.LargeChange = 10;
-            this.trackHudOpacity.Location = new System.Drawing.Point(3, 19);
-            this.trackHudOpacity.Maximum = 100;
-            this.trackHudOpacity.Name = "trackHudOpacity";
-            this.trackHudOpacity.Size = new System.Drawing.Size(100, 24);
-            this.trackHudOpacity.TabIndex = 1;
-            this.trackHudOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackHudOpacity.Value = 100;
-            this.trackHudOpacity.Scroll += new System.EventHandler(this.trackHudOpacity_Scroll);
+            this.HUDOpacityTrackBar.AutoSize = false;
+            this.HUDOpacityTrackBar.LargeChange = 10;
+            this.HUDOpacityTrackBar.Location = new System.Drawing.Point(3, 19);
+            this.HUDOpacityTrackBar.Maximum = 100;
+            this.HUDOpacityTrackBar.Name = "trackHudOpacity";
+            this.HUDOpacityTrackBar.Size = new System.Drawing.Size(100, 24);
+            this.HUDOpacityTrackBar.TabIndex = 1;
+            this.HUDOpacityTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.HUDOpacityTrackBar.Value = 100;
+            this.HUDOpacityTrackBar.Scroll += new System.EventHandler(this.trackHudOpacity_Scroll);
             // 
             // tabPipBoy
             // 
@@ -242,7 +242,7 @@
             this.tabSettings.PerformLayout();
             this.tabHUD.ResumeLayout(false);
             this.tabHUD.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackHudOpacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HUDOpacityTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -254,15 +254,15 @@
         private System.Windows.Forms.TabPage tabAudio;
         private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.TabPage tabHUD;
-        private System.Windows.Forms.TrackBar trackHudOpacity;
-        private System.Windows.Forms.Label HUDOpacityValue;
+        private System.Windows.Forms.TrackBar HUDOpacityTrackBar;
+        private System.Windows.Forms.Label HUDOpacityResult;
         private System.Windows.Forms.Label HUDOpacityLabel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.Button btnOMFGQUIT;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TabPage tabPipBoy;
-        private System.Windows.Forms.TextBox textBoxAutoSave;
+        private System.Windows.Forms.TextBox SettingsTextBoxAutoSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
