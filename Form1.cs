@@ -186,5 +186,35 @@ namespace Fallout4MoreConfig {
             HUDColorBlueTextBox.Text = HUDColorBlueTrackBar.Value.ToString();
             HUDColorPreviewBox.BackColor = Color.FromArgb( HUDColorRedTrackBar.Value, HUDColorGreenTrackBar.Value, HUDColorBlueTrackBar.Value );
         }
+
+        // Audio Track Bars
+        private void AudioMasterTrackbar_Scroll( object sender, EventArgs e )
+        {
+            AudioMasterText.Text = AudioMasterTrackbar.Value.ToString();
+        }
+        private void AudioVal0TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal0Text.Text = AudioVal0TrackBar.Value.ToString();
+        }
+        private void AudioVal1TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal1Text.Text = AudioVal1TrackBar.Value.ToString();
+        }
+        private void AudioVal2TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal2Text.Text = AudioVal2TrackBar.Value.ToString();
+        }
+        private void AudioVal3TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal3Text.Text = AudioVal3TrackBar.Value.ToString();
+        }
+        private void AudioVal4TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal4Text.Text = AudioVal4TrackBar.Value.ToString();
+        }
+        private void AudioVal5TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal5Text.Text = AudioVal5TrackBar.Value.ToString();
+        }
+        private void AudioVal6TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal6Text.Text = AudioVal6TrackBar.Value.ToString();
+        }
+        private void AudioVal7TrackBar_Scroll( object sender, EventArgs e ) {
+            AudioVal7Text.Text = AudioVal7TrackBar.Value.ToString();
+        }
     }
 }
