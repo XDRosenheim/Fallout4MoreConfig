@@ -66,7 +66,7 @@ namespace Fallout4MoreConfig {
         public Form1() {
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config file...
-            // This fixes it.
+            // This should make it work for everybody.
             Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture( "en-US" );
 
             InitializeComponent();
@@ -77,8 +77,7 @@ namespace Fallout4MoreConfig {
             GetAllValues();
         }
 
-        public sealed override bool AutoSize
-        {
+        public sealed override bool AutoSize {
             get { return base.AutoSize; }
             set { base.AutoSize = value; }
         }
@@ -160,8 +159,14 @@ namespace Fallout4MoreConfig {
             #endregion
             #endregion
 
+            File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
+            File.SetAttributes( Fallout4Location, File.GetAttributes( Fallout4Location ) & FileAttributes.Normal );
             // Write to file
             File.WriteAllText( Fallout4PrefsLocation, text );
+
+            if(!tweakReadonly.Checked) return;
+            File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & ~FileAttributes.ReadOnly );
+            File.SetAttributes( Fallout4Location, File.GetAttributes( Fallout4Location ) & ~FileAttributes.ReadOnly );
         }
         private void btnDefault_Click( object sender, EventArgs e ) {
             GetAllValues();
@@ -188,8 +193,7 @@ namespace Fallout4MoreConfig {
         }
 
         // Audio Track Bars
-        private void AudioMasterTrackbar_Scroll( object sender, EventArgs e )
-        {
+        private void AudioMasterTrackbar_Scroll( object sender, EventArgs e ) {
             AudioMasterText.Text = AudioMasterTrackbar.Value.ToString();
         }
         private void AudioVal0TrackBar_Scroll( object sender, EventArgs e ) {
@@ -215,6 +219,15 @@ namespace Fallout4MoreConfig {
         }
         private void AudioVal7TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal7Text.Text = AudioVal7TrackBar.Value.ToString();
+        }
+
+        private void resolutionFullscreen_CheckedChanged( object sender, EventArgs e ) {
+            if(resolutionFullscreen.Checked) {
+                resolutionBorderless.Checked = true;
+                resolutionBorderless.Enabled = false;
+            } else {
+                resolutionBorderless.Enabled = true;
+            }
         }
     }
 }

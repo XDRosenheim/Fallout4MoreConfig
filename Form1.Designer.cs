@@ -75,14 +75,10 @@
             this.tabHUD = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.hudFovThird = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.hudFovFirst = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.hudCrosshair = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.HUDOpacityResult = new System.Windows.Forms.Label();
@@ -135,6 +131,12 @@
             this.tabGamepad = new System.Windows.Forms.TabPage();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tabSettings = new System.Windows.Forms.TabPage();
+            this.tweakReadonly = new System.Windows.Forms.CheckBox();
+            this.tabResolution = new System.Windows.Forms.TabPage();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.resolutionBorderless = new System.Windows.Forms.CheckBox();
+            this.resolutionFullscreen = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
@@ -174,6 +176,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTrackBar)).BeginInit();
             this.tabVATS.SuspendLayout();
             this.tabGamepad.SuspendLayout();
+            this.tabSettings.SuspendLayout();
+            this.tabResolution.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -185,6 +190,8 @@
             this.tabControl.Controls.Add(this.tabPipBoy);
             this.tabControl.Controls.Add(this.tabVATS);
             this.tabControl.Controls.Add(this.tabGamepad);
+            this.tabControl.Controls.Add(this.tabSettings);
+            this.tabControl.Controls.Add(this.tabResolution);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl.Location = new System.Drawing.Point(5, 5);
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
@@ -216,7 +223,7 @@
             this.groupBox9.Controls.Add(this.checkBox5);
             this.groupBox9.Location = new System.Drawing.Point(8, 8);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(148, 65);
+            this.groupBox9.Size = new System.Drawing.Size(169, 65);
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ImageSpace";
@@ -284,7 +291,7 @@
             this.groupBox12.Controls.Add(this.label27);
             this.groupBox12.Location = new System.Drawing.Point(8, 63);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(181, 256);
+            this.groupBox12.Size = new System.Drawing.Size(169, 256);
             this.groupBox12.TabIndex = 35;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Val";
@@ -543,7 +550,7 @@
             this.groupBox4.Controls.Add(this.AudioMasterText);
             this.groupBox4.Location = new System.Drawing.Point(8, 8);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(181, 49);
+            this.groupBox4.Size = new System.Drawing.Size(169, 49);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Master";
@@ -592,7 +599,7 @@
             this.groupBox6.Controls.Add(this.SavingQuickPause);
             this.groupBox6.Location = new System.Drawing.Point(8, 66);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(149, 111);
+            this.groupBox6.Size = new System.Drawing.Size(169, 111);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Quick Save";
@@ -643,7 +650,7 @@
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Location = new System.Drawing.Point(8, 8);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(149, 52);
+            this.groupBox5.Size = new System.Drawing.Size(169, 52);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Auto Save";
@@ -684,12 +691,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.hudFovThird);
             this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.hudFovFirst);
             this.groupBox2.Location = new System.Drawing.Point(2, 216);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 126);
+            this.groupBox2.Size = new System.Drawing.Size(185, 71);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FOV";
@@ -703,12 +710,12 @@
             this.label19.TabIndex = 3;
             this.label19.Text = "World FOV";
             // 
-            // textBox4
+            // hudFovThird
             // 
-            this.textBox4.Location = new System.Drawing.Point(94, 45);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(85, 20);
-            this.textBox4.TabIndex = 2;
+            this.hudFovThird.Location = new System.Drawing.Point(94, 45);
+            this.hudFovThird.Name = "hudFovThird";
+            this.hudFovThird.Size = new System.Drawing.Size(85, 20);
+            this.hudFovThird.TabIndex = 2;
             // 
             // label18
             // 
@@ -719,19 +726,15 @@
             this.label18.TabIndex = 1;
             this.label18.Text = "1st Person FOV";
             // 
-            // textBox3
+            // hudFovFirst
             // 
-            this.textBox3.Location = new System.Drawing.Point(94, 19);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(85, 20);
-            this.textBox3.TabIndex = 0;
+            this.hudFovFirst.Location = new System.Drawing.Point(94, 19);
+            this.hudFovFirst.Name = "hudFovFirst";
+            this.hudFovFirst.Size = new System.Drawing.Size(85, 20);
+            this.hudFovFirst.TabIndex = 0;
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.label17);
-            this.groupBox8.Controls.Add(this.textBox2);
-            this.groupBox8.Controls.Add(this.label16);
-            this.groupBox8.Controls.Add(this.textBox1);
             this.groupBox8.Controls.Add(this.hudCrosshair);
             this.groupBox8.Location = new System.Drawing.Point(194, 68);
             this.groupBox8.Name = "groupBox8";
@@ -739,38 +742,6 @@
             this.groupBox8.TabIndex = 16;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Other";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 71);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 13);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Safe Zone Y";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(79, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(73, 20);
-            this.textBox2.TabIndex = 3;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 45);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 13);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Safe Zone X";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(79, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(73, 20);
-            this.textBox1.TabIndex = 1;
             // 
             // hudCrosshair
             // 
@@ -941,7 +912,7 @@
             // tabPipBoy
             // 
             this.tabPipBoy.BackColor = System.Drawing.Color.White;
-            this.tabPipBoy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tabPipBoy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabPipBoy.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPipBoy.Controls.Add(this.groupBox10);
             this.tabPipBoy.Cursor = System.Windows.Forms.Cursors.Default;
@@ -1076,7 +1047,7 @@
             // tabVATS
             // 
             this.tabVATS.BackColor = System.Drawing.Color.White;
-            this.tabVATS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tabVATS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabVATS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabVATS.Controls.Add(this.label14);
             this.tabVATS.Controls.Add(this.label13);
@@ -1254,7 +1225,7 @@
             // tabGamepad
             // 
             this.tabGamepad.BackColor = System.Drawing.Color.White;
-            this.tabGamepad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tabGamepad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabGamepad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabGamepad.Controls.Add(this.checkBox2);
             this.tabGamepad.Controls.Add(this.checkBox1);
@@ -1284,6 +1255,74 @@
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Enable";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // tabSettings
+            // 
+            this.tabSettings.BackColor = System.Drawing.Color.White;
+            this.tabSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabSettings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabSettings.Controls.Add(this.tweakReadonly);
+            this.tabSettings.Location = new System.Drawing.Point(4, 58);
+            this.tabSettings.Name = "tabSettings";
+            this.tabSettings.Padding = new System.Windows.Forms.Padding(5);
+            this.tabSettings.Size = new System.Drawing.Size(364, 352);
+            this.tabSettings.TabIndex = 7;
+            this.tabSettings.Text = "Tweaks";
+            // 
+            // tweakReadonly
+            // 
+            this.tweakReadonly.AutoSize = true;
+            this.tweakReadonly.Location = new System.Drawing.Point(9, 9);
+            this.tweakReadonly.Name = "tweakReadonly";
+            this.tweakReadonly.Size = new System.Drawing.Size(120, 17);
+            this.tweakReadonly.TabIndex = 0;
+            this.tweakReadonly.Text = "Set .ini to ReadOnly";
+            this.tweakReadonly.UseVisualStyleBackColor = true;
+            // 
+            // tabResolution
+            // 
+            this.tabResolution.BackColor = System.Drawing.Color.White;
+            this.tabResolution.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabResolution.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabResolution.Controls.Add(this.groupBox13);
+            this.tabResolution.Location = new System.Drawing.Point(4, 58);
+            this.tabResolution.Name = "tabResolution";
+            this.tabResolution.Padding = new System.Windows.Forms.Padding(5);
+            this.tabResolution.Size = new System.Drawing.Size(364, 352);
+            this.tabResolution.TabIndex = 8;
+            this.tabResolution.Text = "Resolution";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.resolutionBorderless);
+            this.groupBox13.Controls.Add(this.resolutionFullscreen);
+            this.groupBox13.Location = new System.Drawing.Point(8, 8);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(169, 237);
+            this.groupBox13.TabIndex = 0;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Settings";
+            // 
+            // resolutionBorderless
+            // 
+            this.resolutionBorderless.AutoSize = true;
+            this.resolutionBorderless.Location = new System.Drawing.Point(6, 43);
+            this.resolutionBorderless.Name = "resolutionBorderless";
+            this.resolutionBorderless.Size = new System.Drawing.Size(75, 17);
+            this.resolutionBorderless.TabIndex = 1;
+            this.resolutionBorderless.Text = "Borderless";
+            this.resolutionBorderless.UseVisualStyleBackColor = true;
+            // 
+            // resolutionFullscreen
+            // 
+            this.resolutionFullscreen.AutoSize = true;
+            this.resolutionFullscreen.Location = new System.Drawing.Point(6, 19);
+            this.resolutionFullscreen.Name = "resolutionFullscreen";
+            this.resolutionFullscreen.Size = new System.Drawing.Size(74, 17);
+            this.resolutionFullscreen.TabIndex = 0;
+            this.resolutionFullscreen.Text = "Fullscreen";
+            this.resolutionFullscreen.UseVisualStyleBackColor = true;
+            this.resolutionFullscreen.CheckedChanged += new System.EventHandler(this.resolutionFullscreen_CheckedChanged);
             // 
             // btnSave
             // 
@@ -1377,6 +1416,11 @@
             this.tabVATS.PerformLayout();
             this.tabGamepad.ResumeLayout(false);
             this.tabGamepad.PerformLayout();
+            this.tabSettings.ResumeLayout(false);
+            this.tabSettings.PerformLayout();
+            this.tabResolution.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1455,13 +1499,9 @@
         private System.Windows.Forms.TrackBar AudioMasterTrackbar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox hudFovThird;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox hudFovFirst;
         private System.Windows.Forms.TabPage tabGamepad;
         private System.Windows.Forms.TrackBar AudioVal5TrackBar;
         private System.Windows.Forms.TrackBar AudioVal3TrackBar;
@@ -1492,6 +1532,12 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TabPage tabSettings;
+        private System.Windows.Forms.CheckBox tweakReadonly;
+        private System.Windows.Forms.TabPage tabResolution;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.CheckBox resolutionBorderless;
+        private System.Windows.Forms.CheckBox resolutionFullscreen;
     }
 }
 
