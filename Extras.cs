@@ -25,7 +25,7 @@ namespace Fallout4MoreConfig {
                     } catch(Exception e) {
                         // TODO - Copy error to clipboard button.
                         MessageBox.Show( Resources.Extras_GetLineValue_ + e,
-                            Resources.Extras_GetLineValue_Error_, MessageBoxButtons.OK, MessageBoxIcon.Error );
+                            Resources.String_Error_, MessageBoxButtons.OK, MessageBoxIcon.Error );
                         Application.Exit();
                     }
                 }

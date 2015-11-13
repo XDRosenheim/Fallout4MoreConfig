@@ -70,8 +70,9 @@
             this.SavingQuickTravel = new System.Windows.Forms.CheckBox();
             this.SavingQuickPause = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.SavingAutoSaveTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.SavingAutoSaveTextBox = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.SavingMinutLabel = new System.Windows.Forms.Label();
             this.tabHUD = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -109,6 +110,13 @@
             this.PipBoyColorGreenTrackBar = new System.Windows.Forms.TrackBar();
             this.PipBoyColorBlueTrackBar = new System.Windows.Forms.TrackBar();
             this.tabVATS = new System.Windows.Forms.TabPage();
+            this.VATSEffectPAColorG = new System.Windows.Forms.NumericUpDown();
+            this.VATSColorR = new System.Windows.Forms.NumericUpDown();
+            this.VATSHighlighColorR = new System.Windows.Forms.NumericUpDown();
+            this.VATSEffectPAColorR = new System.Windows.Forms.NumericUpDown();
+            this.VATSEffectHighlightPAColorB = new System.Windows.Forms.NumericUpDown();
+            this.VATSEffectHighlightPAColorG = new System.Windows.Forms.NumericUpDown();
+            this.VATSEffectHighlightPAColorR = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -116,21 +124,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.EffectColorB = new System.Windows.Forms.TextBox();
-            this.EffectColorG = new System.Windows.Forms.TextBox();
-            this.EffectColorR = new System.Windows.Forms.TextBox();
-            this.EffectHighlightColorB = new System.Windows.Forms.TextBox();
-            this.EffectHighlightColorG = new System.Windows.Forms.TextBox();
-            this.EffectHighlightColorR = new System.Windows.Forms.TextBox();
-            this.EffectPAColorB = new System.Windows.Forms.TextBox();
-            this.EffectPAColorG = new System.Windows.Forms.TextBox();
-            this.EffectPAColorR = new System.Windows.Forms.TextBox();
-            this.EffectHighlightPAColorB = new System.Windows.Forms.TextBox();
-            this.EffectHighlightPAColorG = new System.Windows.Forms.TextBox();
-            this.EffectHighlightPAColorR = new System.Windows.Forms.TextBox();
             this.tabGamepad = new System.Windows.Forms.TabPage();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.gamepadRumble = new System.Windows.Forms.CheckBox();
+            this.gamepadEnable = new System.Windows.Forms.CheckBox();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.tweakReadonly = new System.Windows.Forms.CheckBox();
             this.tabResolution = new System.Windows.Forms.TabPage();
@@ -140,6 +136,17 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
+            this.VATSEffectPAColorB = new System.Windows.Forms.NumericUpDown();
+            this.VATSColorG = new System.Windows.Forms.NumericUpDown();
+            this.VATSColorB = new System.Windows.Forms.NumericUpDown();
+            this.VATSHighlighColorG = new System.Windows.Forms.NumericUpDown();
+            this.VATSHighlighColorB = new System.Windows.Forms.NumericUpDown();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -158,6 +165,7 @@
             this.tabSaving.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SavingAutoSaveTextBox)).BeginInit();
             this.tabHUD.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -175,10 +183,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTrackBar)).BeginInit();
             this.tabVATS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorR)).BeginInit();
             this.tabGamepad.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.tabResolution.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -199,7 +221,7 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(9, 3);
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(372, 414);
+            this.tabControl.Size = new System.Drawing.Size(389, 393);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl.TabIndex = 0;
             // 
@@ -213,7 +235,7 @@
             this.tabVisuals.Location = new System.Drawing.Point(4, 58);
             this.tabVisuals.Name = "tabVisuals";
             this.tabVisuals.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVisuals.Size = new System.Drawing.Size(364, 352);
+            this.tabVisuals.Size = new System.Drawing.Size(381, 331);
             this.tabVisuals.TabIndex = 0;
             this.tabVisuals.Text = "Visuals";
             // 
@@ -259,7 +281,7 @@
             this.tabAudio.Location = new System.Drawing.Point(4, 58);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(364, 352);
+            this.tabAudio.Size = new System.Drawing.Size(381, 331);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio";
             // 
@@ -587,7 +609,7 @@
             this.tabSaving.Location = new System.Drawing.Point(4, 58);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(364, 352);
+            this.tabSaving.Size = new System.Drawing.Size(381, 331);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -647,7 +669,8 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.SavingAutoSaveTextBox);
-            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.SavingMinutLabel);
             this.groupBox5.Location = new System.Drawing.Point(8, 8);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(169, 52);
@@ -657,19 +680,28 @@
             // 
             // SavingAutoSaveTextBox
             // 
-            this.SavingAutoSaveTextBox.Location = new System.Drawing.Point(6, 19);
+            this.SavingAutoSaveTextBox.Location = new System.Drawing.Point(43, 20);
             this.SavingAutoSaveTextBox.Name = "SavingAutoSaveTextBox";
-            this.SavingAutoSaveTextBox.Size = new System.Drawing.Size(87, 20);
-            this.SavingAutoSaveTextBox.TabIndex = 1;
+            this.SavingAutoSaveTextBox.Size = new System.Drawing.Size(70, 20);
+            this.SavingAutoSaveTextBox.TabIndex = 4;
             // 
-            // label2
+            // label15
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Minutes";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(34, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Every";
+            // 
+            // SavingMinutLabel
+            // 
+            this.SavingMinutLabel.AutoSize = true;
+            this.SavingMinutLabel.Location = new System.Drawing.Point(119, 22);
+            this.SavingMinutLabel.Name = "SavingMinutLabel";
+            this.SavingMinutLabel.Size = new System.Drawing.Size(44, 13);
+            this.SavingMinutLabel.TabIndex = 2;
+            this.SavingMinutLabel.Text = "Minutes";
             // 
             // tabHUD
             // 
@@ -684,7 +716,7 @@
             this.tabHUD.Location = new System.Drawing.Point(4, 58);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(364, 352);
+            this.tabHUD.Size = new System.Drawing.Size(381, 331);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -919,7 +951,7 @@
             this.tabPipBoy.Location = new System.Drawing.Point(4, 58);
             this.tabPipBoy.Name = "tabPipBoy";
             this.tabPipBoy.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPipBoy.Size = new System.Drawing.Size(364, 352);
+            this.tabPipBoy.Size = new System.Drawing.Size(381, 331);
             this.tabPipBoy.TabIndex = 4;
             this.tabPipBoy.Text = "Pip-Boy";
             // 
@@ -1049,6 +1081,18 @@
             this.tabVATS.BackColor = System.Drawing.Color.White;
             this.tabVATS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabVATS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabVATS.Controls.Add(this.VATSHighlighColorB);
+            this.tabVATS.Controls.Add(this.VATSHighlighColorG);
+            this.tabVATS.Controls.Add(this.VATSColorB);
+            this.tabVATS.Controls.Add(this.VATSColorG);
+            this.tabVATS.Controls.Add(this.VATSEffectPAColorB);
+            this.tabVATS.Controls.Add(this.VATSEffectPAColorG);
+            this.tabVATS.Controls.Add(this.VATSColorR);
+            this.tabVATS.Controls.Add(this.VATSHighlighColorR);
+            this.tabVATS.Controls.Add(this.VATSEffectPAColorR);
+            this.tabVATS.Controls.Add(this.VATSEffectHighlightPAColorB);
+            this.tabVATS.Controls.Add(this.VATSEffectHighlightPAColorG);
+            this.tabVATS.Controls.Add(this.VATSEffectHighlightPAColorR);
             this.tabVATS.Controls.Add(this.label14);
             this.tabVATS.Controls.Add(this.label13);
             this.tabVATS.Controls.Add(this.label12);
@@ -1056,29 +1100,66 @@
             this.tabVATS.Controls.Add(this.label9);
             this.tabVATS.Controls.Add(this.label8);
             this.tabVATS.Controls.Add(this.label7);
-            this.tabVATS.Controls.Add(this.EffectColorB);
-            this.tabVATS.Controls.Add(this.EffectColorG);
-            this.tabVATS.Controls.Add(this.EffectColorR);
-            this.tabVATS.Controls.Add(this.EffectHighlightColorB);
-            this.tabVATS.Controls.Add(this.EffectHighlightColorG);
-            this.tabVATS.Controls.Add(this.EffectHighlightColorR);
-            this.tabVATS.Controls.Add(this.EffectPAColorB);
-            this.tabVATS.Controls.Add(this.EffectPAColorG);
-            this.tabVATS.Controls.Add(this.EffectPAColorR);
-            this.tabVATS.Controls.Add(this.EffectHighlightPAColorB);
-            this.tabVATS.Controls.Add(this.EffectHighlightPAColorG);
-            this.tabVATS.Controls.Add(this.EffectHighlightPAColorR);
             this.tabVATS.Location = new System.Drawing.Point(4, 58);
             this.tabVATS.Name = "tabVATS";
             this.tabVATS.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVATS.Size = new System.Drawing.Size(364, 352);
+            this.tabVATS.Size = new System.Drawing.Size(381, 331);
             this.tabVATS.TabIndex = 5;
             this.tabVATS.Text = "VATS";
+            // 
+            // VATSEffectPAColorG
+            // 
+            this.VATSEffectPAColorG.Location = new System.Drawing.Point(173, 47);
+            this.VATSEffectPAColorG.Name = "VATSEffectPAColorG";
+            this.VATSEffectPAColorG.Size = new System.Drawing.Size(61, 20);
+            this.VATSEffectPAColorG.TabIndex = 25;
+            // 
+            // VATSColorR
+            // 
+            this.VATSColorR.Location = new System.Drawing.Point(106, 99);
+            this.VATSColorR.Name = "VATSColorR";
+            this.VATSColorR.Size = new System.Drawing.Size(61, 20);
+            this.VATSColorR.TabIndex = 24;
+            // 
+            // VATSHighlighColorR
+            // 
+            this.VATSHighlighColorR.Location = new System.Drawing.Point(106, 73);
+            this.VATSHighlighColorR.Name = "VATSHighlighColorR";
+            this.VATSHighlighColorR.Size = new System.Drawing.Size(61, 20);
+            this.VATSHighlighColorR.TabIndex = 23;
+            // 
+            // VATSEffectPAColorR
+            // 
+            this.VATSEffectPAColorR.Location = new System.Drawing.Point(106, 47);
+            this.VATSEffectPAColorR.Name = "VATSEffectPAColorR";
+            this.VATSEffectPAColorR.Size = new System.Drawing.Size(61, 20);
+            this.VATSEffectPAColorR.TabIndex = 22;
+            // 
+            // VATSEffectHighlightPAColorB
+            // 
+            this.VATSEffectHighlightPAColorB.Location = new System.Drawing.Point(240, 21);
+            this.VATSEffectHighlightPAColorB.Name = "VATSEffectHighlightPAColorB";
+            this.VATSEffectHighlightPAColorB.Size = new System.Drawing.Size(61, 20);
+            this.VATSEffectHighlightPAColorB.TabIndex = 21;
+            // 
+            // VATSEffectHighlightPAColorG
+            // 
+            this.VATSEffectHighlightPAColorG.Location = new System.Drawing.Point(173, 21);
+            this.VATSEffectHighlightPAColorG.Name = "VATSEffectHighlightPAColorG";
+            this.VATSEffectHighlightPAColorG.Size = new System.Drawing.Size(61, 20);
+            this.VATSEffectHighlightPAColorG.TabIndex = 20;
+            // 
+            // VATSEffectHighlightPAColorR
+            // 
+            this.VATSEffectHighlightPAColorR.Location = new System.Drawing.Point(106, 21);
+            this.VATSEffectHighlightPAColorR.Name = "VATSEffectHighlightPAColorR";
+            this.VATSEffectHighlightPAColorR.Size = new System.Drawing.Size(61, 20);
+            this.VATSEffectHighlightPAColorR.TabIndex = 19;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(69, 105);
+            this.label14.Location = new System.Drawing.Point(8, 101);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
             this.label14.TabIndex = 18;
@@ -1087,7 +1168,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(25, 79);
+            this.label13.Location = new System.Drawing.Point(8, 75);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 13);
             this.label13.TabIndex = 17;
@@ -1096,7 +1177,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(52, 53);
+            this.label12.Location = new System.Drawing.Point(8, 49);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(48, 13);
             this.label12.TabIndex = 16;
@@ -1105,7 +1186,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 27);
+            this.label11.Location = new System.Drawing.Point(8, 23);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 15;
@@ -1114,7 +1195,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(240, 4);
+            this.label9.Location = new System.Drawing.Point(240, 5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 13);
             this.label9.TabIndex = 14;
@@ -1123,7 +1204,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(173, 4);
+            this.label8.Location = new System.Drawing.Point(173, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 13;
@@ -1132,129 +1213,45 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(106, 5);
+            this.label7.Location = new System.Drawing.Point(103, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 13);
             this.label7.TabIndex = 12;
             this.label7.Text = "Red";
-            // 
-            // EffectColorB
-            // 
-            this.EffectColorB.Location = new System.Drawing.Point(240, 102);
-            this.EffectColorB.Name = "EffectColorB";
-            this.EffectColorB.Size = new System.Drawing.Size(61, 20);
-            this.EffectColorB.TabIndex = 11;
-            // 
-            // EffectColorG
-            // 
-            this.EffectColorG.Location = new System.Drawing.Point(173, 102);
-            this.EffectColorG.Name = "EffectColorG";
-            this.EffectColorG.Size = new System.Drawing.Size(61, 20);
-            this.EffectColorG.TabIndex = 10;
-            // 
-            // EffectColorR
-            // 
-            this.EffectColorR.Location = new System.Drawing.Point(106, 102);
-            this.EffectColorR.Name = "EffectColorR";
-            this.EffectColorR.Size = new System.Drawing.Size(61, 20);
-            this.EffectColorR.TabIndex = 9;
-            // 
-            // EffectHighlightColorB
-            // 
-            this.EffectHighlightColorB.Location = new System.Drawing.Point(240, 76);
-            this.EffectHighlightColorB.Name = "EffectHighlightColorB";
-            this.EffectHighlightColorB.Size = new System.Drawing.Size(61, 20);
-            this.EffectHighlightColorB.TabIndex = 8;
-            // 
-            // EffectHighlightColorG
-            // 
-            this.EffectHighlightColorG.Location = new System.Drawing.Point(173, 76);
-            this.EffectHighlightColorG.Name = "EffectHighlightColorG";
-            this.EffectHighlightColorG.Size = new System.Drawing.Size(61, 20);
-            this.EffectHighlightColorG.TabIndex = 7;
-            // 
-            // EffectHighlightColorR
-            // 
-            this.EffectHighlightColorR.Location = new System.Drawing.Point(106, 76);
-            this.EffectHighlightColorR.Name = "EffectHighlightColorR";
-            this.EffectHighlightColorR.Size = new System.Drawing.Size(61, 20);
-            this.EffectHighlightColorR.TabIndex = 6;
-            // 
-            // EffectPAColorB
-            // 
-            this.EffectPAColorB.Location = new System.Drawing.Point(240, 50);
-            this.EffectPAColorB.Name = "EffectPAColorB";
-            this.EffectPAColorB.Size = new System.Drawing.Size(61, 20);
-            this.EffectPAColorB.TabIndex = 5;
-            // 
-            // EffectPAColorG
-            // 
-            this.EffectPAColorG.Location = new System.Drawing.Point(173, 50);
-            this.EffectPAColorG.Name = "EffectPAColorG";
-            this.EffectPAColorG.Size = new System.Drawing.Size(61, 20);
-            this.EffectPAColorG.TabIndex = 4;
-            // 
-            // EffectPAColorR
-            // 
-            this.EffectPAColorR.Location = new System.Drawing.Point(106, 50);
-            this.EffectPAColorR.Name = "EffectPAColorR";
-            this.EffectPAColorR.Size = new System.Drawing.Size(61, 20);
-            this.EffectPAColorR.TabIndex = 3;
-            // 
-            // EffectHighlightPAColorB
-            // 
-            this.EffectHighlightPAColorB.Location = new System.Drawing.Point(240, 24);
-            this.EffectHighlightPAColorB.Name = "EffectHighlightPAColorB";
-            this.EffectHighlightPAColorB.Size = new System.Drawing.Size(61, 20);
-            this.EffectHighlightPAColorB.TabIndex = 2;
-            // 
-            // EffectHighlightPAColorG
-            // 
-            this.EffectHighlightPAColorG.Location = new System.Drawing.Point(173, 24);
-            this.EffectHighlightPAColorG.Name = "EffectHighlightPAColorG";
-            this.EffectHighlightPAColorG.Size = new System.Drawing.Size(61, 20);
-            this.EffectHighlightPAColorG.TabIndex = 1;
-            // 
-            // EffectHighlightPAColorR
-            // 
-            this.EffectHighlightPAColorR.Location = new System.Drawing.Point(106, 24);
-            this.EffectHighlightPAColorR.Name = "EffectHighlightPAColorR";
-            this.EffectHighlightPAColorR.Size = new System.Drawing.Size(61, 20);
-            this.EffectHighlightPAColorR.TabIndex = 0;
             // 
             // tabGamepad
             // 
             this.tabGamepad.BackColor = System.Drawing.Color.White;
             this.tabGamepad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabGamepad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabGamepad.Controls.Add(this.checkBox2);
-            this.tabGamepad.Controls.Add(this.checkBox1);
+            this.tabGamepad.Controls.Add(this.gamepadRumble);
+            this.tabGamepad.Controls.Add(this.gamepadEnable);
             this.tabGamepad.Location = new System.Drawing.Point(4, 58);
             this.tabGamepad.Name = "tabGamepad";
             this.tabGamepad.Padding = new System.Windows.Forms.Padding(5);
-            this.tabGamepad.Size = new System.Drawing.Size(364, 352);
+            this.tabGamepad.Size = new System.Drawing.Size(381, 331);
             this.tabGamepad.TabIndex = 6;
             this.tabGamepad.Text = "Gamepad";
             // 
-            // checkBox2
+            // gamepadRumble
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(8, 31);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(62, 17);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Rumble";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.gamepadRumble.AutoSize = true;
+            this.gamepadRumble.Location = new System.Drawing.Point(8, 31);
+            this.gamepadRumble.Name = "gamepadRumble";
+            this.gamepadRumble.Size = new System.Drawing.Size(62, 17);
+            this.gamepadRumble.TabIndex = 2;
+            this.gamepadRumble.Text = "Rumble";
+            this.gamepadRumble.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // gamepadEnable
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(8, 8);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(59, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Enable";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.gamepadEnable.AutoSize = true;
+            this.gamepadEnable.Location = new System.Drawing.Point(8, 8);
+            this.gamepadEnable.Name = "gamepadEnable";
+            this.gamepadEnable.Size = new System.Drawing.Size(59, 17);
+            this.gamepadEnable.TabIndex = 1;
+            this.gamepadEnable.Text = "Enable";
+            this.gamepadEnable.UseVisualStyleBackColor = true;
             // 
             // tabSettings
             // 
@@ -1265,7 +1262,7 @@
             this.tabSettings.Location = new System.Drawing.Point(4, 58);
             this.tabSettings.Name = "tabSettings";
             this.tabSettings.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSettings.Size = new System.Drawing.Size(364, 352);
+            this.tabSettings.Size = new System.Drawing.Size(381, 331);
             this.tabSettings.TabIndex = 7;
             this.tabSettings.Text = "Tweaks";
             // 
@@ -1288,12 +1285,18 @@
             this.tabResolution.Location = new System.Drawing.Point(4, 58);
             this.tabResolution.Name = "tabResolution";
             this.tabResolution.Padding = new System.Windows.Forms.Padding(5);
-            this.tabResolution.Size = new System.Drawing.Size(364, 352);
+            this.tabResolution.Size = new System.Drawing.Size(381, 331);
             this.tabResolution.TabIndex = 8;
             this.tabResolution.Text = "Resolution";
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.label17);
+            this.groupBox13.Controls.Add(this.comboBox1);
+            this.groupBox13.Controls.Add(this.label16);
+            this.groupBox13.Controls.Add(this.label2);
+            this.groupBox13.Controls.Add(this.numericUpDown2);
+            this.groupBox13.Controls.Add(this.numericUpDown1);
             this.groupBox13.Controls.Add(this.resolutionBorderless);
             this.groupBox13.Controls.Add(this.resolutionFullscreen);
             this.groupBox13.Location = new System.Drawing.Point(8, 8);
@@ -1326,7 +1329,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 422);
+            this.btnSave.Location = new System.Drawing.Point(12, 401);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -1336,7 +1339,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(93, 422);
+            this.btnDefault.Location = new System.Drawing.Point(93, 401);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -1346,13 +1349,107 @@
             // 
             // btnSource
             // 
-            this.btnSource.Location = new System.Drawing.Point(174, 422);
+            this.btnSource.Location = new System.Drawing.Point(174, 401);
             this.btnSource.Name = "btnSource";
             this.btnSource.Size = new System.Drawing.Size(75, 23);
             this.btnSource.TabIndex = 4;
             this.btnSource.Text = "Github";
             this.btnSource.UseVisualStyleBackColor = true;
             this.btnSource.Click += new System.EventHandler(this.btnSource_Click);
+            // 
+            // VATSEffectPAColorB
+            // 
+            this.VATSEffectPAColorB.Location = new System.Drawing.Point(240, 47);
+            this.VATSEffectPAColorB.Name = "VATSEffectPAColorB";
+            this.VATSEffectPAColorB.Size = new System.Drawing.Size(61, 20);
+            this.VATSEffectPAColorB.TabIndex = 26;
+            // 
+            // VATSColorG
+            // 
+            this.VATSColorG.Location = new System.Drawing.Point(173, 99);
+            this.VATSColorG.Name = "VATSColorG";
+            this.VATSColorG.Size = new System.Drawing.Size(61, 20);
+            this.VATSColorG.TabIndex = 27;
+            // 
+            // VATSColorB
+            // 
+            this.VATSColorB.Location = new System.Drawing.Point(240, 99);
+            this.VATSColorB.Name = "VATSColorB";
+            this.VATSColorB.Size = new System.Drawing.Size(61, 20);
+            this.VATSColorB.TabIndex = 28;
+            // 
+            // VATSHighlighColorG
+            // 
+            this.VATSHighlighColorG.Location = new System.Drawing.Point(173, 73);
+            this.VATSHighlighColorG.Name = "VATSHighlighColorG";
+            this.VATSHighlighColorG.Size = new System.Drawing.Size(61, 20);
+            this.VATSHighlighColorG.TabIndex = 29;
+            // 
+            // VATSHighlighColorB
+            // 
+            this.VATSHighlighColorB.Location = new System.Drawing.Point(240, 73);
+            this.VATSHighlighColorB.Name = "VATSHighlighColorB";
+            this.VATSHighlighColorB.Size = new System.Drawing.Size(61, 20);
+            this.VATSHighlighColorB.TabIndex = 30;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "4K",
+            "2K",
+            "HD 1080",
+            "WQHD",
+            "UHD-1",
+            "HD 720",
+            "1600x900",
+            "1366x768"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 142);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(157, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(47, 66);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(116, 20);
+            this.numericUpDown1.TabIndex = 2;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(47, 92);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(116, 20);
+            this.numericUpDown2.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Width";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 94);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 13);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Height";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 126);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 13);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Presets";
             // 
             // Form1
             // 
@@ -1391,6 +1488,7 @@
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SavingAutoSaveTextBox)).EndInit();
             this.tabHUD.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1414,6 +1512,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTrackBar)).EndInit();
             this.tabVATS.ResumeLayout(false);
             this.tabVATS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorR)).EndInit();
             this.tabGamepad.ResumeLayout(false);
             this.tabGamepad.PerformLayout();
             this.tabSettings.ResumeLayout(false);
@@ -1421,6 +1526,13 @@
             this.tabResolution.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1437,8 +1549,7 @@
         private System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.Button btnSource;
         private System.Windows.Forms.TabPage tabPipBoy;
-        private System.Windows.Forms.TextBox SavingAutoSaveTextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label SavingMinutLabel;
         private System.Windows.Forms.TextBox HUDColorBlueTextBox;
         private System.Windows.Forms.TextBox HUDColorGreenTextBox;
         private System.Windows.Forms.TextBox HUDColorRedTextBox;
@@ -1475,26 +1586,6 @@
         private System.Windows.Forms.TrackBar PipBoyColorGreenTrackBar;
         private System.Windows.Forms.TrackBar PipBoyColorBlueTrackBar;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabVATS;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox EffectColorB;
-        private System.Windows.Forms.TextBox EffectColorG;
-        private System.Windows.Forms.TextBox EffectColorR;
-        private System.Windows.Forms.TextBox EffectHighlightColorB;
-        private System.Windows.Forms.TextBox EffectHighlightColorG;
-        private System.Windows.Forms.TextBox EffectHighlightColorR;
-        private System.Windows.Forms.TextBox EffectPAColorB;
-        private System.Windows.Forms.TextBox EffectPAColorG;
-        private System.Windows.Forms.TextBox EffectPAColorR;
-        private System.Windows.Forms.TextBox EffectHighlightPAColorB;
-        private System.Windows.Forms.TextBox EffectHighlightPAColorG;
-        private System.Windows.Forms.TextBox EffectHighlightPAColorR;
         private System.Windows.Forms.CheckBox hudCrosshair;
         private System.Windows.Forms.TrackBar AudioMasterTrackbar;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1521,8 +1612,8 @@
         private System.Windows.Forms.Label AudioVal2Text;
         private System.Windows.Forms.Label AudioVal1Text;
         private System.Windows.Forms.Label AudioVal0Text;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox gamepadRumble;
+        private System.Windows.Forms.CheckBox gamepadEnable;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
@@ -1538,6 +1629,34 @@
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.CheckBox resolutionBorderless;
         private System.Windows.Forms.CheckBox resolutionFullscreen;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown SavingAutoSaveTextBox;
+        private System.Windows.Forms.TabPage tabVATS;
+        private System.Windows.Forms.NumericUpDown VATSEffectPAColorG;
+        private System.Windows.Forms.NumericUpDown VATSColorR;
+        private System.Windows.Forms.NumericUpDown VATSHighlighColorR;
+        private System.Windows.Forms.NumericUpDown VATSEffectPAColorR;
+        private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorB;
+        private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorG;
+        private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorR;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown VATSHighlighColorB;
+        private System.Windows.Forms.NumericUpDown VATSHighlighColorG;
+        private System.Windows.Forms.NumericUpDown VATSColorB;
+        private System.Windows.Forms.NumericUpDown VATSColorG;
+        private System.Windows.Forms.NumericUpDown VATSEffectPAColorB;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

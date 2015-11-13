@@ -71,20 +71,48 @@ namespace Fallout4MoreConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error!.
-        /// </summary>
-        internal static string Extras_GetLineValue_Error_ {
-            get {
-                return ResourceManager.GetString("Extras_GetLineValue_Error_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to %.
         /// </summary>
         internal static string Percentage {
             get {
                 return ResourceManager.GetString("Percentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error!.
+        /// </summary>
+        internal static string String_Error_ {
+            get {
+                return ResourceManager.GetString("String_Error_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///.
+        /// </summary>
+        internal static string string_newLine {
+            get {
+                return ResourceManager.GetString("string_newLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  was not found..
+        /// </summary>
+        internal static string string_path_not_found_ {
+            get {
+                return ResourceManager.GetString("string_path_not_found_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please run the game once and try again..
+        /// </summary>
+        internal static string string_please_run_game_ {
+            get {
+                return ResourceManager.GetString("string_please_run_game_", resourceCulture);
             }
         }
     }

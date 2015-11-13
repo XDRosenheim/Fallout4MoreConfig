@@ -47,6 +47,12 @@ namespace Fallout4MoreConfig {
             #region Preview
             HUDColorPreviewBox.BackColor = Color.FromArgb( Convert.ToInt16( hudColorRed ), Convert.ToInt16( hudColorGreen ), Convert.ToInt16( hudColorBlue ) );
             #endregion
+            #region FOV
+            var hudFirstFov = _extras.GetLineValue( Fallout4Location, "fDefault1stPersonFOV" );
+            var hudThirdFov = _extras.GetLineValue( Fallout4Location, "fDefaultWorldFOV" );
+            hudFovFirst.Text = hudFirstFov.ToString();
+            hudFovThird.Text = hudThirdFov.ToString();
+            #endregion
             #endregion
             #region Pip-Boy
             #region Color
@@ -64,6 +70,15 @@ namespace Fallout4MoreConfig {
         }
 
         public Form1() {
+            // See if config files exists
+            if(!File.Exists( Fallout4Location ))
+            {
+                MessageBox.Show(
+                    Fallout4PrefsLocation + Resources.string_path_not_found_ + Resources.string_newLine +
+                    Resources.string_please_run_game_, Resources.String_Error_, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            File.Exists(Fallout4PrefsLocation);
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config file...
             // This should make it work for everybody.
@@ -125,6 +140,12 @@ namespace Fallout4MoreConfig {
             text = rgx.Replace( text, replacement );
             #endregion
             #endregion
+            #region FOV
+            pattern = @"fDefaultWorldFOV=([0-9\.]+)";
+            replacement = "fDefaultWorldFOV=" + Math.Round( Convert.ToDouble( HUDColorRedTrackBar.Value ), 4 );
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
             #endregion
 
             #region Saving
@@ -157,6 +178,20 @@ namespace Fallout4MoreConfig {
             rgx = new Regex( pattern );
             text = rgx.Replace( text, replacement );
             #endregion
+            #endregion
+
+            #region Gamepad
+            int gpEnable = 0, gpRumble = 0;
+            if(gamepadEnable.Checked) { gpEnable = 1; }
+            if(gamepadRumble.Checked) { gpRumble = 1; }
+            pattern = @"bGamepadEnable=([0-9\.]+)";
+            replacement = "bGamepadEnable=" + gpEnable;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            pattern = @"bGamePadRumble=([0-9\.]+)";
+            replacement = "bGamePadRumble=" + gpRumble;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
             #endregion
 
             File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
@@ -221,6 +256,7 @@ namespace Fallout4MoreConfig {
             AudioVal7Text.Text = AudioVal7TrackBar.Value.ToString();
         }
 
+        //Changes
         private void resolutionFullscreen_CheckedChanged( object sender, EventArgs e ) {
             if(resolutionFullscreen.Checked) {
                 resolutionBorderless.Checked = true;
