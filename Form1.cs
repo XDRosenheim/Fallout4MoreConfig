@@ -4,40 +4,61 @@ using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Fallout4MoreConfig.Properties;
 
 namespace Fallout4MoreConfig {
     public partial class Form1 : Form {
-        public string fallout4Location = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
+        public string Fallout4Location = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
                 + @"\Documents\My Games\fallout4\Fallout4.ini";
-        public string fallout4PrefsLocation = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
+        public string Fallout4PrefsLocation = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
                 + @"\Documents\My Games\fallout4\Fallout4Prefs.ini";
-        /// <summary>
-        /// This is going to be moved to its own class later.
-        /// WE ARE NOT EVEN IN AN ALPHA STAGE FOLKS!
-        /// </summary>
-        /// <param name="file">Full path to file, including filename.</param>
-        /// <param name="command">The command used for the setting.</param>
-        /// <returns>An object</returns>
-        public object GetLineValue( string file, string command ) {
-            using(StreamReader inputReader = new StreamReader( fallout4PrefsLocation )) {
-                while(!inputReader.EndOfStream) {
-                    var line = inputReader.ReadLine();
-                    if(line.StartsWith( command )) {
-                        try {
-                            object[] splitLine = line.Split( new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries );
-                            return splitLine[1];
-                        } catch(Exception e) {
-                            // TODO - Copy error to clipboard button.
-                            MessageBox.Show( "Please report the following code on github: \n" + e.ToString(),
-                                "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error );
-                            Application.Exit();
-                        }
-                    }
-                }
-            }
-            return "%ERROR%";
+
+        private readonly Extras _extras = new Extras();
+
+        public void GetAllValues() {
+            //// Get values from current config
+            // Settings
+            // Auto-Save
+            SavingAutoSaveTextBox.Text = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ).ToString();
+            // HUD
+            // Opacity
+            HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
+            HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 );
+            // Color
+            var hudColorRed = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorR" );
+            var hudColorGreen = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorG" );
+            var hudColorBlue = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorB" );
+            HUDColorRedTrackBar.Value = Convert.ToInt16( hudColorRed );
+            HUDColorRedTextBox.Text = hudColorRed.ToString();
+            HUDColorGreenTrackBar.Value = Convert.ToInt16( hudColorGreen );
+            HUDColorGreenTextBox.Text = hudColorGreen.ToString();
+            HUDColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
+            HUDColorBlueTextBox.Text = hudColorBlue.ToString();
+            // Preview
+            HUDColorPreviewBox.BackColor = Color.FromArgb(
+                Convert.ToInt16( hudColorRed ),
+                Convert.ToInt16( hudColorGreen ),
+                Convert.ToInt16( hudColorBlue )
+                );
+
+            // Pip-Boy
+            // Color
+            var pipBoyColorRed = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" );
+            var pipBoyColorGreen = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" );
+            var pipBoyColorBlue = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" );
+            PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" ) ) * 100 );
+            PipBoyColorRedTextBox.Text = pipBoyColorRed.ToString();
+            PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" ) ) * 100 );
+            PipBoyColorGreenTextBox.Text = pipBoyColorGreen.ToString();
+            PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" ) ) * 100 );
+            PipBoyColorBlueTextBox.Text = pipBoyColorBlue.ToString();
+
+            SavingQuickPause.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
+            SavingQuickTravel.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
+            SavingQuickWaiting.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
+            SavingQuickSleeping.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
         }
-        
+
         public Form1() {
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses the a point (.) in their config file...
@@ -46,47 +67,17 @@ namespace Fallout4MoreConfig {
 
             InitializeComponent();
 
-            this.AutoSize = true;
-            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            
-            //// Get values from current config
-            /// Settings
-            // Auto-Save
-            SavingAutoSaveTextBox.Text = Convert.ToInt32( GetLineValue( fallout4PrefsLocation, "fAutosaveEveryXMins" ) ).ToString();
-            /// HUD
-            // Opacity
-            HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( GetLineValue( fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 ) ) + "%";
-            HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( GetLineValue( fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 );
-            // Color
-            var HUDColorRed = GetLineValue( fallout4PrefsLocation, "iHUDColorR" );
-            var HUDColorGreen = GetLineValue( fallout4PrefsLocation, "iHUDColorG" );
-            var HUDColorBlue = GetLineValue( fallout4PrefsLocation, "iHUDColorB" );
-            HUDColorRedTrackBar.Value = Convert.ToInt16(HUDColorRed);
-            HUDColorRedTextBox.Text = HUDColorRed.ToString();
-            HUDColorGreenTrackBar.Value = Convert.ToInt16( HUDColorGreen );
-            HUDColorGreenTextBox.Text = HUDColorGreen.ToString();
-            HUDColorBlueTrackBar.Value = Convert.ToInt16( HUDColorBlue );
-            HUDColorBlueTextBox.Text = HUDColorBlue.ToString();
-            // Preview
-            HUDColorPreviewBox.BackColor = Color.FromArgb( 
-                Convert.ToInt16(HUDColorRed),
-                Convert.ToInt16(HUDColorGreen),
-                Convert.ToInt16(HUDColorBlue)
-                );
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
-            /// Pip-Boy
-            // Color
-            var PipBoyColorRed = GetLineValue( fallout4PrefsLocation, "fPipboyEffectColorR" );
-            var PipBoyColorGreen = GetLineValue( fallout4PrefsLocation, "fPipboyEffectColorG" );
-            var PipBoyColorBlue = GetLineValue( fallout4PrefsLocation, "fPipboyEffectColorB" );
-            PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( GetLineValue( fallout4PrefsLocation, "fPipboyEffectColorR" ) ) * 100 );
-            PipBoyColorRedTextBox.Text = PipBoyColorRed.ToString();
-            PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( GetLineValue( fallout4PrefsLocation, "fPipboyEffectColorG" ) ) * 100 );
-            PipBoyColorGreenTextBox.Text = PipBoyColorGreen.ToString();
-            PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( GetLineValue( fallout4PrefsLocation, "fPipboyEffectColorB" ) ) * 100 );
-            PipBoyColorBlueTextBox.Text = PipBoyColorBlue.ToString();
+            GetAllValues();
         }
-        
+
+        public sealed override bool AutoSize
+        {
+            get { return base.AutoSize; }
+            set { base.AutoSize = value; }
+        }
 
         // The buttons
         private void btnSave_Click( object sender, EventArgs e ) {
@@ -97,33 +88,84 @@ namespace Fallout4MoreConfig {
             // http://github.com/XDRosenheim/Fallout4MoreConfig
             // But, hey, it works...
 
-            string text = File.ReadAllText( fallout4PrefsLocation );
-            // HUD - opacity
-            string pattern = @"fHUDOpacity=([0-9\.]+)";
-            string replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
+            // Get the WHOLE file
+            var text = File.ReadAllText( Fallout4PrefsLocation );
+            #region HUD
+            #region Opacity
+            var pattern = @"fHUDOpacity=([0-9\.]+)";
+            var replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
             Regex rgx = new Regex( pattern );
             text = rgx.Replace( text, replacement );
-            // Settings - Autosave
+            #endregion
+            #region HUD Color
+            #region R
+            pattern = @"iHUDColorR=([0-9\.]+)";
+            replacement = "iHUDColorR=" + Math.Round( Convert.ToDouble( HUDColorRedTrackBar.Value ), 4 );
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
+            #region G
+            pattern = @"iHUDColorG=([0-9\.]+)";
+            replacement = "iHUDColorG=" + Math.Round( Convert.ToDouble( HUDColorGreenTrackBar.Value ), 4 );
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
+            #region B
+            pattern = @"iHUDColorB=([0-9\.]+)";
+            replacement = "iHUDColorB=" + Math.Round( Convert.ToDouble( HUDColorBlueTrackBar.Value ), 4 );
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
+            #endregion
+            #endregion
+            #region Saving
+            #region Auto
             pattern = @"fAutosaveEveryXMins=([0-9\.]+)";
             replacement = "fAutosaveEveryXMins=" + Math.Round( Convert.ToDouble( SavingAutoSaveTextBox.Text ), 4 );
             rgx = new Regex( pattern );
             text = rgx.Replace( text, replacement );
+            #endregion
+            #region Quick Saves
+            int saPaused = 0, saTravel = 0, saWaiting = 0, saSleeping = 0;
+            pattern = @"bSaveOnPause=([0-9\.]+)";
+            if(SavingQuickPause.Checked) { saPaused = 1; }
+            if(SavingQuickTravel.Checked) { saTravel = 1; }
+            if(SavingQuickWaiting.Checked) { saWaiting = 1; }
+            if(SavingQuickSleeping.Checked) { saSleeping = 1; }
+            replacement = "bSaveOnPause=" + saPaused;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            pattern = @"bSaveOnTravel=([0-9\.]+)";
+            replacement = "bSaveOnTravel=" + saTravel;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            pattern = @"bSaveOnWait=([0-9\.]+)";
+            replacement = "bSaveOnWait=" + saWaiting;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            pattern = @"bSaveOnRest=([0-9\.]+)";
+            replacement = "bSaveOnRest=" + saSleeping;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
+            #endregion
+
             // Write to file
-            File.WriteAllText( fallout4PrefsLocation, text );
+            File.WriteAllText( Fallout4PrefsLocation, text );
         }
         private void btnDefault_Click( object sender, EventArgs e ) {
-
+            GetAllValues();
         }
-        private void btnOMFGQUIT_Click( object sender, EventArgs e ) { 
-            Application.Exit(); 
+        private void btnOMFGQUIT_Click( object sender, EventArgs e ) {
+            Application.Exit();
         }
-        private void button4_Click( object sender, EventArgs e ) {
+        private void btnSource_Click( object sender, EventArgs e ) {
             Process.Start( "http://github.com/XDRosenheim/Fallout4MoreConfig" );
         }
 
         // Scrollers - Track bars - Sliders - Whatever
         private void trackHudOpacity_Scroll( object sender, EventArgs e ) {
-            HUDOpacityResult.Text = HUDOpacityTrackBar.Value.ToString() + "%";
+            HUDOpacityResult.Text = HUDOpacityTrackBar.Value + Resources.Percentage;
         }
         private void HUDColorRedTrackBar_Scroll( object sender, EventArgs e ) {
             HUDColorRedTextBox.Text = HUDColorRedTrackBar.Value.ToString();
@@ -137,7 +179,5 @@ namespace Fallout4MoreConfig {
             HUDColorBlueTextBox.Text = HUDColorBlueTrackBar.Value.ToString();
             HUDColorPreviewBox.BackColor = Color.FromArgb( HUDColorRedTrackBar.Value, HUDColorGreenTrackBar.Value, HUDColorBlueTrackBar.Value );
         }
-
-        
     }
 }
