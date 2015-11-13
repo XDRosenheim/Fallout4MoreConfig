@@ -16,15 +16,24 @@ namespace Fallout4MoreConfig {
         private readonly Extras _extras = new Extras();
 
         public void GetAllValues() {
-            //// Get values from current config
-            // Settings
-            // Auto-Save
+            // Get values from current config
+            #region Saving
+            #region Auto-Save
             SavingAutoSaveTextBox.Text = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ).ToString();
-            // HUD
-            // Opacity
+            #endregion
+            #region Quick-Save
+            SavingQuickPause.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnPause" ) ) == 1;
+            SavingQuickTravel.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnTravel" ) ) == 1;
+            SavingQuickWaiting.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnWait" ) ) == 1;
+            SavingQuickSleeping.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnRest" ) ) == 1;
+            #endregion
+            #endregion
+            #region HUD
+            #region Opacity
             HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
             HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 );
-            // Color
+            #endregion
+            #region Color
             var hudColorRed = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorR" );
             var hudColorGreen = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorG" );
             var hudColorBlue = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorB" );
@@ -34,15 +43,13 @@ namespace Fallout4MoreConfig {
             HUDColorGreenTextBox.Text = hudColorGreen.ToString();
             HUDColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
             HUDColorBlueTextBox.Text = hudColorBlue.ToString();
-            // Preview
-            HUDColorPreviewBox.BackColor = Color.FromArgb(
-                Convert.ToInt16( hudColorRed ),
-                Convert.ToInt16( hudColorGreen ),
-                Convert.ToInt16( hudColorBlue )
-                );
-
-            // Pip-Boy
-            // Color
+            #endregion
+            #region Preview
+            HUDColorPreviewBox.BackColor = Color.FromArgb( Convert.ToInt16( hudColorRed ), Convert.ToInt16( hudColorGreen ), Convert.ToInt16( hudColorBlue ) );
+            #endregion
+            #endregion
+            #region Pip-Boy
+            #region Color
             var pipBoyColorRed = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" );
             var pipBoyColorGreen = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" );
             var pipBoyColorBlue = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" );
@@ -52,16 +59,13 @@ namespace Fallout4MoreConfig {
             PipBoyColorGreenTextBox.Text = pipBoyColorGreen.ToString();
             PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" ) ) * 100 );
             PipBoyColorBlueTextBox.Text = pipBoyColorBlue.ToString();
-
-            SavingQuickPause.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
-            SavingQuickTravel.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
-            SavingQuickWaiting.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
-            SavingQuickSleeping.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "" ) ) == 1;
+            #endregion
+            #endregion
         }
 
         public Form1() {
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
-            // And Bethesda uses the a point (.) in their config file...
+            // And Bethesda uses a point (.) in their config file...
             // This fixes it.
             Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture( "en-US" );
 
@@ -90,11 +94,16 @@ namespace Fallout4MoreConfig {
 
             // Get the WHOLE file
             var text = File.ReadAllText( Fallout4PrefsLocation );
+
             #region HUD
             #region Opacity
+            // Make a pattern for Regex
             var pattern = @"fHUDOpacity=([0-9\.]+)";
+            // What to write on the line we are editing
             var replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
-            Regex rgx = new Regex( pattern );
+            // Give Regex the pattern
+            var rgx = new Regex( pattern );
+            // Write the file, but with changes
             text = rgx.Replace( text, replacement );
             #endregion
             #region HUD Color
@@ -118,6 +127,7 @@ namespace Fallout4MoreConfig {
             #endregion
             #endregion
             #endregion
+
             #region Saving
             #region Auto
             pattern = @"fAutosaveEveryXMins=([0-9\.]+)";
@@ -155,9 +165,6 @@ namespace Fallout4MoreConfig {
         }
         private void btnDefault_Click( object sender, EventArgs e ) {
             GetAllValues();
-        }
-        private void btnOMFGQUIT_Click( object sender, EventArgs e ) {
-            Application.Exit();
         }
         private void btnSource_Click( object sender, EventArgs e ) {
             Process.Start( "http://github.com/XDRosenheim/Fallout4MoreConfig" );
