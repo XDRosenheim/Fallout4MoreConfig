@@ -110,6 +110,11 @@
             this.PipBoyColorGreenTrackBar = new System.Windows.Forms.TrackBar();
             this.PipBoyColorBlueTrackBar = new System.Windows.Forms.TrackBar();
             this.tabVATS = new System.Windows.Forms.TabPage();
+            this.VATSHighlighColorB = new System.Windows.Forms.NumericUpDown();
+            this.VATSHighlighColorG = new System.Windows.Forms.NumericUpDown();
+            this.VATSColorB = new System.Windows.Forms.NumericUpDown();
+            this.VATSColorG = new System.Windows.Forms.NumericUpDown();
+            this.VATSEffectPAColorB = new System.Windows.Forms.NumericUpDown();
             this.VATSEffectPAColorG = new System.Windows.Forms.NumericUpDown();
             this.VATSColorR = new System.Windows.Forms.NumericUpDown();
             this.VATSHighlighColorR = new System.Windows.Forms.NumericUpDown();
@@ -131,22 +136,17 @@
             this.tweakReadonly = new System.Windows.Forms.CheckBox();
             this.tabResolution = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.resolutionBorderless = new System.Windows.Forms.CheckBox();
             this.resolutionFullscreen = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
-            this.VATSEffectPAColorB = new System.Windows.Forms.NumericUpDown();
-            this.VATSColorG = new System.Windows.Forms.NumericUpDown();
-            this.VATSColorB = new System.Windows.Forms.NumericUpDown();
-            this.VATSHighlighColorG = new System.Windows.Forms.NumericUpDown();
-            this.VATSHighlighColorB = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -183,6 +183,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTrackBar)).BeginInit();
             this.tabVATS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSColorR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorR)).BeginInit();
@@ -194,13 +199,8 @@
             this.tabSettings.SuspendLayout();
             this.tabResolution.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSColorG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSColorB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -1107,6 +1107,41 @@
             this.tabVATS.TabIndex = 5;
             this.tabVATS.Text = "VATS";
             // 
+            // VATSHighlighColorB
+            // 
+            this.VATSHighlighColorB.Location = new System.Drawing.Point(240, 73);
+            this.VATSHighlighColorB.Name = "VATSHighlighColorB";
+            this.VATSHighlighColorB.Size = new System.Drawing.Size(61, 20);
+            this.VATSHighlighColorB.TabIndex = 30;
+            // 
+            // VATSHighlighColorG
+            // 
+            this.VATSHighlighColorG.Location = new System.Drawing.Point(173, 73);
+            this.VATSHighlighColorG.Name = "VATSHighlighColorG";
+            this.VATSHighlighColorG.Size = new System.Drawing.Size(61, 20);
+            this.VATSHighlighColorG.TabIndex = 29;
+            // 
+            // VATSColorB
+            // 
+            this.VATSColorB.Location = new System.Drawing.Point(240, 99);
+            this.VATSColorB.Name = "VATSColorB";
+            this.VATSColorB.Size = new System.Drawing.Size(61, 20);
+            this.VATSColorB.TabIndex = 28;
+            // 
+            // VATSColorG
+            // 
+            this.VATSColorG.Location = new System.Drawing.Point(173, 99);
+            this.VATSColorG.Name = "VATSColorG";
+            this.VATSColorG.Size = new System.Drawing.Size(61, 20);
+            this.VATSColorG.TabIndex = 27;
+            // 
+            // VATSEffectPAColorB
+            // 
+            this.VATSEffectPAColorB.Location = new System.Drawing.Point(240, 47);
+            this.VATSEffectPAColorB.Name = "VATSEffectPAColorB";
+            this.VATSEffectPAColorB.Size = new System.Drawing.Size(61, 20);
+            this.VATSEffectPAColorB.TabIndex = 26;
+            // 
             // VATSEffectPAColorG
             // 
             this.VATSEffectPAColorG.Location = new System.Drawing.Point(173, 47);
@@ -1306,6 +1341,65 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Settings";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 126);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 13);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Presets";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "4K",
+            "2K",
+            "HD 1080",
+            "WQHD",
+            "UHD-1",
+            "HD 720",
+            "1600x900",
+            "1366x768"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 142);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(157, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 94);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 13);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Height";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Width";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(47, 92);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(116, 20);
+            this.numericUpDown2.TabIndex = 3;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(47, 66);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(116, 20);
+            this.numericUpDown1.TabIndex = 2;
+            // 
             // resolutionBorderless
             // 
             this.resolutionBorderless.AutoSize = true;
@@ -1356,100 +1450,6 @@
             this.btnSource.Text = "Github";
             this.btnSource.UseVisualStyleBackColor = true;
             this.btnSource.Click += new System.EventHandler(this.btnSource_Click);
-            // 
-            // VATSEffectPAColorB
-            // 
-            this.VATSEffectPAColorB.Location = new System.Drawing.Point(240, 47);
-            this.VATSEffectPAColorB.Name = "VATSEffectPAColorB";
-            this.VATSEffectPAColorB.Size = new System.Drawing.Size(61, 20);
-            this.VATSEffectPAColorB.TabIndex = 26;
-            // 
-            // VATSColorG
-            // 
-            this.VATSColorG.Location = new System.Drawing.Point(173, 99);
-            this.VATSColorG.Name = "VATSColorG";
-            this.VATSColorG.Size = new System.Drawing.Size(61, 20);
-            this.VATSColorG.TabIndex = 27;
-            // 
-            // VATSColorB
-            // 
-            this.VATSColorB.Location = new System.Drawing.Point(240, 99);
-            this.VATSColorB.Name = "VATSColorB";
-            this.VATSColorB.Size = new System.Drawing.Size(61, 20);
-            this.VATSColorB.TabIndex = 28;
-            // 
-            // VATSHighlighColorG
-            // 
-            this.VATSHighlighColorG.Location = new System.Drawing.Point(173, 73);
-            this.VATSHighlighColorG.Name = "VATSHighlighColorG";
-            this.VATSHighlighColorG.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlighColorG.TabIndex = 29;
-            // 
-            // VATSHighlighColorB
-            // 
-            this.VATSHighlighColorB.Location = new System.Drawing.Point(240, 73);
-            this.VATSHighlighColorB.Name = "VATSHighlighColorB";
-            this.VATSHighlighColorB.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlighColorB.TabIndex = 30;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "4K",
-            "2K",
-            "HD 1080",
-            "WQHD",
-            "UHD-1",
-            "HD 720",
-            "1600x900",
-            "1366x768"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 142);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(157, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(47, 66);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(116, 20);
-            this.numericUpDown1.TabIndex = 2;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(47, 92);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(116, 20);
-            this.numericUpDown2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Width";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 94);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(38, 13);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "Height";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 126);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(42, 13);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "Presets";
             // 
             // Form1
             // 
@@ -1512,6 +1512,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTrackBar)).EndInit();
             this.tabVATS.ResumeLayout(false);
             this.tabVATS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSColorR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorR)).EndInit();
@@ -1526,137 +1531,144 @@
             this.tabResolution.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSEffectPAColorB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSColorG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSColorB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VATSHighlighColorB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TabControl tabControl;
+
         private System.Windows.Forms.TabPage tabVisuals;
         private System.Windows.Forms.TabPage tabAudio;
         private System.Windows.Forms.TabPage tabSaving;
         private System.Windows.Forms.TabPage tabHUD;
-        private System.Windows.Forms.TrackBar HUDOpacityTrackBar;
-        private System.Windows.Forms.Label HUDOpacityResult;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDefault;
-        private System.Windows.Forms.Button btnSource;
         private System.Windows.Forms.TabPage tabPipBoy;
-        private System.Windows.Forms.Label SavingMinutLabel;
-        private System.Windows.Forms.TextBox HUDColorBlueTextBox;
-        private System.Windows.Forms.TextBox HUDColorGreenTextBox;
-        private System.Windows.Forms.TextBox HUDColorRedTextBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TrackBar HUDColorBlueTrackBar;
-        private System.Windows.Forms.TrackBar HUDColorGreenTrackBar;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TrackBar HUDColorRedTrackBar;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.FlowLayoutPanel HUDColorPreviewBox;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.CheckBox SavingQuickSleeping;
-        private System.Windows.Forms.CheckBox SavingQuickWaiting;
-        private System.Windows.Forms.CheckBox SavingQuickTravel;
-        private System.Windows.Forms.CheckBox SavingQuickPause;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.TextBox PipBoyColorRedTextBox;
-        private System.Windows.Forms.TextBox PipBoyColorBlueTextBox;
-        private System.Windows.Forms.TextBox PipBoyColorGreenTextBox;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TrackBar PipBoyColorRedTrackBar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TrackBar PipBoyColorGreenTrackBar;
-        private System.Windows.Forms.TrackBar PipBoyColorBlueTrackBar;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.CheckBox hudCrosshair;
-        private System.Windows.Forms.TrackBar AudioMasterTrackbar;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox hudFovThird;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox hudFovFirst;
+        private System.Windows.Forms.TabPage tabVATS;
         private System.Windows.Forms.TabPage tabGamepad;
-        private System.Windows.Forms.TrackBar AudioVal5TrackBar;
-        private System.Windows.Forms.TrackBar AudioVal3TrackBar;
-        private System.Windows.Forms.TrackBar AudioVal1TrackBar;
-        private System.Windows.Forms.TrackBar AudioVal7TrackBar;
-        private System.Windows.Forms.TrackBar AudioVal6TrackBar;
-        private System.Windows.Forms.TrackBar AudioVal4TrackBar;
-        private System.Windows.Forms.TrackBar AudioVal2TrackBar;
-        private System.Windows.Forms.TrackBar AudioVal0TrackBar;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label AudioMasterText;
-        private System.Windows.Forms.Label AudioVal7Text;
-        private System.Windows.Forms.Label AudioVal6Text;
-        private System.Windows.Forms.Label AudioVal5Text;
-        private System.Windows.Forms.Label AudioVal4Text;
-        private System.Windows.Forms.Label AudioVal3Text;
-        private System.Windows.Forms.Label AudioVal2Text;
-        private System.Windows.Forms.Label AudioVal1Text;
-        private System.Windows.Forms.Label AudioVal0Text;
-        private System.Windows.Forms.CheckBox gamepadRumble;
-        private System.Windows.Forms.CheckBox gamepadEnable;
-        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.TabPage tabSettings;
+        private System.Windows.Forms.TabPage tabResolution;
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TabPage tabSettings;
-        private System.Windows.Forms.CheckBox tweakReadonly;
-        private System.Windows.Forms.TabPage tabResolution;
+        private System.Windows.Forms.Label label28;
+
+        private System.Windows.Forms.Label AudioMasterText;
+        private System.Windows.Forms.Label AudioVal0Text;
+        private System.Windows.Forms.Label AudioVal1Text;
+        private System.Windows.Forms.Label AudioVal2Text;
+        private System.Windows.Forms.Label AudioVal3Text;
+        private System.Windows.Forms.Label AudioVal4Text;
+        private System.Windows.Forms.Label AudioVal5Text;
+        private System.Windows.Forms.Label AudioVal6Text;
+        private System.Windows.Forms.Label AudioVal7Text;
+        private System.Windows.Forms.Label HUDOpacityResult;
+        private System.Windows.Forms.Label SavingMinutLabel;
+
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDefault;
+        private System.Windows.Forms.Button btnSource;
+
+        private System.Windows.Forms.TrackBar HUDOpacityTrackBar;
+        private System.Windows.Forms.TrackBar HUDColorBlueTrackBar;
+        private System.Windows.Forms.TrackBar HUDColorGreenTrackBar;
+        private System.Windows.Forms.TrackBar HUDColorRedTrackBar;
+        private System.Windows.Forms.TrackBar PipBoyColorRedTrackBar;
+        private System.Windows.Forms.TrackBar PipBoyColorGreenTrackBar;
+        private System.Windows.Forms.TrackBar PipBoyColorBlueTrackBar;
+        private System.Windows.Forms.TrackBar AudioMasterTrackbar;
+        private System.Windows.Forms.TrackBar AudioVal0TrackBar;
+        private System.Windows.Forms.TrackBar AudioVal1TrackBar;
+        private System.Windows.Forms.TrackBar AudioVal2TrackBar;
+        private System.Windows.Forms.TrackBar AudioVal3TrackBar;
+        private System.Windows.Forms.TrackBar AudioVal4TrackBar;
+        private System.Windows.Forms.TrackBar AudioVal5TrackBar;
+        private System.Windows.Forms.TrackBar AudioVal6TrackBar;
+        private System.Windows.Forms.TrackBar AudioVal7TrackBar;
+
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox13;
+
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox SavingQuickSleeping;
+        private System.Windows.Forms.CheckBox SavingQuickWaiting;
+        private System.Windows.Forms.CheckBox SavingQuickTravel;
+        private System.Windows.Forms.CheckBox SavingQuickPause;
+        private System.Windows.Forms.CheckBox gamepadRumble;
+        private System.Windows.Forms.CheckBox gamepadEnable;
+        private System.Windows.Forms.CheckBox tweakReadonly;
         private System.Windows.Forms.CheckBox resolutionBorderless;
         private System.Windows.Forms.CheckBox resolutionFullscreen;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox hudCrosshair;
+
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+
         private System.Windows.Forms.NumericUpDown SavingAutoSaveTextBox;
-        private System.Windows.Forms.TabPage tabVATS;
-        private System.Windows.Forms.NumericUpDown VATSEffectPAColorG;
-        private System.Windows.Forms.NumericUpDown VATSColorR;
-        private System.Windows.Forms.NumericUpDown VATSHighlighColorR;
-        private System.Windows.Forms.NumericUpDown VATSEffectPAColorR;
-        private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorB;
-        private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorG;
         private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorR;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorG;
+        private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorB;
+        private System.Windows.Forms.NumericUpDown VATSEffectPAColorR;
+        private System.Windows.Forms.NumericUpDown VATSEffectPAColorG;
+        private System.Windows.Forms.NumericUpDown VATSEffectPAColorB;
+        private System.Windows.Forms.NumericUpDown VATSHighlighColorR;
         private System.Windows.Forms.NumericUpDown VATSHighlighColorB;
         private System.Windows.Forms.NumericUpDown VATSHighlighColorG;
-        private System.Windows.Forms.NumericUpDown VATSColorB;
+        private System.Windows.Forms.NumericUpDown VATSColorR;
         private System.Windows.Forms.NumericUpDown VATSColorG;
-        private System.Windows.Forms.NumericUpDown VATSEffectPAColorB;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown VATSColorB;
+
+        private System.Windows.Forms.TextBox HUDColorBlueTextBox;
+        private System.Windows.Forms.TextBox HUDColorGreenTextBox;
+        private System.Windows.Forms.TextBox HUDColorRedTextBox;
+        private System.Windows.Forms.TextBox PipBoyColorRedTextBox;
+        private System.Windows.Forms.TextBox PipBoyColorBlueTextBox;
+        private System.Windows.Forms.TextBox PipBoyColorGreenTextBox;
+        private System.Windows.Forms.TextBox hudFovFirst;
+        private System.Windows.Forms.TextBox hudFovThird;
+
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel HUDColorPreviewBox;
     }
 }
 

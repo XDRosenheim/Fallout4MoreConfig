@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -17,6 +18,41 @@ namespace Fallout4MoreConfig {
 
         public void GetAllValues() {
             // Get values from current config
+            #region Visuals
+            #endregion
+            #region Audio
+            #region Master
+            var masterVolume = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fAudioMasterVolume" ) );
+            AudioMasterTrackbar.Value = (int)( masterVolume * 100 );
+            AudioMasterText.Text = ( (int)( masterVolume * 100 ) ).ToString();
+            #endregion
+            #region Val
+            var val0 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal0" ) );
+            AudioVal0TrackBar.Value = (int)( val0 * 100 );
+            AudioVal0Text.Text = ( (int)( val0 * 100 ) ).ToString();
+            var val1 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal1" ) );
+            AudioVal1TrackBar.Value = (int)( val1 * 100 );
+            AudioVal1Text.Text = ( (int)( val1 * 100 ) ).ToString();
+            var val2 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal2" ) );
+            AudioVal2TrackBar.Value = (int)( val2 * 100 );
+            AudioVal2Text.Text = ( (int)( val2 * 100 ) ).ToString();
+            var val3 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal3" ) );
+            AudioVal3TrackBar.Value = (int)( val3 * 100 );
+            AudioVal3Text.Text = ( (int)( val3 * 100 ) ).ToString();
+            var val4 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal4" ) );
+            AudioVal4TrackBar.Value = (int)( val4 * 100 );
+            AudioVal4Text.Text = ( (int)( val4 * 100 ) ).ToString();
+            var val5 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal5" ) );
+            AudioVal5TrackBar.Value = (int)( val5 * 100 );
+            AudioVal5Text.Text = ( (int)( val5 * 100 ) ).ToString();
+            var val6 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal6" ) );
+            AudioVal6TrackBar.Value = (int)( val6 * 100 );
+            AudioVal6Text.Text = ( (int)( val6 * 100 ) ).ToString();
+            var val7 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal7" ) );
+            AudioVal7TrackBar.Value = (int)( val7 * 100 );
+            AudioVal7Text.Text = ( (int)( val7 * 100 ) ).ToString();
+            #endregion
+            #endregion
             #region Saving
             #region Auto-Save
             SavingAutoSaveTextBox.Text = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ).ToString();
@@ -67,22 +103,29 @@ namespace Fallout4MoreConfig {
             PipBoyColorBlueTextBox.Text = pipBoyColorBlue.ToString();
             #endregion
             #endregion
+            #region VATS
+            #endregion
+            #region Gamepad
+            #endregion
+            #region Tweakes
+            #endregion
+            #region Resolution
+            #endregion
         }
 
         public Form1() {
             // See if config files exists
-            if(!File.Exists( Fallout4Location ))
-            {
+            if(!File.Exists( Fallout4Location )) {
                 MessageBox.Show(
                     Fallout4PrefsLocation + Resources.string_path_not_found_ + Resources.string_newLine +
                     Resources.string_please_run_game_, Resources.String_Error_, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Error );
             }
-            File.Exists(Fallout4PrefsLocation);
+            File.Exists( Fallout4PrefsLocation );
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config file...
             // This should make it work for everybody.
-            Application.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture( "en-US" );
+            Application.CurrentCulture = CultureInfo.CreateSpecificCulture( "en-US" );
 
             InitializeComponent();
 
@@ -108,16 +151,71 @@ namespace Fallout4MoreConfig {
 
             // Get the WHOLE file
             var text = File.ReadAllText( Fallout4PrefsLocation );
+            // Make a pattern for Regex
+            // ReSharper disable once RedundantAssignment
+            var pattern = "";
+            // What to write on the line we are editing
+            // ReSharper disable once RedundantAssignment
+            var replacement = "";
+            // Give Regex the pattern
+            Regex rgx;
 
+            #region Audio
+            #region Master
+            var saveMasterVolume = (double) AudioMasterTrackbar.Value / 100;
+            pattern = @"fAudioMasterVolume=([0-9\.]+)";
+            replacement = "fAudioMasterVolume=" + saveMasterVolume;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
+            #region Val0-7
+            var saveVol0 = (double)AudioVal0TrackBar.Value / 100;
+            pattern = @"fVal0=([0-9\.]+)";
+            replacement = "fVal0=" + saveVol0;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            var saveVol1 = (double)AudioVal1TrackBar.Value / 100;
+            pattern = @"fVal1=([0-9\.]+)";
+            replacement = "fVal1=" + saveVol1;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            var saveVol2 = (double)AudioVal2TrackBar.Value / 100;
+            pattern = @"fVal2=([0-9\.]+)";
+            replacement = "fVal2=" + saveVol2;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            var saveVol3 = (double)AudioVal3TrackBar.Value / 100;
+            pattern = @"fVal3=([0-9\.]+)";
+            replacement = "fVal3=" + saveVol3;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            var saveVol4 = (double)AudioVal4TrackBar.Value / 100;
+            pattern = @"fVal4=([0-9\.]+)";
+            replacement = "fVal4=" + saveVol4;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            var saveVol5 = (double)AudioVal5TrackBar.Value / 100;
+            pattern = @"fVal5=([0-9\.]+)";
+            replacement = "fVal5=" + saveVol5;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            var saveVol6 = (double)AudioVal6TrackBar.Value / 100;
+            pattern = @"fVal6=([0-9\.]+)";
+            replacement = "fVal6=" + saveVol6;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            var saveVol7 = (double)AudioVal7TrackBar.Value / 100;
+            pattern = @"fVal7=([0-9\.]+)";
+            replacement = "fVal7=" + saveVol7;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
+            #endregion
             #region HUD
             #region Opacity
-            // Make a pattern for Regex
-            var pattern = @"fHUDOpacity=([0-9\.]+)";
-            // What to write on the line we are editing
-            var replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
-            // Give Regex the pattern
-            var rgx = new Regex( pattern );
-            // Write the file, but with changes
+            pattern = @"fHUDOpacity=([0-9\.]+)";
+            replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
+            rgx = new Regex( pattern );
             text = rgx.Replace( text, replacement );
             #endregion
             #region HUD Color
@@ -147,7 +245,6 @@ namespace Fallout4MoreConfig {
             text = rgx.Replace( text, replacement );
             #endregion
             #endregion
-
             #region Saving
             #region Auto
             pattern = @"fAutosaveEveryXMins=([0-9\.]+)";
@@ -179,7 +276,6 @@ namespace Fallout4MoreConfig {
             text = rgx.Replace( text, replacement );
             #endregion
             #endregion
-
             #region Gamepad
             int gpEnable = 0, gpRumble = 0;
             if(gamepadEnable.Checked) { gpEnable = 1; }
