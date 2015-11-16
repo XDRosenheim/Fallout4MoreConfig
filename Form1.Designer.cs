@@ -32,8 +32,8 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabVisuals = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.VisualsLensflare = new System.Windows.Forms.CheckBox();
+            this.VisualsDoF = new System.Windows.Forms.CheckBox();
             this.tabAudio = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -217,6 +217,7 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(9, 3);
+            this.tabControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(389, 393);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -232,14 +233,15 @@
             this.tabVisuals.Location = new System.Drawing.Point(4, 40);
             this.tabVisuals.Name = "tabVisuals";
             this.tabVisuals.Padding = new System.Windows.Forms.Padding(5);
+            this.tabVisuals.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabVisuals.Size = new System.Drawing.Size(381, 349);
             this.tabVisuals.TabIndex = 0;
-            this.tabVisuals.Text = "Visuals";
+            this.tabVisuals.Text = "Visuals[WIP]";
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.checkBox6);
-            this.groupBox9.Controls.Add(this.checkBox5);
+            this.groupBox9.Controls.Add(this.VisualsLensflare);
+            this.groupBox9.Controls.Add(this.VisualsDoF);
             this.groupBox9.Location = new System.Drawing.Point(8, 8);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(169, 65);
@@ -247,25 +249,25 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ImageSpace";
             // 
-            // checkBox6
+            // VisualsLensflare
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(6, 42);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(75, 17);
-            this.checkBox6.TabIndex = 1;
-            this.checkBox6.Text = "Lens Flare";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.VisualsLensflare.AutoSize = true;
+            this.VisualsLensflare.Location = new System.Drawing.Point(6, 42);
+            this.VisualsLensflare.Name = "VisualsLensflare";
+            this.VisualsLensflare.Size = new System.Drawing.Size(75, 17);
+            this.VisualsLensflare.TabIndex = 1;
+            this.VisualsLensflare.Text = "Lens Flare";
+            this.VisualsLensflare.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // VisualsDoF
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 19);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(92, 17);
-            this.checkBox5.TabIndex = 0;
-            this.checkBox5.Text = "Depth of Field";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.VisualsDoF.AutoSize = true;
+            this.VisualsDoF.Location = new System.Drawing.Point(6, 19);
+            this.VisualsDoF.Name = "VisualsDoF";
+            this.VisualsDoF.Size = new System.Drawing.Size(92, 17);
+            this.VisualsDoF.TabIndex = 0;
+            this.VisualsDoF.Text = "Depth of Field";
+            this.VisualsDoF.UseVisualStyleBackColor = true;
             // 
             // tabAudio
             // 
@@ -275,12 +277,12 @@
             this.tabAudio.Controls.Add(this.groupBox12);
             this.tabAudio.Controls.Add(this.groupBox4);
             this.tabAudio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabAudio.Location = new System.Drawing.Point(4, 40);
+            this.tabAudio.Location = new System.Drawing.Point(4, 22);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(381, 349);
+            this.tabAudio.Size = new System.Drawing.Size(381, 367);
             this.tabAudio.TabIndex = 1;
-            this.tabAudio.Text = "Audio";
+            this.tabAudio.Text = "Audio[WIP]";
             // 
             // groupBox12
             // 
@@ -710,10 +712,10 @@
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabHUD.Location = new System.Drawing.Point(4, 40);
+            this.tabHUD.Location = new System.Drawing.Point(4, 22);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(381, 349);
+            this.tabHUD.Size = new System.Drawing.Size(381, 367);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -1618,8 +1620,8 @@
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox13;
 
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox VisualsLensflare;
+        private System.Windows.Forms.CheckBox VisualsDoF;
         private System.Windows.Forms.CheckBox SavingQuickSleeping;
         private System.Windows.Forms.CheckBox SavingQuickWaiting;
         private System.Windows.Forms.CheckBox SavingQuickTravel;

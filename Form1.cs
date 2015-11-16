@@ -8,6 +8,31 @@ using System.Windows.Forms;
 using Fallout4MoreConfig.Properties;
 
 namespace Fallout4MoreConfig {
+    /// TODO - This list
+    /// HUD:
+    /// The preview, should have a/some screenshot(s) where the actual hud is shown.
+    /// 
+    /// Audio:
+    /// Val0-7 should be analliesed, so I know which does what. (They are not descriped in the configs)
+    /// 
+    /// Visuals:
+    /// More options............. To come.......... Soon(TM)
+    /// 
+    /// PIP-BOY:
+    /// Make it work.
+    /// The preview, should have a/some screenshot(s) where the actual hud is shown.
+    /// 
+    /// VATS:
+    /// Make it work.
+    /// 
+    /// Gamepad:
+    /// More options, such as sensitivity.
+    /// 
+    /// Resolution:
+    /// Presets. Make it change Width and height values.
+    /// 
+    
+    
     public partial class Form1 : Form {
         public string Fallout4Location = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
                 + @"\Documents\My Games\fallout4\Fallout4.ini";
@@ -17,6 +42,8 @@ namespace Fallout4MoreConfig {
         public void GetAllValues() {
             // Get values from current config
             #region Visuals
+            VisualsDoF.Checked = Convert.ToInt16(_extras.GetLineValue(Fallout4PrefsLocation, "bDoDepthOfField")) == 1;
+            VisualsLensflare.Checked = Convert.ToInt16(_extras.GetLineValue(Fallout4PrefsLocation, "bLensFlare")) == 1;
             #endregion
             #region Audio
             #region Master
@@ -105,8 +132,6 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Gamepad
             #endregion
-            #region Tweakes
-            #endregion
             #region Resolution
             #endregion
         }
@@ -157,6 +182,21 @@ namespace Fallout4MoreConfig {
             // Give Regex the pattern
             Regex rgx;
 
+            #region Visuals
+            #region Image Space
+            int visuDof = 0, visuLf = 0;
+            if(VisualsDoF.Checked) { visuDof = 1; }
+            if(VisualsLensflare.Checked) { visuLf = 1; }
+            pattern = @"bDoDepthOfField=([0-9\.]+)";
+            replacement = "bDoDepthOfField=" + visuDof;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            pattern = @"bLensFlare=([0-9\.]+)";
+            replacement = "bLensFlare=" + visuLf;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            #endregion
+            #endregion
             #region Audio
             #region Master
             var saveMasterVolume = (double)AudioMasterTrackbar.Value / 100;
@@ -237,7 +277,11 @@ namespace Fallout4MoreConfig {
             #endregion
             #region FOV
             pattern = @"fDefaultWorldFOV=([0-9\.]+)";
-            replacement = "fDefaultWorldFOV=" + Math.Round( Convert.ToDouble( HUDColorRedTrackBar.Value ), 4 );
+            replacement = "fDefaultWorldFOV=" + hudFovThird.Text;
+            rgx = new Regex( pattern );
+            text = rgx.Replace( text, replacement );
+            pattern = @"fDefault1stPersonFOV=([0-9\.]+)";
+            replacement = "fDefault1stPersonFOV=" + hudFovFirst.Text;
             rgx = new Regex( pattern );
             text = rgx.Replace( text, replacement );
             #endregion
