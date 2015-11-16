@@ -34,10 +34,10 @@ namespace Fallout4MoreConfig {
     /// 
     
     public partial class Form1 : Form {
-        public string Fallout4Location = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
-                + @"\Documents\My Games\fallout4\Fallout4.ini";
-        public string Fallout4PrefsLocation = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
-                + @"\Documents\My Games\fallout4\Fallout4Prefs.ini";
+        public string Fallout4Location = @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
+                + @"\Documents\my games\Fallout4\Fallout4.ini";
+        public string Fallout4PrefsLocation = @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
+                + @"\Documents\my games\Fallout4\Fallout4Prefs.ini";
         private readonly Extras _extras = new Extras();
         public void GetAllValues() {
             // Get values from current config
@@ -90,7 +90,7 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Saving
             #region Auto-Save
-            SavingAutoSaveTextBox.Text = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ).ToString();
+            SavingAutoSaveTextBox.Text = Convert.ToInt32(Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins") ) ).ToString();
             #endregion
             #region Quick-Save
             SavingQuickPause.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnPause" ) ) == 1;
