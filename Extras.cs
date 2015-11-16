@@ -5,14 +5,6 @@ using Fallout4MoreConfig.Properties;
 
 namespace Fallout4MoreConfig {
     internal class Extras {
-        
-        /// <summary>
-        /// This is going to be moved to its own class later.
-        /// WE ARE NOT EVEN IN AN ALPHA STAGE FOLKS!
-        /// </summary>
-        /// <param name="file">Full path to file, including filename.</param>
-        /// <param name="command">The command used for the setting.</param>
-        /// <returns>An object</returns>
         public object GetLineValue( string file, string command ) {
             using(var inputReader = new StreamReader( file )) {
                 while(!inputReader.EndOfStream) {

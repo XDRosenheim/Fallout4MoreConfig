@@ -148,11 +148,18 @@
             this.resolutionBorderless = new System.Windows.Forms.CheckBox();
             this.resolutionFullscreen = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnDefault = new System.Windows.Forms.Button();
+            this.btnReWrite = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
             this.btnDonate = new System.Windows.Forms.Button();
+            this.VisualsGore = new System.Windows.Forms.CheckBox();
+            this.VisualsScreenBlood = new System.Windows.Forms.CheckBox();
+            this.VisualWaterSky = new System.Windows.Forms.CheckBox();
+            this.VisualWaterLand = new System.Windows.Forms.CheckBox();
+            this.VisualWaterTree = new System.Windows.Forms.CheckBox();
+            this.VisualWaterObjects = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabAudio.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -252,20 +259,26 @@
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.VisualWaterObjects);
+            this.groupBox14.Controls.Add(this.VisualWaterTree);
+            this.groupBox14.Controls.Add(this.VisualWaterLand);
+            this.groupBox14.Controls.Add(this.VisualWaterSky);
             this.groupBox14.Location = new System.Drawing.Point(193, 8);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(179, 203);
+            this.groupBox14.Size = new System.Drawing.Size(179, 111);
             this.groupBox14.TabIndex = 1;
             this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "groupBox14";
+            this.groupBox14.Text = "Water Reflection";
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.VisualsScreenBlood);
             this.groupBox9.Controls.Add(this.VisualsLensflare);
+            this.groupBox9.Controls.Add(this.VisualsGore);
             this.groupBox9.Controls.Add(this.VisualsDoF);
             this.groupBox9.Location = new System.Drawing.Point(8, 8);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(179, 65);
+            this.groupBox9.Size = new System.Drawing.Size(179, 111);
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ImageSpace";
@@ -341,6 +354,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.Lime;
             this.label20.Location = new System.Drawing.Point(6, 19);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(13, 13);
@@ -363,6 +377,7 @@
             // AudioVal7Text
             // 
             this.AudioVal7Text.AutoSize = true;
+            this.AudioVal7Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal7Text.Location = new System.Drawing.Point(131, 226);
             this.AudioVal7Text.Name = "AudioVal7Text";
             this.AudioVal7Text.Size = new System.Drawing.Size(34, 13);
@@ -372,6 +387,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.Lime;
             this.label21.Location = new System.Drawing.Point(6, 76);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(13, 13);
@@ -381,6 +397,7 @@
             // AudioVal6Text
             // 
             this.AudioVal6Text.AutoSize = true;
+            this.AudioVal6Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal6Text.Location = new System.Drawing.Point(131, 196);
             this.AudioVal6Text.Name = "AudioVal6Text";
             this.AudioVal6Text.Size = new System.Drawing.Size(34, 13);
@@ -403,6 +420,7 @@
             // AudioVal5Text
             // 
             this.AudioVal5Text.AutoSize = true;
+            this.AudioVal5Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal5Text.Location = new System.Drawing.Point(131, 166);
             this.AudioVal5Text.Name = "AudioVal5Text";
             this.AudioVal5Text.Size = new System.Drawing.Size(34, 13);
@@ -412,6 +430,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.Lime;
             this.label22.Location = new System.Drawing.Point(6, 136);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(13, 13);
@@ -421,6 +440,7 @@
             // AudioVal4Text
             // 
             this.AudioVal4Text.AutoSize = true;
+            this.AudioVal4Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal4Text.Location = new System.Drawing.Point(131, 136);
             this.AudioVal4Text.Name = "AudioVal4Text";
             this.AudioVal4Text.Size = new System.Drawing.Size(34, 13);
@@ -443,6 +463,7 @@
             // AudioVal3Text
             // 
             this.AudioVal3Text.AutoSize = true;
+            this.AudioVal3Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal3Text.Location = new System.Drawing.Point(131, 106);
             this.AudioVal3Text.Name = "AudioVal3Text";
             this.AudioVal3Text.Size = new System.Drawing.Size(34, 13);
@@ -452,6 +473,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.Lime;
             this.label23.Location = new System.Drawing.Point(6, 196);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(13, 13);
@@ -461,6 +483,7 @@
             // AudioVal2Text
             // 
             this.AudioVal2Text.AutoSize = true;
+            this.AudioVal2Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal2Text.Location = new System.Drawing.Point(131, 76);
             this.AudioVal2Text.Name = "AudioVal2Text";
             this.AudioVal2Text.Size = new System.Drawing.Size(34, 13);
@@ -483,6 +506,7 @@
             // AudioVal1Text
             // 
             this.AudioVal1Text.AutoSize = true;
+            this.AudioVal1Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal1Text.Location = new System.Drawing.Point(131, 49);
             this.AudioVal1Text.Name = "AudioVal1Text";
             this.AudioVal1Text.Size = new System.Drawing.Size(34, 13);
@@ -492,6 +516,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.Lime;
             this.label24.Location = new System.Drawing.Point(6, 226);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(13, 13);
@@ -501,6 +526,7 @@
             // AudioVal0Text
             // 
             this.AudioVal0Text.AutoSize = true;
+            this.AudioVal0Text.ForeColor = System.Drawing.Color.Lime;
             this.AudioVal0Text.Location = new System.Drawing.Point(131, 19);
             this.AudioVal0Text.Name = "AudioVal0Text";
             this.AudioVal0Text.Size = new System.Drawing.Size(34, 13);
@@ -536,6 +562,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.Lime;
             this.label26.Location = new System.Drawing.Point(6, 49);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(13, 13);
@@ -545,6 +572,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.Lime;
             this.label28.Location = new System.Drawing.Point(6, 166);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(13, 13);
@@ -580,6 +608,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.Lime;
             this.label27.Location = new System.Drawing.Point(6, 106);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(13, 13);
@@ -1027,6 +1056,7 @@
             this.tabPipBoy.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPipBoy.Controls.Add(this.groupBox10);
             this.tabPipBoy.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabPipBoy.ForeColor = System.Drawing.Color.Lime;
             this.tabPipBoy.Location = new System.Drawing.Point(4, 40);
             this.tabPipBoy.Name = "tabPipBoy";
             this.tabPipBoy.Padding = new System.Windows.Forms.Padding(5);
@@ -1194,6 +1224,7 @@
             this.tabVATS.Controls.Add(this.label9);
             this.tabVATS.Controls.Add(this.label8);
             this.tabVATS.Controls.Add(this.label7);
+            this.tabVATS.ForeColor = System.Drawing.Color.Lime;
             this.tabVATS.Location = new System.Drawing.Point(4, 40);
             this.tabVATS.Name = "tabVATS";
             this.tabVATS.Padding = new System.Windows.Forms.Padding(5);
@@ -1355,6 +1386,7 @@
             this.tabGamepad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabGamepad.Controls.Add(this.gamepadRumble);
             this.tabGamepad.Controls.Add(this.gamepadEnable);
+            this.tabGamepad.ForeColor = System.Drawing.Color.Lime;
             this.tabGamepad.Location = new System.Drawing.Point(4, 40);
             this.tabGamepad.Name = "tabGamepad";
             this.tabGamepad.Padding = new System.Windows.Forms.Padding(5);
@@ -1388,6 +1420,7 @@
             this.tabResolution.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabResolution.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabResolution.Controls.Add(this.groupBox13);
+            this.tabResolution.ForeColor = System.Drawing.Color.Lime;
             this.tabResolution.Location = new System.Drawing.Point(4, 40);
             this.tabResolution.Name = "tabResolution";
             this.tabResolution.Padding = new System.Windows.Forms.Padding(5);
@@ -1512,15 +1545,15 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnDefault
+            // btnReWrite
             // 
-            this.btnDefault.Location = new System.Drawing.Point(98, 405);
-            this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(80, 25);
-            this.btnDefault.TabIndex = 2;
-            this.btnDefault.Text = "Refresh";
-            this.btnDefault.UseVisualStyleBackColor = true;
-            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
+            this.btnReWrite.Location = new System.Drawing.Point(98, 405);
+            this.btnReWrite.Name = "btnReWrite";
+            this.btnReWrite.Size = new System.Drawing.Size(80, 25);
+            this.btnReWrite.TabIndex = 2;
+            this.btnReWrite.Text = "Refresh";
+            this.btnReWrite.UseVisualStyleBackColor = true;
+            this.btnReWrite.Click += new System.EventHandler(this.btnReWrite_Click);
             // 
             // btnSource
             // 
@@ -1542,6 +1575,72 @@
             this.btnDonate.UseVisualStyleBackColor = true;
             this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
             // 
+            // VisualsGore
+            // 
+            this.VisualsGore.AutoSize = true;
+            this.VisualsGore.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualsGore.Location = new System.Drawing.Point(6, 65);
+            this.VisualsGore.Name = "VisualsGore";
+            this.VisualsGore.Size = new System.Drawing.Size(101, 17);
+            this.VisualsGore.TabIndex = 0;
+            this.VisualsGore.Text = "Disable All Gore";
+            this.VisualsGore.UseVisualStyleBackColor = true;
+            // 
+            // VisualsScreenBlood
+            // 
+            this.VisualsScreenBlood.AutoSize = true;
+            this.VisualsScreenBlood.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualsScreenBlood.Location = new System.Drawing.Point(6, 88);
+            this.VisualsScreenBlood.Name = "VisualsScreenBlood";
+            this.VisualsScreenBlood.Size = new System.Drawing.Size(103, 17);
+            this.VisualsScreenBlood.TabIndex = 1;
+            this.VisualsScreenBlood.Text = "Blood on screen";
+            this.VisualsScreenBlood.UseVisualStyleBackColor = true;
+            // 
+            // VisualWaterSky
+            // 
+            this.VisualWaterSky.AutoSize = true;
+            this.VisualWaterSky.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterSky.Location = new System.Drawing.Point(7, 20);
+            this.VisualWaterSky.Name = "VisualWaterSky";
+            this.VisualWaterSky.Size = new System.Drawing.Size(52, 17);
+            this.VisualWaterSky.TabIndex = 0;
+            this.VisualWaterSky.Text = "Skies";
+            this.VisualWaterSky.UseVisualStyleBackColor = true;
+            // 
+            // VisualWaterLand
+            // 
+            this.VisualWaterLand.AutoSize = true;
+            this.VisualWaterLand.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterLand.Location = new System.Drawing.Point(7, 42);
+            this.VisualWaterLand.Name = "VisualWaterLand";
+            this.VisualWaterLand.Size = new System.Drawing.Size(50, 17);
+            this.VisualWaterLand.TabIndex = 1;
+            this.VisualWaterLand.Text = "Land";
+            this.VisualWaterLand.UseVisualStyleBackColor = true;
+            // 
+            // VisualWaterTree
+            // 
+            this.VisualWaterTree.AutoSize = true;
+            this.VisualWaterTree.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterTree.Location = new System.Drawing.Point(7, 65);
+            this.VisualWaterTree.Name = "VisualWaterTree";
+            this.VisualWaterTree.Size = new System.Drawing.Size(53, 17);
+            this.VisualWaterTree.TabIndex = 2;
+            this.VisualWaterTree.Text = "Trees";
+            this.VisualWaterTree.UseVisualStyleBackColor = true;
+            // 
+            // VisualWaterObjects
+            // 
+            this.VisualWaterObjects.AutoSize = true;
+            this.VisualWaterObjects.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterObjects.Location = new System.Drawing.Point(7, 88);
+            this.VisualWaterObjects.Name = "VisualWaterObjects";
+            this.VisualWaterObjects.Size = new System.Drawing.Size(62, 17);
+            this.VisualWaterObjects.TabIndex = 3;
+            this.VisualWaterObjects.Text = "Objects";
+            this.VisualWaterObjects.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1550,7 +1649,7 @@
             this.ClientSize = new System.Drawing.Size(576, 572);
             this.Controls.Add(this.btnDonate);
             this.Controls.Add(this.btnSource);
-            this.Controls.Add(this.btnDefault);
+            this.Controls.Add(this.btnReWrite);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -1562,6 +1661,8 @@
             this.Text = "Fallout 4 - Extended settings";
             this.tabControl.ResumeLayout(false);
             this.tabVisuals.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.tabAudio.ResumeLayout(false);
@@ -1690,7 +1791,7 @@
         private System.Windows.Forms.Label SavingMinutLabel;
 
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDefault;
+        private System.Windows.Forms.Button btnReWrite;
         private System.Windows.Forms.Button btnSource;
         private System.Windows.Forms.Button btnDonate;
 
@@ -1772,6 +1873,12 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel hudColorPreviewBox;
+        private System.Windows.Forms.CheckBox VisualsGore;
+        private System.Windows.Forms.CheckBox VisualWaterObjects;
+        private System.Windows.Forms.CheckBox VisualWaterTree;
+        private System.Windows.Forms.CheckBox VisualWaterLand;
+        private System.Windows.Forms.CheckBox VisualWaterSky;
+        private System.Windows.Forms.CheckBox VisualsScreenBlood;
 
     }
 }

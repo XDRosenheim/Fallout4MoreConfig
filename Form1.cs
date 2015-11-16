@@ -42,8 +42,18 @@ namespace Fallout4MoreConfig {
         public void GetAllValues() {
             // Get values from current config
             #region Visuals
+            #region Image Space
             VisualsDoF.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bDoDepthOfField" ) ) == 1;
             VisualsLensflare.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bLensFlare" ) ) == 1;
+            VisualsGore.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bDisableAllGore" ) ) == 1;
+            VisualsScreenBlood.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bBloodSplatterEnabled" ) ) == 1;
+            #endregion
+            #region Water Reflections
+            VisualWaterSky.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectSky" ) ) == 1;
+            VisualWaterLand.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectLODLand" ) ) == 1;
+            VisualWaterTree.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectLODTrees" ) ) == 1;
+            VisualWaterObjects.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectLODObjects" ) ) == 1;
+            #endregion
             #endregion
             #region Audio
             #region Master
@@ -193,15 +203,49 @@ namespace Fallout4MoreConfig {
 
             #region Visuals
             #region Image Space
-            int visuDof = 0, visuLf = 0;
+            int visuDof = 0, visuLf = 0, visuGore = 0, visuBlood = 0;
             if(VisualsDoF.Checked) { visuDof = 1; }
             if(VisualsLensflare.Checked) { visuLf = 1; }
+            if(VisualsGore.Checked) { visuGore = 1; }
+            if(VisualsScreenBlood.Checked) { visuBlood = 1; }
+
             pattern = @"bDoDepthOfField=([0-9\.]+)";
             replacement = "bDoDepthOfField=" + visuDof;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
             pattern = @"bLensFlare=([0-9\.]+)";
             replacement = "bLensFlare=" + visuLf;
+            rgx = new Regex( pattern );
+            nonFile = rgx.Replace( nonFile, replacement );
+            pattern = @"bDisableAllGore=([0-9\.]+)";
+            replacement = "bDisableAllGore=" + visuGore;
+            rgx = new Regex( pattern );
+            nonFile = rgx.Replace( nonFile, replacement );
+            pattern = @"bBloodSplatterEnabled=([0-9\.]+)";
+            replacement = "bBloodSplatterEnabled=" + visuBlood;
+            rgx = new Regex( pattern );
+            nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region Water Reflections
+            int visWatObj = 0, visWatLand = 0, visWatSky = 0, visWatTre = 0;
+            if (VisualWaterObjects.Checked) { visWatObj = 1; }
+            if (VisualWaterLand.Checked) { visWatLand = 1; }
+            if (VisualWaterSky.Checked) { visWatSky = 1; }
+            if (VisualWaterTree.Checked) { visWatTre = 1; }
+            pattern = @"bReflectLODObjects=([0-9\.]+)";
+            replacement = "bReflectLODObjects=" + visWatObj;
+            rgx = new Regex( pattern );
+            nonFile = rgx.Replace( nonFile, replacement );
+            pattern = @"bReflectLODLand=([0-9\.]+)";
+            replacement = "bReflectLODLand=" + visWatLand;
+            rgx = new Regex( pattern );
+            nonFile = rgx.Replace( nonFile, replacement );
+            pattern = @"bReflectSky=([0-9\.]+)";
+            replacement = "bReflectSky=" + visWatSky;
+            rgx = new Regex( pattern );
+            nonFile = rgx.Replace( nonFile, replacement );
+            pattern = @"bReflectLODTrees=([0-9\.]+)";
+            replacement = "bReflectLODTrees=" + visWatTre;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
             #endregion
@@ -295,21 +339,26 @@ namespace Fallout4MoreConfig {
             nonFile = rgx.Replace( nonFile, replacement );
             #endregion
             #region Other
-            int hudDiaSubs = 0, hudDiaCam = 0, hudGenSubs = 0, hudGps = 0;
+            int hudHair = 0, hudDiaSubs = 0, hudDiaCam = 0, hudGenSubs = 0, hudGps = 0;
+            if (hudCrosshair.Checked) { hudHair = 1; }
             if (hudDialogSubs.Checked) { hudDiaSubs = 1; }
             if (hudDialogCam.Checked) { hudDiaCam = 1; }
             if (hudGeneralSubs.Checked) { hudGenSubs = 1; }
             if (hudCompass.Checked) { hudGps = 1; }
+            pattern = @"bCrosshairEnabled=([0-9\.]+)";
+            replacement = "bCrosshairEnabled=" + hudHair;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"bDialogueSubtitles=([0-9\.]+)";
             replacement = "bDialogueSubtitles=" + hudDiaSubs;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
-            pattern = @"bGeneralSubtitles=([0-9\.]+)";
-            replacement = "bGeneralSubtitles=" + hudDiaCam;
+            pattern = @"bDialogueCameraEnable=([0-9\.]+)";
+            replacement = "bDialogueCameraEnable=" + hudDiaCam;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
-            pattern = @"bDialogueCameraEnable=([0-9\.]+)";
-            replacement = "bDialogueCameraEnable=" + hudGenSubs;
+            pattern = @"bGeneralSubtitles=([0-9\.]+)";
+            replacement = "bGeneralSubtitles=" + hudGenSubs;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"bShowCompass=([0-9\.]+)";
@@ -373,7 +422,7 @@ namespace Fallout4MoreConfig {
             File.WriteAllText( Fallout4PrefsLocation, prefsFile );
             File.WriteAllText( Fallout4Location, nonFile );
         }
-        private void btnDefault_Click( object sender, EventArgs e ) {
+        private void btnReWrite_Click( object sender, EventArgs e ) {
             GetAllValues();
         }
         private void btnSource_Click( object sender, EventArgs e ) {
