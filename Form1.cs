@@ -11,6 +11,7 @@ namespace Fallout4MoreConfig {
     /// TODO - This list
     /// HUD:
     /// The preview, should have a/some screenshot(s) where the actual hud is shown.
+    /// Screenshot should also work with FOV changes.
     /// 
     /// Audio:
     /// Val0-7 should be analliesed, so I know which does what. (They are not descriped in the configs)
@@ -31,7 +32,7 @@ namespace Fallout4MoreConfig {
     /// Resolution:
     /// Presets. Make it change Width and height values.
     /// 
-
+    
     public partial class Form1 : Form {
         public string Fallout4Location = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
                 + @"\Documents\My Games\fallout4\Fallout4.ini";
@@ -97,21 +98,28 @@ namespace Fallout4MoreConfig {
             var hudColorRed = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorR" );
             var hudColorGreen = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorG" );
             var hudColorBlue = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorB" );
-            HUDColorRedTrackBar.Value = Convert.ToInt16( hudColorRed );
-            HUDColorRedTextBox.Text = hudColorRed.ToString();
-            HUDColorGreenTrackBar.Value = Convert.ToInt16( hudColorGreen );
-            HUDColorGreenTextBox.Text = hudColorGreen.ToString();
-            HUDColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
-            HUDColorBlueTextBox.Text = hudColorBlue.ToString();
-            #endregion
+            hudColorRedTrackBar.Value = Convert.ToInt16( hudColorRed );
+            hudColorRedTextBox.Text = hudColorRed.ToString();
+            hudColorGreenTrackBar.Value = Convert.ToInt16( hudColorGreen );
+            hudColorGreenTextBox.Text = hudColorGreen.ToString();
+            hudColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
+            hudColorBlueTextBox.Text = hudColorBlue.ToString();
             #region Preview
-            HUDColorPreviewBox.BackColor = Color.FromArgb( Convert.ToInt16( hudColorRed ), Convert.ToInt16( hudColorGreen ), Convert.ToInt16( hudColorBlue ) );
+            hudColorPreviewBox.BackColor = Color.FromArgb( Convert.ToInt16( hudColorRed ), Convert.ToInt16( hudColorGreen ), Convert.ToInt16( hudColorBlue ) );
+            #endregion
             #endregion
             #region FOV
             var hudFirstFov = _extras.GetLineValue( Fallout4Location, "fDefault1stPersonFOV" );
             var hudThirdFov = _extras.GetLineValue( Fallout4Location, "fDefaultWorldFOV" );
             hudFovFirst.Text = hudFirstFov.ToString();
             hudFovThird.Text = hudThirdFov.ToString();
+            #endregion
+            #region Other
+            hudCrosshair.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bCrosshairEnabled" ) ) == 1;
+            hudCompass.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bShowCompass" ) ) == 1;
+            hudDialogCam.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bDialogueCameraEnable" ) ) == 1;
+            hudDialogSubs.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bDialogueSubtitles" ) ) == 1;
+            hudGeneralSubs.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bGeneralSubtitles" ) ) == 1;
             #endregion
             #endregion
             #region Pip-Boy
@@ -180,6 +188,7 @@ namespace Fallout4MoreConfig {
             // ReSharper disable once RedundantAssignment
             var replacement = "";
             // Give Regex the pattern
+            // ReSharper disable once JoinDeclarationAndInitializer
             Regex rgx;
 
             #region Visuals
@@ -258,19 +267,19 @@ namespace Fallout4MoreConfig {
             #region HUD Color
             #region R
             pattern = @"iHUDColorR=([0-9\.]+)";
-            replacement = "iHUDColorR=" + Math.Round( Convert.ToDouble( HUDColorRedTrackBar.Value ), 4 );
+            replacement = "iHUDColorR=" + Math.Round( Convert.ToDouble( hudColorRedTrackBar.Value ), 4 );
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region G
             pattern = @"iHUDColorG=([0-9\.]+)";
-            replacement = "iHUDColorG=" + Math.Round( Convert.ToDouble( HUDColorGreenTrackBar.Value ), 4 );
+            replacement = "iHUDColorG=" + Math.Round( Convert.ToDouble( hudColorGreenTrackBar.Value ), 4 );
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region B
             pattern = @"iHUDColorB=([0-9\.]+)";
-            replacement = "iHUDColorB=" + Math.Round( Convert.ToDouble( HUDColorBlueTrackBar.Value ), 4 );
+            replacement = "iHUDColorB=" + Math.Round( Convert.ToDouble( hudColorBlueTrackBar.Value ), 4 );
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
@@ -284,6 +293,29 @@ namespace Fallout4MoreConfig {
             replacement = "fDefault1stPersonFOV=" + hudFovFirst.Text;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region Other
+            int hudDiaSubs = 0, hudDiaCam = 0, hudGenSubs = 0, hudGps = 0;
+            if (hudDialogSubs.Checked) { hudDiaSubs = 1; }
+            if (hudDialogCam.Checked) { hudDiaCam = 1; }
+            if (hudGeneralSubs.Checked) { hudGenSubs = 1; }
+            if (hudCompass.Checked) { hudGps = 1; }
+            pattern = @"bDialogueSubtitles=([0-9\.]+)";
+            replacement = "bDialogueSubtitles=" + hudDiaSubs;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"bGeneralSubtitles=([0-9\.]+)";
+            replacement = "bGeneralSubtitles=" + hudDiaCam;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"bDialogueCameraEnable=([0-9\.]+)";
+            replacement = "bDialogueCameraEnable=" + hudGenSubs;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"bShowCompass=([0-9\.]+)";
+            replacement = "bShowCompass=" + hudGps;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
             #region Saving
@@ -356,16 +388,16 @@ namespace Fallout4MoreConfig {
             HUDOpacityResult.Text = HUDOpacityTrackBar.Value + Resources.Percentage;
         }
         private void HUDColorRedTrackBar_Scroll( object sender, EventArgs e ) {
-            HUDColorRedTextBox.Text = HUDColorRedTrackBar.Value.ToString();
-            HUDColorPreviewBox.BackColor = Color.FromArgb( HUDColorRedTrackBar.Value, HUDColorGreenTrackBar.Value, HUDColorBlueTrackBar.Value );
+            hudColorRedTextBox.Text = hudColorRedTrackBar.Value.ToString();
+            hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
         }
         private void HUDColorGreenTrackBar_Scroll( object sender, EventArgs e ) {
-            HUDColorGreenTextBox.Text = HUDColorGreenTrackBar.Value.ToString();
-            HUDColorPreviewBox.BackColor = Color.FromArgb( HUDColorRedTrackBar.Value, HUDColorGreenTrackBar.Value, HUDColorBlueTrackBar.Value );
+            hudColorGreenTextBox.Text = hudColorGreenTrackBar.Value.ToString();
+            hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
         }
         private void HUDColorBlueTrackBar_Scroll( object sender, EventArgs e ) {
-            HUDColorBlueTextBox.Text = HUDColorBlueTrackBar.Value.ToString();
-            HUDColorPreviewBox.BackColor = Color.FromArgb( HUDColorRedTrackBar.Value, HUDColorGreenTrackBar.Value, HUDColorBlueTrackBar.Value );
+            hudColorBlueTextBox.Text = hudColorBlueTrackBar.Value.ToString();
+            hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
         }
         // Audio Track Bars
         private void AudioMasterTrackbar_Scroll( object sender, EventArgs e ) {
@@ -396,7 +428,7 @@ namespace Fallout4MoreConfig {
         private void AudioVal7TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal7Text.Text = AudioVal7TrackBar.Value.ToString();
         }
-        //Changes
+        // Changes
         private void resolutionFullscreen_CheckedChanged( object sender, EventArgs e ) {
             if(resolutionFullscreen.Checked) {
                 resolutionBorderless.Checked = true;

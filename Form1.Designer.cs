@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabVisuals = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.VisualsLensflare = new System.Windows.Forms.CheckBox();
             this.VisualsDoF = new System.Windows.Forms.CheckBox();
@@ -80,27 +80,31 @@
             this.label18 = new System.Windows.Forms.Label();
             this.hudFovFirst = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.hudGeneralSubs = new System.Windows.Forms.CheckBox();
+            this.hudDialogSubs = new System.Windows.Forms.CheckBox();
+            this.hudDialogCam = new System.Windows.Forms.CheckBox();
+            this.hudCompass = new System.Windows.Forms.CheckBox();
             this.hudCrosshair = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.HUDOpacityResult = new System.Windows.Forms.Label();
             this.HUDOpacityTrackBar = new System.Windows.Forms.TrackBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.HUDColorRedTextBox = new System.Windows.Forms.TextBox();
-            this.HUDColorBlueTextBox = new System.Windows.Forms.TextBox();
-            this.HUDColorGreenTextBox = new System.Windows.Forms.TextBox();
+            this.hudColorBlueTextBox = new System.Windows.Forms.NumericUpDown();
+            this.hudColorGreenTextBox = new System.Windows.Forms.NumericUpDown();
+            this.hudColorRedTextBox = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.HUDColorPreviewBox = new System.Windows.Forms.FlowLayoutPanel();
-            this.HUDColorRedTrackBar = new System.Windows.Forms.TrackBar();
+            this.hudColorPreviewBox = new System.Windows.Forms.FlowLayoutPanel();
+            this.hudColorRedTrackBar = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.HUDColorGreenTrackBar = new System.Windows.Forms.TrackBar();
-            this.HUDColorBlueTrackBar = new System.Windows.Forms.TrackBar();
+            this.hudColorGreenTrackBar = new System.Windows.Forms.TrackBar();
+            this.hudColorBlueTrackBar = new System.Windows.Forms.TrackBar();
             this.tabPipBoy = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.PipBoyColorRedTextBox = new System.Windows.Forms.TextBox();
-            this.PipBoyColorBlueTextBox = new System.Windows.Forms.TextBox();
-            this.PipBoyColorGreenTextBox = new System.Windows.Forms.TextBox();
+            this.PipBoyColorBlueTextBox = new System.Windows.Forms.NumericUpDown();
+            this.PipBoyColorGreenTextBox = new System.Windows.Forms.NumericUpDown();
+            this.PipBoyColorRedTextBox = new System.Windows.Forms.NumericUpDown();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.PipBoyColorRedTrackBar = new System.Windows.Forms.TrackBar();
@@ -171,12 +175,18 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HUDOpacityTrackBar)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorBlueTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorGreenTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorRedTextBox)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HUDColorRedTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HUDColorGreenTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HUDColorBlueTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorRedTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorGreenTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorBlueTrackBar)).BeginInit();
             this.tabPipBoy.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTextBox)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTrackBar)).BeginInit();
@@ -213,13 +223,13 @@
             this.tabControl.Controls.Add(this.tabResolution);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl.Location = new System.Drawing.Point(9, 9);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(0, 0, 9, 0);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(9, 3);
             this.tabControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(389, 393);
+            this.tabControl.Size = new System.Drawing.Size(390, 393);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl.TabIndex = 0;
             // 
@@ -228,15 +238,25 @@
             this.tabVisuals.BackColor = System.Drawing.Color.White;
             this.tabVisuals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabVisuals.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabVisuals.Controls.Add(this.groupBox14);
             this.tabVisuals.Controls.Add(this.groupBox9);
             this.tabVisuals.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabVisuals.Location = new System.Drawing.Point(4, 40);
             this.tabVisuals.Name = "tabVisuals";
             this.tabVisuals.Padding = new System.Windows.Forms.Padding(5);
             this.tabVisuals.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabVisuals.Size = new System.Drawing.Size(381, 349);
+            this.tabVisuals.Size = new System.Drawing.Size(382, 349);
             this.tabVisuals.TabIndex = 0;
             this.tabVisuals.Text = "Visuals[WIP]";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Location = new System.Drawing.Point(193, 8);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(179, 203);
+            this.groupBox14.TabIndex = 1;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "groupBox14";
             // 
             // groupBox9
             // 
@@ -244,7 +264,7 @@
             this.groupBox9.Controls.Add(this.VisualsDoF);
             this.groupBox9.Location = new System.Drawing.Point(8, 8);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(169, 65);
+            this.groupBox9.Size = new System.Drawing.Size(179, 65);
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ImageSpace";
@@ -277,10 +297,10 @@
             this.tabAudio.Controls.Add(this.groupBox12);
             this.tabAudio.Controls.Add(this.groupBox4);
             this.tabAudio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabAudio.Location = new System.Drawing.Point(4, 22);
+            this.tabAudio.Location = new System.Drawing.Point(4, 40);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(381, 367);
+            this.tabAudio.Size = new System.Drawing.Size(382, 349);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio[WIP]";
             // 
@@ -608,7 +628,7 @@
             this.tabSaving.Location = new System.Drawing.Point(4, 40);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(381, 349);
+            this.tabSaving.Size = new System.Drawing.Size(382, 349);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -712,10 +732,10 @@
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabHUD.Location = new System.Drawing.Point(4, 22);
+            this.tabHUD.Location = new System.Drawing.Point(4, 40);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(381, 367);
+            this.tabHUD.Size = new System.Drawing.Size(382, 349);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -725,9 +745,9 @@
             this.groupBox2.Controls.Add(this.hudFovThird);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.hudFovFirst);
-            this.groupBox2.Location = new System.Drawing.Point(2, 216);
+            this.groupBox2.Location = new System.Drawing.Point(8, 217);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 71);
+            this.groupBox2.Size = new System.Drawing.Size(178, 71);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FOV";
@@ -743,9 +763,9 @@
             // 
             // hudFovThird
             // 
-            this.hudFovThird.Location = new System.Drawing.Point(94, 45);
+            this.hudFovThird.Location = new System.Drawing.Point(93, 45);
             this.hudFovThird.Name = "hudFovThird";
-            this.hudFovThird.Size = new System.Drawing.Size(85, 20);
+            this.hudFovThird.Size = new System.Drawing.Size(79, 20);
             this.hudFovThird.TabIndex = 2;
             // 
             // label18
@@ -759,38 +779,82 @@
             // 
             // hudFovFirst
             // 
-            this.hudFovFirst.Location = new System.Drawing.Point(94, 19);
+            this.hudFovFirst.Location = new System.Drawing.Point(93, 19);
             this.hudFovFirst.Name = "hudFovFirst";
-            this.hudFovFirst.Size = new System.Drawing.Size(85, 20);
+            this.hudFovFirst.Size = new System.Drawing.Size(79, 20);
             this.hudFovFirst.TabIndex = 0;
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.hudGeneralSubs);
+            this.groupBox8.Controls.Add(this.hudDialogSubs);
+            this.groupBox8.Controls.Add(this.hudDialogCam);
+            this.groupBox8.Controls.Add(this.hudCompass);
             this.groupBox8.Controls.Add(this.hudCrosshair);
-            this.groupBox8.Location = new System.Drawing.Point(194, 68);
+            this.groupBox8.Location = new System.Drawing.Point(192, 66);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(158, 141);
+            this.groupBox8.Size = new System.Drawing.Size(178, 145);
             this.groupBox8.TabIndex = 16;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Other";
+            // 
+            // hudGeneralSubs
+            // 
+            this.hudGeneralSubs.AutoSize = true;
+            this.hudGeneralSubs.Location = new System.Drawing.Point(6, 111);
+            this.hudGeneralSubs.Name = "hudGeneralSubs";
+            this.hudGeneralSubs.Size = new System.Drawing.Size(106, 17);
+            this.hudGeneralSubs.TabIndex = 4;
+            this.hudGeneralSubs.Text = "General Subtitles";
+            this.hudGeneralSubs.UseVisualStyleBackColor = true;
+            // 
+            // hudDialogSubs
+            // 
+            this.hudDialogSubs.AutoSize = true;
+            this.hudDialogSubs.Location = new System.Drawing.Point(6, 88);
+            this.hudDialogSubs.Name = "hudDialogSubs";
+            this.hudDialogSubs.Size = new System.Drawing.Size(99, 17);
+            this.hudDialogSubs.TabIndex = 3;
+            this.hudDialogSubs.Text = "Dialog Subtitles";
+            this.hudDialogSubs.UseVisualStyleBackColor = true;
+            // 
+            // hudDialogCam
+            // 
+            this.hudDialogCam.AutoSize = true;
+            this.hudDialogCam.Location = new System.Drawing.Point(6, 65);
+            this.hudDialogCam.Name = "hudDialogCam";
+            this.hudDialogCam.Size = new System.Drawing.Size(95, 17);
+            this.hudDialogCam.TabIndex = 2;
+            this.hudDialogCam.Text = "Dialog Camera";
+            this.hudDialogCam.UseVisualStyleBackColor = true;
+            // 
+            // hudCompass
+            // 
+            this.hudCompass.AutoSize = true;
+            this.hudCompass.Location = new System.Drawing.Point(6, 42);
+            this.hudCompass.Name = "hudCompass";
+            this.hudCompass.Size = new System.Drawing.Size(69, 17);
+            this.hudCompass.TabIndex = 1;
+            this.hudCompass.Text = "Compass";
+            this.hudCompass.UseVisualStyleBackColor = true;
             // 
             // hudCrosshair
             // 
             this.hudCrosshair.AutoSize = true;
             this.hudCrosshair.Location = new System.Drawing.Point(6, 19);
             this.hudCrosshair.Name = "hudCrosshair";
-            this.hudCrosshair.Size = new System.Drawing.Size(105, 17);
+            this.hudCrosshair.Size = new System.Drawing.Size(69, 17);
             this.hudCrosshair.TabIndex = 0;
-            this.hudCrosshair.Text = "Crosshair Enable";
+            this.hudCrosshair.Text = "Crosshair";
             this.hudCrosshair.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.HUDOpacityResult);
             this.groupBox7.Controls.Add(this.HUDOpacityTrackBar);
-            this.groupBox7.Location = new System.Drawing.Point(194, 9);
+            this.groupBox7.Location = new System.Drawing.Point(192, 8);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(158, 52);
+            this.groupBox7.Size = new System.Drawing.Size(178, 52);
             this.groupBox7.TabIndex = 15;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Opacity";
@@ -819,73 +883,88 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.HUDColorRedTextBox);
-            this.groupBox1.Controls.Add(this.HUDColorBlueTextBox);
-            this.groupBox1.Controls.Add(this.HUDColorGreenTextBox);
+            this.groupBox1.Controls.Add(this.hudColorBlueTextBox);
+            this.groupBox1.Controls.Add(this.hudColorGreenTextBox);
+            this.groupBox1.Controls.Add(this.hudColorRedTextBox);
             this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.HUDColorRedTrackBar);
+            this.groupBox1.Controls.Add(this.hudColorRedTrackBar);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.HUDColorGreenTrackBar);
-            this.groupBox1.Controls.Add(this.HUDColorBlueTrackBar);
+            this.groupBox1.Controls.Add(this.hudColorGreenTrackBar);
+            this.groupBox1.Controls.Add(this.hudColorBlueTrackBar);
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(179, 201);
+            this.groupBox1.Size = new System.Drawing.Size(178, 203);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Color";
             // 
-            // HUDColorRedTextBox
+            // hudColorBlueTextBox
             // 
-            this.HUDColorRedTextBox.Location = new System.Drawing.Point(137, 20);
-            this.HUDColorRedTextBox.Name = "HUDColorRedTextBox";
-            this.HUDColorRedTextBox.Size = new System.Drawing.Size(36, 20);
-            this.HUDColorRedTextBox.TabIndex = 11;
+            this.hudColorBlueTextBox.Location = new System.Drawing.Point(128, 82);
+            this.hudColorBlueTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.hudColorBlueTextBox.Name = "hudColorBlueTextBox";
+            this.hudColorBlueTextBox.Size = new System.Drawing.Size(44, 20);
+            this.hudColorBlueTextBox.TabIndex = 17;
             // 
-            // HUDColorBlueTextBox
+            // hudColorGreenTextBox
             // 
-            this.HUDColorBlueTextBox.Location = new System.Drawing.Point(137, 81);
-            this.HUDColorBlueTextBox.Name = "HUDColorBlueTextBox";
-            this.HUDColorBlueTextBox.Size = new System.Drawing.Size(36, 20);
-            this.HUDColorBlueTextBox.TabIndex = 13;
+            this.hudColorGreenTextBox.Location = new System.Drawing.Point(128, 52);
+            this.hudColorGreenTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.hudColorGreenTextBox.Name = "hudColorGreenTextBox";
+            this.hudColorGreenTextBox.Size = new System.Drawing.Size(44, 20);
+            this.hudColorGreenTextBox.TabIndex = 16;
             // 
-            // HUDColorGreenTextBox
+            // hudColorRedTextBox
             // 
-            this.HUDColorGreenTextBox.Location = new System.Drawing.Point(137, 51);
-            this.HUDColorGreenTextBox.Name = "HUDColorGreenTextBox";
-            this.HUDColorGreenTextBox.Size = new System.Drawing.Size(36, 20);
-            this.HUDColorGreenTextBox.TabIndex = 12;
+            this.hudColorRedTextBox.Location = new System.Drawing.Point(128, 21);
+            this.hudColorRedTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.hudColorRedTextBox.Name = "hudColorRedTextBox";
+            this.hudColorRedTextBox.Size = new System.Drawing.Size(44, 20);
+            this.hudColorRedTextBox.TabIndex = 15;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.HUDColorPreviewBox);
-            this.groupBox3.Location = new System.Drawing.Point(7, 101);
+            this.groupBox3.Controls.Add(this.hudColorPreviewBox);
+            this.groupBox3.Location = new System.Drawing.Point(6, 103);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(166, 94);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Preview";
             // 
-            // HUDColorPreviewBox
+            // hudColorPreviewBox
             // 
-            this.HUDColorPreviewBox.Location = new System.Drawing.Point(7, 20);
-            this.HUDColorPreviewBox.Name = "HUDColorPreviewBox";
-            this.HUDColorPreviewBox.Size = new System.Drawing.Size(153, 68);
-            this.HUDColorPreviewBox.TabIndex = 0;
+            this.hudColorPreviewBox.Location = new System.Drawing.Point(7, 20);
+            this.hudColorPreviewBox.Name = "hudColorPreviewBox";
+            this.hudColorPreviewBox.Size = new System.Drawing.Size(153, 68);
+            this.hudColorPreviewBox.TabIndex = 0;
             // 
-            // HUDColorRedTrackBar
+            // hudColorRedTrackBar
             // 
-            this.HUDColorRedTrackBar.AutoSize = false;
-            this.HUDColorRedTrackBar.BackColor = System.Drawing.Color.White;
-            this.HUDColorRedTrackBar.LargeChange = 10;
-            this.HUDColorRedTrackBar.Location = new System.Drawing.Point(40, 18);
-            this.HUDColorRedTrackBar.Maximum = 255;
-            this.HUDColorRedTrackBar.Name = "HUDColorRedTrackBar";
-            this.HUDColorRedTrackBar.Size = new System.Drawing.Size(100, 24);
-            this.HUDColorRedTrackBar.TabIndex = 5;
-            this.HUDColorRedTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.HUDColorRedTrackBar.Scroll += new System.EventHandler(this.HUDColorRedTrackBar_Scroll);
+            this.hudColorRedTrackBar.AutoSize = false;
+            this.hudColorRedTrackBar.BackColor = System.Drawing.Color.White;
+            this.hudColorRedTrackBar.LargeChange = 10;
+            this.hudColorRedTrackBar.Location = new System.Drawing.Point(40, 18);
+            this.hudColorRedTrackBar.Maximum = 255;
+            this.hudColorRedTrackBar.Name = "hudColorRedTrackBar";
+            this.hudColorRedTrackBar.Size = new System.Drawing.Size(82, 24);
+            this.hudColorRedTrackBar.TabIndex = 5;
+            this.hudColorRedTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.hudColorRedTrackBar.Scroll += new System.EventHandler(this.HUDColorRedTrackBar_Scroll);
             // 
             // label4
             // 
@@ -914,31 +993,31 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Blue";
             // 
-            // HUDColorGreenTrackBar
+            // hudColorGreenTrackBar
             // 
-            this.HUDColorGreenTrackBar.AutoSize = false;
-            this.HUDColorGreenTrackBar.BackColor = System.Drawing.Color.White;
-            this.HUDColorGreenTrackBar.LargeChange = 10;
-            this.HUDColorGreenTrackBar.Location = new System.Drawing.Point(40, 49);
-            this.HUDColorGreenTrackBar.Maximum = 255;
-            this.HUDColorGreenTrackBar.Name = "HUDColorGreenTrackBar";
-            this.HUDColorGreenTrackBar.Size = new System.Drawing.Size(100, 24);
-            this.HUDColorGreenTrackBar.TabIndex = 8;
-            this.HUDColorGreenTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.HUDColorGreenTrackBar.Scroll += new System.EventHandler(this.HUDColorGreenTrackBar_Scroll);
+            this.hudColorGreenTrackBar.AutoSize = false;
+            this.hudColorGreenTrackBar.BackColor = System.Drawing.Color.White;
+            this.hudColorGreenTrackBar.LargeChange = 10;
+            this.hudColorGreenTrackBar.Location = new System.Drawing.Point(40, 49);
+            this.hudColorGreenTrackBar.Maximum = 255;
+            this.hudColorGreenTrackBar.Name = "hudColorGreenTrackBar";
+            this.hudColorGreenTrackBar.Size = new System.Drawing.Size(82, 24);
+            this.hudColorGreenTrackBar.TabIndex = 8;
+            this.hudColorGreenTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.hudColorGreenTrackBar.Scroll += new System.EventHandler(this.HUDColorGreenTrackBar_Scroll);
             // 
-            // HUDColorBlueTrackBar
+            // hudColorBlueTrackBar
             // 
-            this.HUDColorBlueTrackBar.AutoSize = false;
-            this.HUDColorBlueTrackBar.BackColor = System.Drawing.Color.White;
-            this.HUDColorBlueTrackBar.LargeChange = 10;
-            this.HUDColorBlueTrackBar.Location = new System.Drawing.Point(40, 79);
-            this.HUDColorBlueTrackBar.Maximum = 255;
-            this.HUDColorBlueTrackBar.Name = "HUDColorBlueTrackBar";
-            this.HUDColorBlueTrackBar.Size = new System.Drawing.Size(100, 24);
-            this.HUDColorBlueTrackBar.TabIndex = 9;
-            this.HUDColorBlueTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.HUDColorBlueTrackBar.Scroll += new System.EventHandler(this.HUDColorBlueTrackBar_Scroll);
+            this.hudColorBlueTrackBar.AutoSize = false;
+            this.hudColorBlueTrackBar.BackColor = System.Drawing.Color.White;
+            this.hudColorBlueTrackBar.LargeChange = 10;
+            this.hudColorBlueTrackBar.Location = new System.Drawing.Point(40, 79);
+            this.hudColorBlueTrackBar.Maximum = 255;
+            this.hudColorBlueTrackBar.Name = "hudColorBlueTrackBar";
+            this.hudColorBlueTrackBar.Size = new System.Drawing.Size(82, 24);
+            this.hudColorBlueTrackBar.TabIndex = 9;
+            this.hudColorBlueTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.hudColorBlueTrackBar.Scroll += new System.EventHandler(this.HUDColorBlueTrackBar_Scroll);
             // 
             // tabPipBoy
             // 
@@ -950,16 +1029,16 @@
             this.tabPipBoy.Location = new System.Drawing.Point(4, 40);
             this.tabPipBoy.Name = "tabPipBoy";
             this.tabPipBoy.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPipBoy.Size = new System.Drawing.Size(381, 349);
+            this.tabPipBoy.Size = new System.Drawing.Size(382, 349);
             this.tabPipBoy.TabIndex = 4;
             this.tabPipBoy.Text = "Pip-Boy";
             // 
             // groupBox10
             // 
             this.groupBox10.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox10.Controls.Add(this.PipBoyColorRedTextBox);
             this.groupBox10.Controls.Add(this.PipBoyColorBlueTextBox);
             this.groupBox10.Controls.Add(this.PipBoyColorGreenTextBox);
+            this.groupBox10.Controls.Add(this.PipBoyColorRedTextBox);
             this.groupBox10.Controls.Add(this.groupBox11);
             this.groupBox10.Controls.Add(this.PipBoyColorRedTrackBar);
             this.groupBox10.Controls.Add(this.label1);
@@ -974,26 +1053,41 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Color";
             // 
-            // PipBoyColorRedTextBox
-            // 
-            this.PipBoyColorRedTextBox.Location = new System.Drawing.Point(137, 20);
-            this.PipBoyColorRedTextBox.Name = "PipBoyColorRedTextBox";
-            this.PipBoyColorRedTextBox.Size = new System.Drawing.Size(36, 20);
-            this.PipBoyColorRedTextBox.TabIndex = 11;
-            // 
             // PipBoyColorBlueTextBox
             // 
-            this.PipBoyColorBlueTextBox.Location = new System.Drawing.Point(137, 81);
+            this.PipBoyColorBlueTextBox.Location = new System.Drawing.Point(128, 77);
+            this.PipBoyColorBlueTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.PipBoyColorBlueTextBox.Name = "PipBoyColorBlueTextBox";
-            this.PipBoyColorBlueTextBox.Size = new System.Drawing.Size(36, 20);
-            this.PipBoyColorBlueTextBox.TabIndex = 13;
+            this.PipBoyColorBlueTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorBlueTextBox.TabIndex = 18;
             // 
             // PipBoyColorGreenTextBox
             // 
-            this.PipBoyColorGreenTextBox.Location = new System.Drawing.Point(137, 51);
+            this.PipBoyColorGreenTextBox.Location = new System.Drawing.Point(128, 47);
+            this.PipBoyColorGreenTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.PipBoyColorGreenTextBox.Name = "PipBoyColorGreenTextBox";
-            this.PipBoyColorGreenTextBox.Size = new System.Drawing.Size(36, 20);
-            this.PipBoyColorGreenTextBox.TabIndex = 12;
+            this.PipBoyColorGreenTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorGreenTextBox.TabIndex = 17;
+            // 
+            // PipBoyColorRedTextBox
+            // 
+            this.PipBoyColorRedTextBox.Location = new System.Drawing.Point(128, 16);
+            this.PipBoyColorRedTextBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.PipBoyColorRedTextBox.Name = "PipBoyColorRedTextBox";
+            this.PipBoyColorRedTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorRedTextBox.TabIndex = 16;
             // 
             // groupBox11
             // 
@@ -1020,14 +1114,14 @@
             this.PipBoyColorRedTrackBar.Location = new System.Drawing.Point(40, 18);
             this.PipBoyColorRedTrackBar.Maximum = 255;
             this.PipBoyColorRedTrackBar.Name = "PipBoyColorRedTrackBar";
-            this.PipBoyColorRedTrackBar.Size = new System.Drawing.Size(100, 24);
+            this.PipBoyColorRedTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorRedTrackBar.TabIndex = 5;
             this.PipBoyColorRedTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Location = new System.Drawing.Point(6, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 6;
@@ -1036,7 +1130,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 54);
+            this.label3.Location = new System.Drawing.Point(6, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 7;
@@ -1045,7 +1139,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 84);
+            this.label10.Location = new System.Drawing.Point(6, 79);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 13);
             this.label10.TabIndex = 10;
@@ -1059,7 +1153,7 @@
             this.PipBoyColorGreenTrackBar.Location = new System.Drawing.Point(40, 49);
             this.PipBoyColorGreenTrackBar.Maximum = 255;
             this.PipBoyColorGreenTrackBar.Name = "PipBoyColorGreenTrackBar";
-            this.PipBoyColorGreenTrackBar.Size = new System.Drawing.Size(100, 24);
+            this.PipBoyColorGreenTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorGreenTrackBar.TabIndex = 8;
             this.PipBoyColorGreenTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
@@ -1071,7 +1165,7 @@
             this.PipBoyColorBlueTrackBar.Location = new System.Drawing.Point(40, 79);
             this.PipBoyColorBlueTrackBar.Maximum = 255;
             this.PipBoyColorBlueTrackBar.Name = "PipBoyColorBlueTrackBar";
-            this.PipBoyColorBlueTrackBar.Size = new System.Drawing.Size(100, 24);
+            this.PipBoyColorBlueTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorBlueTrackBar.TabIndex = 9;
             this.PipBoyColorBlueTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
@@ -1102,7 +1196,7 @@
             this.tabVATS.Location = new System.Drawing.Point(4, 40);
             this.tabVATS.Name = "tabVATS";
             this.tabVATS.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVATS.Size = new System.Drawing.Size(381, 349);
+            this.tabVATS.Size = new System.Drawing.Size(382, 349);
             this.tabVATS.TabIndex = 5;
             this.tabVATS.Text = "VATS";
             // 
@@ -1263,7 +1357,7 @@
             this.tabGamepad.Location = new System.Drawing.Point(4, 40);
             this.tabGamepad.Name = "tabGamepad";
             this.tabGamepad.Padding = new System.Windows.Forms.Padding(5);
-            this.tabGamepad.Size = new System.Drawing.Size(381, 349);
+            this.tabGamepad.Size = new System.Drawing.Size(382, 349);
             this.tabGamepad.TabIndex = 6;
             this.tabGamepad.Text = "Gamepad";
             // 
@@ -1296,7 +1390,7 @@
             this.tabResolution.Location = new System.Drawing.Point(4, 40);
             this.tabResolution.Name = "tabResolution";
             this.tabResolution.Padding = new System.Windows.Forms.Padding(5);
-            this.tabResolution.Size = new System.Drawing.Size(381, 349);
+            this.tabResolution.Size = new System.Drawing.Size(382, 349);
             this.tabResolution.TabIndex = 8;
             this.tabResolution.Text = "Resolution";
             // 
@@ -1411,7 +1505,7 @@
             // 
             this.btnSave.Location = new System.Drawing.Point(12, 405);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(80, 25);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -1419,9 +1513,9 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(93, 405);
+            this.btnDefault.Location = new System.Drawing.Point(98, 405);
             this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(75, 23);
+            this.btnDefault.Size = new System.Drawing.Size(80, 25);
             this.btnDefault.TabIndex = 2;
             this.btnDefault.Text = "Refresh";
             this.btnDefault.UseVisualStyleBackColor = true;
@@ -1429,9 +1523,9 @@
             // 
             // btnSource
             // 
-            this.btnSource.Location = new System.Drawing.Point(174, 405);
+            this.btnSource.Location = new System.Drawing.Point(184, 405);
             this.btnSource.Name = "btnSource";
-            this.btnSource.Size = new System.Drawing.Size(76, 23);
+            this.btnSource.Size = new System.Drawing.Size(80, 25);
             this.btnSource.TabIndex = 4;
             this.btnSource.Text = "Source code";
             this.btnSource.UseVisualStyleBackColor = true;
@@ -1439,9 +1533,9 @@
             // 
             // btnDonate
             // 
-            this.btnDonate.Location = new System.Drawing.Point(322, 405);
+            this.btnDonate.Location = new System.Drawing.Point(338, 407);
             this.btnDonate.Name = "btnDonate";
-            this.btnDonate.Size = new System.Drawing.Size(76, 23);
+            this.btnDonate.Size = new System.Drawing.Size(56, 20);
             this.btnDonate.TabIndex = 5;
             this.btnDonate.Text = "Donate?";
             this.btnDonate.UseVisualStyleBackColor = true;
@@ -1458,7 +1552,9 @@
             this.Controls.Add(this.btnDefault);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Fallout 4 - Extended settings";
@@ -1496,13 +1592,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.HUDOpacityTrackBar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorBlueTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorGreenTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorRedTextBox)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.HUDColorRedTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HUDColorGreenTrackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HUDColorBlueTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorRedTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorGreenTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudColorBlueTrackBar)).EndInit();
             this.tabPipBoy.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTextBox)).EndInit();
             this.groupBox11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTrackBar)).EndInit();
@@ -1588,11 +1690,12 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.Button btnSource;
+        private System.Windows.Forms.Button btnDonate;
 
         private System.Windows.Forms.TrackBar HUDOpacityTrackBar;
-        private System.Windows.Forms.TrackBar HUDColorBlueTrackBar;
-        private System.Windows.Forms.TrackBar HUDColorGreenTrackBar;
-        private System.Windows.Forms.TrackBar HUDColorRedTrackBar;
+        private System.Windows.Forms.TrackBar hudColorBlueTrackBar;
+        private System.Windows.Forms.TrackBar hudColorGreenTrackBar;
+        private System.Windows.Forms.TrackBar hudColorRedTrackBar;
         private System.Windows.Forms.TrackBar PipBoyColorRedTrackBar;
         private System.Windows.Forms.TrackBar PipBoyColorGreenTrackBar;
         private System.Windows.Forms.TrackBar PipBoyColorBlueTrackBar;
@@ -1605,7 +1708,7 @@
         private System.Windows.Forms.TrackBar AudioVal5TrackBar;
         private System.Windows.Forms.TrackBar AudioVal6TrackBar;
         private System.Windows.Forms.TrackBar AudioVal7TrackBar;
-
+        
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -1619,7 +1722,8 @@
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox13;
-
+        private System.Windows.Forms.GroupBox groupBox14;
+        
         private System.Windows.Forms.CheckBox VisualsLensflare;
         private System.Windows.Forms.CheckBox VisualsDoF;
         private System.Windows.Forms.CheckBox SavingQuickSleeping;
@@ -1631,6 +1735,10 @@
         private System.Windows.Forms.CheckBox resolutionBorderless;
         private System.Windows.Forms.CheckBox resolutionFullscreen;
         private System.Windows.Forms.CheckBox hudCrosshair;
+        private System.Windows.Forms.CheckBox hudDialogSubs;
+        private System.Windows.Forms.CheckBox hudDialogCam;
+        private System.Windows.Forms.CheckBox hudCompass;
+        private System.Windows.Forms.CheckBox hudGeneralSubs;
 
         private System.Windows.Forms.NumericUpDown ResolutionWidth;
         private System.Windows.Forms.NumericUpDown ResolutionHeight;
@@ -1648,21 +1756,21 @@
         private System.Windows.Forms.NumericUpDown VATSColorR;
         private System.Windows.Forms.NumericUpDown VATSColorG;
         private System.Windows.Forms.NumericUpDown VATSColorB;
+        private System.Windows.Forms.NumericUpDown hudColorGreenTextBox;
+        private System.Windows.Forms.NumericUpDown hudColorRedTextBox;
+        private System.Windows.Forms.NumericUpDown hudColorBlueTextBox;
+        private System.Windows.Forms.NumericUpDown PipBoyColorBlueTextBox;
+        private System.Windows.Forms.NumericUpDown PipBoyColorGreenTextBox;
+        private System.Windows.Forms.NumericUpDown PipBoyColorRedTextBox;
 
-        private System.Windows.Forms.TextBox HUDColorBlueTextBox;
-        private System.Windows.Forms.TextBox HUDColorGreenTextBox;
-        private System.Windows.Forms.TextBox HUDColorRedTextBox;
-        private System.Windows.Forms.TextBox PipBoyColorRedTextBox;
-        private System.Windows.Forms.TextBox PipBoyColorBlueTextBox;
-        private System.Windows.Forms.TextBox PipBoyColorGreenTextBox;
         private System.Windows.Forms.TextBox hudFovFirst;
         private System.Windows.Forms.TextBox hudFovThird;
 
         private System.Windows.Forms.ComboBox comboBox1;
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel HUDColorPreviewBox;
-        private System.Windows.Forms.Button btnDonate;
+        private System.Windows.Forms.FlowLayoutPanel hudColorPreviewBox;
+
     }
 }
 
