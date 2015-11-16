@@ -6,3 +6,8 @@ Icon:
 Note worthy people/links:
 	http://codereview.stackexchange.com/a/40452
 	http://stackoverflow.com/a/8081331/4549645
+	http://stackoverflow.com/questions/12816860/get-screen-size-in-pixels-in-windows-form-in-c-sharp
+	
+	Microsoft.
+		For sharing my information.
+	

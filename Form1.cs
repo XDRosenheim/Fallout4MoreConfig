@@ -13,9 +13,7 @@ namespace Fallout4MoreConfig {
                 + @"\Documents\My Games\fallout4\Fallout4.ini";
         public string Fallout4PrefsLocation = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
                 + @"\Documents\My Games\fallout4\Fallout4Prefs.ini";
-
         private readonly Extras _extras = new Extras();
-
         public void GetAllValues() {
             // Get values from current config
             #region Visuals
@@ -112,7 +110,6 @@ namespace Fallout4MoreConfig {
             #region Resolution
             #endregion
         }
-
         public Form1() {
             // See if config files exists
             if(!File.Exists( Fallout4Location )) {
@@ -133,13 +130,13 @@ namespace Fallout4MoreConfig {
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
             GetAllValues();
+            ResolutionWidth.Text = Screen.PrimaryScreen.Bounds.Width.ToString();
+            ResolutionHeight.Text = Screen.PrimaryScreen.Bounds.Height.ToString();
         }
-
         public sealed override bool AutoSize {
             get { return base.AutoSize; }
             set { base.AutoSize = value; }
         }
-
         // The buttons
         private void btnSave_Click( object sender, EventArgs e ) {
             // ATTENTION !!
@@ -162,7 +159,7 @@ namespace Fallout4MoreConfig {
 
             #region Audio
             #region Master
-            var saveMasterVolume = (double) AudioMasterTrackbar.Value / 100;
+            var saveMasterVolume = (double)AudioMasterTrackbar.Value / 100;
             pattern = @"fAudioMasterVolume=([0-9\.]+)";
             replacement = "fAudioMasterVolume=" + saveMasterVolume;
             rgx = new Regex( pattern );
@@ -280,24 +277,24 @@ namespace Fallout4MoreConfig {
             int gpEnable = 0, gpRumble = 0;
             if(gamepadEnable.Checked) { gpEnable = 1; }
             if(gamepadRumble.Checked) { gpRumble = 1; }
+            #region Enable
             pattern = @"bGamepadEnable=([0-9\.]+)";
             replacement = "bGamepadEnable=" + gpEnable;
             rgx = new Regex( pattern );
             text = rgx.Replace( text, replacement );
+            #endregion
+            #region Rumble
             pattern = @"bGamePadRumble=([0-9\.]+)";
             replacement = "bGamePadRumble=" + gpRumble;
             rgx = new Regex( pattern );
             text = rgx.Replace( text, replacement );
+            #endregion
             #endregion
 
             File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
             File.SetAttributes( Fallout4Location, File.GetAttributes( Fallout4Location ) & FileAttributes.Normal );
             // Write to file
             File.WriteAllText( Fallout4PrefsLocation, text );
-
-            if(!tweakReadonly.Checked) return;
-            File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & ~FileAttributes.ReadOnly );
-            File.SetAttributes( Fallout4Location, File.GetAttributes( Fallout4Location ) & ~FileAttributes.ReadOnly );
         }
         private void btnDefault_Click( object sender, EventArgs e ) {
             GetAllValues();
@@ -305,7 +302,10 @@ namespace Fallout4MoreConfig {
         private void btnSource_Click( object sender, EventArgs e ) {
             Process.Start( "http://github.com/XDRosenheim/Fallout4MoreConfig" );
         }
-
+        private void btnDonate_Click( object sender, EventArgs e ) {
+            Process.Start(
+                "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=DRHX9UXNZTGXQ&lc=DK&item_name=XDRosenheim&item_number=F4MS%2ddonations&currency_code=DKK&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" );
+        }
         // Scrollers - Track bars - Sliders - Whatever
         private void trackHudOpacity_Scroll( object sender, EventArgs e ) {
             HUDOpacityResult.Text = HUDOpacityTrackBar.Value + Resources.Percentage;
@@ -322,11 +322,11 @@ namespace Fallout4MoreConfig {
             HUDColorBlueTextBox.Text = HUDColorBlueTrackBar.Value.ToString();
             HUDColorPreviewBox.BackColor = Color.FromArgb( HUDColorRedTrackBar.Value, HUDColorGreenTrackBar.Value, HUDColorBlueTrackBar.Value );
         }
-
         // Audio Track Bars
         private void AudioMasterTrackbar_Scroll( object sender, EventArgs e ) {
             AudioMasterText.Text = AudioMasterTrackbar.Value.ToString();
         }
+        // I still don't know what these do.
         private void AudioVal0TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal0Text.Text = AudioVal0TrackBar.Value.ToString();
         }
@@ -351,7 +351,6 @@ namespace Fallout4MoreConfig {
         private void AudioVal7TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal7Text.Text = AudioVal7TrackBar.Value.ToString();
         }
-
         //Changes
         private void resolutionFullscreen_CheckedChanged( object sender, EventArgs e ) {
             if(resolutionFullscreen.Checked) {

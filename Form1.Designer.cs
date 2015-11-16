@@ -132,21 +132,20 @@
             this.tabGamepad = new System.Windows.Forms.TabPage();
             this.gamepadRumble = new System.Windows.Forms.CheckBox();
             this.gamepadEnable = new System.Windows.Forms.CheckBox();
-            this.tabSettings = new System.Windows.Forms.TabPage();
-            this.tweakReadonly = new System.Windows.Forms.CheckBox();
             this.tabResolution = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.ResolutionHeight = new System.Windows.Forms.NumericUpDown();
+            this.ResolutionWidth = new System.Windows.Forms.NumericUpDown();
             this.resolutionBorderless = new System.Windows.Forms.CheckBox();
             this.resolutionFullscreen = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
+            this.btnDonate = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -196,11 +195,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorR)).BeginInit();
             this.tabGamepad.SuspendLayout();
-            this.tabSettings.SuspendLayout();
             this.tabResolution.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -212,10 +210,9 @@
             this.tabControl.Controls.Add(this.tabPipBoy);
             this.tabControl.Controls.Add(this.tabVATS);
             this.tabControl.Controls.Add(this.tabGamepad);
-            this.tabControl.Controls.Add(this.tabSettings);
             this.tabControl.Controls.Add(this.tabResolution);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabControl.Location = new System.Drawing.Point(5, 5);
+            this.tabControl.Location = new System.Drawing.Point(9, 9);
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
@@ -232,10 +229,10 @@
             this.tabVisuals.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabVisuals.Controls.Add(this.groupBox9);
             this.tabVisuals.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabVisuals.Location = new System.Drawing.Point(4, 58);
+            this.tabVisuals.Location = new System.Drawing.Point(4, 40);
             this.tabVisuals.Name = "tabVisuals";
             this.tabVisuals.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVisuals.Size = new System.Drawing.Size(381, 331);
+            this.tabVisuals.Size = new System.Drawing.Size(381, 349);
             this.tabVisuals.TabIndex = 0;
             this.tabVisuals.Text = "Visuals";
             // 
@@ -278,10 +275,10 @@
             this.tabAudio.Controls.Add(this.groupBox12);
             this.tabAudio.Controls.Add(this.groupBox4);
             this.tabAudio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabAudio.Location = new System.Drawing.Point(4, 58);
+            this.tabAudio.Location = new System.Drawing.Point(4, 40);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(381, 331);
+            this.tabAudio.Size = new System.Drawing.Size(381, 349);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio";
             // 
@@ -606,10 +603,10 @@
             this.tabSaving.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabSaving.Controls.Add(this.groupBox6);
             this.tabSaving.Controls.Add(this.groupBox5);
-            this.tabSaving.Location = new System.Drawing.Point(4, 58);
+            this.tabSaving.Location = new System.Drawing.Point(4, 40);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(381, 331);
+            this.tabSaving.Size = new System.Drawing.Size(381, 349);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -713,10 +710,10 @@
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabHUD.Location = new System.Drawing.Point(4, 58);
+            this.tabHUD.Location = new System.Drawing.Point(4, 40);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(381, 331);
+            this.tabHUD.Size = new System.Drawing.Size(381, 349);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -948,10 +945,10 @@
             this.tabPipBoy.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPipBoy.Controls.Add(this.groupBox10);
             this.tabPipBoy.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabPipBoy.Location = new System.Drawing.Point(4, 58);
+            this.tabPipBoy.Location = new System.Drawing.Point(4, 40);
             this.tabPipBoy.Name = "tabPipBoy";
             this.tabPipBoy.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPipBoy.Size = new System.Drawing.Size(381, 331);
+            this.tabPipBoy.Size = new System.Drawing.Size(381, 349);
             this.tabPipBoy.TabIndex = 4;
             this.tabPipBoy.Text = "Pip-Boy";
             // 
@@ -1100,10 +1097,10 @@
             this.tabVATS.Controls.Add(this.label9);
             this.tabVATS.Controls.Add(this.label8);
             this.tabVATS.Controls.Add(this.label7);
-            this.tabVATS.Location = new System.Drawing.Point(4, 58);
+            this.tabVATS.Location = new System.Drawing.Point(4, 40);
             this.tabVATS.Name = "tabVATS";
             this.tabVATS.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVATS.Size = new System.Drawing.Size(381, 331);
+            this.tabVATS.Size = new System.Drawing.Size(381, 349);
             this.tabVATS.TabIndex = 5;
             this.tabVATS.Text = "VATS";
             // 
@@ -1261,10 +1258,10 @@
             this.tabGamepad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabGamepad.Controls.Add(this.gamepadRumble);
             this.tabGamepad.Controls.Add(this.gamepadEnable);
-            this.tabGamepad.Location = new System.Drawing.Point(4, 58);
+            this.tabGamepad.Location = new System.Drawing.Point(4, 40);
             this.tabGamepad.Name = "tabGamepad";
             this.tabGamepad.Padding = new System.Windows.Forms.Padding(5);
-            this.tabGamepad.Size = new System.Drawing.Size(381, 331);
+            this.tabGamepad.Size = new System.Drawing.Size(381, 349);
             this.tabGamepad.TabIndex = 6;
             this.tabGamepad.Text = "Gamepad";
             // 
@@ -1288,39 +1285,16 @@
             this.gamepadEnable.Text = "Enable";
             this.gamepadEnable.UseVisualStyleBackColor = true;
             // 
-            // tabSettings
-            // 
-            this.tabSettings.BackColor = System.Drawing.Color.White;
-            this.tabSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabSettings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabSettings.Controls.Add(this.tweakReadonly);
-            this.tabSettings.Location = new System.Drawing.Point(4, 58);
-            this.tabSettings.Name = "tabSettings";
-            this.tabSettings.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSettings.Size = new System.Drawing.Size(381, 331);
-            this.tabSettings.TabIndex = 7;
-            this.tabSettings.Text = "Tweaks";
-            // 
-            // tweakReadonly
-            // 
-            this.tweakReadonly.AutoSize = true;
-            this.tweakReadonly.Location = new System.Drawing.Point(9, 9);
-            this.tweakReadonly.Name = "tweakReadonly";
-            this.tweakReadonly.Size = new System.Drawing.Size(120, 17);
-            this.tweakReadonly.TabIndex = 0;
-            this.tweakReadonly.Text = "Set .ini to ReadOnly";
-            this.tweakReadonly.UseVisualStyleBackColor = true;
-            // 
             // tabResolution
             // 
             this.tabResolution.BackColor = System.Drawing.Color.White;
             this.tabResolution.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabResolution.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabResolution.Controls.Add(this.groupBox13);
-            this.tabResolution.Location = new System.Drawing.Point(4, 58);
+            this.tabResolution.Location = new System.Drawing.Point(4, 40);
             this.tabResolution.Name = "tabResolution";
             this.tabResolution.Padding = new System.Windows.Forms.Padding(5);
-            this.tabResolution.Size = new System.Drawing.Size(381, 331);
+            this.tabResolution.Size = new System.Drawing.Size(381, 349);
             this.tabResolution.TabIndex = 8;
             this.tabResolution.Text = "Resolution";
             // 
@@ -1330,8 +1304,8 @@
             this.groupBox13.Controls.Add(this.comboBox1);
             this.groupBox13.Controls.Add(this.label16);
             this.groupBox13.Controls.Add(this.label2);
-            this.groupBox13.Controls.Add(this.numericUpDown2);
-            this.groupBox13.Controls.Add(this.numericUpDown1);
+            this.groupBox13.Controls.Add(this.ResolutionHeight);
+            this.groupBox13.Controls.Add(this.ResolutionWidth);
             this.groupBox13.Controls.Add(this.resolutionBorderless);
             this.groupBox13.Controls.Add(this.resolutionFullscreen);
             this.groupBox13.Location = new System.Drawing.Point(8, 8);
@@ -1386,19 +1360,29 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Width";
             // 
-            // numericUpDown2
+            // ResolutionHeight
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(47, 92);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(116, 20);
-            this.numericUpDown2.TabIndex = 3;
+            this.ResolutionHeight.Location = new System.Drawing.Point(47, 92);
+            this.ResolutionHeight.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.ResolutionHeight.Name = "ResolutionHeight";
+            this.ResolutionHeight.Size = new System.Drawing.Size(116, 20);
+            this.ResolutionHeight.TabIndex = 3;
             // 
-            // numericUpDown1
+            // ResolutionWidth
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(47, 66);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(116, 20);
-            this.numericUpDown1.TabIndex = 2;
+            this.ResolutionWidth.Location = new System.Drawing.Point(47, 66);
+            this.ResolutionWidth.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.ResolutionWidth.Name = "ResolutionWidth";
+            this.ResolutionWidth.Size = new System.Drawing.Size(116, 20);
+            this.ResolutionWidth.TabIndex = 2;
             // 
             // resolutionBorderless
             // 
@@ -1423,7 +1407,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 401);
+            this.btnSave.Location = new System.Drawing.Point(12, 405);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -1433,7 +1417,7 @@
             // 
             // btnDefault
             // 
-            this.btnDefault.Location = new System.Drawing.Point(93, 401);
+            this.btnDefault.Location = new System.Drawing.Point(93, 405);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(75, 23);
             this.btnDefault.TabIndex = 2;
@@ -1443,20 +1427,31 @@
             // 
             // btnSource
             // 
-            this.btnSource.Location = new System.Drawing.Point(174, 401);
+            this.btnSource.Location = new System.Drawing.Point(174, 405);
             this.btnSource.Name = "btnSource";
-            this.btnSource.Size = new System.Drawing.Size(75, 23);
+            this.btnSource.Size = new System.Drawing.Size(76, 23);
             this.btnSource.TabIndex = 4;
-            this.btnSource.Text = "Github";
+            this.btnSource.Text = "Source code";
             this.btnSource.UseVisualStyleBackColor = true;
             this.btnSource.Click += new System.EventHandler(this.btnSource_Click);
+            // 
+            // btnDonate
+            // 
+            this.btnDonate.Location = new System.Drawing.Point(322, 405);
+            this.btnDonate.Name = "btnDonate";
+            this.btnDonate.Size = new System.Drawing.Size(76, 23);
+            this.btnDonate.TabIndex = 5;
+            this.btnDonate.Text = "Donate?";
+            this.btnDonate.UseVisualStyleBackColor = true;
+            this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(468, 566);
+            this.ClientSize = new System.Drawing.Size(576, 572);
+            this.Controls.Add(this.btnDonate);
             this.Controls.Add(this.btnSource);
             this.Controls.Add(this.btnDefault);
             this.Controls.Add(this.btnSave);
@@ -1526,13 +1521,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorR)).EndInit();
             this.tabGamepad.ResumeLayout(false);
             this.tabGamepad.PerformLayout();
-            this.tabSettings.ResumeLayout(false);
-            this.tabSettings.PerformLayout();
             this.tabResolution.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1548,7 +1541,6 @@
         private System.Windows.Forms.TabPage tabPipBoy;
         private System.Windows.Forms.TabPage tabVATS;
         private System.Windows.Forms.TabPage tabGamepad;
-        private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.TabPage tabResolution;
 
         private System.Windows.Forms.Label label1;
@@ -1634,13 +1626,12 @@
         private System.Windows.Forms.CheckBox SavingQuickPause;
         private System.Windows.Forms.CheckBox gamepadRumble;
         private System.Windows.Forms.CheckBox gamepadEnable;
-        private System.Windows.Forms.CheckBox tweakReadonly;
         private System.Windows.Forms.CheckBox resolutionBorderless;
         private System.Windows.Forms.CheckBox resolutionFullscreen;
         private System.Windows.Forms.CheckBox hudCrosshair;
 
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown ResolutionWidth;
+        private System.Windows.Forms.NumericUpDown ResolutionHeight;
 
         private System.Windows.Forms.NumericUpDown SavingAutoSaveTextBox;
         private System.Windows.Forms.NumericUpDown VATSEffectHighlightPAColorR;
@@ -1669,6 +1660,7 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel HUDColorPreviewBox;
+        private System.Windows.Forms.Button btnDonate;
     }
 }
 
