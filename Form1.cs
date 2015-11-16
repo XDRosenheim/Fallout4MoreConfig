@@ -31,8 +31,7 @@ namespace Fallout4MoreConfig {
     /// Resolution:
     /// Presets. Make it change Width and height values.
     /// 
-    
-    
+
     public partial class Form1 : Form {
         public string Fallout4Location = Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
                 + @"\Documents\My Games\fallout4\Fallout4.ini";
@@ -42,8 +41,8 @@ namespace Fallout4MoreConfig {
         public void GetAllValues() {
             // Get values from current config
             #region Visuals
-            VisualsDoF.Checked = Convert.ToInt16(_extras.GetLineValue(Fallout4PrefsLocation, "bDoDepthOfField")) == 1;
-            VisualsLensflare.Checked = Convert.ToInt16(_extras.GetLineValue(Fallout4PrefsLocation, "bLensFlare")) == 1;
+            VisualsDoF.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bDoDepthOfField" ) ) == 1;
+            VisualsLensflare.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bLensFlare" ) ) == 1;
             #endregion
             #region Audio
             #region Master
@@ -172,7 +171,8 @@ namespace Fallout4MoreConfig {
             // But, hey, it works...
 
             // Get the WHOLE file
-            var text = File.ReadAllText( Fallout4PrefsLocation );
+            var prefsFile = File.ReadAllText( Fallout4PrefsLocation );
+            var nonFile = File.ReadAllText( Fallout4Location );
             // Make a pattern for Regex
             // ReSharper disable once RedundantAssignment
             var pattern = "";
@@ -190,11 +190,11 @@ namespace Fallout4MoreConfig {
             pattern = @"bDoDepthOfField=([0-9\.]+)";
             replacement = "bDoDepthOfField=" + visuDof;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            nonFile = rgx.Replace( nonFile, replacement );
             pattern = @"bLensFlare=([0-9\.]+)";
             replacement = "bLensFlare=" + visuLf;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            nonFile = rgx.Replace( nonFile, replacement );
             #endregion
             #endregion
             #region Audio
@@ -203,49 +203,49 @@ namespace Fallout4MoreConfig {
             pattern = @"fAudioMasterVolume=([0-9\.]+)";
             replacement = "fAudioMasterVolume=" + saveMasterVolume;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region Val0-7
             var saveVol0 = (double)AudioVal0TrackBar.Value / 100;
             pattern = @"fVal0=([0-9\.]+)";
             replacement = "fVal0=" + saveVol0;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             var saveVol1 = (double)AudioVal1TrackBar.Value / 100;
             pattern = @"fVal1=([0-9\.]+)";
             replacement = "fVal1=" + saveVol1;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             var saveVol2 = (double)AudioVal2TrackBar.Value / 100;
             pattern = @"fVal2=([0-9\.]+)";
             replacement = "fVal2=" + saveVol2;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             var saveVol3 = (double)AudioVal3TrackBar.Value / 100;
             pattern = @"fVal3=([0-9\.]+)";
             replacement = "fVal3=" + saveVol3;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             var saveVol4 = (double)AudioVal4TrackBar.Value / 100;
             pattern = @"fVal4=([0-9\.]+)";
             replacement = "fVal4=" + saveVol4;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             var saveVol5 = (double)AudioVal5TrackBar.Value / 100;
             pattern = @"fVal5=([0-9\.]+)";
             replacement = "fVal5=" + saveVol5;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             var saveVol6 = (double)AudioVal6TrackBar.Value / 100;
             pattern = @"fVal6=([0-9\.]+)";
             replacement = "fVal6=" + saveVol6;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             var saveVol7 = (double)AudioVal7TrackBar.Value / 100;
             pattern = @"fVal7=([0-9\.]+)";
             replacement = "fVal7=" + saveVol7;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
             #region HUD
@@ -253,37 +253,37 @@ namespace Fallout4MoreConfig {
             pattern = @"fHUDOpacity=([0-9\.]+)";
             replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region HUD Color
             #region R
             pattern = @"iHUDColorR=([0-9\.]+)";
             replacement = "iHUDColorR=" + Math.Round( Convert.ToDouble( HUDColorRedTrackBar.Value ), 4 );
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region G
             pattern = @"iHUDColorG=([0-9\.]+)";
             replacement = "iHUDColorG=" + Math.Round( Convert.ToDouble( HUDColorGreenTrackBar.Value ), 4 );
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region B
             pattern = @"iHUDColorB=([0-9\.]+)";
             replacement = "iHUDColorB=" + Math.Round( Convert.ToDouble( HUDColorBlueTrackBar.Value ), 4 );
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
             #region FOV
             pattern = @"fDefaultWorldFOV=([0-9\.]+)";
             replacement = "fDefaultWorldFOV=" + hudFovThird.Text;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"fDefault1stPersonFOV=([0-9\.]+)";
             replacement = "fDefault1stPersonFOV=" + hudFovFirst.Text;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
             #region Saving
@@ -291,7 +291,7 @@ namespace Fallout4MoreConfig {
             pattern = @"fAutosaveEveryXMins=([0-9\.]+)";
             replacement = "fAutosaveEveryXMins=" + Math.Round( Convert.ToDouble( SavingAutoSaveTextBox.Text ), 4 );
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region Quick Saves
             int saPaused = 0, saTravel = 0, saWaiting = 0, saSleeping = 0;
@@ -302,19 +302,19 @@ namespace Fallout4MoreConfig {
             if(SavingQuickSleeping.Checked) { saSleeping = 1; }
             replacement = "bSaveOnPause=" + saPaused;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"bSaveOnTravel=([0-9\.]+)";
             replacement = "bSaveOnTravel=" + saTravel;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"bSaveOnWait=([0-9\.]+)";
             replacement = "bSaveOnWait=" + saWaiting;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"bSaveOnRest=([0-9\.]+)";
             replacement = "bSaveOnRest=" + saSleeping;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
             #region Gamepad
@@ -325,20 +325,21 @@ namespace Fallout4MoreConfig {
             pattern = @"bGamepadEnable=([0-9\.]+)";
             replacement = "bGamepadEnable=" + gpEnable;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #region Rumble
             pattern = @"bGamePadRumble=([0-9\.]+)";
             replacement = "bGamePadRumble=" + gpRumble;
             rgx = new Regex( pattern );
-            text = rgx.Replace( text, replacement );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
 
             File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
             File.SetAttributes( Fallout4Location, File.GetAttributes( Fallout4Location ) & FileAttributes.Normal );
             // Write to file
-            File.WriteAllText( Fallout4PrefsLocation, text );
+            File.WriteAllText( Fallout4PrefsLocation, prefsFile );
+            File.WriteAllText( Fallout4Location, nonFile );
         }
         private void btnDefault_Click( object sender, EventArgs e ) {
             GetAllValues();
