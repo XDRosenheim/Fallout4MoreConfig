@@ -279,11 +279,11 @@ namespace Fallout4MoreConfig {
             pattern = @"fDefaultWorldFOV=([0-9\.]+)";
             replacement = "fDefaultWorldFOV=" + hudFovThird.Text;
             rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
+            nonFile = rgx.Replace( nonFile, replacement );
             pattern = @"fDefault1stPersonFOV=([0-9\.]+)";
             replacement = "fDefault1stPersonFOV=" + hudFovFirst.Text;
             rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
+            nonFile = rgx.Replace( nonFile, replacement );
             #endregion
             #endregion
             #region Saving
