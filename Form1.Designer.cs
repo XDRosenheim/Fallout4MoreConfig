@@ -32,8 +32,14 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabVisuals = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.VisualWaterObjects = new System.Windows.Forms.CheckBox();
+            this.VisualWaterTree = new System.Windows.Forms.CheckBox();
+            this.VisualWaterLand = new System.Windows.Forms.CheckBox();
+            this.VisualWaterSky = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.VisualsScreenBlood = new System.Windows.Forms.CheckBox();
             this.VisualsLensflare = new System.Windows.Forms.CheckBox();
+            this.VisualsGore = new System.Windows.Forms.CheckBox();
             this.VisualsDoF = new System.Windows.Forms.CheckBox();
             this.tabAudio = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
@@ -151,12 +157,6 @@
             this.btnReWrite = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
             this.btnDonate = new System.Windows.Forms.Button();
-            this.VisualsGore = new System.Windows.Forms.CheckBox();
-            this.VisualsScreenBlood = new System.Windows.Forms.CheckBox();
-            this.VisualWaterSky = new System.Windows.Forms.CheckBox();
-            this.VisualWaterLand = new System.Windows.Forms.CheckBox();
-            this.VisualWaterTree = new System.Windows.Forms.CheckBox();
-            this.VisualWaterObjects = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -270,6 +270,50 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Water Reflection";
             // 
+            // VisualWaterObjects
+            // 
+            this.VisualWaterObjects.AutoSize = true;
+            this.VisualWaterObjects.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterObjects.Location = new System.Drawing.Point(7, 88);
+            this.VisualWaterObjects.Name = "VisualWaterObjects";
+            this.VisualWaterObjects.Size = new System.Drawing.Size(62, 17);
+            this.VisualWaterObjects.TabIndex = 3;
+            this.VisualWaterObjects.Text = "Objects";
+            this.VisualWaterObjects.UseVisualStyleBackColor = true;
+            // 
+            // VisualWaterTree
+            // 
+            this.VisualWaterTree.AutoSize = true;
+            this.VisualWaterTree.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterTree.Location = new System.Drawing.Point(7, 65);
+            this.VisualWaterTree.Name = "VisualWaterTree";
+            this.VisualWaterTree.Size = new System.Drawing.Size(53, 17);
+            this.VisualWaterTree.TabIndex = 2;
+            this.VisualWaterTree.Text = "Trees";
+            this.VisualWaterTree.UseVisualStyleBackColor = true;
+            // 
+            // VisualWaterLand
+            // 
+            this.VisualWaterLand.AutoSize = true;
+            this.VisualWaterLand.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterLand.Location = new System.Drawing.Point(7, 42);
+            this.VisualWaterLand.Name = "VisualWaterLand";
+            this.VisualWaterLand.Size = new System.Drawing.Size(50, 17);
+            this.VisualWaterLand.TabIndex = 1;
+            this.VisualWaterLand.Text = "Land";
+            this.VisualWaterLand.UseVisualStyleBackColor = true;
+            // 
+            // VisualWaterSky
+            // 
+            this.VisualWaterSky.AutoSize = true;
+            this.VisualWaterSky.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualWaterSky.Location = new System.Drawing.Point(7, 20);
+            this.VisualWaterSky.Name = "VisualWaterSky";
+            this.VisualWaterSky.Size = new System.Drawing.Size(52, 17);
+            this.VisualWaterSky.TabIndex = 0;
+            this.VisualWaterSky.Text = "Skies";
+            this.VisualWaterSky.UseVisualStyleBackColor = true;
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.VisualsScreenBlood);
@@ -283,6 +327,17 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ImageSpace";
             // 
+            // VisualsScreenBlood
+            // 
+            this.VisualsScreenBlood.AutoSize = true;
+            this.VisualsScreenBlood.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualsScreenBlood.Location = new System.Drawing.Point(6, 88);
+            this.VisualsScreenBlood.Name = "VisualsScreenBlood";
+            this.VisualsScreenBlood.Size = new System.Drawing.Size(103, 17);
+            this.VisualsScreenBlood.TabIndex = 1;
+            this.VisualsScreenBlood.Text = "Blood on screen";
+            this.VisualsScreenBlood.UseVisualStyleBackColor = true;
+            // 
             // VisualsLensflare
             // 
             this.VisualsLensflare.AutoSize = true;
@@ -292,6 +347,17 @@
             this.VisualsLensflare.TabIndex = 1;
             this.VisualsLensflare.Text = "Lens Flare";
             this.VisualsLensflare.UseVisualStyleBackColor = true;
+            // 
+            // VisualsGore
+            // 
+            this.VisualsGore.AutoSize = true;
+            this.VisualsGore.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualsGore.Location = new System.Drawing.Point(6, 65);
+            this.VisualsGore.Name = "VisualsGore";
+            this.VisualsGore.Size = new System.Drawing.Size(101, 17);
+            this.VisualsGore.TabIndex = 0;
+            this.VisualsGore.Text = "Disable All Gore";
+            this.VisualsGore.UseVisualStyleBackColor = true;
             // 
             // VisualsDoF
             // 
@@ -1574,72 +1640,6 @@
             this.btnDonate.Text = "Donate?";
             this.btnDonate.UseVisualStyleBackColor = true;
             this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
-            // 
-            // VisualsGore
-            // 
-            this.VisualsGore.AutoSize = true;
-            this.VisualsGore.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.VisualsGore.Location = new System.Drawing.Point(6, 65);
-            this.VisualsGore.Name = "VisualsGore";
-            this.VisualsGore.Size = new System.Drawing.Size(101, 17);
-            this.VisualsGore.TabIndex = 0;
-            this.VisualsGore.Text = "Disable All Gore";
-            this.VisualsGore.UseVisualStyleBackColor = true;
-            // 
-            // VisualsScreenBlood
-            // 
-            this.VisualsScreenBlood.AutoSize = true;
-            this.VisualsScreenBlood.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.VisualsScreenBlood.Location = new System.Drawing.Point(6, 88);
-            this.VisualsScreenBlood.Name = "VisualsScreenBlood";
-            this.VisualsScreenBlood.Size = new System.Drawing.Size(103, 17);
-            this.VisualsScreenBlood.TabIndex = 1;
-            this.VisualsScreenBlood.Text = "Blood on screen";
-            this.VisualsScreenBlood.UseVisualStyleBackColor = true;
-            // 
-            // VisualWaterSky
-            // 
-            this.VisualWaterSky.AutoSize = true;
-            this.VisualWaterSky.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.VisualWaterSky.Location = new System.Drawing.Point(7, 20);
-            this.VisualWaterSky.Name = "VisualWaterSky";
-            this.VisualWaterSky.Size = new System.Drawing.Size(52, 17);
-            this.VisualWaterSky.TabIndex = 0;
-            this.VisualWaterSky.Text = "Skies";
-            this.VisualWaterSky.UseVisualStyleBackColor = true;
-            // 
-            // VisualWaterLand
-            // 
-            this.VisualWaterLand.AutoSize = true;
-            this.VisualWaterLand.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.VisualWaterLand.Location = new System.Drawing.Point(7, 42);
-            this.VisualWaterLand.Name = "VisualWaterLand";
-            this.VisualWaterLand.Size = new System.Drawing.Size(50, 17);
-            this.VisualWaterLand.TabIndex = 1;
-            this.VisualWaterLand.Text = "Land";
-            this.VisualWaterLand.UseVisualStyleBackColor = true;
-            // 
-            // VisualWaterTree
-            // 
-            this.VisualWaterTree.AutoSize = true;
-            this.VisualWaterTree.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.VisualWaterTree.Location = new System.Drawing.Point(7, 65);
-            this.VisualWaterTree.Name = "VisualWaterTree";
-            this.VisualWaterTree.Size = new System.Drawing.Size(53, 17);
-            this.VisualWaterTree.TabIndex = 2;
-            this.VisualWaterTree.Text = "Trees";
-            this.VisualWaterTree.UseVisualStyleBackColor = true;
-            // 
-            // VisualWaterObjects
-            // 
-            this.VisualWaterObjects.AutoSize = true;
-            this.VisualWaterObjects.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.VisualWaterObjects.Location = new System.Drawing.Point(7, 88);
-            this.VisualWaterObjects.Name = "VisualWaterObjects";
-            this.VisualWaterObjects.Size = new System.Drawing.Size(62, 17);
-            this.VisualWaterObjects.TabIndex = 3;
-            this.VisualWaterObjects.Text = "Objects";
-            this.VisualWaterObjects.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

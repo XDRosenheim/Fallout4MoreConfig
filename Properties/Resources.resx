@@ -127,9 +127,6 @@
   <data name="string_path_not_found_" xml:space="preserve">
     <value> was not found.</value>
   </data>
-  <data name="string_please_run_game_" xml:space="preserve">
-    <value>Please run the game once and try again.</value>
-  </data>
   <data name="string_newLine" xml:space="preserve">
     <value>
 </value>

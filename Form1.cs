@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Fallout4MoreConfig.Properties;
@@ -33,7 +35,15 @@ namespace Fallout4MoreConfig {
     /// Presets. Make it change Width and height values.
     /// 
     
-    public partial class Form1 : Form {
+    public partial class Form1 : Form
+    {
+        public string CurrentVersion {
+            get {
+                return ApplicationDeployment.IsNetworkDeployed
+                       ? ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString()
+                       : Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+        }
         public string Fallout4Location = @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
                 + @"\Documents\my games\Fallout4\Fallout4.ini";
         public string Fallout4PrefsLocation = @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
@@ -151,16 +161,24 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Resolution
             #endregion
+
+            Text += @" -- Version: " + CurrentVersion;
         }
         public Form1() {
             // See if config files exists
             if(!File.Exists( Fallout4Location )) {
                 MessageBox.Show(
-                    Fallout4PrefsLocation + Resources.string_path_not_found_ + Resources.string_newLine +
-                    Resources.string_please_run_game_, Resources.String_Error_, MessageBoxButtons.OK,
+                    Fallout4Location + Resources.string_path_not_found_,
+                    Resources.String_Error_, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
             }
-            File.Exists( Fallout4PrefsLocation );
+            if(!File.Exists( Fallout4PrefsLocation )) {
+                MessageBox.Show(
+                    Fallout4PrefsLocation + Resources.string_path_not_found_,
+                    Resources.String_Error_, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error );
+            }
+            
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config file...
             // This should make it work for everybody.

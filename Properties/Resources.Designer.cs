@@ -106,14 +106,5 @@ namespace Fallout4MoreConfig.Properties {
                 return ResourceManager.GetString("string_path_not_found_", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please run the game once and try again..
-        /// </summary>
-        internal static string string_please_run_game_ {
-            get {
-                return ResourceManager.GetString("string_please_run_game_", resourceCulture);
-            }
-        }
     }
 }
