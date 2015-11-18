@@ -29,7 +29,7 @@ namespace Fallout4MoreConfig {
     /// Make it work.
     /// 
     /// Gamepad:
-    /// More options, such as sensitivity.
+    /// Sensitivity.
     /// 
     /// Resolution:
     /// Presets. Make it change Width and height values.
@@ -166,7 +166,7 @@ namespace Fallout4MoreConfig {
             ResolutionFullscreen.Checked = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "bFull Screen" ) ) == 1;
             ResolutionBorderless.Checked = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "bBorderless" ) ) == 1;
             #endregion
-            Text += @" -- Version: " + CurrentVersion;
+            Text = @"Fallout 4 - Extended settings -- Version: " + CurrentVersion;
         }
         public Form1() {
             // See if config files exists
@@ -201,23 +201,18 @@ namespace Fallout4MoreConfig {
         }
         // The buttons
         private void btnSave_Click( object sender, EventArgs e ) {
-            // ATTENTION !!
             // THE FOLLOWING IS A MESS !!
             // IT READS THE WHOLE FILE TO MEMORY !!
             // PLEASE CONTACT ME ON GITHUB IF YOU HAVE A SOLUTION !!
             // http://github.com/XDRosenheim/Fallout4MoreConfig
             // But, hey, it works...
 
-            // Get the WHOLE file
             var prefsFile = File.ReadAllText( Fallout4PrefsLocation );
             var nonFile = File.ReadAllText( Fallout4Location );
-            // Make a pattern for Regex
             // ReSharper disable once RedundantAssignment
             var pattern = "";
-            // What to write on the line we are editing
             // ReSharper disable once RedundantAssignment
             var replacement = "";
-            // Give Regex the pattern
             // ReSharper disable once JoinDeclarationAndInitializer
             Regex rgx;
 
@@ -228,23 +223,30 @@ namespace Fallout4MoreConfig {
             if(VisualsLensflare.Checked) { visuLf = 1; }
             if(VisualsGore.Checked) { visuGore = 1; }
             if(VisualsScreenBlood.Checked) { visuBlood = 1; }
-
+            #region DoF
             pattern = @"bDoDepthOfField=([0-9\.]+)";
             replacement = "bDoDepthOfField=" + visuDof;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region Flare
             pattern = @"bLensFlare=([0-9\.]+)";
             replacement = "bLensFlare=" + visuLf;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #region Gore
+            #endregion
             pattern = @"bDisableAllGore=([0-9\.]+)";
             replacement = "bDisableAllGore=" + visuGore;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region Blood on screen
             pattern = @"bBloodSplatterEnabled=([0-9\.]+)";
             replacement = "bBloodSplatterEnabled=" + visuBlood;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
             #endregion
             #region Water Reflections
             int visWatObj = 0, visWatLand = 0, visWatSky = 0, visWatTre = 0;
@@ -252,22 +254,30 @@ namespace Fallout4MoreConfig {
             if(VisualWaterLand.Checked) { visWatLand = 1; }
             if(VisualWaterSky.Checked) { visWatSky = 1; }
             if(VisualWaterTree.Checked) { visWatTre = 1; }
+            #region Objects
             pattern = @"bReflectLODObjects=([0-9\.]+)";
             replacement = "bReflectLODObjects=" + visWatObj;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region Land
             pattern = @"bReflectLODLand=([0-9\.]+)";
             replacement = "bReflectLODLand=" + visWatLand;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region Sky
             pattern = @"bReflectSky=([0-9\.]+)";
             replacement = "bReflectSky=" + visWatSky;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region Trees
             pattern = @"bReflectLODTrees=([0-9\.]+)";
             replacement = "bReflectLODTrees=" + visWatTre;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
             #endregion
             #endregion
             #region Audio
@@ -278,47 +288,63 @@ namespace Fallout4MoreConfig {
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
-            #region Val0-7
+            #region Val
+            #region 0
             var saveVol0 = (double)AudioVal0TrackBar.Value / 100;
             pattern = @"fVal0=([0-9\.]+)";
             replacement = "fVal0=" + saveVol0;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region 1
             var saveVol1 = (double)AudioVal1TrackBar.Value / 100;
             pattern = @"fVal1=([0-9\.]+)";
             replacement = "fVal1=" + saveVol1;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region 2
             var saveVol2 = (double)AudioVal2TrackBar.Value / 100;
             pattern = @"fVal2=([0-9\.]+)";
             replacement = "fVal2=" + saveVol2;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region 3
             var saveVol3 = (double)AudioVal3TrackBar.Value / 100;
             pattern = @"fVal3=([0-9\.]+)";
             replacement = "fVal3=" + saveVol3;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region 4
             var saveVol4 = (double)AudioVal4TrackBar.Value / 100;
             pattern = @"fVal4=([0-9\.]+)";
             replacement = "fVal4=" + saveVol4;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region 5
             var saveVol5 = (double)AudioVal5TrackBar.Value / 100;
             pattern = @"fVal5=([0-9\.]+)";
             replacement = "fVal5=" + saveVol5;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region 6
             var saveVol6 = (double)AudioVal6TrackBar.Value / 100;
             pattern = @"fVal6=([0-9\.]+)";
             replacement = "fVal6=" + saveVol6;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region 7
             var saveVol7 = (double)AudioVal7TrackBar.Value / 100;
             pattern = @"fVal7=([0-9\.]+)";
             replacement = "fVal7=" + saveVol7;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
             #endregion
             #endregion
             #region Saving
@@ -330,26 +356,34 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Quick Saves
             int saPaused = 0, saTravel = 0, saWaiting = 0, saSleeping = 0;
-            pattern = @"bSaveOnPause=([0-9\.]+)";
             if(SavingQuickPause.Checked) { saPaused = 1; }
             if(SavingQuickTravel.Checked) { saTravel = 1; }
             if(SavingQuickWaiting.Checked) { saWaiting = 1; }
             if(SavingQuickSleeping.Checked) { saSleeping = 1; }
+            #region Pause
+            pattern = @"bSaveOnPause=([0-9\.]+)";
             replacement = "bSaveOnPause=" + saPaused;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Travel
             pattern = @"bSaveOnTravel=([0-9\.]+)";
             replacement = "bSaveOnTravel=" + saTravel;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Wait
             pattern = @"bSaveOnWait=([0-9\.]+)";
             replacement = "bSaveOnWait=" + saWaiting;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Sleep
             pattern = @"bSaveOnRest=([0-9\.]+)";
             replacement = "bSaveOnRest=" + saSleeping;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
             #endregion
             #endregion
             #region HUD
@@ -380,14 +414,18 @@ namespace Fallout4MoreConfig {
             #endregion
             #endregion
             #region FOV
+            #region World
             pattern = @"fDefaultWorldFOV=([0-9\.]+)";
             replacement = "fDefaultWorldFOV=" + hudFovThird.Text;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
+            #region 1st
             pattern = @"fDefault1stPersonFOV=([0-9\.]+)";
             replacement = "fDefault1stPersonFOV=" + hudFovFirst.Text;
             rgx = new Regex( pattern );
             nonFile = rgx.Replace( nonFile, replacement );
+            #endregion
             #endregion
             #region Other
             int hudHair = 0, hudDiaSubs = 0, hudDiaCam = 0, hudGenSubs = 0, hudGps = 0;
@@ -396,29 +434,56 @@ namespace Fallout4MoreConfig {
             if(hudDialogCam.Checked) { hudDiaCam = 1; }
             if(hudGeneralSubs.Checked) { hudGenSubs = 1; }
             if(hudCompass.Checked) { hudGps = 1; }
+            #region Crosshair
             pattern = @"bCrosshairEnabled=([0-9\.]+)";
             replacement = "bCrosshairEnabled=" + hudHair;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Dialog Subtitles
             pattern = @"bDialogueSubtitles=([0-9\.]+)";
             replacement = "bDialogueSubtitles=" + hudDiaSubs;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Dialog Camera
             pattern = @"bDialogueCameraEnable=([0-9\.]+)";
             replacement = "bDialogueCameraEnable=" + hudDiaCam;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region General Subtitles
             pattern = @"bGeneralSubtitles=([0-9\.]+)";
             replacement = "bGeneralSubtitles=" + hudGenSubs;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Show Compass
             pattern = @"bShowCompass=([0-9\.]+)";
             replacement = "bShowCompass=" + hudGps;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
-
+            #endregion
+            #region Pip-Boy
+            #region Color
+            pattern = @"fPipboyEffectColorR=([0-9\.]+)";
+            replacement = "fPipboyEffectColorR=" + Math.Round( Convert.ToDouble( PipBoyColorRedTrackBar.Value ) / 100, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"fPipboyEffectColorG=([0-9\.]+)";
+            replacement = "fPipboyEffectColorG=" + Math.Round( Convert.ToDouble( PipBoyColorGreenTrackBar.Value ) / 100, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"fPipboyEffectColorB=([0-9\.]+)";
+            replacement = "fPipboyEffectColorB=" + Math.Round( Convert.ToDouble( PipBoyColorBlueTrackBar.Value ) / 100, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+	        #endregion
+            #endregion
+            #region VATS
+            #endregion
             #region Gamepad
             int gpEnable = 0, gpRumble = 0;
             if(gamepadEnable.Checked) { gpEnable = 1; }
@@ -440,6 +505,7 @@ namespace Fallout4MoreConfig {
             var resBorder = 0;
             // If fullscreen is checked, also check borderless.
             // Better safe than sorry.
+            #region Fullscreen || Borderless
             if (ResolutionFullscreen.Checked) {
                 pattern = @"bFull Screen=([0-9\.]+)";
                 replacement = "bFull Screen=1";
@@ -460,14 +526,19 @@ namespace Fallout4MoreConfig {
                 rgx = new Regex( pattern );
                 prefsFile = rgx.Replace( prefsFile, replacement );
             }
+            #endregion
+            #region Size Width
             pattern = @"iSize W=([0-9\.]+)";
             replacement = "iSize W=" + ResolutionWidth.Value;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Size Height
             pattern = @"iSize H=([0-9\.]+)";
             replacement = "iSize H=" + ResolutionHeight.Value;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
             #endregion
 
             File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
@@ -534,6 +605,20 @@ namespace Fallout4MoreConfig {
         // Changes
         private void resolutionFullscreen_CheckedChanged( object sender, EventArgs e ) {
             ResolutionBorderless.Enabled = !ResolutionFullscreen.Checked;
+        }
+
+        private void PipBoyColorRedTrackBar_Scroll( object sender, EventArgs e ) {
+            var red = Convert.ToInt32( PipBoyColorRedTrackBar.Value / 100 * 2.55 );
+            PipBoyColorRedTextBox.Text = red.ToString();
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
+        }
+        private void PipBoyColorGreenTrackBar_Scroll( object sender, EventArgs e ){ 
+            PipBoyColorGreenTextBox.Text = PipBoyColorGreenTrackBar.Value.ToString();
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
+        }
+        private void PipBoyColorBlueTrackBar_Scroll( object sender, EventArgs e ) {
+            PipBoyColorBlueTextBox.Text = PipBoyColorBlueTrackBar.Value.ToString();
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
         }
     }
 }

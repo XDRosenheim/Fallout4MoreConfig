@@ -82,6 +82,8 @@
             this.SavingMinutLabel = new System.Windows.Forms.Label();
             this.tabHUD = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.hudFovThird = new System.Windows.Forms.NumericUpDown();
+            this.hudFovFirst = new System.Windows.Forms.NumericUpDown();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -107,11 +109,8 @@
             this.hudColorBlueTrackBar = new System.Windows.Forms.TrackBar();
             this.tabPipBoy = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.PipBoyColorBlueTextBox = new System.Windows.Forms.NumericUpDown();
-            this.PipBoyColorGreenTextBox = new System.Windows.Forms.NumericUpDown();
-            this.PipBoyColorRedTextBox = new System.Windows.Forms.NumericUpDown();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.PipBoyColorPreview = new System.Windows.Forms.FlowLayoutPanel();
             this.PipBoyColorRedTrackBar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -138,9 +137,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.tabGamepad = new System.Windows.Forms.TabPage();
-            this.gamepadRumble = new System.Windows.Forms.CheckBox();
+            this.tabControls = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.gamepadEnable = new System.Windows.Forms.CheckBox();
+            this.gamepadRumble = new System.Windows.Forms.CheckBox();
             this.tabResolution = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -153,8 +153,9 @@
             this.btnReWrite = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
             this.btnDonate = new System.Windows.Forms.Button();
-            this.hudFovFirst = new System.Windows.Forms.NumericUpDown();
-            this.hudFovThird = new System.Windows.Forms.NumericUpDown();
+            this.PipBoyColorBlueTextBox = new System.Windows.Forms.TextBox();
+            this.PipBoyColorGreenTextBox = new System.Windows.Forms.TextBox();
+            this.PipBoyColorRedTextBox = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -177,6 +178,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SavingAutoSaveTextBox)).BeginInit();
             this.tabHUD.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HUDOpacityTrackBar)).BeginInit();
@@ -190,9 +193,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.hudColorBlueTrackBar)).BeginInit();
             this.tabPipBoy.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTextBox)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTrackBar)).BeginInit();
@@ -210,13 +210,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorR)).BeginInit();
-            this.tabGamepad.SuspendLayout();
+            this.tabControls.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.tabResolution.SuspendLayout();
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -227,7 +226,7 @@
             this.tabControl.Controls.Add(this.tabHUD);
             this.tabControl.Controls.Add(this.tabPipBoy);
             this.tabControl.Controls.Add(this.tabVATS);
-            this.tabControl.Controls.Add(this.tabGamepad);
+            this.tabControl.Controls.Add(this.tabControls);
             this.tabControl.Controls.Add(this.tabResolution);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl.Location = new System.Drawing.Point(9, 9);
@@ -237,7 +236,7 @@
             this.tabControl.Padding = new System.Drawing.Point(9, 3);
             this.tabControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(390, 393);
+            this.tabControl.Size = new System.Drawing.Size(390, 374);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl.TabIndex = 0;
             // 
@@ -253,7 +252,7 @@
             this.tabVisuals.Name = "tabVisuals";
             this.tabVisuals.Padding = new System.Windows.Forms.Padding(5);
             this.tabVisuals.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabVisuals.Size = new System.Drawing.Size(382, 349);
+            this.tabVisuals.Size = new System.Drawing.Size(382, 330);
             this.tabVisuals.TabIndex = 0;
             this.tabVisuals.Text = "Visuals";
             // 
@@ -380,7 +379,7 @@
             this.tabAudio.Location = new System.Drawing.Point(4, 40);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(382, 349);
+            this.tabAudio.Size = new System.Drawing.Size(382, 330);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio[WIP]";
             // 
@@ -724,7 +723,7 @@
             this.tabSaving.Location = new System.Drawing.Point(4, 40);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(382, 349);
+            this.tabSaving.Size = new System.Drawing.Size(382, 330);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -831,7 +830,7 @@
             this.tabHUD.Location = new System.Drawing.Point(4, 40);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(382, 349);
+            this.tabHUD.Size = new System.Drawing.Size(382, 330);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -847,6 +846,50 @@
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FOV";
+            // 
+            // hudFovThird
+            // 
+            this.hudFovThird.Location = new System.Drawing.Point(93, 46);
+            this.hudFovThird.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.hudFovThird.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.hudFovThird.Name = "hudFovThird";
+            this.hudFovThird.Size = new System.Drawing.Size(79, 20);
+            this.hudFovThird.TabIndex = 19;
+            this.hudFovThird.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // hudFovFirst
+            // 
+            this.hudFovFirst.Location = new System.Drawing.Point(93, 20);
+            this.hudFovFirst.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.hudFovFirst.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.hudFovFirst.Name = "hudFovFirst";
+            this.hudFovFirst.Size = new System.Drawing.Size(79, 20);
+            this.hudFovFirst.TabIndex = 18;
+            this.hudFovFirst.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label19
             // 
@@ -1115,16 +1158,16 @@
             this.tabPipBoy.Location = new System.Drawing.Point(4, 40);
             this.tabPipBoy.Name = "tabPipBoy";
             this.tabPipBoy.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPipBoy.Size = new System.Drawing.Size(382, 349);
+            this.tabPipBoy.Size = new System.Drawing.Size(382, 330);
             this.tabPipBoy.TabIndex = 4;
             this.tabPipBoy.Text = "Pip-Boy[WIP]";
             // 
             // groupBox10
             // 
             this.groupBox10.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox10.Controls.Add(this.PipBoyColorBlueTextBox);
-            this.groupBox10.Controls.Add(this.PipBoyColorGreenTextBox);
             this.groupBox10.Controls.Add(this.PipBoyColorRedTextBox);
+            this.groupBox10.Controls.Add(this.PipBoyColorGreenTextBox);
+            this.groupBox10.Controls.Add(this.PipBoyColorBlueTextBox);
             this.groupBox10.Controls.Add(this.groupBox11);
             this.groupBox10.Controls.Add(this.PipBoyColorRedTrackBar);
             this.groupBox10.Controls.Add(this.label1);
@@ -1139,45 +1182,9 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Color";
             // 
-            // PipBoyColorBlueTextBox
-            // 
-            this.PipBoyColorBlueTextBox.Location = new System.Drawing.Point(128, 77);
-            this.PipBoyColorBlueTextBox.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.PipBoyColorBlueTextBox.Name = "PipBoyColorBlueTextBox";
-            this.PipBoyColorBlueTextBox.Size = new System.Drawing.Size(45, 20);
-            this.PipBoyColorBlueTextBox.TabIndex = 18;
-            // 
-            // PipBoyColorGreenTextBox
-            // 
-            this.PipBoyColorGreenTextBox.Location = new System.Drawing.Point(128, 47);
-            this.PipBoyColorGreenTextBox.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.PipBoyColorGreenTextBox.Name = "PipBoyColorGreenTextBox";
-            this.PipBoyColorGreenTextBox.Size = new System.Drawing.Size(45, 20);
-            this.PipBoyColorGreenTextBox.TabIndex = 17;
-            // 
-            // PipBoyColorRedTextBox
-            // 
-            this.PipBoyColorRedTextBox.Location = new System.Drawing.Point(128, 16);
-            this.PipBoyColorRedTextBox.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.PipBoyColorRedTextBox.Name = "PipBoyColorRedTextBox";
-            this.PipBoyColorRedTextBox.Size = new System.Drawing.Size(45, 20);
-            this.PipBoyColorRedTextBox.TabIndex = 16;
-            // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox11.Controls.Add(this.PipBoyColorPreview);
             this.groupBox11.Location = new System.Drawing.Point(7, 101);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(166, 94);
@@ -1185,12 +1192,12 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Preview";
             // 
-            // flowLayoutPanel1
+            // PipBoyColorPreview
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(7, 20);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(153, 68);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.PipBoyColorPreview.Location = new System.Drawing.Point(7, 20);
+            this.PipBoyColorPreview.Name = "PipBoyColorPreview";
+            this.PipBoyColorPreview.Size = new System.Drawing.Size(153, 68);
+            this.PipBoyColorPreview.TabIndex = 0;
             // 
             // PipBoyColorRedTrackBar
             // 
@@ -1198,11 +1205,12 @@
             this.PipBoyColorRedTrackBar.BackColor = System.Drawing.Color.White;
             this.PipBoyColorRedTrackBar.LargeChange = 10;
             this.PipBoyColorRedTrackBar.Location = new System.Drawing.Point(40, 18);
-            this.PipBoyColorRedTrackBar.Maximum = 255;
+            this.PipBoyColorRedTrackBar.Maximum = 1000;
             this.PipBoyColorRedTrackBar.Name = "PipBoyColorRedTrackBar";
             this.PipBoyColorRedTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorRedTrackBar.TabIndex = 5;
             this.PipBoyColorRedTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.PipBoyColorRedTrackBar.Scroll += new System.EventHandler(this.PipBoyColorRedTrackBar_Scroll);
             // 
             // label1
             // 
@@ -1237,11 +1245,12 @@
             this.PipBoyColorGreenTrackBar.BackColor = System.Drawing.Color.White;
             this.PipBoyColorGreenTrackBar.LargeChange = 10;
             this.PipBoyColorGreenTrackBar.Location = new System.Drawing.Point(40, 49);
-            this.PipBoyColorGreenTrackBar.Maximum = 255;
+            this.PipBoyColorGreenTrackBar.Maximum = 1000;
             this.PipBoyColorGreenTrackBar.Name = "PipBoyColorGreenTrackBar";
             this.PipBoyColorGreenTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorGreenTrackBar.TabIndex = 8;
             this.PipBoyColorGreenTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.PipBoyColorGreenTrackBar.Scroll += new System.EventHandler(this.PipBoyColorGreenTrackBar_Scroll);
             // 
             // PipBoyColorBlueTrackBar
             // 
@@ -1249,11 +1258,12 @@
             this.PipBoyColorBlueTrackBar.BackColor = System.Drawing.Color.White;
             this.PipBoyColorBlueTrackBar.LargeChange = 10;
             this.PipBoyColorBlueTrackBar.Location = new System.Drawing.Point(40, 79);
-            this.PipBoyColorBlueTrackBar.Maximum = 255;
+            this.PipBoyColorBlueTrackBar.Maximum = 1000;
             this.PipBoyColorBlueTrackBar.Name = "PipBoyColorBlueTrackBar";
             this.PipBoyColorBlueTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorBlueTrackBar.TabIndex = 9;
             this.PipBoyColorBlueTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.PipBoyColorBlueTrackBar.Scroll += new System.EventHandler(this.PipBoyColorBlueTrackBar_Scroll);
             // 
             // tabVATS
             // 
@@ -1283,7 +1293,7 @@
             this.tabVATS.Location = new System.Drawing.Point(4, 40);
             this.tabVATS.Name = "tabVATS";
             this.tabVATS.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVATS.Size = new System.Drawing.Size(382, 349);
+            this.tabVATS.Size = new System.Drawing.Size(382, 330);
             this.tabVATS.TabIndex = 5;
             this.tabVATS.Text = "VATS[WIP]";
             // 
@@ -1437,40 +1447,50 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Red";
             // 
-            // tabGamepad
+            // tabControls
             // 
-            this.tabGamepad.BackColor = System.Drawing.Color.White;
-            this.tabGamepad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabGamepad.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabGamepad.Controls.Add(this.gamepadRumble);
-            this.tabGamepad.Controls.Add(this.gamepadEnable);
-            this.tabGamepad.ForeColor = System.Drawing.Color.Lime;
-            this.tabGamepad.Location = new System.Drawing.Point(4, 40);
-            this.tabGamepad.Name = "tabGamepad";
-            this.tabGamepad.Padding = new System.Windows.Forms.Padding(5);
-            this.tabGamepad.Size = new System.Drawing.Size(382, 349);
-            this.tabGamepad.TabIndex = 6;
-            this.tabGamepad.Text = "Gamepad[WIP]";
+            this.tabControls.BackColor = System.Drawing.Color.White;
+            this.tabControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabControls.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabControls.Controls.Add(this.groupBox15);
+            this.tabControls.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.tabControls.Location = new System.Drawing.Point(4, 40);
+            this.tabControls.Name = "tabControls";
+            this.tabControls.Padding = new System.Windows.Forms.Padding(5);
+            this.tabControls.Size = new System.Drawing.Size(382, 330);
+            this.tabControls.TabIndex = 6;
+            this.tabControls.Text = "Controls[WIP]";
             // 
-            // gamepadRumble
+            // groupBox15
             // 
-            this.gamepadRumble.AutoSize = true;
-            this.gamepadRumble.Location = new System.Drawing.Point(8, 31);
-            this.gamepadRumble.Name = "gamepadRumble";
-            this.gamepadRumble.Size = new System.Drawing.Size(62, 17);
-            this.gamepadRumble.TabIndex = 2;
-            this.gamepadRumble.Text = "Rumble";
-            this.gamepadRumble.UseVisualStyleBackColor = true;
+            this.groupBox15.Controls.Add(this.gamepadEnable);
+            this.groupBox15.Controls.Add(this.gamepadRumble);
+            this.groupBox15.Location = new System.Drawing.Point(8, 8);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(179, 65);
+            this.groupBox15.TabIndex = 3;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "groupBox15";
             // 
             // gamepadEnable
             // 
             this.gamepadEnable.AutoSize = true;
-            this.gamepadEnable.Location = new System.Drawing.Point(8, 8);
+            this.gamepadEnable.Location = new System.Drawing.Point(6, 19);
             this.gamepadEnable.Name = "gamepadEnable";
             this.gamepadEnable.Size = new System.Drawing.Size(59, 17);
             this.gamepadEnable.TabIndex = 1;
             this.gamepadEnable.Text = "Enable";
             this.gamepadEnable.UseVisualStyleBackColor = true;
+            // 
+            // gamepadRumble
+            // 
+            this.gamepadRumble.AutoSize = true;
+            this.gamepadRumble.Location = new System.Drawing.Point(6, 42);
+            this.gamepadRumble.Name = "gamepadRumble";
+            this.gamepadRumble.Size = new System.Drawing.Size(62, 17);
+            this.gamepadRumble.TabIndex = 2;
+            this.gamepadRumble.Text = "Rumble";
+            this.gamepadRumble.UseVisualStyleBackColor = true;
             // 
             // tabResolution
             // 
@@ -1481,7 +1501,7 @@
             this.tabResolution.Location = new System.Drawing.Point(4, 40);
             this.tabResolution.Name = "tabResolution";
             this.tabResolution.Padding = new System.Windows.Forms.Padding(5);
-            this.tabResolution.Size = new System.Drawing.Size(382, 349);
+            this.tabResolution.Size = new System.Drawing.Size(382, 330);
             this.tabResolution.TabIndex = 8;
             this.tabResolution.Text = "Resolution";
             // 
@@ -1565,7 +1585,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 405);
+            this.btnSave.Location = new System.Drawing.Point(12, 386);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 25);
             this.btnSave.TabIndex = 1;
@@ -1575,7 +1595,7 @@
             // 
             // btnReWrite
             // 
-            this.btnReWrite.Location = new System.Drawing.Point(98, 405);
+            this.btnReWrite.Location = new System.Drawing.Point(98, 386);
             this.btnReWrite.Name = "btnReWrite";
             this.btnReWrite.Size = new System.Drawing.Size(80, 25);
             this.btnReWrite.TabIndex = 2;
@@ -1585,7 +1605,7 @@
             // 
             // btnSource
             // 
-            this.btnSource.Location = new System.Drawing.Point(184, 405);
+            this.btnSource.Location = new System.Drawing.Point(184, 386);
             this.btnSource.Name = "btnSource";
             this.btnSource.Size = new System.Drawing.Size(80, 25);
             this.btnSource.TabIndex = 4;
@@ -1595,7 +1615,7 @@
             // 
             // btnDonate
             // 
-            this.btnDonate.Location = new System.Drawing.Point(338, 407);
+            this.btnDonate.Location = new System.Drawing.Point(338, 388);
             this.btnDonate.Name = "btnDonate";
             this.btnDonate.Size = new System.Drawing.Size(56, 20);
             this.btnDonate.TabIndex = 5;
@@ -1603,49 +1623,29 @@
             this.btnDonate.UseVisualStyleBackColor = true;
             this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
             // 
-            // hudFovFirst
+            // PipBoyColorBlueTextBox
             // 
-            this.hudFovFirst.Location = new System.Drawing.Point(93, 20);
-            this.hudFovFirst.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.hudFovFirst.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.hudFovFirst.Name = "hudFovFirst";
-            this.hudFovFirst.Size = new System.Drawing.Size(79, 20);
-            this.hudFovFirst.TabIndex = 18;
-            this.hudFovFirst.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.PipBoyColorBlueTextBox.Location = new System.Drawing.Point(128, 76);
+            this.PipBoyColorBlueTextBox.Name = "PipBoyColorBlueTextBox";
+            this.PipBoyColorBlueTextBox.ReadOnly = true;
+            this.PipBoyColorBlueTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorBlueTextBox.TabIndex = 26;
             // 
-            // hudFovThird
+            // PipBoyColorGreenTextBox
             // 
-            this.hudFovThird.Location = new System.Drawing.Point(93, 46);
-            this.hudFovThird.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.hudFovThird.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.hudFovThird.Name = "hudFovThird";
-            this.hudFovThird.Size = new System.Drawing.Size(79, 20);
-            this.hudFovThird.TabIndex = 19;
-            this.hudFovThird.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.PipBoyColorGreenTextBox.Location = new System.Drawing.Point(128, 46);
+            this.PipBoyColorGreenTextBox.Name = "PipBoyColorGreenTextBox";
+            this.PipBoyColorGreenTextBox.ReadOnly = true;
+            this.PipBoyColorGreenTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorGreenTextBox.TabIndex = 27;
+            // 
+            // PipBoyColorRedTextBox
+            // 
+            this.PipBoyColorRedTextBox.Location = new System.Drawing.Point(128, 15);
+            this.PipBoyColorRedTextBox.Name = "PipBoyColorRedTextBox";
+            this.PipBoyColorRedTextBox.ReadOnly = true;
+            this.PipBoyColorRedTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorRedTextBox.TabIndex = 28;
             // 
             // Form1
             // 
@@ -1694,6 +1694,8 @@
             this.tabHUD.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1711,9 +1713,6 @@
             this.tabPipBoy.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorBlueTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTextBox)).EndInit();
             this.groupBox11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorRedTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipBoyColorGreenTrackBar)).EndInit();
@@ -1732,15 +1731,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VATSEffectHighlightPAColorR)).EndInit();
-            this.tabGamepad.ResumeLayout(false);
-            this.tabGamepad.PerformLayout();
+            this.tabControls.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.tabResolution.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1755,7 +1753,7 @@
         private System.Windows.Forms.TabPage tabHUD;
         private System.Windows.Forms.TabPage tabPipBoy;
         private System.Windows.Forms.TabPage tabVATS;
-        private System.Windows.Forms.TabPage tabGamepad;
+        private System.Windows.Forms.TabPage tabControls;
         private System.Windows.Forms.TabPage tabResolution;
 
         private System.Windows.Forms.Label label1;
@@ -1874,14 +1872,15 @@
         private System.Windows.Forms.NumericUpDown hudColorGreenTextBox;
         private System.Windows.Forms.NumericUpDown hudColorRedTextBox;
         private System.Windows.Forms.NumericUpDown hudColorBlueTextBox;
-        private System.Windows.Forms.NumericUpDown PipBoyColorBlueTextBox;
-        private System.Windows.Forms.NumericUpDown PipBoyColorGreenTextBox;
-        private System.Windows.Forms.NumericUpDown PipBoyColorRedTextBox;
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel PipBoyColorPreview;
         private System.Windows.Forms.FlowLayoutPanel hudColorPreviewBox;
         private System.Windows.Forms.NumericUpDown hudFovThird;
         private System.Windows.Forms.NumericUpDown hudFovFirst;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.TextBox PipBoyColorRedTextBox;
+        private System.Windows.Forms.TextBox PipBoyColorGreenTextBox;
+        private System.Windows.Forms.TextBox PipBoyColorBlueTextBox;
 
     }
 }
