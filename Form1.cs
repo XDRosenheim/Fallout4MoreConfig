@@ -34,9 +34,8 @@ namespace Fallout4MoreConfig {
     /// Resolution:
     /// Presets. Make it change Width and height values.
     /// 
-    
-    public partial class Form1 : Form
-    {
+
+    public partial class Form1 : Form {
         public string CurrentVersion {
             get {
                 return ApplicationDeployment.IsNetworkDeployed
@@ -100,7 +99,7 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Saving
             #region Auto-Save
-            SavingAutoSaveTextBox.Text = Convert.ToInt32(Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins") ) ).ToString();
+            SavingAutoSaveTextBox.Text = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ) ).ToString();
             #endregion
             #region Quick-Save
             SavingQuickPause.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnPause" ) ) == 1;
@@ -131,8 +130,8 @@ namespace Fallout4MoreConfig {
             #region FOV
             var hudFirstFov = _extras.GetLineValue( Fallout4Location, "fDefault1stPersonFOV" );
             var hudThirdFov = _extras.GetLineValue( Fallout4Location, "fDefaultWorldFOV" );
-            hudFovFirst.Text = hudFirstFov.ToString();
-            hudFovThird.Text = hudThirdFov.ToString();
+            hudFovFirst.Text = Convert.ToInt32( hudFirstFov ).ToString();
+            hudFovThird.Text = Convert.ToInt32( hudThirdFov ).ToString();
             #endregion
             #region Other
             hudCrosshair.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bCrosshairEnabled" ) ) == 1;
@@ -160,8 +159,13 @@ namespace Fallout4MoreConfig {
             #region Gamepad
             #endregion
             #region Resolution
+            var resHeight = _extras.GetLineValue( Fallout4PrefsLocation, "iSize H" );
+            var resWidth = _extras.GetLineValue( Fallout4PrefsLocation, "iSize W" );
+            ResolutionHeight.Text = resHeight.ToString();
+            ResolutionWidth.Text = resWidth.ToString();
+            ResolutionFullscreen.Checked = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "bFull Screen" ) ) == 1;
+            ResolutionBorderless.Checked = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "bBorderless" ) ) == 1;
             #endregion
-
             Text += @" -- Version: " + CurrentVersion;
         }
         public Form1() {
@@ -178,7 +182,7 @@ namespace Fallout4MoreConfig {
                     Resources.String_Error_, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
             }
-            
+
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config file...
             // This should make it work for everybody.
@@ -190,8 +194,6 @@ namespace Fallout4MoreConfig {
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
             GetAllValues();
-            ResolutionWidth.Text = Screen.PrimaryScreen.Bounds.Width.ToString();
-            ResolutionHeight.Text = Screen.PrimaryScreen.Bounds.Height.ToString();
         }
         public sealed override bool AutoSize {
             get { return base.AutoSize; }
@@ -246,10 +248,10 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Water Reflections
             int visWatObj = 0, visWatLand = 0, visWatSky = 0, visWatTre = 0;
-            if (VisualWaterObjects.Checked) { visWatObj = 1; }
-            if (VisualWaterLand.Checked) { visWatLand = 1; }
-            if (VisualWaterSky.Checked) { visWatSky = 1; }
-            if (VisualWaterTree.Checked) { visWatTre = 1; }
+            if(VisualWaterObjects.Checked) { visWatObj = 1; }
+            if(VisualWaterLand.Checked) { visWatLand = 1; }
+            if(VisualWaterSky.Checked) { visWatSky = 1; }
+            if(VisualWaterTree.Checked) { visWatTre = 1; }
             pattern = @"bReflectLODObjects=([0-9\.]+)";
             replacement = "bReflectLODObjects=" + visWatObj;
             rgx = new Regex( pattern );
@@ -319,6 +321,37 @@ namespace Fallout4MoreConfig {
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
+            #region Saving
+            #region Auto
+            pattern = @"fAutosaveEveryXMins=([0-9\.]+)";
+            replacement = "fAutosaveEveryXMins=" + Math.Round( Convert.ToDouble( SavingAutoSaveTextBox.Text ), 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Quick Saves
+            int saPaused = 0, saTravel = 0, saWaiting = 0, saSleeping = 0;
+            pattern = @"bSaveOnPause=([0-9\.]+)";
+            if(SavingQuickPause.Checked) { saPaused = 1; }
+            if(SavingQuickTravel.Checked) { saTravel = 1; }
+            if(SavingQuickWaiting.Checked) { saWaiting = 1; }
+            if(SavingQuickSleeping.Checked) { saSleeping = 1; }
+            replacement = "bSaveOnPause=" + saPaused;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"bSaveOnTravel=([0-9\.]+)";
+            replacement = "bSaveOnTravel=" + saTravel;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"bSaveOnWait=([0-9\.]+)";
+            replacement = "bSaveOnWait=" + saWaiting;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"bSaveOnRest=([0-9\.]+)";
+            replacement = "bSaveOnRest=" + saSleeping;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #endregion
             #region HUD
             #region Opacity
             pattern = @"fHUDOpacity=([0-9\.]+)";
@@ -358,11 +391,11 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Other
             int hudHair = 0, hudDiaSubs = 0, hudDiaCam = 0, hudGenSubs = 0, hudGps = 0;
-            if (hudCrosshair.Checked) { hudHair = 1; }
-            if (hudDialogSubs.Checked) { hudDiaSubs = 1; }
-            if (hudDialogCam.Checked) { hudDiaCam = 1; }
-            if (hudGeneralSubs.Checked) { hudGenSubs = 1; }
-            if (hudCompass.Checked) { hudGps = 1; }
+            if(hudCrosshair.Checked) { hudHair = 1; }
+            if(hudDialogSubs.Checked) { hudDiaSubs = 1; }
+            if(hudDialogCam.Checked) { hudDiaCam = 1; }
+            if(hudGeneralSubs.Checked) { hudGenSubs = 1; }
+            if(hudCompass.Checked) { hudGps = 1; }
             pattern = @"bCrosshairEnabled=([0-9\.]+)";
             replacement = "bCrosshairEnabled=" + hudHair;
             rgx = new Regex( pattern );
@@ -385,37 +418,7 @@ namespace Fallout4MoreConfig {
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
             #endregion
-            #region Saving
-            #region Auto
-            pattern = @"fAutosaveEveryXMins=([0-9\.]+)";
-            replacement = "fAutosaveEveryXMins=" + Math.Round( Convert.ToDouble( SavingAutoSaveTextBox.Text ), 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Quick Saves
-            int saPaused = 0, saTravel = 0, saWaiting = 0, saSleeping = 0;
-            pattern = @"bSaveOnPause=([0-9\.]+)";
-            if(SavingQuickPause.Checked) { saPaused = 1; }
-            if(SavingQuickTravel.Checked) { saTravel = 1; }
-            if(SavingQuickWaiting.Checked) { saWaiting = 1; }
-            if(SavingQuickSleeping.Checked) { saSleeping = 1; }
-            replacement = "bSaveOnPause=" + saPaused;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            pattern = @"bSaveOnTravel=([0-9\.]+)";
-            replacement = "bSaveOnTravel=" + saTravel;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            pattern = @"bSaveOnWait=([0-9\.]+)";
-            replacement = "bSaveOnWait=" + saWaiting;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            pattern = @"bSaveOnRest=([0-9\.]+)";
-            replacement = "bSaveOnRest=" + saSleeping;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
+
             #region Gamepad
             int gpEnable = 0, gpRumble = 0;
             if(gamepadEnable.Checked) { gpEnable = 1; }
@@ -432,6 +435,39 @@ namespace Fallout4MoreConfig {
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
+            #endregion
+            #region Resolution
+            var resBorder = 0;
+            // If fullscreen is checked, also check borderless.
+            // Better safe than sorry.
+            if (ResolutionFullscreen.Checked) {
+                pattern = @"bFull Screen=([0-9\.]+)";
+                replacement = "bFull Screen=1";
+                rgx = new Regex(pattern);
+                prefsFile = rgx.Replace(prefsFile, replacement);
+                pattern = @"bBorderless=([0-9\.]+)";
+                replacement = "bBorderless=1";
+                rgx = new Regex(pattern);
+                prefsFile = rgx.Replace(prefsFile, replacement);
+            } else {
+                pattern = @"bFull Screen=([0-9\.]+)";
+                replacement = "bFull Screen=0";
+                rgx = new Regex( pattern );
+                prefsFile = rgx.Replace( prefsFile, replacement );
+                if (ResolutionBorderless.Checked) { resBorder = 1; }
+                pattern = @"bBorderless=([0-9\.]+)";
+                replacement = "bBorderless=" + resBorder;
+                rgx = new Regex( pattern );
+                prefsFile = rgx.Replace( prefsFile, replacement );
+            }
+            pattern = @"iSize W=([0-9\.]+)";
+            replacement = "iSize W=" + ResolutionWidth.Value;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            pattern = @"iSize H=([0-9\.]+)";
+            replacement = "iSize H=" + ResolutionHeight.Value;
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
 
             File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
@@ -497,12 +533,7 @@ namespace Fallout4MoreConfig {
         }
         // Changes
         private void resolutionFullscreen_CheckedChanged( object sender, EventArgs e ) {
-            if(resolutionFullscreen.Checked) {
-                resolutionBorderless.Checked = true;
-                resolutionBorderless.Enabled = false;
-            } else {
-                resolutionBorderless.Enabled = true;
-            }
+            ResolutionBorderless.Enabled = !ResolutionFullscreen.Checked;
         }
     }
 }
