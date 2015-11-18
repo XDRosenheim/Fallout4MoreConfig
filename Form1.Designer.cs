@@ -109,6 +109,9 @@
             this.hudColorBlueTrackBar = new System.Windows.Forms.TrackBar();
             this.tabPipBoy = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.PipBoyColorRedTextBox = new System.Windows.Forms.TextBox();
+            this.PipBoyColorGreenTextBox = new System.Windows.Forms.TextBox();
+            this.PipBoyColorBlueTextBox = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.PipBoyColorPreview = new System.Windows.Forms.FlowLayoutPanel();
             this.PipBoyColorRedTrackBar = new System.Windows.Forms.TrackBar();
@@ -153,9 +156,6 @@
             this.btnReWrite = new System.Windows.Forms.Button();
             this.btnSource = new System.Windows.Forms.Button();
             this.btnDonate = new System.Windows.Forms.Button();
-            this.PipBoyColorBlueTextBox = new System.Windows.Forms.TextBox();
-            this.PipBoyColorGreenTextBox = new System.Windows.Forms.TextBox();
-            this.PipBoyColorRedTextBox = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -1182,6 +1182,30 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Color";
             // 
+            // PipBoyColorRedTextBox
+            // 
+            this.PipBoyColorRedTextBox.Location = new System.Drawing.Point(128, 15);
+            this.PipBoyColorRedTextBox.Name = "PipBoyColorRedTextBox";
+            this.PipBoyColorRedTextBox.ReadOnly = true;
+            this.PipBoyColorRedTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorRedTextBox.TabIndex = 28;
+            // 
+            // PipBoyColorGreenTextBox
+            // 
+            this.PipBoyColorGreenTextBox.Location = new System.Drawing.Point(128, 46);
+            this.PipBoyColorGreenTextBox.Name = "PipBoyColorGreenTextBox";
+            this.PipBoyColorGreenTextBox.ReadOnly = true;
+            this.PipBoyColorGreenTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorGreenTextBox.TabIndex = 27;
+            // 
+            // PipBoyColorBlueTextBox
+            // 
+            this.PipBoyColorBlueTextBox.Location = new System.Drawing.Point(128, 76);
+            this.PipBoyColorBlueTextBox.Name = "PipBoyColorBlueTextBox";
+            this.PipBoyColorBlueTextBox.ReadOnly = true;
+            this.PipBoyColorBlueTextBox.Size = new System.Drawing.Size(45, 20);
+            this.PipBoyColorBlueTextBox.TabIndex = 26;
+            // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.PipBoyColorPreview);
@@ -1203,9 +1227,9 @@
             // 
             this.PipBoyColorRedTrackBar.AutoSize = false;
             this.PipBoyColorRedTrackBar.BackColor = System.Drawing.Color.White;
-            this.PipBoyColorRedTrackBar.LargeChange = 10;
+            this.PipBoyColorRedTrackBar.LargeChange = 25;
             this.PipBoyColorRedTrackBar.Location = new System.Drawing.Point(40, 18);
-            this.PipBoyColorRedTrackBar.Maximum = 1000;
+            this.PipBoyColorRedTrackBar.Maximum = 100;
             this.PipBoyColorRedTrackBar.Name = "PipBoyColorRedTrackBar";
             this.PipBoyColorRedTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorRedTrackBar.TabIndex = 5;
@@ -1245,7 +1269,7 @@
             this.PipBoyColorGreenTrackBar.BackColor = System.Drawing.Color.White;
             this.PipBoyColorGreenTrackBar.LargeChange = 10;
             this.PipBoyColorGreenTrackBar.Location = new System.Drawing.Point(40, 49);
-            this.PipBoyColorGreenTrackBar.Maximum = 1000;
+            this.PipBoyColorGreenTrackBar.Maximum = 100;
             this.PipBoyColorGreenTrackBar.Name = "PipBoyColorGreenTrackBar";
             this.PipBoyColorGreenTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorGreenTrackBar.TabIndex = 8;
@@ -1258,7 +1282,7 @@
             this.PipBoyColorBlueTrackBar.BackColor = System.Drawing.Color.White;
             this.PipBoyColorBlueTrackBar.LargeChange = 10;
             this.PipBoyColorBlueTrackBar.Location = new System.Drawing.Point(40, 79);
-            this.PipBoyColorBlueTrackBar.Maximum = 1000;
+            this.PipBoyColorBlueTrackBar.Maximum = 100;
             this.PipBoyColorBlueTrackBar.Name = "PipBoyColorBlueTrackBar";
             this.PipBoyColorBlueTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorBlueTrackBar.TabIndex = 9;
@@ -1623,36 +1647,12 @@
             this.btnDonate.UseVisualStyleBackColor = true;
             this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
             // 
-            // PipBoyColorBlueTextBox
-            // 
-            this.PipBoyColorBlueTextBox.Location = new System.Drawing.Point(128, 76);
-            this.PipBoyColorBlueTextBox.Name = "PipBoyColorBlueTextBox";
-            this.PipBoyColorBlueTextBox.ReadOnly = true;
-            this.PipBoyColorBlueTextBox.Size = new System.Drawing.Size(45, 20);
-            this.PipBoyColorBlueTextBox.TabIndex = 26;
-            // 
-            // PipBoyColorGreenTextBox
-            // 
-            this.PipBoyColorGreenTextBox.Location = new System.Drawing.Point(128, 46);
-            this.PipBoyColorGreenTextBox.Name = "PipBoyColorGreenTextBox";
-            this.PipBoyColorGreenTextBox.ReadOnly = true;
-            this.PipBoyColorGreenTextBox.Size = new System.Drawing.Size(45, 20);
-            this.PipBoyColorGreenTextBox.TabIndex = 27;
-            // 
-            // PipBoyColorRedTextBox
-            // 
-            this.PipBoyColorRedTextBox.Location = new System.Drawing.Point(128, 15);
-            this.PipBoyColorRedTextBox.Name = "PipBoyColorRedTextBox";
-            this.PipBoyColorRedTextBox.ReadOnly = true;
-            this.PipBoyColorRedTextBox.Size = new System.Drawing.Size(45, 20);
-            this.PipBoyColorRedTextBox.TabIndex = 28;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(576, 572);
+            this.ClientSize = new System.Drawing.Size(430, 442);
             this.Controls.Add(this.btnDonate);
             this.Controls.Add(this.btnSource);
             this.Controls.Add(this.btnReWrite);

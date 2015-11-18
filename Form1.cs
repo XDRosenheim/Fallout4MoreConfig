@@ -184,7 +184,7 @@ namespace Fallout4MoreConfig {
             }
 
             // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
-            // And Bethesda uses a point (.) in their config file...
+            // And Bethesda uses a point (.) in their config files...
             // This should make it work for everybody.
             Application.CurrentCulture = CultureInfo.CreateSpecificCulture( "en-US" );
 
@@ -469,18 +469,18 @@ namespace Fallout4MoreConfig {
             #region Pip-Boy
             #region Color
             pattern = @"fPipboyEffectColorR=([0-9\.]+)";
-            replacement = "fPipboyEffectColorR=" + Math.Round( Convert.ToDouble( PipBoyColorRedTrackBar.Value ) / 100, 4 );
+            replacement = "fPipboyEffectColorR="; // Make math.
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"fPipboyEffectColorG=([0-9\.]+)";
-            replacement = "fPipboyEffectColorG=" + Math.Round( Convert.ToDouble( PipBoyColorGreenTrackBar.Value ) / 100, 4 );
+            replacement = "fPipboyEffectColorG="; // Make math.
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"fPipboyEffectColorB=([0-9\.]+)";
-            replacement = "fPipboyEffectColorB=" + Math.Round( Convert.ToDouble( PipBoyColorBlueTrackBar.Value ) / 100, 4 );
+            replacement = "fPipboyEffectColorB="; // Make math.
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
-	        #endregion
+            #endregion
             #endregion
             #region VATS
             #endregion
@@ -506,21 +506,21 @@ namespace Fallout4MoreConfig {
             // If fullscreen is checked, also check borderless.
             // Better safe than sorry.
             #region Fullscreen || Borderless
-            if (ResolutionFullscreen.Checked) {
+            if(ResolutionFullscreen.Checked) {
                 pattern = @"bFull Screen=([0-9\.]+)";
                 replacement = "bFull Screen=1";
-                rgx = new Regex(pattern);
-                prefsFile = rgx.Replace(prefsFile, replacement);
+                rgx = new Regex( pattern );
+                prefsFile = rgx.Replace( prefsFile, replacement );
                 pattern = @"bBorderless=([0-9\.]+)";
                 replacement = "bBorderless=1";
-                rgx = new Regex(pattern);
-                prefsFile = rgx.Replace(prefsFile, replacement);
+                rgx = new Regex( pattern );
+                prefsFile = rgx.Replace( prefsFile, replacement );
             } else {
                 pattern = @"bFull Screen=([0-9\.]+)";
                 replacement = "bFull Screen=0";
                 rgx = new Regex( pattern );
                 prefsFile = rgx.Replace( prefsFile, replacement );
-                if (ResolutionBorderless.Checked) { resBorder = 1; }
+                if(ResolutionBorderless.Checked) { resBorder = 1; }
                 pattern = @"bBorderless=([0-9\.]+)";
                 replacement = "bBorderless=" + resBorder;
                 rgx = new Regex( pattern );
@@ -607,12 +607,14 @@ namespace Fallout4MoreConfig {
             ResolutionBorderless.Enabled = !ResolutionFullscreen.Checked;
         }
 
-        private void PipBoyColorRedTrackBar_Scroll( object sender, EventArgs e ) {
-            var red = Convert.ToInt32( PipBoyColorRedTrackBar.Value / 100 * 2.55 );
-            PipBoyColorRedTextBox.Text = red.ToString();
+        private void PipBoyColorRedTrackBar_Scroll( object sender, EventArgs e )
+        {
+            var red = Math.Round(Convert.ToDouble(PipBoyColorRedTrackBar.Value / 255), 4);
+            PipBoyColorRedTextBox.Text = red.ToString(CultureInfo.CurrentCulture);
+            
             PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
         }
-        private void PipBoyColorGreenTrackBar_Scroll( object sender, EventArgs e ){ 
+        private void PipBoyColorGreenTrackBar_Scroll( object sender, EventArgs e ) {
             PipBoyColorGreenTextBox.Text = PipBoyColorGreenTrackBar.Value.ToString();
             PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
         }
