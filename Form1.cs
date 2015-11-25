@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Fallout4MoreConfig.Properties;
@@ -29,13 +30,14 @@ namespace Fallout4MoreConfig {
     /// Make it work.
     /// 
     /// Gamepad:
-    /// Sensitivity.
+    /// Sensitivity?
     /// 
     /// Resolution:
-    /// Presets. Make it change Width and height values.
+    /// Presets.
     /// 
 
     public partial class Form1 : Form {
+        private static readonly Extras Extras = new Extras();
         public string CurrentVersion {
             get {
                 return ApplicationDeployment.IsNetworkDeployed
@@ -43,130 +45,177 @@ namespace Fallout4MoreConfig {
                        : Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
-        public string Fallout4Location = @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
-                + @"\Documents\my games\Fallout4\Fallout4.ini";
-        public string Fallout4PrefsLocation = @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
-                + @"\Documents\my games\Fallout4\Fallout4Prefs.ini";
-        private readonly Extras _extras = new Extras();
+
+        public string Fallout4Location = Extras.ConfigFile();
+        public string Fallout4PrefsLocation = Extras.PrefsConfigFile();
         public void GetAllValues() {
-            // Get values from current config
-            #region Visuals
-            #region Image Space
-            VisualsDoF.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bDoDepthOfField" ) ) == 1;
-            VisualsLensflare.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bLensFlare" ) ) == 1;
-            VisualsGore.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bDisableAllGore" ) ) == 1;
-            VisualsScreenBlood.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bBloodSplatterEnabled" ) ) == 1;
-            #endregion
-            #region Water Reflections
-            VisualWaterSky.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectSky" ) ) == 1;
-            VisualWaterLand.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectLODLand" ) ) == 1;
-            VisualWaterTree.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectLODTrees" ) ) == 1;
-            VisualWaterObjects.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4Location, "bReflectLODObjects" ) ) == 1;
-            #endregion
-            #endregion
-            #region Audio
-            #region Master
-            var masterVolume = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fAudioMasterVolume" ) );
-            AudioMasterTrackbar.Value = (int)( masterVolume * 100 );
-            AudioMasterText.Text = ( (int)( masterVolume * 100 ) ).ToString();
-            #endregion
-            #region Val
-            var val0 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal0" ) );
-            AudioVal0TrackBar.Value = (int)( val0 * 100 );
-            AudioVal0Text.Text = ( (int)( val0 * 100 ) ).ToString();
-            var val1 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal1" ) );
-            AudioVal1TrackBar.Value = (int)( val1 * 100 );
-            AudioVal1Text.Text = ( (int)( val1 * 100 ) ).ToString();
-            var val2 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal2" ) );
-            AudioVal2TrackBar.Value = (int)( val2 * 100 );
-            AudioVal2Text.Text = ( (int)( val2 * 100 ) ).ToString();
-            var val3 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal3" ) );
-            AudioVal3TrackBar.Value = (int)( val3 * 100 );
-            AudioVal3Text.Text = ( (int)( val3 * 100 ) ).ToString();
-            var val4 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal4" ) );
-            AudioVal4TrackBar.Value = (int)( val4 * 100 );
-            AudioVal4Text.Text = ( (int)( val4 * 100 ) ).ToString();
-            var val5 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal5" ) );
-            AudioVal5TrackBar.Value = (int)( val5 * 100 );
-            AudioVal5Text.Text = ( (int)( val5 * 100 ) ).ToString();
-            var val6 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal6" ) );
-            AudioVal6TrackBar.Value = (int)( val6 * 100 );
-            AudioVal6Text.Text = ( (int)( val6 * 100 ) ).ToString();
-            var val7 = Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fVal7" ) );
-            AudioVal7TrackBar.Value = (int)( val7 * 100 );
-            AudioVal7Text.Text = ( (int)( val7 * 100 ) ).ToString();
-            #endregion
-            #endregion
-            #region Saving
-            #region Auto-Save
-            SavingAutoSaveTextBox.Text = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ) ).ToString();
-            #endregion
-            #region Quick-Save
-            SavingQuickPause.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnPause" ) ) == 1;
-            SavingQuickTravel.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnTravel" ) ) == 1;
-            SavingQuickWaiting.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnWait" ) ) == 1;
-            SavingQuickSleeping.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnRest" ) ) == 1;
-            #endregion
-            #endregion
-            #region HUD
-            #region Opacity
-            HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
-            HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 );
-            #endregion
-            #region Color
-            var hudColorRed = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorR" );
-            var hudColorGreen = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorG" );
-            var hudColorBlue = _extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorB" );
-            hudColorRedTrackBar.Value = Convert.ToInt16( hudColorRed );
-            hudColorRedTextBox.Text = hudColorRed.ToString();
-            hudColorGreenTrackBar.Value = Convert.ToInt16( hudColorGreen );
-            hudColorGreenTextBox.Text = hudColorGreen.ToString();
-            hudColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
-            hudColorBlueTextBox.Text = hudColorBlue.ToString();
-            #region Preview
-            hudColorPreviewBox.BackColor = Color.FromArgb( Convert.ToInt16( hudColorRed ), Convert.ToInt16( hudColorGreen ), Convert.ToInt16( hudColorBlue ) );
-            #endregion
-            #endregion
-            #region FOV
-            var hudFirstFov = _extras.GetLineValue( Fallout4Location, "fDefault1stPersonFOV" );
-            var hudThirdFov = _extras.GetLineValue( Fallout4Location, "fDefaultWorldFOV" );
-            hudFovFirst.Text = Convert.ToInt32( hudFirstFov ).ToString();
-            hudFovThird.Text = Convert.ToInt32( hudThirdFov ).ToString();
-            #endregion
-            #region Other
-            hudCrosshair.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bCrosshairEnabled" ) ) == 1;
-            hudCompass.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bShowCompass" ) ) == 1;
-            hudDialogCam.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bDialogueCameraEnable" ) ) == 1;
-            hudDialogSubs.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bDialogueSubtitles" ) ) == 1;
-            hudGeneralSubs.Checked = Convert.ToInt16( _extras.GetLineValue( Fallout4PrefsLocation, "bGeneralSubtitles" ) ) == 1;
-            #endregion
-            #endregion
-            #region Pip-Boy
-            #region Color
-            var pipBoyColorRed = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" );
-            var pipBoyColorGreen = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" );
-            var pipBoyColorBlue = _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" );
-            PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" ) ) * 100 );
-            PipBoyColorRedTextBox.Text = pipBoyColorRed.ToString();
-            PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" ) ) * 100 );
-            PipBoyColorGreenTextBox.Text = pipBoyColorGreen.ToString();
-            PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( _extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" ) ) * 100 );
-            PipBoyColorBlueTextBox.Text = pipBoyColorBlue.ToString();
-            #endregion
-            #endregion
-            #region VATS
-            #endregion
-            #region Gamepad
-            #endregion
-            #region Resolution
-            var resHeight = _extras.GetLineValue( Fallout4PrefsLocation, "iSize H" );
-            var resWidth = _extras.GetLineValue( Fallout4PrefsLocation, "iSize W" );
-            ResolutionHeight.Text = resHeight.ToString();
-            ResolutionWidth.Text = resWidth.ToString();
-            ResolutionFullscreen.Checked = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "bFull Screen" ) ) == 1;
-            ResolutionBorderless.Checked = Convert.ToInt32( _extras.GetLineValue( Fallout4PrefsLocation, "bBorderless" ) ) == 1;
-            #endregion
-            Text = @"Fallout 4 - Extended settings -- Version: " + CurrentVersion;
+            try {
+                // Get values from current config
+                #region Visuals
+                #region Image Space
+                VisualsDoF.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bDoDepthOfField" ) ) == 1;
+                VisualsLensflare.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bLensFlare" ) ) == 1;
+                VisualsGore.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bDisableAllGore" ) ) == 1;
+                VisualsScreenBlood.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bBloodSplatterEnabled" ) ) == 1;
+                #endregion
+                #region Water Reflections
+                VisualWaterSky.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectSky" ) ) == 1;
+                VisualWaterLand.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODLand" ) ) == 1;
+                VisualWaterTree.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODTrees" ) ) == 1;
+                VisualWaterObjects.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODObjects" ) ) == 1;
+                #endregion
+                #endregion
+                #region Audio
+                #region Master
+                var masterVolume = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fAudioMasterVolume" ) );
+                AudioMasterTrackbar.Value = (int)( masterVolume * 100 );
+                AudioMasterText.Text = ( (int)( masterVolume * 100 ) ).ToString();
+                #endregion
+                #region Val
+                #region 0
+                var val0 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal0" ) );
+                AudioVal0TrackBar.Value = (int)( val0 * 100 );
+                AudioVal0Text.Text = ( (int)( val0 * 100 ) ).ToString();
+                #endregion
+                #region 1
+                var val1 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal1" ) );
+                AudioVal1TrackBar.Value = (int)( val1 * 100 );
+                AudioVal1Text.Text = ( (int)( val1 * 100 ) ).ToString();
+                #endregion
+                #region 2
+                var val2 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal2" ) );
+                AudioVal2TrackBar.Value = (int)( val2 * 100 );
+                AudioVal2Text.Text = ( (int)( val2 * 100 ) ).ToString();
+                #endregion
+                #region 3
+                var val3 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal3" ) );
+                AudioVal3TrackBar.Value = (int)( val3 * 100 );
+                AudioVal3Text.Text = ( (int)( val3 * 100 ) ).ToString();
+                #endregion
+                #region 4
+                var val4 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal4" ) );
+                AudioVal4TrackBar.Value = (int)( val4 * 100 );
+                AudioVal4Text.Text = ( (int)( val4 * 100 ) ).ToString();
+                #endregion
+                #region 5
+                var val5 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal5" ) );
+                AudioVal5TrackBar.Value = (int)( val5 * 100 );
+                AudioVal5Text.Text = ( (int)( val5 * 100 ) ).ToString();
+                #endregion
+                #region 6
+                var val6 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal6" ) );
+                AudioVal6TrackBar.Value = (int)( val6 * 100 );
+                AudioVal6Text.Text = ( (int)( val6 * 100 ) ).ToString();
+                #endregion
+                #region 7
+                var val7 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal7" ) );
+                AudioVal7TrackBar.Value = (int)( val7 * 100 );
+                AudioVal7Text.Text = ( (int)( val7 * 100 ) ).ToString();
+                #endregion
+                #endregion
+                #endregion
+                #region Saving
+                #region Auto-Save
+                SavingAutoSaveTextBox.Text = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ) ).ToString();
+                #endregion
+                #region Quick-Save
+                SavingQuickPause.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnPause" ) ) == 1;
+                SavingQuickTravel.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnTravel" ) ) == 1;
+                SavingQuickWaiting.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnWait" ) ) == 1;
+                SavingQuickSleeping.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnRest" ) ) == 1;
+                #endregion
+                #endregion
+                #region HUD
+                #region Opacity
+                HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
+                HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 );
+                #endregion
+                #region Color
+                #region Red
+                var hudColorRed = Extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorR" );
+                hudColorRedTrackBar.Value = Convert.ToInt16( hudColorRed );
+                hudColorRedTextBox.Text = hudColorRed.ToString();
+                #endregion
+                #region Green
+                var hudColorGreen = Extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorG" );
+                hudColorGreenTrackBar.Value = Convert.ToInt16( hudColorGreen );
+                hudColorGreenTextBox.Text = hudColorGreen.ToString();
+                #endregion
+                #region Blue
+                var hudColorBlue = Extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorB" );
+                hudColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
+                hudColorBlueTextBox.Text = hudColorBlue.ToString();
+                #endregion
+                #region Preview
+                hudColorPreviewBox.BackColor = Color.FromArgb( Convert.ToInt16( hudColorRed ),
+                    Convert.ToInt16( hudColorGreen ), Convert.ToInt16( hudColorBlue ) );
+                #endregion
+                #endregion
+                #region FOV
+                #region First Person
+                var hudFirstFov = Extras.GetLineValue( Fallout4Location, "fDefault1stPersonFOV" );
+                hudFovFirst.Text = Convert.ToInt32( hudFirstFov ).ToString();
+                #endregion
+                #region World Person
+                var hudThirdFov = Extras.GetLineValue( Fallout4Location, "fDefaultWorldFOV" );
+                hudFovThird.Text = Convert.ToInt32( hudThirdFov ).ToString();
+                #endregion
+                #endregion
+                #region Other
+                hudCrosshair.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bCrosshairEnabled" ) ) == 1;
+                hudCompass.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bShowCompass" ) ) == 1;
+                hudDialogCam.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bDialogueCameraEnable" ) ) == 1;
+                hudDialogSubs.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bDialogueSubtitles" ) ) == 1;
+                hudGeneralSubs.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bGeneralSubtitles" ) ) == 1;
+                #endregion
+                #endregion
+                #region Pip-Boy
+                #region Color
+                #region Red
+                var pipBoyColorRed = Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" );
+                PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorRedTextBox.Text = pipBoyColorRed.ToString();
+                #endregion
+                #region Green
+                var pipBoyColorGreen = Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" );
+                PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorGreenTextBox.Text = pipBoyColorGreen.ToString();
+                #endregion
+                #region Blue
+                var pipBoyColorBlue = Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" );
+                PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorBlueTextBox.Text = pipBoyColorBlue.ToString();
+                #endregion
+                #region Preview
+                PipBoyColorPreview.BackColor = Color.FromArgb(PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value);
+                #endregion
+                #endregion
+                #endregion
+                #region VATS
+
+                #endregion
+                #region Gamepad
+
+                #endregion
+                #region Resolution
+                #region Height
+                var resHeight = Extras.GetLineValue( Fallout4PrefsLocation, "iSize H" );
+                ResolutionHeight.Text = resHeight.ToString();
+                #endregion
+                #region Width
+                var resWidth = Extras.GetLineValue( Fallout4PrefsLocation, "iSize W" );
+                ResolutionWidth.Text = resWidth.ToString();
+                #endregion
+                #region Fullscreen / Borderless
+                ResolutionFullscreen.Checked = Convert.ToInt32( Extras.GetLineValue( Fallout4PrefsLocation, "bFull Screen" ) ) == 1;
+                ResolutionBorderless.Checked = Convert.ToInt32( Extras.GetLineValue( Fallout4PrefsLocation, "bBorderless" ) ) == 1;
+                #endregion
+                #endregion
+                Text = @"Fallout 4 - Extended settings -- Version: " + CurrentVersion;
+            } catch(Exception e) {
+                MessageBox.Show( e.ToString(), @"Error", MessageBoxButtons.OK );
+                Application.Exit();
+            }
         }
         public Form1() {
             // See if config files exists
@@ -388,6 +437,8 @@ namespace Fallout4MoreConfig {
             #endregion
             #region HUD
             #region Opacity
+            // TODO Move to Extras class.
+            //prefsFile = Extras.Save( "fHUDOpacity", prefsFile, (float)Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 ) );
             pattern = @"fHUDOpacity=([0-9\.]+)";
             replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
             rgx = new Regex( pattern );
@@ -469,15 +520,15 @@ namespace Fallout4MoreConfig {
             #region Pip-Boy
             #region Color
             pattern = @"fPipboyEffectColorR=([0-9\.]+)";
-            replacement = "fPipboyEffectColorR="; // Make math.
+            replacement = "fPipboyEffectColorR=" + PipBoyColorRedTextBox.Text;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"fPipboyEffectColorG=([0-9\.]+)";
-            replacement = "fPipboyEffectColorG="; // Make math.
+            replacement = "fPipboyEffectColorG=" + PipBoyColorGreenTextBox.Text;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             pattern = @"fPipboyEffectColorB=([0-9\.]+)";
-            replacement = "fPipboyEffectColorB="; // Make math.
+            replacement = "fPipboyEffectColorB=" + PipBoyColorBlueTextBox.Text;
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
@@ -541,6 +592,7 @@ namespace Fallout4MoreConfig {
             #endregion
             #endregion
 
+            // "Unlock" the files if they are set to READ ONLY.
             File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
             File.SetAttributes( Fallout4Location, File.GetAttributes( Fallout4Location ) & FileAttributes.Normal );
             // Write to file
@@ -572,6 +624,21 @@ namespace Fallout4MoreConfig {
         private void HUDColorBlueTrackBar_Scroll( object sender, EventArgs e ) {
             hudColorBlueTextBox.Text = hudColorBlueTrackBar.Value.ToString();
             hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
+        }
+        private void PipBoyColorRedTrackBar_Scroll( object sender, EventArgs e ) {
+            var red = Math.Round( Convert.ToDouble( PipBoyColorRedTrackBar.Value ) / 255, 4 );
+            PipBoyColorRedTextBox.Text = red.ToString( "0.0000" );
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
+        }
+        private void PipBoyColorGreenTrackBar_Scroll( object sender, EventArgs e ) {
+            var green = Math.Round( Convert.ToDouble( PipBoyColorGreenTrackBar.Value ) / 255, 4 );
+            PipBoyColorGreenTextBox.Text = green.ToString( "0.0000" );
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
+        }
+        private void PipBoyColorBlueTrackBar_Scroll( object sender, EventArgs e ) {
+            var blue = Math.Round( Convert.ToDouble( PipBoyColorBlueTrackBar.Value ) / 255, 4 );
+            PipBoyColorBlueTextBox.Text = blue.ToString( "0.0000" );
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
         }
         // Audio Track Bars
         private void AudioMasterTrackbar_Scroll( object sender, EventArgs e ) {
@@ -607,20 +674,5 @@ namespace Fallout4MoreConfig {
             ResolutionBorderless.Enabled = !ResolutionFullscreen.Checked;
         }
 
-        private void PipBoyColorRedTrackBar_Scroll( object sender, EventArgs e )
-        {
-            var red = Math.Round(Convert.ToDouble(PipBoyColorRedTrackBar.Value / 255), 4);
-            PipBoyColorRedTextBox.Text = red.ToString(CultureInfo.CurrentCulture);
-            
-            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
-        }
-        private void PipBoyColorGreenTrackBar_Scroll( object sender, EventArgs e ) {
-            PipBoyColorGreenTextBox.Text = PipBoyColorGreenTrackBar.Value.ToString();
-            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
-        }
-        private void PipBoyColorBlueTrackBar_Scroll( object sender, EventArgs e ) {
-            PipBoyColorBlueTextBox.Text = PipBoyColorBlueTrackBar.Value.ToString();
-            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorBlueTrackBar.Value, PipBoyColorGreenTrackBar.Value );
-        }
     }
 }

@@ -376,10 +376,11 @@
             this.tabAudio.Controls.Add(this.groupBox12);
             this.tabAudio.Controls.Add(this.groupBox4);
             this.tabAudio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabAudio.Location = new System.Drawing.Point(4, 40);
+            this.tabAudio.ForeColor = System.Drawing.Color.Lime;
+            this.tabAudio.Location = new System.Drawing.Point(4, 22);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(382, 330);
+            this.tabAudio.Size = new System.Drawing.Size(382, 348);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio[WIP]";
             // 
@@ -720,10 +721,10 @@
             this.tabSaving.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabSaving.Controls.Add(this.groupBox6);
             this.tabSaving.Controls.Add(this.groupBox5);
-            this.tabSaving.Location = new System.Drawing.Point(4, 40);
+            this.tabSaving.Location = new System.Drawing.Point(4, 22);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(382, 330);
+            this.tabSaving.Size = new System.Drawing.Size(382, 348);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -827,10 +828,10 @@
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabHUD.Location = new System.Drawing.Point(4, 40);
+            this.tabHUD.Location = new System.Drawing.Point(4, 22);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(382, 330);
+            this.tabHUD.Size = new System.Drawing.Size(382, 348);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -1154,13 +1155,12 @@
             this.tabPipBoy.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPipBoy.Controls.Add(this.groupBox10);
             this.tabPipBoy.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabPipBoy.ForeColor = System.Drawing.Color.Lime;
             this.tabPipBoy.Location = new System.Drawing.Point(4, 40);
             this.tabPipBoy.Name = "tabPipBoy";
             this.tabPipBoy.Padding = new System.Windows.Forms.Padding(5);
             this.tabPipBoy.Size = new System.Drawing.Size(382, 330);
             this.tabPipBoy.TabIndex = 4;
-            this.tabPipBoy.Text = "Pip-Boy[WIP]";
+            this.tabPipBoy.Text = "Pip-Boy";
             // 
             // groupBox10
             // 
@@ -1227,9 +1227,9 @@
             // 
             this.PipBoyColorRedTrackBar.AutoSize = false;
             this.PipBoyColorRedTrackBar.BackColor = System.Drawing.Color.White;
-            this.PipBoyColorRedTrackBar.LargeChange = 25;
+            this.PipBoyColorRedTrackBar.LargeChange = 1;
             this.PipBoyColorRedTrackBar.Location = new System.Drawing.Point(40, 18);
-            this.PipBoyColorRedTrackBar.Maximum = 100;
+            this.PipBoyColorRedTrackBar.Maximum = 255;
             this.PipBoyColorRedTrackBar.Name = "PipBoyColorRedTrackBar";
             this.PipBoyColorRedTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorRedTrackBar.TabIndex = 5;
@@ -1267,9 +1267,9 @@
             // 
             this.PipBoyColorGreenTrackBar.AutoSize = false;
             this.PipBoyColorGreenTrackBar.BackColor = System.Drawing.Color.White;
-            this.PipBoyColorGreenTrackBar.LargeChange = 10;
+            this.PipBoyColorGreenTrackBar.LargeChange = 1;
             this.PipBoyColorGreenTrackBar.Location = new System.Drawing.Point(40, 49);
-            this.PipBoyColorGreenTrackBar.Maximum = 100;
+            this.PipBoyColorGreenTrackBar.Maximum = 255;
             this.PipBoyColorGreenTrackBar.Name = "PipBoyColorGreenTrackBar";
             this.PipBoyColorGreenTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorGreenTrackBar.TabIndex = 8;
@@ -1280,9 +1280,9 @@
             // 
             this.PipBoyColorBlueTrackBar.AutoSize = false;
             this.PipBoyColorBlueTrackBar.BackColor = System.Drawing.Color.White;
-            this.PipBoyColorBlueTrackBar.LargeChange = 10;
+            this.PipBoyColorBlueTrackBar.LargeChange = 1;
             this.PipBoyColorBlueTrackBar.Location = new System.Drawing.Point(40, 79);
-            this.PipBoyColorBlueTrackBar.Maximum = 100;
+            this.PipBoyColorBlueTrackBar.Maximum = 255;
             this.PipBoyColorBlueTrackBar.Name = "PipBoyColorBlueTrackBar";
             this.PipBoyColorBlueTrackBar.Size = new System.Drawing.Size(82, 24);
             this.PipBoyColorBlueTrackBar.TabIndex = 9;
@@ -1477,7 +1477,7 @@
             this.tabControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabControls.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabControls.Controls.Add(this.groupBox15);
-            this.tabControls.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.tabControls.ForeColor = System.Drawing.Color.Lime;
             this.tabControls.Location = new System.Drawing.Point(4, 40);
             this.tabControls.Name = "tabControls";
             this.tabControls.Padding = new System.Windows.Forms.Padding(5);
