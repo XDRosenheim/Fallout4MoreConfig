@@ -16,9 +16,9 @@ namespace Fallout4MoreConfig {
                         var splitLine = line.Split( new[] { '=' }, StringSplitOptions.RemoveEmptyEntries );
                         return splitLine[1];
                     } catch(Exception e) {
-                        // TODO - Copy error to clipboard button.
+                        // TODO: Button to copy error to clipboard.
                         MessageBox.Show( Resources.Extras_GetLineValue_ + e,
-                            Resources.String_Error_, MessageBoxButtons.OK, MessageBoxIcon.Error );
+                            Resources.Error_Header, MessageBoxButtons.OK, MessageBoxIcon.Error );
                         Application.Exit();
                     }
                 }

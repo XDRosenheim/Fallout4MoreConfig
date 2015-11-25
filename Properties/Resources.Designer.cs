@@ -61,6 +61,33 @@ namespace Fallout4MoreConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error!.
+        /// </summary>
+        internal static string Error_Header {
+            get {
+                return ResourceManager.GetString("Error_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  was not found..
+        /// </summary>
+        internal static string Error_Path_not_found_ {
+            get {
+                return ResourceManager.GetString("Error_Path_not_found_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, and error has occurred...
+        /// </summary>
+        internal static string Error_Sorry {
+            get {
+                return ResourceManager.GetString("Error_Sorry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please report the following code on github: 
         ///.
         /// </summary>
@@ -80,30 +107,12 @@ namespace Fallout4MoreConfig.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error!.
-        /// </summary>
-        internal static string String_Error_ {
-            get {
-                return ResourceManager.GetString("String_Error_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 
         ///.
         /// </summary>
         internal static string string_newLine {
             get {
                 return ResourceManager.GetString("string_newLine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  was not found..
-        /// </summary>
-        internal static string string_path_not_found_ {
-            get {
-                return ResourceManager.GetString("string_path_not_found_", resourceCulture);
             }
         }
     }

@@ -121,14 +121,17 @@
     <value>Please report the following code on github: 
 </value>
   </data>
-  <data name="String_Error_" xml:space="preserve">
+  <data name="Error_Header" xml:space="preserve">
     <value>Error!</value>
   </data>
-  <data name="string_path_not_found_" xml:space="preserve">
+  <data name="Error_Path_not_found_" xml:space="preserve">
     <value> was not found.</value>
   </data>
   <data name="string_newLine" xml:space="preserve">
     <value>
 </value>
+  </data>
+  <data name="Error_Sorry" xml:space="preserve">
+    <value>Sorry, and error has occurred..</value>
   </data>
 </root>

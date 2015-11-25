@@ -5,37 +5,46 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Fallout4MoreConfig.Properties;
 
 namespace Fallout4MoreConfig {
-    /// TODO - This list
+    /// TODO: This list
+    /// TODO: This list - HUD
     /// HUD:
     /// The preview, should have a/some screenshot(s) where the actual hud is shown.
     /// Screenshot should also work with FOV changes.
     /// 
+    /// TODO: This list - Audio
     /// Audio:
     /// Val0-7 should be analliesed, so I know which does what. (They are not descriped in the configs)
     /// 
+    /// TODO: This list - Visuals
     /// Visuals:
     /// More options............. To come.......... Soon(TM)
     /// 
+    /// TODO: This list - Pip-Boy
     /// PIP-BOY:
-    /// Make it work.
     /// The preview, should have a/some screenshot(s) where the actual hud is shown.
     /// 
+    /// TODO: This list - VATS
     /// VATS:
     /// Make it work.
     /// 
+    /// TODO: This list - Gamepad
     /// Gamepad:
+    /// Add more things.
     /// Sensitivity?
     /// 
+    /// TODO: This list - Resolution
     /// Resolution:
     /// Presets.
     /// 
-
+    /// TODO: This list - Other
+    /// Other:
+    /// Track bars, changes textboxes. But not vice versa. FIX IT!
+    /// 
     public partial class Form1 : Form {
         private static readonly Extras Extras = new Extras();
         public string CurrentVersion {
@@ -45,7 +54,6 @@ namespace Fallout4MoreConfig {
                        : Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
-
         public string Fallout4Location = Extras.ConfigFile();
         public string Fallout4PrefsLocation = Extras.PrefsConfigFile();
         public void GetAllValues() {
@@ -172,27 +180,43 @@ namespace Fallout4MoreConfig {
                 #region Pip-Boy
                 #region Color
                 #region Red
-                var pipBoyColorRed = Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" );
                 PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" ).ToString() ) * 100 * 2.55 );
-                PipBoyColorRedTextBox.Text = pipBoyColorRed.ToString();
+                PipBoyColorRedTextBox.Text = PipBoyColorRedTrackBar.Value.ToString();
                 #endregion
                 #region Green
-                var pipBoyColorGreen = Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" );
                 PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" ).ToString() ) * 100 * 2.55 );
-                PipBoyColorGreenTextBox.Text = pipBoyColorGreen.ToString();
+                PipBoyColorGreenTextBox.Text = PipBoyColorGreenTrackBar.Value.ToString();
                 #endregion
                 #region Blue
-                var pipBoyColorBlue = Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" );
                 PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" ).ToString() ) * 100 * 2.55 );
-                PipBoyColorBlueTextBox.Text = pipBoyColorBlue.ToString();
+                PipBoyColorBlueTextBox.Text = PipBoyColorBlueTrackBar.Value.ToString();
                 #endregion
                 #region Preview
-                PipBoyColorPreview.BackColor = Color.FromArgb(PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value);
+                PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
                 #endregion
                 #endregion
                 #endregion
                 #region VATS
-
+                #region Color
+                VATSColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectColorR" ).ToString() ) * 100 * 2.55 );
+                VATSColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectColorG" ).ToString() ) * 100 * 2.55 );
+                VATSColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectColorB" ).ToString() ) * 100 * 2.55 );
+                #endregion
+                #region Highlight Color
+                VATSHighlightColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightColorR" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightColorG" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightColorB" ).ToString() ) * 100 * 2.55 );
+                #endregion
+                #region PA Color
+                VATSPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectPAColorR" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectPAColorG" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectPAColorB" ).ToString() ) * 100 * 2.55 );
+                #endregion
+                #region PA Highlight Color
+                VATSHighlightPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightPAColorR" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightPAColorG" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightPAColorB" ).ToString() ) * 100 * 2.55 );
+                #endregion
                 #endregion
                 #region Gamepad
 
@@ -213,7 +237,8 @@ namespace Fallout4MoreConfig {
                 #endregion
                 Text = @"Fallout 4 - Extended settings -- Version: " + CurrentVersion;
             } catch(Exception e) {
-                MessageBox.Show( e.ToString(), @"Error", MessageBoxButtons.OK );
+                // TODO: Button to copy error to clipboard.
+                MessageBox.Show( Resources.Error_Sorry + Resources.string_newLine + e, @"Error", MessageBoxButtons.OK );
                 Application.Exit();
             }
         }
@@ -221,18 +246,20 @@ namespace Fallout4MoreConfig {
             // See if config files exists
             if(!File.Exists( Fallout4Location )) {
                 MessageBox.Show(
-                    Fallout4Location + Resources.string_path_not_found_,
-                    Resources.String_Error_, MessageBoxButtons.OK,
+                    // TODO: Button to copy error to clipboard.
+                    Fallout4Location + Resources.Error_Path_not_found_,
+                    Resources.Error_Header, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
             }
             if(!File.Exists( Fallout4PrefsLocation )) {
                 MessageBox.Show(
-                    Fallout4PrefsLocation + Resources.string_path_not_found_,
-                    Resources.String_Error_, MessageBoxButtons.OK,
+                    // TODO: Button to copy error to clipboard.
+                    Fallout4PrefsLocation + Resources.Error_Path_not_found_,
+                    Resources.Error_Header, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
             }
 
-            // Some (most) coutries uses comma (,) as decimal mark, but some countries just has to fuck everything up.
+            // Some (most) coutries use comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config files...
             // This should make it work for everybody.
             Application.CurrentCulture = CultureInfo.CreateSpecificCulture( "en-US" );
@@ -437,7 +464,7 @@ namespace Fallout4MoreConfig {
             #endregion
             #region HUD
             #region Opacity
-            // TODO Move to Extras class.
+            // TODO: Move to Extras class.
             //prefsFile = Extras.Save( "fHUDOpacity", prefsFile, (float)Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 ) );
             pattern = @"fHUDOpacity=([0-9\.]+)";
             replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
@@ -519,21 +546,107 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Pip-Boy
             #region Color
+            #region R
             pattern = @"fPipboyEffectColorR=([0-9\.]+)";
-            replacement = "fPipboyEffectColorR=" + PipBoyColorRedTextBox.Text;
+            replacement = "fPipboyEffectColorR=" + Math.Round( Convert.ToDouble( PipBoyColorRedTrackBar.Value.ToString( "#.####" ) ) / 255, 4 );
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region G
             pattern = @"fPipboyEffectColorG=([0-9\.]+)";
-            replacement = "fPipboyEffectColorG=" + PipBoyColorGreenTextBox.Text;
+            replacement = "fPipboyEffectColorG=" + Math.Round( Convert.ToDouble( PipBoyColorGreenTrackBar.Value ) / 255, 4 );
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region B
             pattern = @"fPipboyEffectColorB=([0-9\.]+)";
-            replacement = "fPipboyEffectColorB=" + PipBoyColorBlueTextBox.Text;
+            replacement = "fPipboyEffectColorB=" + Math.Round( Convert.ToDouble( PipBoyColorBlueTrackBar.Value ) / 255, 4 );
             rgx = new Regex( pattern );
             prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
             #endregion
             #endregion
             #region VATS
+            #region Color
+            #region Red
+            pattern = @"fModMenuEffectColorR=([0-9\.]+)";
+            replacement = "fModMenuEffectColorR=" + Math.Round( Convert.ToDouble( VATSColorR.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Green
+            pattern = @"fModMenuEffectColorG=([0-9\.]+)";
+            replacement = "fModMenuEffectColorG=" + Math.Round( Convert.ToDouble( VATSColorG.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Blue
+            pattern = @"fModMenuEffectColorB=([0-9\.]+)";
+            replacement = "fModMenuEffectColorB=" + Math.Round( Convert.ToDouble( VATSColorB.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #endregion
+            #region Highlight Color
+            #region Red
+            pattern = @"fModMenuEffectHighlightColorR=([0-9\.]+)";
+            replacement = "fModMenuEffectHighlightColorR=" + Math.Round( Convert.ToDouble( VATSHighlightColorR.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Green
+            pattern = @"fModMenuEffectHighlightColorG=([0-9\.]+)";
+            replacement = "fModMenuEffectHighlightColorG=" + Math.Round( Convert.ToDouble( VATSHighlightColorG.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Blue
+            pattern = @"fModMenuEffectHighlightColorB=([0-9\.]+)";
+            replacement = "fModMenuEffectHighlightColorB=" + Math.Round( Convert.ToDouble( VATSHighlightColorB.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #endregion
+            #region PA Color
+            #region Red
+            pattern = @"fModMenuEffectPAColorR=([0-9\.]+)";
+            replacement = "fModMenuEffectPAColorR=" + Math.Round( Convert.ToDouble( VATSPAColorR.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Green
+            pattern = @"fModMenuEffectPAColorG=([0-9\.]+)";
+            replacement = "fModMenuEffectPAColorG=" + Math.Round( Convert.ToDouble( VATSPAColorG.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Blue
+            pattern = @"fModMenuEffectPAColorB=([0-9\.]+)";
+            replacement = "fModMenuEffectPAColorB=" + Math.Round( Convert.ToDouble( VATSPAColorB.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #endregion
+            #region PA Highlight Color
+            #region Red
+            pattern = @"fModMenuEffectHighlightPAColorR=([0-9\.]+)";
+            replacement = "fModMenuEffectHighlightPAColorR=" + Math.Round( Convert.ToDouble( VATSHighlightPAColorR.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Green
+            pattern = @"fModMenuEffectHighlightPAColorG=([0-9\.]+)";
+            replacement = "fModMenuEffectHighlightPAColorG=" + Math.Round( Convert.ToDouble( VATSHighlightPAColorG.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #region Blue
+            pattern = @"fModMenuEffectHighlightPAColorB=([0-9\.]+)";
+            replacement = "fModMenuEffectHighlightPAColorB=" + Math.Round( Convert.ToDouble( VATSHighlightPAColorB.Value ) / 255, 4 );
+            rgx = new Regex( pattern );
+            prefsFile = rgx.Replace( prefsFile, replacement );
+            #endregion
+            #endregion
             #endregion
             #region Gamepad
             int gpEnable = 0, gpRumble = 0;
@@ -626,18 +739,15 @@ namespace Fallout4MoreConfig {
             hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
         }
         private void PipBoyColorRedTrackBar_Scroll( object sender, EventArgs e ) {
-            var red = Math.Round( Convert.ToDouble( PipBoyColorRedTrackBar.Value ) / 255, 4 );
-            PipBoyColorRedTextBox.Text = red.ToString( "0.0000" );
+            PipBoyColorRedTextBox.Value = Convert.ToDecimal( PipBoyColorRedTrackBar.Value * 100 * 2.55 / 255 );
             PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
         }
         private void PipBoyColorGreenTrackBar_Scroll( object sender, EventArgs e ) {
-            var green = Math.Round( Convert.ToDouble( PipBoyColorGreenTrackBar.Value ) / 255, 4 );
-            PipBoyColorGreenTextBox.Text = green.ToString( "0.0000" );
+            PipBoyColorGreenTextBox.Value = Convert.ToDecimal( PipBoyColorGreenTrackBar.Value * 100 * 2.55 / 255 );
             PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
         }
         private void PipBoyColorBlueTrackBar_Scroll( object sender, EventArgs e ) {
-            var blue = Math.Round( Convert.ToDouble( PipBoyColorBlueTrackBar.Value ) / 255, 4 );
-            PipBoyColorBlueTextBox.Text = blue.ToString( "0.0000" );
+            PipBoyColorBlueTextBox.Value = Convert.ToDecimal( PipBoyColorBlueTrackBar.Value * 100 * 2.55 / 255 );
             PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
         }
         // Audio Track Bars
@@ -673,6 +783,29 @@ namespace Fallout4MoreConfig {
         private void resolutionFullscreen_CheckedChanged( object sender, EventArgs e ) {
             ResolutionBorderless.Enabled = !ResolutionFullscreen.Checked;
         }
-
+        private void PipBoyColorRedTextBox_ValueChanged( object sender, EventArgs e ) {
+            PipBoyColorRedTrackBar.Value = Convert.ToInt32( PipBoyColorRedTextBox.Text );
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
+        }
+        private void PipBoyColorGreenTextBox_ValueChanged( object sender, EventArgs e ) {
+            PipBoyColorGreenTrackBar.Value = Convert.ToInt32( PipBoyColorGreenTextBox.Text );
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
+        }
+        private void PipBoyColorBlueTextBox_ValueChanged( object sender, EventArgs e ) {
+            PipBoyColorBlueTrackBar.Value = Convert.ToInt32( PipBoyColorBlueTextBox.Text );
+            PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
+        }
+        private void hudColorRedTextBox_ValueChanged( object sender, EventArgs e ) {
+            hudColorRedTrackBar.Value = Convert.ToInt32( hudColorRedTextBox.Text );
+            hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
+        }
+        private void hudColorGreenTextBox_ValueChanged( object sender, EventArgs e ) {
+            hudColorGreenTrackBar.Value = Convert.ToInt32( hudColorGreenTextBox.Text );
+            hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
+        }
+        private void hudColorBlueTextBox_ValueChanged( object sender, EventArgs e ) {
+            hudColorBlueTrackBar.Value = Convert.ToInt32( hudColorBlueTextBox.Text );
+            hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
+        }
     }
 }
