@@ -1,4 +1,5 @@
 These guys! (Maybe gals!)
+
 Icon: 
 	/u/BendikJac on Reddit
 	https://redd.it/3lmjuy
@@ -7,9 +8,10 @@ Note worthy people/links:
 	http://codereview.stackexchange.com/a/40452
 	http://stackoverflow.com/a/8081331/4549645
 	http://stackoverflow.com/questions/12816860/get-screen-size-in-pixels-in-windows-form-in-c-sharp
-	
+	http://www.codeproject.com/KB/cs/cs_ini.aspx
+
 	Microsoft.
 		For sharing my information.
 	
-	Hello Internet. For the entertainment and the slow days.
+	Hello Internet. For the entertainment in the slow days.
 		http://www.hellointernet.fm/

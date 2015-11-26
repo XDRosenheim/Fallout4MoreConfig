@@ -126,6 +126,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\INI\INI.csproj">
+      <Project>{3c313ff9-3c39-42d7-88c0-5d79acd58be3}</Project>
+      <Name>INI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

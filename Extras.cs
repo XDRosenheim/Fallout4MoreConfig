@@ -26,12 +26,12 @@ namespace Fallout4MoreConfig {
             return "%ERROR%";
         }
         public string PrefsConfigFile() {
-            return @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
-                + @"\Documents\my games\Fallout4\Fallout4Prefs.ini";
+            return "C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
+                + "\\Documents\\my games\\Fallout4\\Fallout4Prefs.ini";
         }
         public string ConfigFile() {
-            return @"C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
-                + @"\Documents\my games\Fallout4\Fallout4.ini";
+            return "C:" + Environment.ExpandEnvironmentVariables( "%HOMEPATH%" )
+                + "\\Documents\\my games\\Fallout4\\Fallout4.ini";
         }
 
         public string Save(string command, string file, float math)

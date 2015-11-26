@@ -5,45 +5,31 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Fallout4MoreConfig.Properties;
+using Ini;
 
 namespace Fallout4MoreConfig {
     /// TODO: This list
     /// TODO: This list - HUD
-    /// HUD:
     /// The preview, should have a/some screenshot(s) where the actual hud is shown.
     /// Screenshot should also work with FOV changes.
     /// 
     /// TODO: This list - Audio
-    /// Audio:
     /// Val0-7 should be analliesed, so I know which does what. (They are not descriped in the configs)
     /// 
     /// TODO: This list - Visuals
-    /// Visuals:
     /// More options............. To come.......... Soon(TM)
     /// 
     /// TODO: This list - Pip-Boy
-    /// PIP-BOY:
     /// The preview, should have a/some screenshot(s) where the actual hud is shown.
     /// 
-    /// TODO: This list - VATS
-    /// VATS:
-    /// Make it work.
-    /// 
     /// TODO: This list - Gamepad
-    /// Gamepad:
     /// Add more things.
     /// Sensitivity?
     /// 
     /// TODO: This list - Resolution
-    /// Resolution:
     /// Presets.
-    /// 
-    /// TODO: This list - Other
-    /// Other:
-    /// Track bars, changes textboxes. But not vice versa. FIX IT!
     /// 
     public partial class Form1 : Form {
         private static readonly Extras Extras = new Extras();
@@ -258,17 +244,13 @@ namespace Fallout4MoreConfig {
                     Resources.Error_Header, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
             }
-
             // Some (most) coutries use comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config files...
             // This should make it work for everybody.
             Application.CurrentCulture = CultureInfo.CreateSpecificCulture( "en-US" );
-
             InitializeComponent();
-
-            AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-
+            AutoSize = true;
             GetAllValues();
         }
         public sealed override bool AutoSize {
@@ -277,440 +259,190 @@ namespace Fallout4MoreConfig {
         }
         // The buttons
         private void btnSave_Click( object sender, EventArgs e ) {
-            // THE FOLLOWING IS A MESS !!
-            // IT READS THE WHOLE FILE TO MEMORY !!
-            // PLEASE CONTACT ME ON GITHUB IF YOU HAVE A SOLUTION !!
-            // http://github.com/XDRosenheim/Fallout4MoreConfig
-            // But, hey, it works...
-
-            var prefsFile = File.ReadAllText( Fallout4PrefsLocation );
-            var nonFile = File.ReadAllText( Fallout4Location );
-            // ReSharper disable once RedundantAssignment
-            var pattern = "";
-            // ReSharper disable once RedundantAssignment
-            var replacement = "";
-            // ReSharper disable once JoinDeclarationAndInitializer
-            Regex rgx;
-
-            #region Visuals
-            #region Image Space
-            int visuDof = 0, visuLf = 0, visuGore = 0, visuBlood = 0;
-            if(VisualsDoF.Checked) { visuDof = 1; }
-            if(VisualsLensflare.Checked) { visuLf = 1; }
-            if(VisualsGore.Checked) { visuGore = 1; }
-            if(VisualsScreenBlood.Checked) { visuBlood = 1; }
-            #region DoF
-            pattern = @"bDoDepthOfField=([0-9\.]+)";
-            replacement = "bDoDepthOfField=" + visuDof;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
+            var betterPrefsFile = new IniFile( Fallout4PrefsLocation );
+            var betterNonFile = new IniFile( Fallout4Location );
+            #region Visuals - WORKS
+            var visuDof = VisualsDoF.Checked ? "1" : "0";
+            var visuLf = VisualsLensflare.Checked ? "1" : "0";
+            var visuGore = VisualsGore.Checked ? "1" : "0";
+            var visuBlood = VisualsScreenBlood.Checked ? "1" : "0";
+            betterPrefsFile.IniWriteValue( "Imagespace", "bDoDepthOfField", visuDof );
+            betterPrefsFile.IniWriteValue( "Imagespace", "bLensFlare", visuLf );
+            betterNonFile.IniWriteValue( "General", "bDisableAllGore", visuGore );
+            betterNonFile.IniWriteValue( "ScreenSplatter", "bBloodSplatterEnabled", visuBlood );
+            var visWatObj = VisualWaterObjects.Checked ? "1" : "0";
+            var visWatLand = VisualWaterLand.Checked ? "1" : "0";
+            var visWatSky = VisualWaterSky.Checked ? "1" : "0";
+            var visWatTre = VisualWaterTree.Checked ? "1" : "0";
+            betterNonFile.IniWriteValue( "Water", "bReflectLODObjects", visWatObj );
+            betterNonFile.IniWriteValue( "Water", "bReflectLODLand", visWatLand );
+            betterNonFile.IniWriteValue( "Water", "bReflectSky", visWatSky );
+            betterNonFile.IniWriteValue( "Water", "bReflectLODTrees", visWatTre );
             #endregion
-            #region Flare
-            pattern = @"bLensFlare=([0-9\.]+)";
-            replacement = "bLensFlare=" + visuLf;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
-            #region Gore
+            #region Audio - WORKS
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fAudioMasterVolume", ( (double)AudioMasterTrackbar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal0", ( (double)AudioVal0TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal1", ( (double)AudioVal1TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal2", ( (double)AudioVal2TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal3", ( (double)AudioVal3TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal4", ( (double)AudioVal4TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal5", ( (double)AudioVal5TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal6", ( (double)AudioVal6TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal7", ( (double)AudioVal7TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
             #endregion
-            pattern = @"bDisableAllGore=([0-9\.]+)";
-            replacement = "bDisableAllGore=" + visuGore;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
+            #region Saving - WORKS
+            betterPrefsFile.IniWriteValue( "SaveGame", "fAutosaveEveryXMins", SavingAutoSaveTextBox.Text );
+            var saPaused = SavingQuickPause.Checked ? "1" : "0";
+            var saTravel = SavingQuickTravel.Checked ? "1" : "0";
+            var saWaiting = SavingQuickWaiting.Checked ? "1" : "0";
+            var saSleeping = SavingQuickSleeping.Checked ? "1" : "0";
+            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnPause", saPaused );
+            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnTravel", saTravel );
+            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnWait", saWaiting );
+            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnRest", saSleeping );
             #endregion
-            #region Blood on screen
-            pattern = @"bBloodSplatterEnabled=([0-9\.]+)";
-            replacement = "bBloodSplatterEnabled=" + visuBlood;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
+            #region HUD - WORKS
+            betterPrefsFile.IniWriteValue( "MAIN", "fHUDOpacity", Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "Interface", "iHUDColorR", Math.Round( Convert.ToDouble( hudColorRedTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "Interface", "iHUDColorG", Math.Round( Convert.ToDouble( hudColorGreenTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
+            betterPrefsFile.IniWriteValue( "Interface", "iHUDColorB", Math.Round( Convert.ToDouble( hudColorBlueTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
+            // FOV
+            betterNonFile.IniWriteValue( "Display", "fDefaultWorldFOV", hudFovThird.Text );
+            betterNonFile.IniWriteValue( "Interface", "fDefaultWorldFOV", hudFovThird.Text );
+            betterPrefsFile.IniWriteValue( "Display", "fDefaultWorldFOV", hudFovThird.Text );
+            betterNonFile.IniWriteValue( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
+            betterNonFile.IniWriteValue( "Interface", "fDefault1stPersonFOV", hudFovFirst.Text );
+            betterPrefsFile.IniWriteValue( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
+            var hudHair = hudCrosshair.Checked ? "1" : "0";
+            var hudDiaSubs = hudDialogSubs.Checked ? "1" : "0";
+            var hudDiaCam = hudDialogCam.Checked ? "1" : "0";
+            var hudGenSubs = hudGeneralSubs.Checked ? "1" : "0";
+            var hudGps = hudCompass.Checked ? "1" : "0";
+            betterPrefsFile.IniWriteValue( "MAIN", "bCrosshairEnabled", hudHair );
+            betterPrefsFile.IniWriteValue( "Interface", "bDialogueSubtitles", hudDiaSubs );
+            betterPrefsFile.IniWriteValue( "Interface", "bDialogueCameraEnable", hudDiaCam );
+            betterPrefsFile.IniWriteValue( "Interface", "bGeneralSubtitles", hudGenSubs );
+            betterPrefsFile.IniWriteValue( "Interface", "bShowCompass", hudGps );
             #endregion
-            #endregion
-            #region Water Reflections
-            int visWatObj = 0, visWatLand = 0, visWatSky = 0, visWatTre = 0;
-            if(VisualWaterObjects.Checked) { visWatObj = 1; }
-            if(VisualWaterLand.Checked) { visWatLand = 1; }
-            if(VisualWaterSky.Checked) { visWatSky = 1; }
-            if(VisualWaterTree.Checked) { visWatTre = 1; }
-            #region Objects
-            pattern = @"bReflectLODObjects=([0-9\.]+)";
-            replacement = "bReflectLODObjects=" + visWatObj;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
-            #endregion
-            #region Land
-            pattern = @"bReflectLODLand=([0-9\.]+)";
-            replacement = "bReflectLODLand=" + visWatLand;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
-            #endregion
-            #region Sky
-            pattern = @"bReflectSky=([0-9\.]+)";
-            replacement = "bReflectSky=" + visWatSky;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
-            #endregion
-            #region Trees
-            pattern = @"bReflectLODTrees=([0-9\.]+)";
-            replacement = "bReflectLODTrees=" + visWatTre;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
-            #endregion
-            #endregion
-            #endregion
-            #region Audio
-            #region Master
-            var saveMasterVolume = (double)AudioMasterTrackbar.Value / 100;
-            pattern = @"fAudioMasterVolume=([0-9\.]+)";
-            replacement = "fAudioMasterVolume=" + saveMasterVolume;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Val
-            #region 0
-            var saveVol0 = (double)AudioVal0TrackBar.Value / 100;
-            pattern = @"fVal0=([0-9\.]+)";
-            replacement = "fVal0=" + saveVol0;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region 1
-            var saveVol1 = (double)AudioVal1TrackBar.Value / 100;
-            pattern = @"fVal1=([0-9\.]+)";
-            replacement = "fVal1=" + saveVol1;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region 2
-            var saveVol2 = (double)AudioVal2TrackBar.Value / 100;
-            pattern = @"fVal2=([0-9\.]+)";
-            replacement = "fVal2=" + saveVol2;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region 3
-            var saveVol3 = (double)AudioVal3TrackBar.Value / 100;
-            pattern = @"fVal3=([0-9\.]+)";
-            replacement = "fVal3=" + saveVol3;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region 4
-            var saveVol4 = (double)AudioVal4TrackBar.Value / 100;
-            pattern = @"fVal4=([0-9\.]+)";
-            replacement = "fVal4=" + saveVol4;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region 5
-            var saveVol5 = (double)AudioVal5TrackBar.Value / 100;
-            pattern = @"fVal5=([0-9\.]+)";
-            replacement = "fVal5=" + saveVol5;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region 6
-            var saveVol6 = (double)AudioVal6TrackBar.Value / 100;
-            pattern = @"fVal6=([0-9\.]+)";
-            replacement = "fVal6=" + saveVol6;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region 7
-            var saveVol7 = (double)AudioVal7TrackBar.Value / 100;
-            pattern = @"fVal7=([0-9\.]+)";
-            replacement = "fVal7=" + saveVol7;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #endregion
-            #region Saving
-            #region Auto
-            pattern = @"fAutosaveEveryXMins=([0-9\.]+)";
-            replacement = "fAutosaveEveryXMins=" + Math.Round( Convert.ToDouble( SavingAutoSaveTextBox.Text ), 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Quick Saves
-            int saPaused = 0, saTravel = 0, saWaiting = 0, saSleeping = 0;
-            if(SavingQuickPause.Checked) { saPaused = 1; }
-            if(SavingQuickTravel.Checked) { saTravel = 1; }
-            if(SavingQuickWaiting.Checked) { saWaiting = 1; }
-            if(SavingQuickSleeping.Checked) { saSleeping = 1; }
-            #region Pause
-            pattern = @"bSaveOnPause=([0-9\.]+)";
-            replacement = "bSaveOnPause=" + saPaused;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Travel
-            pattern = @"bSaveOnTravel=([0-9\.]+)";
-            replacement = "bSaveOnTravel=" + saTravel;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Wait
-            pattern = @"bSaveOnWait=([0-9\.]+)";
-            replacement = "bSaveOnWait=" + saWaiting;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Sleep
-            pattern = @"bSaveOnRest=([0-9\.]+)";
-            replacement = "bSaveOnRest=" + saSleeping;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #endregion
-            #region HUD
-            #region Opacity
-            // TODO: Move to Extras class.
-            //prefsFile = Extras.Save( "fHUDOpacity", prefsFile, (float)Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 ) );
-            pattern = @"fHUDOpacity=([0-9\.]+)";
-            replacement = "fHUDOpacity=" + Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region HUD Color
-            #region R
-            pattern = @"iHUDColorR=([0-9\.]+)";
-            replacement = "iHUDColorR=" + Math.Round( Convert.ToDouble( hudColorRedTrackBar.Value ), 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region G
-            pattern = @"iHUDColorG=([0-9\.]+)";
-            replacement = "iHUDColorG=" + Math.Round( Convert.ToDouble( hudColorGreenTrackBar.Value ), 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region B
-            pattern = @"iHUDColorB=([0-9\.]+)";
-            replacement = "iHUDColorB=" + Math.Round( Convert.ToDouble( hudColorBlueTrackBar.Value ), 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #region FOV
-            #region World
-            pattern = @"fDefaultWorldFOV=([0-9\.]+)";
-            replacement = "fDefaultWorldFOV=" + hudFovThird.Text;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
-            #endregion
-            #region 1st
-            pattern = @"fDefault1stPersonFOV=([0-9\.]+)";
-            replacement = "fDefault1stPersonFOV=" + hudFovFirst.Text;
-            rgx = new Regex( pattern );
-            nonFile = rgx.Replace( nonFile, replacement );
-            #endregion
-            #endregion
-            #region Other
-            int hudHair = 0, hudDiaSubs = 0, hudDiaCam = 0, hudGenSubs = 0, hudGps = 0;
-            if(hudCrosshair.Checked) { hudHair = 1; }
-            if(hudDialogSubs.Checked) { hudDiaSubs = 1; }
-            if(hudDialogCam.Checked) { hudDiaCam = 1; }
-            if(hudGeneralSubs.Checked) { hudGenSubs = 1; }
-            if(hudCompass.Checked) { hudGps = 1; }
-            #region Crosshair
-            pattern = @"bCrosshairEnabled=([0-9\.]+)";
-            replacement = "bCrosshairEnabled=" + hudHair;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Dialog Subtitles
-            pattern = @"bDialogueSubtitles=([0-9\.]+)";
-            replacement = "bDialogueSubtitles=" + hudDiaSubs;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Dialog Camera
-            pattern = @"bDialogueCameraEnable=([0-9\.]+)";
-            replacement = "bDialogueCameraEnable=" + hudDiaCam;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region General Subtitles
-            pattern = @"bGeneralSubtitles=([0-9\.]+)";
-            replacement = "bGeneralSubtitles=" + hudGenSubs;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Show Compass
-            pattern = @"bShowCompass=([0-9\.]+)";
-            replacement = "bShowCompass=" + hudGps;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #endregion
-            #region Pip-Boy
+            #region Pip-Boy - WORKS
             #region Color
-            #region R
-            pattern = @"fPipboyEffectColorR=([0-9\.]+)";
-            replacement = "fPipboyEffectColorR=" + Math.Round( Convert.ToDouble( PipBoyColorRedTrackBar.Value.ToString( "#.####" ) ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region G
-            pattern = @"fPipboyEffectColorG=([0-9\.]+)";
-            replacement = "fPipboyEffectColorG=" + Math.Round( Convert.ToDouble( PipBoyColorGreenTrackBar.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region B
-            pattern = @"fPipboyEffectColorB=([0-9\.]+)";
-            replacement = "fPipboyEffectColorB=" + Math.Round( Convert.ToDouble( PipBoyColorBlueTrackBar.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #endregion
-            #region VATS
-            #region Color
-            #region Red
-            pattern = @"fModMenuEffectColorR=([0-9\.]+)";
-            replacement = "fModMenuEffectColorR=" + Math.Round( Convert.ToDouble( VATSColorR.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Green
-            pattern = @"fModMenuEffectColorG=([0-9\.]+)";
-            replacement = "fModMenuEffectColorG=" + Math.Round( Convert.ToDouble( VATSColorG.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Blue
-            pattern = @"fModMenuEffectColorB=([0-9\.]+)";
-            replacement = "fModMenuEffectColorB=" + Math.Round( Convert.ToDouble( VATSColorB.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #region Highlight Color
-            #region Red
-            pattern = @"fModMenuEffectHighlightColorR=([0-9\.]+)";
-            replacement = "fModMenuEffectHighlightColorR=" + Math.Round( Convert.ToDouble( VATSHighlightColorR.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Green
-            pattern = @"fModMenuEffectHighlightColorG=([0-9\.]+)";
-            replacement = "fModMenuEffectHighlightColorG=" + Math.Round( Convert.ToDouble( VATSHighlightColorG.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Blue
-            pattern = @"fModMenuEffectHighlightColorB=([0-9\.]+)";
-            replacement = "fModMenuEffectHighlightColorB=" + Math.Round( Convert.ToDouble( VATSHighlightColorB.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #region PA Color
-            #region Red
-            pattern = @"fModMenuEffectPAColorR=([0-9\.]+)";
-            replacement = "fModMenuEffectPAColorR=" + Math.Round( Convert.ToDouble( VATSPAColorR.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Green
-            pattern = @"fModMenuEffectPAColorG=([0-9\.]+)";
-            replacement = "fModMenuEffectPAColorG=" + Math.Round( Convert.ToDouble( VATSPAColorG.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Blue
-            pattern = @"fModMenuEffectPAColorB=([0-9\.]+)";
-            replacement = "fModMenuEffectPAColorB=" + Math.Round( Convert.ToDouble( VATSPAColorB.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #region PA Highlight Color
-            #region Red
-            pattern = @"fModMenuEffectHighlightPAColorR=([0-9\.]+)";
-            replacement = "fModMenuEffectHighlightPAColorR=" + Math.Round( Convert.ToDouble( VATSHighlightPAColorR.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Green
-            pattern = @"fModMenuEffectHighlightPAColorG=([0-9\.]+)";
-            replacement = "fModMenuEffectHighlightPAColorG=" + Math.Round( Convert.ToDouble( VATSHighlightPAColorG.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Blue
-            pattern = @"fModMenuEffectHighlightPAColorB=([0-9\.]+)";
-            replacement = "fModMenuEffectHighlightPAColorB=" + Math.Round( Convert.ToDouble( VATSHighlightPAColorB.Value ) / 255, 4 );
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #endregion
-            #region Gamepad
-            int gpEnable = 0, gpRumble = 0;
-            if(gamepadEnable.Checked) { gpEnable = 1; }
-            if(gamepadRumble.Checked) { gpRumble = 1; }
-            #region Enable
-            pattern = @"bGamepadEnable=([0-9\.]+)";
-            replacement = "bGamepadEnable=" + gpEnable;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #region Rumble
-            pattern = @"bGamePadRumble=([0-9\.]+)";
-            replacement = "bGamePadRumble=" + gpRumble;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
-            #endregion
-            #endregion
-            #region Resolution
-            var resBorder = 0;
-            // If fullscreen is checked, also check borderless.
-            // Better safe than sorry.
-            #region Fullscreen || Borderless
-            if(ResolutionFullscreen.Checked) {
-                pattern = @"bFull Screen=([0-9\.]+)";
-                replacement = "bFull Screen=1";
-                rgx = new Regex( pattern );
-                prefsFile = rgx.Replace( prefsFile, replacement );
-                pattern = @"bBorderless=([0-9\.]+)";
-                replacement = "bBorderless=1";
-                rgx = new Regex( pattern );
-                prefsFile = rgx.Replace( prefsFile, replacement );
+            if(PipBoyColorRedTextBox.Value != 0) {
+                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorR", Math.Round( Convert.ToDouble( PipBoyColorRedTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                pattern = @"bFull Screen=([0-9\.]+)";
-                replacement = "bFull Screen=0";
-                rgx = new Regex( pattern );
-                prefsFile = rgx.Replace( prefsFile, replacement );
-                if(ResolutionBorderless.Checked) { resBorder = 1; }
-                pattern = @"bBorderless=([0-9\.]+)";
-                replacement = "bBorderless=" + resBorder;
-                rgx = new Regex( pattern );
-                prefsFile = rgx.Replace( prefsFile, replacement );
+                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorR", "0" );
+            }
+            if(PipBoyColorGreenTextBox.Value != 0) {
+                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorG", Math.Round( Convert.ToDouble( PipBoyColorGreenTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorG", "0" );
+            }
+            if(PipBoyColorBlueTextBox.Value != 0) {
+                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorB", Math.Round( Convert.ToDouble( PipBoyColorBlueTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorB", "0" );
             }
             #endregion
-            #region Size Width
-            pattern = @"iSize W=([0-9\.]+)";
-            replacement = "iSize W=" + ResolutionWidth.Value;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
             #endregion
-            #region Size Height
-            pattern = @"iSize H=([0-9\.]+)";
-            replacement = "iSize H=" + ResolutionHeight.Value;
-            rgx = new Regex( pattern );
-            prefsFile = rgx.Replace( prefsFile, replacement );
+            #region VATS - WORKS
+            #region Color
+            if(VATSColorR.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorR", 
+                    Math.Round( Convert.ToDouble( VATSColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorR", "0" );
+            }
+            if(VATSColorG.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorG", 
+                    Math.Round( Convert.ToDouble( VATSColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorG", "0" );
+            }
+            if(VATSColorB.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorB", 
+                    Math.Round( Convert.ToDouble( VATSColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorB", "0" );
+            }
+            #endregion
+            #region Highlight Color
+            if(VATSHighlightColorR.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorR", 
+                    Math.Round( Convert.ToDouble( VATSHighlightColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorR", "0" );
+            }
+            if(VATSHighlightColorG.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorG", 
+                    Math.Round( Convert.ToDouble( VATSHighlightColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorG", "0" );
+            }
+            if(VATSHighlightColorB.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorB", 
+                    Math.Round( Convert.ToDouble( VATSHighlightColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorB", "0" );
+            }
+            #endregion
+            #region PA Color
+            if(VATSPAColorR.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorR", 
+                    Math.Round( Convert.ToDouble( VATSPAColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorR", "0" );
+            }
+            if(VATSPAColorG.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorG", 
+                    Math.Round( Convert.ToDouble( VATSPAColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorG", "0" );
+            }
+            if(VATSPAColorB.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorB", 
+                    Math.Round( Convert.ToDouble( VATSPAColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorB", "0" );
+            }
+            #endregion
+            #region PA Highlight Color
+            if(VATSHighlightPAColorR.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorR",
+                    Math.Round( Convert.ToDouble( VATSHighlightPAColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorR", "0" );
+            }
+            if(VATSHighlightPAColorG.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorG",
+                    Math.Round( Convert.ToDouble( VATSHighlightPAColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorG", "0" );
+            }
+            if(VATSHighlightPAColorB.Value != 0) {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorB",
+                    Math.Round( Convert.ToDouble( VATSHighlightPAColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
+            } else {
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorB", "0" );
+            }
             #endregion
             #endregion
-
-            // "Unlock" the files if they are set to READ ONLY.
-            File.SetAttributes( Fallout4PrefsLocation, File.GetAttributes( Fallout4PrefsLocation ) & FileAttributes.Normal );
-            File.SetAttributes( Fallout4Location, File.GetAttributes( Fallout4Location ) & FileAttributes.Normal );
-            // Write to file
-            File.WriteAllText( Fallout4PrefsLocation, prefsFile );
-            File.WriteAllText( Fallout4Location, nonFile );
+            #region Gamepad - WORKS
+            var gpEnable = gamepadEnable.Checked ? "1" : "0";
+            var gpRumble = gamepadRumble.Checked ? "1" : "0";
+            betterPrefsFile.IniWriteValue( "Controls", "bGamepadEnable", gpEnable );
+            betterPrefsFile.IniWriteValue( "Controls", "bGamepadRumble", gpRumble );
+            #endregion
+            #region Resolution - WORKS
+            var resBorder = ResolutionBorderless.Checked ? "1" : "0";
+            if(ResolutionFullscreen.Checked) {
+                betterPrefsFile.IniWriteValue( "Display", "bFull Screen", "1" );
+                betterPrefsFile.IniWriteValue( "Display", "bBorderless", "1" );
+            } else {
+                betterPrefsFile.IniWriteValue( "Display", "bFull Screen", "0" );
+                betterPrefsFile.IniWriteValue( "Display", "bBorderless", resBorder );
+            }
+            betterPrefsFile.IniWriteValue( "Display", "iSize W", ResolutionWidth.Text );
+            betterPrefsFile.IniWriteValue( "Display", "iSize H", ResolutionHeight.Text );
+            #endregion
         }
         private void btnReWrite_Click( object sender, EventArgs e ) {
             GetAllValues();
