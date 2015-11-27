@@ -165,6 +165,13 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.fovHeHe = new System.Windows.Forms.Label();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.hudQuestMarkShow = new System.Windows.Forms.CheckBox();
+            this.hudQuestFloatingShow = new System.Windows.Forms.CheckBox();
+            this.controlsMouseAcceleration = new System.Windows.Forms.CheckBox();
+            this.VisualsRadialBlur = new System.Windows.Forms.CheckBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -229,6 +236,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).BeginInit();
+            this.groupBox17.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -291,7 +299,7 @@
             this.VisualWaterObjects.Location = new System.Drawing.Point(7, 88);
             this.VisualWaterObjects.Name = "VisualWaterObjects";
             this.VisualWaterObjects.Size = new System.Drawing.Size(62, 17);
-            this.VisualWaterObjects.TabIndex = 3;
+            this.VisualWaterObjects.TabIndex = 8;
             this.VisualWaterObjects.Text = "Objects";
             this.toolTip1.SetToolTip(this.VisualWaterObjects, "See objects in water reflections.");
             this.VisualWaterObjects.UseVisualStyleBackColor = true;
@@ -303,7 +311,7 @@
             this.VisualWaterTree.Location = new System.Drawing.Point(7, 65);
             this.VisualWaterTree.Name = "VisualWaterTree";
             this.VisualWaterTree.Size = new System.Drawing.Size(53, 17);
-            this.VisualWaterTree.TabIndex = 2;
+            this.VisualWaterTree.TabIndex = 7;
             this.VisualWaterTree.Text = "Trees";
             this.toolTip1.SetToolTip(this.VisualWaterTree, "See trees in water reflections.");
             this.VisualWaterTree.UseVisualStyleBackColor = true;
@@ -315,7 +323,7 @@
             this.VisualWaterLand.Location = new System.Drawing.Point(7, 42);
             this.VisualWaterLand.Name = "VisualWaterLand";
             this.VisualWaterLand.Size = new System.Drawing.Size(50, 17);
-            this.VisualWaterLand.TabIndex = 1;
+            this.VisualWaterLand.TabIndex = 6;
             this.VisualWaterLand.Text = "Land";
             this.toolTip1.SetToolTip(this.VisualWaterLand, "See the land in water reflections.");
             this.VisualWaterLand.UseVisualStyleBackColor = true;
@@ -327,20 +335,21 @@
             this.VisualWaterSky.Location = new System.Drawing.Point(7, 20);
             this.VisualWaterSky.Name = "VisualWaterSky";
             this.VisualWaterSky.Size = new System.Drawing.Size(52, 17);
-            this.VisualWaterSky.TabIndex = 0;
+            this.VisualWaterSky.TabIndex = 5;
             this.VisualWaterSky.Text = "Skies";
             this.toolTip1.SetToolTip(this.VisualWaterSky, "See skies in water reflections.");
             this.VisualWaterSky.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.VisualsRadialBlur);
             this.groupBox9.Controls.Add(this.VisualsScreenBlood);
             this.groupBox9.Controls.Add(this.VisualsLensflare);
             this.groupBox9.Controls.Add(this.VisualsGore);
             this.groupBox9.Controls.Add(this.VisualsDoF);
             this.groupBox9.Location = new System.Drawing.Point(8, 8);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(178, 111);
+            this.groupBox9.Size = new System.Drawing.Size(178, 134);
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ImageSpace";
@@ -352,7 +361,7 @@
             this.VisualsScreenBlood.Location = new System.Drawing.Point(6, 88);
             this.VisualsScreenBlood.Name = "VisualsScreenBlood";
             this.VisualsScreenBlood.Size = new System.Drawing.Size(103, 17);
-            this.VisualsScreenBlood.TabIndex = 1;
+            this.VisualsScreenBlood.TabIndex = 3;
             this.VisualsScreenBlood.Text = "Blood on screen";
             this.toolTip1.SetToolTip(this.VisualsScreenBlood, "De-/Activate the blood that will come on the screen when hurt.");
             this.VisualsScreenBlood.UseVisualStyleBackColor = true;
@@ -375,7 +384,7 @@
             this.VisualsGore.Location = new System.Drawing.Point(6, 65);
             this.VisualsGore.Name = "VisualsGore";
             this.VisualsGore.Size = new System.Drawing.Size(101, 17);
-            this.VisualsGore.TabIndex = 0;
+            this.VisualsGore.TabIndex = 2;
             this.VisualsGore.Text = "Disable All Gore";
             this.toolTip1.SetToolTip(this.VisualsGore, "De-/Activate gore. (Exploding limbs)");
             this.VisualsGore.UseVisualStyleBackColor = true;
@@ -883,6 +892,7 @@
             this.tabHUD.BackColor = System.Drawing.Color.White;
             this.tabHUD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabHUD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabHUD.Controls.Add(this.groupBox17);
             this.tabHUD.Controls.Add(this.groupBox8);
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
@@ -914,7 +924,7 @@
             this.hudGeneralSubs.Location = new System.Drawing.Point(6, 111);
             this.hudGeneralSubs.Name = "hudGeneralSubs";
             this.hudGeneralSubs.Size = new System.Drawing.Size(106, 17);
-            this.hudGeneralSubs.TabIndex = 4;
+            this.hudGeneralSubs.TabIndex = 10;
             this.hudGeneralSubs.Text = "General Subtitles";
             this.hudGeneralSubs.UseVisualStyleBackColor = true;
             // 
@@ -924,7 +934,7 @@
             this.hudDialogSubs.Location = new System.Drawing.Point(6, 88);
             this.hudDialogSubs.Name = "hudDialogSubs";
             this.hudDialogSubs.Size = new System.Drawing.Size(99, 17);
-            this.hudDialogSubs.TabIndex = 3;
+            this.hudDialogSubs.TabIndex = 9;
             this.hudDialogSubs.Text = "Dialog Subtitles";
             this.hudDialogSubs.UseVisualStyleBackColor = true;
             // 
@@ -934,7 +944,7 @@
             this.hudDialogCam.Location = new System.Drawing.Point(6, 65);
             this.hudDialogCam.Name = "hudDialogCam";
             this.hudDialogCam.Size = new System.Drawing.Size(95, 17);
-            this.hudDialogCam.TabIndex = 2;
+            this.hudDialogCam.TabIndex = 8;
             this.hudDialogCam.Text = "Dialog Camera";
             this.hudDialogCam.UseVisualStyleBackColor = true;
             // 
@@ -944,7 +954,7 @@
             this.hudCompass.Location = new System.Drawing.Point(6, 42);
             this.hudCompass.Name = "hudCompass";
             this.hudCompass.Size = new System.Drawing.Size(69, 17);
-            this.hudCompass.TabIndex = 1;
+            this.hudCompass.TabIndex = 7;
             this.hudCompass.Text = "Compass";
             this.hudCompass.UseVisualStyleBackColor = true;
             // 
@@ -954,7 +964,7 @@
             this.hudCrosshair.Location = new System.Drawing.Point(6, 19);
             this.hudCrosshair.Name = "hudCrosshair";
             this.hudCrosshair.Size = new System.Drawing.Size(69, 17);
-            this.hudCrosshair.TabIndex = 0;
+            this.hudCrosshair.TabIndex = 6;
             this.hudCrosshair.Text = "Crosshair";
             this.hudCrosshair.UseVisualStyleBackColor = true;
             // 
@@ -1020,7 +1030,7 @@
             0});
             this.hudColorBlueTextBox.Name = "hudColorBlueTextBox";
             this.hudColorBlueTextBox.Size = new System.Drawing.Size(44, 20);
-            this.hudColorBlueTextBox.TabIndex = 17;
+            this.hudColorBlueTextBox.TabIndex = 3;
             this.hudColorBlueTextBox.ValueChanged += new System.EventHandler(this.hudColorBlueTextBox_ValueChanged);
             // 
             // hudColorGreenTextBox
@@ -1033,7 +1043,7 @@
             0});
             this.hudColorGreenTextBox.Name = "hudColorGreenTextBox";
             this.hudColorGreenTextBox.Size = new System.Drawing.Size(44, 20);
-            this.hudColorGreenTextBox.TabIndex = 16;
+            this.hudColorGreenTextBox.TabIndex = 2;
             this.hudColorGreenTextBox.ValueChanged += new System.EventHandler(this.hudColorGreenTextBox_ValueChanged);
             // 
             // hudColorRedTextBox
@@ -1046,7 +1056,7 @@
             0});
             this.hudColorRedTextBox.Name = "hudColorRedTextBox";
             this.hudColorRedTextBox.Size = new System.Drawing.Size(44, 20);
-            this.hudColorRedTextBox.TabIndex = 15;
+            this.hudColorRedTextBox.TabIndex = 1;
             this.hudColorRedTextBox.ValueChanged += new System.EventHandler(this.hudColorRedTextBox_ValueChanged);
             // 
             // groupBox3
@@ -1179,7 +1189,7 @@
             0});
             this.PipBoyColorBlueTextBox.Name = "PipBoyColorBlueTextBox";
             this.PipBoyColorBlueTextBox.Size = new System.Drawing.Size(44, 20);
-            this.PipBoyColorBlueTextBox.TabIndex = 28;
+            this.PipBoyColorBlueTextBox.TabIndex = 3;
             this.PipBoyColorBlueTextBox.Value = new decimal(new int[] {
             255,
             0,
@@ -1197,7 +1207,7 @@
             0});
             this.PipBoyColorGreenTextBox.Name = "PipBoyColorGreenTextBox";
             this.PipBoyColorGreenTextBox.Size = new System.Drawing.Size(44, 20);
-            this.PipBoyColorGreenTextBox.TabIndex = 27;
+            this.PipBoyColorGreenTextBox.TabIndex = 2;
             this.PipBoyColorGreenTextBox.Value = new decimal(new int[] {
             255,
             0,
@@ -1215,7 +1225,7 @@
             0});
             this.PipBoyColorRedTextBox.Name = "PipBoyColorRedTextBox";
             this.PipBoyColorRedTextBox.Size = new System.Drawing.Size(44, 20);
-            this.PipBoyColorRedTextBox.TabIndex = 26;
+            this.PipBoyColorRedTextBox.TabIndex = 1;
             this.PipBoyColorRedTextBox.Value = new decimal(new int[] {
             255,
             0,
@@ -1353,7 +1363,7 @@
             0});
             this.VATSHighlightColorB.Name = "VATSHighlightColorB";
             this.VATSHighlightColorB.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlightColorB.TabIndex = 30;
+            this.VATSHighlightColorB.TabIndex = 6;
             // 
             // VATSHighlightColorG
             // 
@@ -1365,7 +1375,7 @@
             0});
             this.VATSHighlightColorG.Name = "VATSHighlightColorG";
             this.VATSHighlightColorG.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlightColorG.TabIndex = 29;
+            this.VATSHighlightColorG.TabIndex = 5;
             // 
             // VATSColorB
             // 
@@ -1377,7 +1387,7 @@
             0});
             this.VATSColorB.Name = "VATSColorB";
             this.VATSColorB.Size = new System.Drawing.Size(61, 20);
-            this.VATSColorB.TabIndex = 28;
+            this.VATSColorB.TabIndex = 3;
             // 
             // VATSColorG
             // 
@@ -1389,7 +1399,7 @@
             0});
             this.VATSColorG.Name = "VATSColorG";
             this.VATSColorG.Size = new System.Drawing.Size(61, 20);
-            this.VATSColorG.TabIndex = 27;
+            this.VATSColorG.TabIndex = 2;
             // 
             // VATSPAColorB
             // 
@@ -1401,7 +1411,7 @@
             0});
             this.VATSPAColorB.Name = "VATSPAColorB";
             this.VATSPAColorB.Size = new System.Drawing.Size(61, 20);
-            this.VATSPAColorB.TabIndex = 26;
+            this.VATSPAColorB.TabIndex = 9;
             // 
             // VATSPAColorG
             // 
@@ -1413,7 +1423,7 @@
             0});
             this.VATSPAColorG.Name = "VATSPAColorG";
             this.VATSPAColorG.Size = new System.Drawing.Size(61, 20);
-            this.VATSPAColorG.TabIndex = 25;
+            this.VATSPAColorG.TabIndex = 8;
             // 
             // VATSColorR
             // 
@@ -1425,7 +1435,7 @@
             0});
             this.VATSColorR.Name = "VATSColorR";
             this.VATSColorR.Size = new System.Drawing.Size(61, 20);
-            this.VATSColorR.TabIndex = 24;
+            this.VATSColorR.TabIndex = 1;
             // 
             // VATSHighlightColorR
             // 
@@ -1437,7 +1447,7 @@
             0});
             this.VATSHighlightColorR.Name = "VATSHighlightColorR";
             this.VATSHighlightColorR.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlightColorR.TabIndex = 23;
+            this.VATSHighlightColorR.TabIndex = 4;
             // 
             // VATSPAColorR
             // 
@@ -1449,7 +1459,7 @@
             0});
             this.VATSPAColorR.Name = "VATSPAColorR";
             this.VATSPAColorR.Size = new System.Drawing.Size(61, 20);
-            this.VATSPAColorR.TabIndex = 22;
+            this.VATSPAColorR.TabIndex = 7;
             // 
             // VATSHighlightPAColorB
             // 
@@ -1461,7 +1471,7 @@
             0});
             this.VATSHighlightPAColorB.Name = "VATSHighlightPAColorB";
             this.VATSHighlightPAColorB.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlightPAColorB.TabIndex = 21;
+            this.VATSHighlightPAColorB.TabIndex = 12;
             // 
             // VATSHighlightPAColorG
             // 
@@ -1473,7 +1483,7 @@
             0});
             this.VATSHighlightPAColorG.Name = "VATSHighlightPAColorG";
             this.VATSHighlightPAColorG.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlightPAColorG.TabIndex = 20;
+            this.VATSHighlightPAColorG.TabIndex = 11;
             // 
             // VATSHighlightPAColorR
             // 
@@ -1485,7 +1495,7 @@
             0});
             this.VATSHighlightPAColorR.Name = "VATSHighlightPAColorR";
             this.VATSHighlightPAColorR.Size = new System.Drawing.Size(61, 20);
-            this.VATSHighlightPAColorR.TabIndex = 19;
+            this.VATSHighlightPAColorR.TabIndex = 10;
             // 
             // label14
             // 
@@ -1569,11 +1579,12 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.controlsMouseAcceleration);
             this.groupBox16.Controls.Add(this.controlsRunByDefault);
             this.groupBox16.Controls.Add(this.controlsInverty);
             this.groupBox16.Location = new System.Drawing.Point(193, 9);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(177, 64);
+            this.groupBox16.Size = new System.Drawing.Size(177, 87);
             this.groupBox16.TabIndex = 4;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Others";
@@ -1584,7 +1595,7 @@
             this.controlsRunByDefault.Location = new System.Drawing.Point(6, 41);
             this.controlsRunByDefault.Name = "controlsRunByDefault";
             this.controlsRunByDefault.Size = new System.Drawing.Size(126, 17);
-            this.controlsRunByDefault.TabIndex = 1;
+            this.controlsRunByDefault.TabIndex = 3;
             this.controlsRunByDefault.Text = "Always run by default";
             this.controlsRunByDefault.UseVisualStyleBackColor = true;
             // 
@@ -1594,7 +1605,7 @@
             this.controlsInverty.Location = new System.Drawing.Point(6, 18);
             this.controlsInverty.Name = "controlsInverty";
             this.controlsInverty.Size = new System.Drawing.Size(108, 17);
-            this.controlsInverty.TabIndex = 0;
+            this.controlsInverty.TabIndex = 2;
             this.controlsInverty.Text = "Inverty Up/Down";
             this.controlsInverty.UseVisualStyleBackColor = true;
             // 
@@ -1615,7 +1626,7 @@
             this.gamepadEnable.Location = new System.Drawing.Point(6, 19);
             this.gamepadEnable.Name = "gamepadEnable";
             this.gamepadEnable.Size = new System.Drawing.Size(59, 17);
-            this.gamepadEnable.TabIndex = 1;
+            this.gamepadEnable.TabIndex = 0;
             this.gamepadEnable.Text = "Enable";
             this.gamepadEnable.UseVisualStyleBackColor = true;
             // 
@@ -1625,7 +1636,7 @@
             this.gamepadRumble.Location = new System.Drawing.Point(6, 42);
             this.gamepadRumble.Name = "gamepadRumble";
             this.gamepadRumble.Size = new System.Drawing.Size(62, 17);
-            this.gamepadRumble.TabIndex = 2;
+            this.gamepadRumble.TabIndex = 1;
             this.gamepadRumble.Text = "Rumble";
             this.gamepadRumble.UseVisualStyleBackColor = true;
             // 
@@ -1634,6 +1645,8 @@
             this.tabResolution.BackColor = System.Drawing.Color.White;
             this.tabResolution.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabResolution.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabResolution.Controls.Add(this.label31);
+            this.tabResolution.Controls.Add(this.label30);
             this.tabResolution.Controls.Add(this.groupBox13);
             this.tabResolution.Location = new System.Drawing.Point(4, 40);
             this.tabResolution.Name = "tabResolution";
@@ -1747,7 +1760,7 @@
             this.btnSource.Location = new System.Drawing.Point(184, 386);
             this.btnSource.Name = "btnSource";
             this.btnSource.Size = new System.Drawing.Size(80, 25);
-            this.btnSource.TabIndex = 4;
+            this.btnSource.TabIndex = 3;
             this.btnSource.Text = "Github";
             this.toolTip1.SetToolTip(this.btnSource, "See the source code. It\'s free.");
             this.btnSource.UseVisualStyleBackColor = true;
@@ -1758,7 +1771,7 @@
             this.btnDonate.Location = new System.Drawing.Point(338, 388);
             this.btnDonate.Name = "btnDonate";
             this.btnDonate.Size = new System.Drawing.Size(56, 20);
-            this.btnDonate.TabIndex = 5;
+            this.btnDonate.TabIndex = 4;
             this.btnDonate.Text = "Donate?";
             this.toolTip1.SetToolTip(this.btnDonate, "You don\'t have to. Seriously.");
             this.btnDonate.UseVisualStyleBackColor = true;
@@ -1770,7 +1783,7 @@
             this.groupBox2.Controls.Add(this.hudFovFirst);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Location = new System.Drawing.Point(8, 125);
+            this.groupBox2.Location = new System.Drawing.Point(192, 125);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(178, 72);
             this.groupBox2.TabIndex = 18;
@@ -1792,7 +1805,7 @@
             0});
             this.hudFovThird.Name = "hudFovThird";
             this.hudFovThird.Size = new System.Drawing.Size(79, 20);
-            this.hudFovThird.TabIndex = 19;
+            this.hudFovThird.TabIndex = 10;
             this.hudFovThird.Value = new decimal(new int[] {
             10,
             0,
@@ -1815,7 +1828,7 @@
             0});
             this.hudFovFirst.Name = "hudFovFirst";
             this.hudFovFirst.Size = new System.Drawing.Size(79, 20);
-            this.hudFovFirst.TabIndex = 18;
+            this.hudFovFirst.TabIndex = 9;
             this.hudFovFirst.Value = new decimal(new int[] {
             10,
             0,
@@ -1844,11 +1857,82 @@
             // fovHeHe
             // 
             this.fovHeHe.AutoSize = true;
-            this.fovHeHe.Location = new System.Drawing.Point(196, 161);
+            this.fovHeHe.Location = new System.Drawing.Point(282, 194);
             this.fovHeHe.Name = "fovHeHe";
-            this.fovHeHe.Size = new System.Drawing.Size(41, 13);
+            this.fovHeHe.Size = new System.Drawing.Size(67, 13);
             this.fovHeHe.TabIndex = 19;
-            this.fovHeHe.Text = "label30";
+            this.fovHeHe.Text = "HueHueHue";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.hudQuestFloatingShow);
+            this.groupBox17.Controls.Add(this.hudQuestMarkShow);
+            this.groupBox17.Location = new System.Drawing.Point(8, 217);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(178, 65);
+            this.groupBox17.TabIndex = 17;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Quest Markers";
+            // 
+            // hudQuestMarkShow
+            // 
+            this.hudQuestMarkShow.AutoSize = true;
+            this.hudQuestMarkShow.Location = new System.Drawing.Point(6, 19);
+            this.hudQuestMarkShow.Name = "hudQuestMarkShow";
+            this.hudQuestMarkShow.Size = new System.Drawing.Size(122, 17);
+            this.hudQuestMarkShow.TabIndex = 4;
+            this.hudQuestMarkShow.Text = "Show quest markers";
+            this.hudQuestMarkShow.UseVisualStyleBackColor = true;
+            // 
+            // hudQuestFloatingShow
+            // 
+            this.hudQuestFloatingShow.AutoSize = true;
+            this.hudQuestFloatingShow.Location = new System.Drawing.Point(6, 42);
+            this.hudQuestFloatingShow.Name = "hudQuestFloatingShow";
+            this.hudQuestFloatingShow.Size = new System.Drawing.Size(130, 17);
+            this.hudQuestFloatingShow.TabIndex = 5;
+            this.hudQuestFloatingShow.Text = "Show floating markers";
+            this.hudQuestFloatingShow.UseVisualStyleBackColor = true;
+            // 
+            // controlsMouseAcceleration
+            // 
+            this.controlsMouseAcceleration.AutoSize = true;
+            this.controlsMouseAcceleration.Location = new System.Drawing.Point(6, 64);
+            this.controlsMouseAcceleration.Name = "controlsMouseAcceleration";
+            this.controlsMouseAcceleration.Size = new System.Drawing.Size(119, 17);
+            this.controlsMouseAcceleration.TabIndex = 4;
+            this.controlsMouseAcceleration.Text = "Mouse acceleration";
+            this.controlsMouseAcceleration.UseVisualStyleBackColor = true;
+            // 
+            // VisualsRadialBlur
+            // 
+            this.VisualsRadialBlur.AutoSize = true;
+            this.VisualsRadialBlur.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualsRadialBlur.Location = new System.Drawing.Point(6, 111);
+            this.VisualsRadialBlur.Name = "VisualsRadialBlur";
+            this.VisualsRadialBlur.Size = new System.Drawing.Size(76, 17);
+            this.VisualsRadialBlur.TabIndex = 4;
+            this.VisualsRadialBlur.Text = "Radial blur";
+            this.toolTip1.SetToolTip(this.VisualsRadialBlur, "De-/Activate radial blur.");
+            this.VisualsRadialBlur.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(192, 28);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(41, 13);
+            this.label30.TabIndex = 1;
+            this.label30.Text = "TODO:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(192, 41);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(108, 13);
+            this.label31.TabIndex = 2;
+            this.label31.Text = " Presets for resolution";
             // 
             // Form1
             // 
@@ -1940,6 +2024,7 @@
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
             this.tabResolution.ResumeLayout(false);
+            this.tabResolution.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).EndInit();
@@ -1948,6 +2033,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).EndInit();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2098,6 +2185,13 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label fovHeHe;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.CheckBox hudQuestFloatingShow;
+        private System.Windows.Forms.CheckBox hudQuestMarkShow;
+        private System.Windows.Forms.CheckBox controlsMouseAcceleration;
+        private System.Windows.Forms.CheckBox VisualsRadialBlur;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
 
     }
 }

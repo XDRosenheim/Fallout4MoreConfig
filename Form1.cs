@@ -18,9 +18,6 @@ namespace Fallout4MoreConfig {
     /// TODO: This list - Audio
     /// Val0-7 should be analliesed, so I know which does what. (They are not descriped in the configs)
     /// 
-    /// TODO: This list - Visuals
-    /// More options............. To come.......... Soon(TM)
-    /// 
     /// TODO: This list - Pip-Boy
     /// The preview, should have a/some screenshot(s) where the actual hud is shown.
     /// 
@@ -53,6 +50,7 @@ namespace Fallout4MoreConfig {
                 VisualsLensflare.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bLensFlare" ) ) == 1;
                 VisualsGore.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bDisableAllGore" ) ) == 1;
                 VisualsScreenBlood.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bBloodSplatterEnabled" ) ) == 1;
+                VisualsRadialBlur.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bDoRadialBlur" ) ) == 1;
                 VisualWaterSky.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectSky" ) ) == 1;
                 VisualWaterLand.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODLand" ) ) == 1;
                 VisualWaterTree.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODTrees" ) ) == 1;
@@ -155,6 +153,10 @@ namespace Fallout4MoreConfig {
                 hudFovThird.Text = Convert.ToInt32( hudThirdFov ).ToString();
                 #endregion
                 #endregion
+                #region Quest Markers
+                hudQuestMarkShow.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bShowQuestMarkers" ) ) == 1;
+                hudQuestFloatingShow.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bShowFloatingQuestMarkers" ) ) == 1;
+                #endregion
                 #region Other
                 hudCrosshair.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bCrosshairEnabled" ) ) == 1;
                 hudCompass.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bShowCompass" ) ) == 1;
@@ -204,9 +206,12 @@ namespace Fallout4MoreConfig {
                 VATSHighlightPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightPAColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #endregion
-                #region Gamepad
-
-
+                #region Controls
+                gamepadEnable.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bGamepadEnable" ) ) == 1;
+                gamepadRumble.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bGamepadRumble" ) ) == 1;
+                controlsInverty.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bInvertYValues" ) ) == 1;
+                controlsRunByDefault.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bAlwaysRunByDefault" ) ) == 1;
+                controlsMouseAcceleration.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bMouseAcceleration" ) ) == 1;
                 #endregion
                 #region Resolution
                 ResolutionHeight.Text = Extras.GetLineValue( PrefsConfigFile, "iSize H" ).ToString();
@@ -260,190 +265,195 @@ namespace Fallout4MoreConfig {
         }
         // The buttons
         private void btnSave_Click( object sender, EventArgs e ) {
-            var betterPrefsFile = new IniFile( PrefsConfigFile );
-            var betterNonFile = new IniFile( ConfigFile );
-            #region Visuals - WORKS
+            var prefsConfigFile = new IniFile( PrefsConfigFile );
+            var configFile = new IniFile( ConfigFile );
+            #region Visuals
             var visuDof = VisualsDoF.Checked ? "1" : "0";
             var visuLf = VisualsLensflare.Checked ? "1" : "0";
             var visuGore = VisualsGore.Checked ? "1" : "0";
             var visuBlood = VisualsScreenBlood.Checked ? "1" : "0";
-            betterPrefsFile.IniWriteValue( "Imagespace", "bDoDepthOfField", visuDof );
-            betterPrefsFile.IniWriteValue( "Imagespace", "bLensFlare", visuLf );
-            betterNonFile.IniWriteValue( "General", "bDisableAllGore", visuGore );
-            betterNonFile.IniWriteValue( "ScreenSplatter", "bBloodSplatterEnabled", visuBlood );
+            var visuRadBlur = VisualsRadialBlur.Checked ? "1" : "0";
+            prefsConfigFile.Write( "Imagespace", "bDoDepthOfField", visuDof );
+            prefsConfigFile.Write( "Imagespace", "bLensFlare", visuLf );
+            configFile.Write( "General", "bDisableAllGore", visuGore );
+            configFile.Write( "ScreenSplatter", "bBloodSplatterEnabled", visuBlood );
+            configFile.Write( "ImageSpace", "bDoRadialBlur", visuRadBlur );
             var visWatObj = VisualWaterObjects.Checked ? "1" : "0";
             var visWatLand = VisualWaterLand.Checked ? "1" : "0";
             var visWatSky = VisualWaterSky.Checked ? "1" : "0";
             var visWatTre = VisualWaterTree.Checked ? "1" : "0";
-            betterNonFile.IniWriteValue( "Water", "bReflectLODObjects", visWatObj );
-            betterNonFile.IniWriteValue( "Water", "bReflectLODLand", visWatLand );
-            betterNonFile.IniWriteValue( "Water", "bReflectSky", visWatSky );
-            betterNonFile.IniWriteValue( "Water", "bReflectLODTrees", visWatTre );
+            configFile.Write( "Water", "bReflectLODObjects", visWatObj );
+            configFile.Write( "Water", "bReflectLODLand", visWatLand );
+            configFile.Write( "Water", "bReflectSky", visWatSky );
+            configFile.Write( "Water", "bReflectLODTrees", visWatTre );
+            // FOV
+            configFile.Write( "Display", "fDefaultWorldFOV", hudFovThird.Text );
+            configFile.Write( "Interface", "fDefaultWorldFOV", hudFovThird.Text );
+            prefsConfigFile.Write( "Display", "fDefaultWorldFOV", hudFovThird.Text );
+            configFile.Write( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
+            configFile.Write( "Interface", "fDefault1stPersonFOV", hudFovFirst.Text );
+            prefsConfigFile.Write( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
             #endregion
-            #region Audio - WORKS
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fAudioMasterVolume", ( (double)AudioMasterTrackbar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal0", ( (double)AudioVal0TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal1", ( (double)AudioVal1TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal2", ( (double)AudioVal2TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal3", ( (double)AudioVal3TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal4", ( (double)AudioVal4TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal5", ( (double)AudioVal5TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal6", ( (double)AudioVal6TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "AudioMenu", "fVal7", ( (double)AudioVal7TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            #region Audio
+            prefsConfigFile.Write( "AudioMenu", "fAudioMasterVolume", ( (double)AudioMasterTrackbar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal0", ( (double)AudioVal0TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal1", ( (double)AudioVal1TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal2", ( (double)AudioVal2TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal3", ( (double)AudioVal3TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal4", ( (double)AudioVal4TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal5", ( (double)AudioVal5TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal6", ( (double)AudioVal6TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "AudioMenu", "fVal7", ( (double)AudioVal7TrackBar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
             #endregion
-            #region Saving - WORKS
-            betterPrefsFile.IniWriteValue( "SaveGame", "fAutosaveEveryXMins", SavingAutoSaveTextBox.Text );
+            #region Saving
+            prefsConfigFile.Write( "SaveGame", "fAutosaveEveryXMins", SavingAutoSaveTextBox.Text );
             var saPaused = SavingQuickPause.Checked ? "1" : "0";
             var saTravel = SavingQuickTravel.Checked ? "1" : "0";
             var saWaiting = SavingQuickWaiting.Checked ? "1" : "0";
             var saSleeping = SavingQuickSleeping.Checked ? "1" : "0";
-            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnPause", saPaused );
-            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnTravel", saTravel );
-            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnWait", saWaiting );
-            betterPrefsFile.IniWriteValue( "MAIN", "bSaveOnRest", saSleeping );
+            prefsConfigFile.Write( "MAIN", "bSaveOnPause", saPaused );
+            prefsConfigFile.Write( "MAIN", "bSaveOnTravel", saTravel );
+            prefsConfigFile.Write( "MAIN", "bSaveOnWait", saWaiting );
+            prefsConfigFile.Write( "MAIN", "bSaveOnRest", saSleeping );
             #endregion
-            #region HUD - WORKS
-            betterPrefsFile.IniWriteValue( "MAIN", "fHUDOpacity", Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "Interface", "iHUDColorR", Math.Round( Convert.ToDouble( hudColorRedTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "Interface", "iHUDColorG", Math.Round( Convert.ToDouble( hudColorGreenTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
-            betterPrefsFile.IniWriteValue( "Interface", "iHUDColorB", Math.Round( Convert.ToDouble( hudColorBlueTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
-            // FOV
-            betterNonFile.IniWriteValue( "Display", "fDefaultWorldFOV", hudFovThird.Text );
-            betterNonFile.IniWriteValue( "Interface", "fDefaultWorldFOV", hudFovThird.Text );
-            betterPrefsFile.IniWriteValue( "Display", "fDefaultWorldFOV", hudFovThird.Text );
-            betterNonFile.IniWriteValue( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
-            betterNonFile.IniWriteValue( "Interface", "fDefault1stPersonFOV", hudFovFirst.Text );
-            betterPrefsFile.IniWriteValue( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
+            #region HUD
+            prefsConfigFile.Write( "MAIN", "fHUDOpacity", Math.Round( Convert.ToDouble( HUDOpacityTrackBar.Value ) / 100, 4 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "Interface", "iHUDColorR", Math.Round( Convert.ToDouble( hudColorRedTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "Interface", "iHUDColorG", Math.Round( Convert.ToDouble( hudColorGreenTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
+            prefsConfigFile.Write( "Interface", "iHUDColorB", Math.Round( Convert.ToDouble( hudColorBlueTrackBar.Value ), 4 ).ToString( CultureInfo.CurrentCulture ) );
             var hudHair = hudCrosshair.Checked ? "1" : "0";
             var hudDiaSubs = hudDialogSubs.Checked ? "1" : "0";
             var hudDiaCam = hudDialogCam.Checked ? "1" : "0";
             var hudGenSubs = hudGeneralSubs.Checked ? "1" : "0";
             var hudGps = hudCompass.Checked ? "1" : "0";
-            betterPrefsFile.IniWriteValue( "MAIN", "bCrosshairEnabled", hudHair );
-            betterPrefsFile.IniWriteValue( "Interface", "bDialogueSubtitles", hudDiaSubs );
-            betterPrefsFile.IniWriteValue( "Interface", "bDialogueCameraEnable", hudDiaCam );
-            betterPrefsFile.IniWriteValue( "Interface", "bGeneralSubtitles", hudGenSubs );
-            betterPrefsFile.IniWriteValue( "Interface", "bShowCompass", hudGps );
+            prefsConfigFile.Write( "MAIN", "bCrosshairEnabled", hudHair );
+            prefsConfigFile.Write( "Interface", "bDialogueSubtitles", hudDiaSubs );
+            prefsConfigFile.Write( "Interface", "bDialogueCameraEnable", hudDiaCam );
+            prefsConfigFile.Write( "Interface", "bGeneralSubtitles", hudGenSubs );
+            prefsConfigFile.Write( "Interface", "bShowCompass", hudGps );
+            var hudShowQuest = hudQuestMarkShow.Checked ? "1" : "0";
+            var hudShowFloatingQuest = hudQuestFloatingShow.Checked ? "1" : "0";
+            prefsConfigFile.Write( "GamePlay", "bShowQuestMarkers", hudShowQuest );
+            prefsConfigFile.Write( "GamePlay", "bShowFloatingQuestMarkers", hudShowFloatingQuest );
             #endregion
-            #region Pip-Boy - WORKS
-            #region Color
+            #region Pip-Boy
             if(PipBoyColorRedTextBox.Value != 0) {
-                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorR", Math.Round( Convert.ToDouble( PipBoyColorRedTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
+                prefsConfigFile.Write( "Pipboy", "fPipboyEffectColorR", Math.Round( Convert.ToDouble( PipBoyColorRedTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorR", "0" );
+                prefsConfigFile.Write( "Pipboy", "fPipboyEffectColorR", "0" );
             }
             if(PipBoyColorGreenTextBox.Value != 0) {
-                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorG", Math.Round( Convert.ToDouble( PipBoyColorGreenTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
+                prefsConfigFile.Write( "Pipboy", "fPipboyEffectColorG", Math.Round( Convert.ToDouble( PipBoyColorGreenTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorG", "0" );
+                prefsConfigFile.Write( "Pipboy", "fPipboyEffectColorG", "0" );
             }
             if(PipBoyColorBlueTextBox.Value != 0) {
-                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorB", Math.Round( Convert.ToDouble( PipBoyColorBlueTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
+                prefsConfigFile.Write( "Pipboy", "fPipboyEffectColorB", Math.Round( Convert.ToDouble( PipBoyColorBlueTextBox.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "Pipboy", "fPipboyEffectColorB", "0" );
+                prefsConfigFile.Write( "Pipboy", "fPipboyEffectColorB", "0" );
             }
             #endregion
-            #endregion
-            #region VATS - WORKS
+            #region VATS
             #region Color
             if(VATSColorR.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorR",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectColorR",
                     Math.Round( Convert.ToDouble( VATSColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorR", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectColorR", "0" );
             }
             if(VATSColorG.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorG",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectColorG",
                     Math.Round( Convert.ToDouble( VATSColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorG", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectColorG", "0" );
             }
             if(VATSColorB.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorB",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectColorB",
                     Math.Round( Convert.ToDouble( VATSColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorB", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectColorB", "0" );
             }
             #endregion
             #region Highlight Color
             if(VATSHighlightColorR.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorR",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightColorR",
                     Math.Round( Convert.ToDouble( VATSHighlightColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorR", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightColorR", "0" );
             }
             if(VATSHighlightColorG.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorG",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightColorG",
                     Math.Round( Convert.ToDouble( VATSHighlightColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorG", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightColorG", "0" );
             }
             if(VATSHighlightColorB.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorB",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightColorB",
                     Math.Round( Convert.ToDouble( VATSHighlightColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorB", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightColorB", "0" );
             }
             #endregion
             #region PA Color
             if(VATSPAColorR.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorR",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectPAColorR",
                     Math.Round( Convert.ToDouble( VATSPAColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorR", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectPAColorR", "0" );
             }
             if(VATSPAColorG.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorG",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectPAColorG",
                     Math.Round( Convert.ToDouble( VATSPAColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorG", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectPAColorG", "0" );
             }
             if(VATSPAColorB.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorB",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectPAColorB",
                     Math.Round( Convert.ToDouble( VATSPAColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorB", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectPAColorB", "0" );
             }
             #endregion
             #region PA Highlight Color
             if(VATSHighlightPAColorR.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorR",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightPAColorR",
                     Math.Round( Convert.ToDouble( VATSHighlightPAColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorR", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightPAColorR", "0" );
             }
             if(VATSHighlightPAColorG.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorG",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightPAColorG",
                     Math.Round( Convert.ToDouble( VATSHighlightPAColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorG", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightPAColorG", "0" );
             }
             if(VATSHighlightPAColorB.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorB",
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightPAColorB",
                     Math.Round( Convert.ToDouble( VATSHighlightPAColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightPAColorB", "0" );
+                prefsConfigFile.Write( "VATS", "fModMenuEffectHighlightPAColorB", "0" );
             }
             #endregion
             #endregion
-            #region Gamepad - WORKS
+            #region Constols
             var gpEnable = gamepadEnable.Checked ? "1" : "0";
             var gpRumble = gamepadRumble.Checked ? "1" : "0";
-            betterPrefsFile.IniWriteValue( "Controls", "bGamepadEnable", gpEnable );
-            betterPrefsFile.IniWriteValue( "Controls", "bGamepadRumble", gpRumble );
+            prefsConfigFile.Write( "Controls", "bGamepadEnable", gpEnable );
+            prefsConfigFile.Write( "Controls", "bGamepadRumble", gpRumble );
             #endregion
-            #region Resolution - WORKS
+            #region Resolution
             var resBorder = ResolutionBorderless.Checked ? "1" : "0";
             if(ResolutionFullscreen.Checked) {
-                betterPrefsFile.IniWriteValue( "Display", "bFull Screen", "1" );
-                betterPrefsFile.IniWriteValue( "Display", "bBorderless", "1" );
+                prefsConfigFile.Write( "Display", "bFull Screen", "1" );
+                prefsConfigFile.Write( "Display", "bBorderless", "1" );
             } else {
-                betterPrefsFile.IniWriteValue( "Display", "bFull Screen", "0" );
-                betterPrefsFile.IniWriteValue( "Display", "bBorderless", resBorder );
+                prefsConfigFile.Write( "Display", "bFull Screen", "0" );
+                prefsConfigFile.Write( "Display", "bBorderless", resBorder );
             }
-            betterPrefsFile.IniWriteValue( "Display", "iSize W", ResolutionWidth.Text );
-            betterPrefsFile.IniWriteValue( "Display", "iSize H", ResolutionHeight.Text );
+            prefsConfigFile.Write( "Display", "iSize W", ResolutionWidth.Text );
+            prefsConfigFile.Write( "Display", "iSize H", ResolutionHeight.Text );
             #endregion
+            prefsConfigFile.Write( "General", "bAllowConsole", "1" );
         }
         private void btnReWrite_Click( object sender, EventArgs e ) {
             GetAllValues();
@@ -540,23 +550,11 @@ namespace Fallout4MoreConfig {
             hudColorBlueTrackBar.Value = Convert.ToInt32( hudColorBlueTextBox.Text );
             hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
         }
-
         private void hudFovFirst_ValueChanged( object sender, EventArgs e ) {
-            if(hudFovFirst.Value > 120 || hudFovThird.Value > 120) {
-                fovHeHe.Visible = true;
-                fovHeHe.Text = "HueHueHue.";
-            } else {
-                fovHeHe.Visible = false;
-            }
+            fovHeHe.Visible = hudFovFirst.Value > 120 || hudFovThird.Value > 120;
         }
-
         private void hudFovThird_ValueChanged( object sender, EventArgs e ) {
-            if(hudFovThird.Value > 120 || hudFovFirst.Value > 120) {
-                fovHeHe.Visible = true;
-                fovHeHe.Text = "HueHueHue.";
-            } else {
-                fovHeHe.Visible = false;
-            }
+            fovHeHe.Visible = hudFovThird.Value > 120 || hudFovFirst.Value > 120;
         }
     }
 }
