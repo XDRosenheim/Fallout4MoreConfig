@@ -40,67 +40,69 @@ namespace Fallout4MoreConfig {
                        : Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
-        public string Fallout4Location = Extras.ConfigFile();
-        public string Fallout4PrefsLocation = Extras.PrefsConfigFile();
+        public string ConfigFile = Extras.ConfigFile();
+        public string PrefsConfigFile = Extras.PrefsConfigFile();
+        public string ConfigFileBackup = Extras.ConfigFileBackup();
+        public string PrefsConfigFileBackup = Extras.PrefsConfigFileBackup();
         public void GetAllValues() {
             try {
                 // Get values from current config
                 #region Visuals
                 #region Image Space
-                VisualsDoF.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bDoDepthOfField" ) ) == 1;
-                VisualsLensflare.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bLensFlare" ) ) == 1;
-                VisualsGore.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bDisableAllGore" ) ) == 1;
-                VisualsScreenBlood.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bBloodSplatterEnabled" ) ) == 1;
-                VisualWaterSky.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectSky" ) ) == 1;
-                VisualWaterLand.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODLand" ) ) == 1;
-                VisualWaterTree.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODTrees" ) ) == 1;
-                VisualWaterObjects.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODObjects" ) ) == 1;
+                VisualsDoF.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bDoDepthOfField" ) ) == 1;
+                VisualsLensflare.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bLensFlare" ) ) == 1;
+                VisualsGore.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bDisableAllGore" ) ) == 1;
+                VisualsScreenBlood.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bBloodSplatterEnabled" ) ) == 1;
+                VisualWaterSky.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectSky" ) ) == 1;
+                VisualWaterLand.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODLand" ) ) == 1;
+                VisualWaterTree.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODTrees" ) ) == 1;
+                VisualWaterObjects.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODObjects" ) ) == 1;
                 #endregion
                 #endregion
                 #region Audio
                 #region Master
-                var masterVolume = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fAudioMasterVolume" ) );
+                var masterVolume = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fAudioMasterVolume" ) );
                 AudioMasterTrackbar.Value = (int)( masterVolume * 100 );
                 AudioMasterText.Text = ( (int)( masterVolume * 100 ) ).ToString();
                 #endregion
                 #region Val
                 #region 0
-                var val0 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal0" ) );
+                var val0 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal0" ) );
                 AudioVal0TrackBar.Value = (int)( val0 * 100 );
                 AudioVal0Text.Text = ( (int)( val0 * 100 ) ).ToString();
                 #endregion
                 #region 1
-                var val1 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal1" ) );
+                var val1 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal1" ) );
                 AudioVal1TrackBar.Value = (int)( val1 * 100 );
                 AudioVal1Text.Text = ( (int)( val1 * 100 ) ).ToString();
                 #endregion
                 #region 2
-                var val2 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal2" ) );
+                var val2 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal2" ) );
                 AudioVal2TrackBar.Value = (int)( val2 * 100 );
                 AudioVal2Text.Text = ( (int)( val2 * 100 ) ).ToString();
                 #endregion
                 #region 3
-                var val3 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal3" ) );
+                var val3 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal3" ) );
                 AudioVal3TrackBar.Value = (int)( val3 * 100 );
                 AudioVal3Text.Text = ( (int)( val3 * 100 ) ).ToString();
                 #endregion
                 #region 4
-                var val4 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal4" ) );
+                var val4 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal4" ) );
                 AudioVal4TrackBar.Value = (int)( val4 * 100 );
                 AudioVal4Text.Text = ( (int)( val4 * 100 ) ).ToString();
                 #endregion
                 #region 5
-                var val5 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal5" ) );
+                var val5 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal5" ) );
                 AudioVal5TrackBar.Value = (int)( val5 * 100 );
                 AudioVal5Text.Text = ( (int)( val5 * 100 ) ).ToString();
                 #endregion
                 #region 6
-                var val6 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal6" ) );
+                var val6 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal6" ) );
                 AudioVal6TrackBar.Value = (int)( val6 * 100 );
                 AudioVal6Text.Text = ( (int)( val6 * 100 ) ).ToString();
                 #endregion
                 #region 7
-                var val7 = Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fVal7" ) );
+                var val7 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal7" ) );
                 AudioVal7TrackBar.Value = (int)( val7 * 100 );
                 AudioVal7Text.Text = ( (int)( val7 * 100 ) ).ToString();
                 #endregion
@@ -108,33 +110,33 @@ namespace Fallout4MoreConfig {
                 #endregion
                 #region Saving
                 #region Auto-Save
-                SavingAutoSaveTextBox.Text = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fAutosaveEveryXMins" ) ) ).ToString();
+                SavingAutoSaveTextBox.Text = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fAutosaveEveryXMins" ) ) ).ToString();
                 #endregion
                 #region Quick-Save
-                SavingQuickPause.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnPause" ) ) == 1;
-                SavingQuickTravel.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnTravel" ) ) == 1;
-                SavingQuickWaiting.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnWait" ) ) == 1;
-                SavingQuickSleeping.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bSaveOnRest" ) ) == 1;
+                SavingQuickPause.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnPause" ) ) == 1;
+                SavingQuickTravel.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnTravel" ) ) == 1;
+                SavingQuickWaiting.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnWait" ) ) == 1;
+                SavingQuickSleeping.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnRest" ) ) == 1;
                 #endregion
                 #endregion
                 #region HUD
                 #region Opacity
-                HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
-                HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( Fallout4PrefsLocation, "fHUDOpacity" ) ) * 100 );
+                HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
+                HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fHUDOpacity" ) ) * 100 );
                 #endregion
                 #region Color
                 #region Red
-                var hudColorRed = Extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorR" );
+                var hudColorRed = Extras.GetLineValue( PrefsConfigFile, "iHUDColorR" );
                 hudColorRedTrackBar.Value = Convert.ToInt16( hudColorRed );
                 hudColorRedTextBox.Text = hudColorRed.ToString();
                 #endregion
                 #region Green
-                var hudColorGreen = Extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorG" );
+                var hudColorGreen = Extras.GetLineValue( PrefsConfigFile, "iHUDColorG" );
                 hudColorGreenTrackBar.Value = Convert.ToInt16( hudColorGreen );
                 hudColorGreenTextBox.Text = hudColorGreen.ToString();
                 #endregion
                 #region Blue
-                var hudColorBlue = Extras.GetLineValue( Fallout4PrefsLocation, "iHUDColorB" );
+                var hudColorBlue = Extras.GetLineValue( PrefsConfigFile, "iHUDColorB" );
                 hudColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
                 hudColorBlueTextBox.Text = hudColorBlue.ToString();
                 #endregion
@@ -145,34 +147,34 @@ namespace Fallout4MoreConfig {
                 #endregion
                 #region FOV
                 #region First Person
-                var hudFirstFov = Extras.GetLineValue( Fallout4Location, "fDefault1stPersonFOV" );
+                var hudFirstFov = Extras.GetLineValue( ConfigFile, "fDefault1stPersonFOV" );
                 hudFovFirst.Text = Convert.ToInt32( hudFirstFov ).ToString();
                 #endregion
                 #region World Person
-                var hudThirdFov = Extras.GetLineValue( Fallout4Location, "fDefaultWorldFOV" );
+                var hudThirdFov = Extras.GetLineValue( ConfigFile, "fDefaultWorldFOV" );
                 hudFovThird.Text = Convert.ToInt32( hudThirdFov ).ToString();
                 #endregion
                 #endregion
                 #region Other
-                hudCrosshair.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bCrosshairEnabled" ) ) == 1;
-                hudCompass.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bShowCompass" ) ) == 1;
-                hudDialogCam.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bDialogueCameraEnable" ) ) == 1;
-                hudDialogSubs.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bDialogueSubtitles" ) ) == 1;
-                hudGeneralSubs.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bGeneralSubtitles" ) ) == 1;
+                hudCrosshair.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bCrosshairEnabled" ) ) == 1;
+                hudCompass.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bShowCompass" ) ) == 1;
+                hudDialogCam.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bDialogueCameraEnable" ) ) == 1;
+                hudDialogSubs.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bDialogueSubtitles" ) ) == 1;
+                hudGeneralSubs.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bGeneralSubtitles" ) ) == 1;
                 #endregion
                 #endregion
                 #region Pip-Boy
                 #region Color
                 #region Red
-                PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorR" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fPipboyEffectColorR" ).ToString() ) * 100 * 2.55 );
                 PipBoyColorRedTextBox.Text = PipBoyColorRedTrackBar.Value.ToString();
                 #endregion
                 #region Green
-                PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorG" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fPipboyEffectColorG" ).ToString() ) * 100 * 2.55 );
                 PipBoyColorGreenTextBox.Text = PipBoyColorGreenTrackBar.Value.ToString();
                 #endregion
                 #region Blue
-                PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fPipboyEffectColorB" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fPipboyEffectColorB" ).ToString() ) * 100 * 2.55 );
                 PipBoyColorBlueTextBox.Text = PipBoyColorBlueTrackBar.Value.ToString();
                 #endregion
                 #region Preview
@@ -182,24 +184,24 @@ namespace Fallout4MoreConfig {
                 #endregion
                 #region VATS
                 #region Color
-                VATSColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectColorR" ).ToString() ) * 100 * 2.55 );
-                VATSColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectColorG" ).ToString() ) * 100 * 2.55 );
-                VATSColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectColorB" ).ToString() ) * 100 * 2.55 );
+                VATSColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectColorR" ).ToString() ) * 100 * 2.55 );
+                VATSColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectColorG" ).ToString() ) * 100 * 2.55 );
+                VATSColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #region Highlight Color
-                VATSHighlightColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightColorR" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightColorG" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightColorB" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightColorR" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightColorG" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #region PA Color
-                VATSPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectPAColorR" ).ToString() ) * 100 * 2.55 );
-                VATSPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectPAColorG" ).ToString() ) * 100 * 2.55 );
-                VATSPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectPAColorB" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectPAColorR" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectPAColorG" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectPAColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #region PA Highlight Color
-                VATSHighlightPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightPAColorR" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightPAColorG" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( Fallout4PrefsLocation, "fModMenuEffectHighlightPAColorB" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightPAColorR" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightPAColorG" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightPAColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #endregion
                 #region Gamepad
@@ -207,11 +209,11 @@ namespace Fallout4MoreConfig {
 
                 #endregion
                 #region Resolution
-                ResolutionHeight.Text = Extras.GetLineValue( Fallout4PrefsLocation, "iSize H" ).ToString();
-                ResolutionWidth.Text = Extras.GetLineValue( Fallout4PrefsLocation, "iSize W" ).ToString();
+                ResolutionHeight.Text = Extras.GetLineValue( PrefsConfigFile, "iSize H" ).ToString();
+                ResolutionWidth.Text = Extras.GetLineValue( PrefsConfigFile, "iSize W" ).ToString();
                 #region Fullscreen / Borderless
-                ResolutionFullscreen.Checked = Convert.ToInt32( Extras.GetLineValue( Fallout4PrefsLocation, "bFull Screen" ) ) == 1;
-                ResolutionBorderless.Checked = Convert.ToInt32( Extras.GetLineValue( Fallout4PrefsLocation, "bBorderless" ) ) == 1;
+                ResolutionFullscreen.Checked = Convert.ToInt32( Extras.GetLineValue( PrefsConfigFile, "bFull Screen" ) ) == 1;
+                ResolutionBorderless.Checked = Convert.ToInt32( Extras.GetLineValue( PrefsConfigFile, "bBorderless" ) ) == 1;
                 #endregion
                 #endregion
                 Text = @"Fallout 4 - Extended settings -- Version: " + CurrentVersion;
@@ -223,21 +225,25 @@ namespace Fallout4MoreConfig {
         }
         public Form1() {
             // See if config files exists
-            if(!File.Exists( Fallout4Location )) {
+            if(!File.Exists( ConfigFile )) {
                 MessageBox.Show(
                     // TODO: Button to copy error to clipboard.
-                    Fallout4Location + Resources.Error_Path_not_found_,
+                    ConfigFile + Resources.Error_Path_not_found_,
                     Resources.Error_Header, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
                 Application.Exit();
+            } else if(!File.Exists( ConfigFileBackup )) {
+                File.Copy( ConfigFile, ConfigFileBackup );
             }
-            if(!File.Exists( Fallout4PrefsLocation )) {
+            if(!File.Exists( PrefsConfigFile )) {
                 MessageBox.Show(
                     // TODO: Button to copy error to clipboard.
-                    Fallout4PrefsLocation + Resources.Error_Path_not_found_,
+                    PrefsConfigFile + Resources.Error_Path_not_found_,
                     Resources.Error_Header, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
                 Application.Exit();
+            } else if(!File.Exists( PrefsConfigFileBackup )) {
+                File.Copy( PrefsConfigFile, PrefsConfigFileBackup );
             }
             // Some (most) coutries use comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config files...
@@ -254,8 +260,8 @@ namespace Fallout4MoreConfig {
         }
         // The buttons
         private void btnSave_Click( object sender, EventArgs e ) {
-            var betterPrefsFile = new IniFile( Fallout4PrefsLocation );
-            var betterNonFile = new IniFile( Fallout4Location );
+            var betterPrefsFile = new IniFile( PrefsConfigFile );
+            var betterNonFile = new IniFile( ConfigFile );
             #region Visuals - WORKS
             var visuDof = VisualsDoF.Checked ? "1" : "0";
             var visuLf = VisualsLensflare.Checked ? "1" : "0";
@@ -341,19 +347,19 @@ namespace Fallout4MoreConfig {
             #region VATS - WORKS
             #region Color
             if(VATSColorR.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorR", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorR",
                     Math.Round( Convert.ToDouble( VATSColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorR", "0" );
             }
             if(VATSColorG.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorG", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorG",
                     Math.Round( Convert.ToDouble( VATSColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorG", "0" );
             }
             if(VATSColorB.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorB", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorB",
                     Math.Round( Convert.ToDouble( VATSColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectColorB", "0" );
@@ -361,19 +367,19 @@ namespace Fallout4MoreConfig {
             #endregion
             #region Highlight Color
             if(VATSHighlightColorR.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorR", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorR",
                     Math.Round( Convert.ToDouble( VATSHighlightColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorR", "0" );
             }
             if(VATSHighlightColorG.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorG", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorG",
                     Math.Round( Convert.ToDouble( VATSHighlightColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorG", "0" );
             }
             if(VATSHighlightColorB.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorB", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorB",
                     Math.Round( Convert.ToDouble( VATSHighlightColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectHighlightColorB", "0" );
@@ -381,19 +387,19 @@ namespace Fallout4MoreConfig {
             #endregion
             #region PA Color
             if(VATSPAColorR.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorR", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorR",
                     Math.Round( Convert.ToDouble( VATSPAColorR.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorR", "0" );
             }
             if(VATSPAColorG.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorG", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorG",
                     Math.Round( Convert.ToDouble( VATSPAColorG.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorG", "0" );
             }
             if(VATSPAColorB.Value != 0) {
-                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorB", 
+                betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorB",
                     Math.Round( Convert.ToDouble( VATSPAColorB.Value.ToString( "#.####" ) ) / 255, 4 ) );
             } else {
                 betterPrefsFile.IniWriteValue( "VATS", "fModMenuEffectPAColorB", "0" );
@@ -533,6 +539,24 @@ namespace Fallout4MoreConfig {
         private void hudColorBlueTextBox_ValueChanged( object sender, EventArgs e ) {
             hudColorBlueTrackBar.Value = Convert.ToInt32( hudColorBlueTextBox.Text );
             hudColorPreviewBox.BackColor = Color.FromArgb( hudColorRedTrackBar.Value, hudColorGreenTrackBar.Value, hudColorBlueTrackBar.Value );
+        }
+
+        private void hudFovFirst_ValueChanged( object sender, EventArgs e ) {
+            if(hudFovFirst.Value > 120 || hudFovThird.Value > 120) {
+                fovHeHe.Visible = true;
+                fovHeHe.Text = "HueHueHue.";
+            } else {
+                fovHeHe.Visible = false;
+            }
+        }
+
+        private void hudFovThird_ValueChanged( object sender, EventArgs e ) {
+            if(hudFovThird.Value > 120 || hudFovFirst.Value > 120) {
+                fovHeHe.Visible = true;
+                fovHeHe.Text = "HueHueHue.";
+            } else {
+                fovHeHe.Visible = false;
+            }
         }
     }
 }

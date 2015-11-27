@@ -91,9 +91,9 @@ namespace Fallout4MoreConfig.Properties {
         ///   Looks up a localized string similar to Please report the following code on github: 
         ///.
         /// </summary>
-        internal static string Extras_GetLineValue_ {
+        internal static string Extras_PleaseReportOnGithub {
             get {
-                return ResourceManager.GetString("Extras_GetLineValue_", resourceCulture);
+                return ResourceManager.GetString("Extras_PleaseReportOnGithub", resourceCulture);
             }
         }
         

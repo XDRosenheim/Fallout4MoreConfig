@@ -117,7 +117,7 @@
   <data name="Percentage" xml:space="preserve">
     <value>%</value>
   </data>
-  <data name="Extras_GetLineValue_" xml:space="preserve">
+  <data name="Extras_PleaseReportOnGithub" xml:space="preserve">
     <value>Please report the following code on github: 
 </value>
   </data>
