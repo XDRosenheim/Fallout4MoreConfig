@@ -51,8 +51,6 @@ namespace Fallout4MoreConfig {
                 VisualsLensflare.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4PrefsLocation, "bLensFlare" ) ) == 1;
                 VisualsGore.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bDisableAllGore" ) ) == 1;
                 VisualsScreenBlood.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bBloodSplatterEnabled" ) ) == 1;
-                #endregion
-                #region Water Reflections
                 VisualWaterSky.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectSky" ) ) == 1;
                 VisualWaterLand.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODLand" ) ) == 1;
                 VisualWaterTree.Checked = Convert.ToInt16( Extras.GetLineValue( Fallout4Location, "bReflectLODTrees" ) ) == 1;
@@ -206,16 +204,11 @@ namespace Fallout4MoreConfig {
                 #endregion
                 #region Gamepad
 
+
                 #endregion
                 #region Resolution
-                #region Height
-                var resHeight = Extras.GetLineValue( Fallout4PrefsLocation, "iSize H" );
-                ResolutionHeight.Text = resHeight.ToString();
-                #endregion
-                #region Width
-                var resWidth = Extras.GetLineValue( Fallout4PrefsLocation, "iSize W" );
-                ResolutionWidth.Text = resWidth.ToString();
-                #endregion
+                ResolutionHeight.Text = Extras.GetLineValue( Fallout4PrefsLocation, "iSize H" ).ToString();
+                ResolutionWidth.Text = Extras.GetLineValue( Fallout4PrefsLocation, "iSize W" ).ToString();
                 #region Fullscreen / Borderless
                 ResolutionFullscreen.Checked = Convert.ToInt32( Extras.GetLineValue( Fallout4PrefsLocation, "bFull Screen" ) ) == 1;
                 ResolutionBorderless.Checked = Convert.ToInt32( Extras.GetLineValue( Fallout4PrefsLocation, "bBorderless" ) ) == 1;
@@ -236,6 +229,7 @@ namespace Fallout4MoreConfig {
                     Fallout4Location + Resources.Error_Path_not_found_,
                     Resources.Error_Header, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
+                Application.Exit();
             }
             if(!File.Exists( Fallout4PrefsLocation )) {
                 MessageBox.Show(
@@ -243,6 +237,7 @@ namespace Fallout4MoreConfig {
                     Fallout4PrefsLocation + Resources.Error_Path_not_found_,
                     Resources.Error_Header, MessageBoxButtons.OK,
                     MessageBoxIcon.Error );
+                Application.Exit();
             }
             // Some (most) coutries use comma (,) as decimal mark, but some countries just has to fuck everything up.
             // And Bethesda uses a point (.) in their config files...
