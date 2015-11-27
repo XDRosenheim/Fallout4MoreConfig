@@ -274,7 +274,7 @@
             this.tabVisuals.Location = new System.Drawing.Point(4, 40);
             this.tabVisuals.Name = "tabVisuals";
             this.tabVisuals.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVisuals.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabVisuals.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tabVisuals.Size = new System.Drawing.Size(382, 330);
             this.tabVisuals.TabIndex = 0;
             this.tabVisuals.Text = "Visuals";
@@ -412,10 +412,10 @@
             this.tabAudio.Controls.Add(this.groupBox4);
             this.tabAudio.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabAudio.ForeColor = System.Drawing.Color.Lime;
-            this.tabAudio.Location = new System.Drawing.Point(4, 40);
+            this.tabAudio.Location = new System.Drawing.Point(4, 22);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(382, 330);
+            this.tabAudio.Size = new System.Drawing.Size(382, 348);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio[WIP]";
             // 
@@ -787,10 +787,10 @@
             this.tabSaving.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabSaving.Controls.Add(this.groupBox6);
             this.tabSaving.Controls.Add(this.groupBox5);
-            this.tabSaving.Location = new System.Drawing.Point(4, 40);
+            this.tabSaving.Location = new System.Drawing.Point(4, 22);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(382, 330);
+            this.tabSaving.Size = new System.Drawing.Size(382, 348);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -897,10 +897,10 @@
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabHUD.Location = new System.Drawing.Point(4, 40);
+            this.tabHUD.Location = new System.Drawing.Point(4, 22);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(382, 330);
+            this.tabHUD.Size = new System.Drawing.Size(382, 348);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -1575,7 +1575,7 @@
             this.tabControls.Padding = new System.Windows.Forms.Padding(5);
             this.tabControls.Size = new System.Drawing.Size(382, 330);
             this.tabControls.TabIndex = 6;
-            this.tabControls.Text = "Controls[WIP]";
+            this.tabControls.Text = "Controls";
             // 
             // groupBox16
             // 

@@ -293,6 +293,7 @@ namespace Fallout4MoreConfig {
             configFile.Write( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
             configFile.Write( "Interface", "fDefault1stPersonFOV", hudFovFirst.Text );
             prefsConfigFile.Write( "Display", "fDefault1stPersonFOV", hudFovFirst.Text );
+            prefsConfigFile.Write( "General", "fDefaultFOV", hudFovFirst.Text );
             #endregion
             #region Audio
             prefsConfigFile.Write( "AudioMenu", "fAudioMasterVolume", ( (double)AudioMasterTrackbar.Value / 100 ).ToString( CultureInfo.CurrentCulture ) );
