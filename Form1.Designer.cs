@@ -32,12 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabVisuals = new System.Windows.Forms.TabPage();
+            this.fovHeHe = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.hudFovThird = new System.Windows.Forms.NumericUpDown();
+            this.hudFovFirst = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.VisualWaterObjects = new System.Windows.Forms.CheckBox();
             this.VisualWaterTree = new System.Windows.Forms.CheckBox();
             this.VisualWaterLand = new System.Windows.Forms.CheckBox();
             this.VisualWaterSky = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.VisualsRadialBlur = new System.Windows.Forms.CheckBox();
             this.VisualsScreenBlood = new System.Windows.Forms.CheckBox();
             this.VisualsLensflare = new System.Windows.Forms.CheckBox();
             this.VisualsGore = new System.Windows.Forms.CheckBox();
@@ -85,6 +92,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.SavingMinutLabel = new System.Windows.Forms.Label();
             this.tabHUD = new System.Windows.Forms.TabPage();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.hudQuestFloatingShow = new System.Windows.Forms.CheckBox();
+            this.hudQuestMarkShow = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.hudGeneralSubs = new System.Windows.Forms.CheckBox();
             this.hudDialogSubs = new System.Windows.Forms.CheckBox();
@@ -141,16 +151,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tabControls = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.controlsMouseAcceleration = new System.Windows.Forms.CheckBox();
             this.controlsRunByDefault = new System.Windows.Forms.CheckBox();
             this.controlsInverty = new System.Windows.Forms.CheckBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.gamepadEnable = new System.Windows.Forms.CheckBox();
             this.gamepadRumble = new System.Windows.Forms.CheckBox();
             this.tabResolution = new System.Windows.Forms.TabPage();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.ResolutionHeight = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.ResolutionWidth = new System.Windows.Forms.NumericUpDown();
             this.ResolutionBorderless = new System.Windows.Forms.CheckBox();
             this.ResolutionFullscreen = new System.Windows.Forms.CheckBox();
@@ -159,21 +172,12 @@
             this.btnSource = new System.Windows.Forms.Button();
             this.btnDonate = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.hudFovThird = new System.Windows.Forms.NumericUpDown();
-            this.hudFovFirst = new System.Windows.Forms.NumericUpDown();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.fovHeHe = new System.Windows.Forms.Label();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.hudQuestMarkShow = new System.Windows.Forms.CheckBox();
-            this.hudQuestFloatingShow = new System.Windows.Forms.CheckBox();
-            this.controlsMouseAcceleration = new System.Windows.Forms.CheckBox();
-            this.VisualsRadialBlur = new System.Windows.Forms.CheckBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.btnStartGame = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).BeginInit();
             this.groupBox14.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabAudio.SuspendLayout();
@@ -193,6 +197,7 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SavingAutoSaveTextBox)).BeginInit();
             this.tabHUD.SuspendLayout();
+            this.groupBox17.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HUDOpacityTrackBar)).BeginInit();
@@ -233,10 +238,6 @@
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).BeginInit();
-            this.groupBox17.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -274,10 +275,95 @@
             this.tabVisuals.Location = new System.Drawing.Point(4, 40);
             this.tabVisuals.Name = "tabVisuals";
             this.tabVisuals.Padding = new System.Windows.Forms.Padding(5);
-            this.tabVisuals.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tabVisuals.Size = new System.Drawing.Size(382, 330);
             this.tabVisuals.TabIndex = 0;
             this.tabVisuals.Text = "Visuals";
+            // 
+            // fovHeHe
+            // 
+            this.fovHeHe.AutoSize = true;
+            this.fovHeHe.Location = new System.Drawing.Point(282, 194);
+            this.fovHeHe.Name = "fovHeHe";
+            this.fovHeHe.Size = new System.Drawing.Size(67, 13);
+            this.fovHeHe.TabIndex = 19;
+            this.fovHeHe.Text = "HueHueHue";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.hudFovThird);
+            this.groupBox2.Controls.Add(this.hudFovFirst);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Location = new System.Drawing.Point(192, 125);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(178, 72);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "FOV";
+            // 
+            // hudFovThird
+            // 
+            this.hudFovThird.Location = new System.Drawing.Point(93, 46);
+            this.hudFovThird.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.hudFovThird.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.hudFovThird.Name = "hudFovThird";
+            this.hudFovThird.Size = new System.Drawing.Size(79, 20);
+            this.hudFovThird.TabIndex = 10;
+            this.hudFovThird.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.hudFovThird.ValueChanged += new System.EventHandler(this.hudFovThird_ValueChanged);
+            // 
+            // hudFovFirst
+            // 
+            this.hudFovFirst.Location = new System.Drawing.Point(93, 20);
+            this.hudFovFirst.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.hudFovFirst.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.hudFovFirst.Name = "hudFovFirst";
+            this.hudFovFirst.Size = new System.Drawing.Size(79, 20);
+            this.hudFovFirst.TabIndex = 9;
+            this.hudFovFirst.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.hudFovFirst.ValueChanged += new System.EventHandler(this.hudFovFirst_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 48);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 13);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "World FOV";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 22);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(81, 13);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "1st Person FOV";
             // 
             // groupBox14
             // 
@@ -354,6 +440,18 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ImageSpace";
             // 
+            // VisualsRadialBlur
+            // 
+            this.VisualsRadialBlur.AutoSize = true;
+            this.VisualsRadialBlur.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.VisualsRadialBlur.Location = new System.Drawing.Point(6, 111);
+            this.VisualsRadialBlur.Name = "VisualsRadialBlur";
+            this.VisualsRadialBlur.Size = new System.Drawing.Size(76, 17);
+            this.VisualsRadialBlur.TabIndex = 4;
+            this.VisualsRadialBlur.Text = "Radial blur";
+            this.toolTip1.SetToolTip(this.VisualsRadialBlur, "De-/Activate radial blur.");
+            this.VisualsRadialBlur.UseVisualStyleBackColor = true;
+            // 
             // VisualsScreenBlood
             // 
             this.VisualsScreenBlood.AutoSize = true;
@@ -412,10 +510,10 @@
             this.tabAudio.Controls.Add(this.groupBox4);
             this.tabAudio.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabAudio.ForeColor = System.Drawing.Color.Lime;
-            this.tabAudio.Location = new System.Drawing.Point(4, 22);
+            this.tabAudio.Location = new System.Drawing.Point(4, 40);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
-            this.tabAudio.Size = new System.Drawing.Size(382, 348);
+            this.tabAudio.Size = new System.Drawing.Size(382, 330);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio[WIP]";
             // 
@@ -787,10 +885,10 @@
             this.tabSaving.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabSaving.Controls.Add(this.groupBox6);
             this.tabSaving.Controls.Add(this.groupBox5);
-            this.tabSaving.Location = new System.Drawing.Point(4, 22);
+            this.tabSaving.Location = new System.Drawing.Point(4, 40);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(382, 348);
+            this.tabSaving.Size = new System.Drawing.Size(382, 330);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -897,12 +995,43 @@
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabHUD.Location = new System.Drawing.Point(4, 22);
+            this.tabHUD.Location = new System.Drawing.Point(4, 40);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(382, 348);
+            this.tabHUD.Size = new System.Drawing.Size(382, 330);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.hudQuestFloatingShow);
+            this.groupBox17.Controls.Add(this.hudQuestMarkShow);
+            this.groupBox17.Location = new System.Drawing.Point(8, 217);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(178, 65);
+            this.groupBox17.TabIndex = 17;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Quest Markers";
+            // 
+            // hudQuestFloatingShow
+            // 
+            this.hudQuestFloatingShow.AutoSize = true;
+            this.hudQuestFloatingShow.Location = new System.Drawing.Point(6, 42);
+            this.hudQuestFloatingShow.Name = "hudQuestFloatingShow";
+            this.hudQuestFloatingShow.Size = new System.Drawing.Size(130, 17);
+            this.hudQuestFloatingShow.TabIndex = 5;
+            this.hudQuestFloatingShow.Text = "Show floating markers";
+            this.hudQuestFloatingShow.UseVisualStyleBackColor = true;
+            // 
+            // hudQuestMarkShow
+            // 
+            this.hudQuestMarkShow.AutoSize = true;
+            this.hudQuestMarkShow.Location = new System.Drawing.Point(6, 19);
+            this.hudQuestMarkShow.Name = "hudQuestMarkShow";
+            this.hudQuestMarkShow.Size = new System.Drawing.Size(122, 17);
+            this.hudQuestMarkShow.TabIndex = 4;
+            this.hudQuestMarkShow.Text = "Show quest markers";
+            this.hudQuestMarkShow.UseVisualStyleBackColor = true;
             // 
             // groupBox8
             // 
@@ -1589,6 +1718,16 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Others";
             // 
+            // controlsMouseAcceleration
+            // 
+            this.controlsMouseAcceleration.AutoSize = true;
+            this.controlsMouseAcceleration.Location = new System.Drawing.Point(6, 64);
+            this.controlsMouseAcceleration.Name = "controlsMouseAcceleration";
+            this.controlsMouseAcceleration.Size = new System.Drawing.Size(119, 17);
+            this.controlsMouseAcceleration.TabIndex = 4;
+            this.controlsMouseAcceleration.Text = "Mouse acceleration";
+            this.controlsMouseAcceleration.UseVisualStyleBackColor = true;
+            // 
             // controlsRunByDefault
             // 
             this.controlsRunByDefault.AutoSize = true;
@@ -1655,6 +1794,24 @@
             this.tabResolution.TabIndex = 8;
             this.tabResolution.Text = "Resolution";
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(192, 41);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(108, 13);
+            this.label31.TabIndex = 2;
+            this.label31.Text = " Presets for resolution";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(192, 28);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(41, 13);
+            this.label30.TabIndex = 1;
+            this.label30.Text = "TODO:";
+            // 
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.label16);
@@ -1679,15 +1836,6 @@
             this.label16.TabIndex = 5;
             this.label16.Text = "Height";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Width";
-            // 
             // ResolutionHeight
             // 
             this.ResolutionHeight.Location = new System.Drawing.Point(61, 92);
@@ -1699,6 +1847,15 @@
             this.ResolutionHeight.Name = "ResolutionHeight";
             this.ResolutionHeight.Size = new System.Drawing.Size(111, 20);
             this.ResolutionHeight.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Width";
             // 
             // ResolutionWidth
             // 
@@ -1757,10 +1914,10 @@
             // 
             // btnSource
             // 
-            this.btnSource.Location = new System.Drawing.Point(184, 386);
+            this.btnSource.Location = new System.Drawing.Point(281, 385);
             this.btnSource.Name = "btnSource";
-            this.btnSource.Size = new System.Drawing.Size(80, 25);
-            this.btnSource.TabIndex = 3;
+            this.btnSource.Size = new System.Drawing.Size(56, 20);
+            this.btnSource.TabIndex = 4;
             this.btnSource.Text = "Github";
             this.toolTip1.SetToolTip(this.btnSource, "See the source code. It\'s free.");
             this.btnSource.UseVisualStyleBackColor = true;
@@ -1768,171 +1925,25 @@
             // 
             // btnDonate
             // 
-            this.btnDonate.Location = new System.Drawing.Point(338, 388);
+            this.btnDonate.Location = new System.Drawing.Point(343, 386);
             this.btnDonate.Name = "btnDonate";
             this.btnDonate.Size = new System.Drawing.Size(56, 20);
-            this.btnDonate.TabIndex = 4;
+            this.btnDonate.TabIndex = 5;
             this.btnDonate.Text = "Donate?";
             this.toolTip1.SetToolTip(this.btnDonate, "You don\'t have to. Seriously.");
             this.btnDonate.UseVisualStyleBackColor = true;
             this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
             // 
-            // groupBox2
+            // btnStartGame
             // 
-            this.groupBox2.Controls.Add(this.hudFovThird);
-            this.groupBox2.Controls.Add(this.hudFovFirst);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Location = new System.Drawing.Point(192, 125);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(178, 72);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "FOV";
-            // 
-            // hudFovThird
-            // 
-            this.hudFovThird.Location = new System.Drawing.Point(93, 46);
-            this.hudFovThird.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.hudFovThird.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.hudFovThird.Name = "hudFovThird";
-            this.hudFovThird.Size = new System.Drawing.Size(79, 20);
-            this.hudFovThird.TabIndex = 10;
-            this.hudFovThird.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.hudFovThird.ValueChanged += new System.EventHandler(this.hudFovThird_ValueChanged);
-            // 
-            // hudFovFirst
-            // 
-            this.hudFovFirst.Location = new System.Drawing.Point(93, 20);
-            this.hudFovFirst.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.hudFovFirst.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.hudFovFirst.Name = "hudFovFirst";
-            this.hudFovFirst.Size = new System.Drawing.Size(79, 20);
-            this.hudFovFirst.TabIndex = 9;
-            this.hudFovFirst.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.hudFovFirst.ValueChanged += new System.EventHandler(this.hudFovFirst_ValueChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 48);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(59, 13);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "World FOV";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 22);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(81, 13);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "1st Person FOV";
-            // 
-            // fovHeHe
-            // 
-            this.fovHeHe.AutoSize = true;
-            this.fovHeHe.Location = new System.Drawing.Point(282, 194);
-            this.fovHeHe.Name = "fovHeHe";
-            this.fovHeHe.Size = new System.Drawing.Size(67, 13);
-            this.fovHeHe.TabIndex = 19;
-            this.fovHeHe.Text = "HueHueHue";
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.Controls.Add(this.hudQuestFloatingShow);
-            this.groupBox17.Controls.Add(this.hudQuestMarkShow);
-            this.groupBox17.Location = new System.Drawing.Point(8, 217);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(178, 65);
-            this.groupBox17.TabIndex = 17;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Quest Markers";
-            // 
-            // hudQuestMarkShow
-            // 
-            this.hudQuestMarkShow.AutoSize = true;
-            this.hudQuestMarkShow.Location = new System.Drawing.Point(6, 19);
-            this.hudQuestMarkShow.Name = "hudQuestMarkShow";
-            this.hudQuestMarkShow.Size = new System.Drawing.Size(122, 17);
-            this.hudQuestMarkShow.TabIndex = 4;
-            this.hudQuestMarkShow.Text = "Show quest markers";
-            this.hudQuestMarkShow.UseVisualStyleBackColor = true;
-            // 
-            // hudQuestFloatingShow
-            // 
-            this.hudQuestFloatingShow.AutoSize = true;
-            this.hudQuestFloatingShow.Location = new System.Drawing.Point(6, 42);
-            this.hudQuestFloatingShow.Name = "hudQuestFloatingShow";
-            this.hudQuestFloatingShow.Size = new System.Drawing.Size(130, 17);
-            this.hudQuestFloatingShow.TabIndex = 5;
-            this.hudQuestFloatingShow.Text = "Show floating markers";
-            this.hudQuestFloatingShow.UseVisualStyleBackColor = true;
-            // 
-            // controlsMouseAcceleration
-            // 
-            this.controlsMouseAcceleration.AutoSize = true;
-            this.controlsMouseAcceleration.Location = new System.Drawing.Point(6, 64);
-            this.controlsMouseAcceleration.Name = "controlsMouseAcceleration";
-            this.controlsMouseAcceleration.Size = new System.Drawing.Size(119, 17);
-            this.controlsMouseAcceleration.TabIndex = 4;
-            this.controlsMouseAcceleration.Text = "Mouse acceleration";
-            this.controlsMouseAcceleration.UseVisualStyleBackColor = true;
-            // 
-            // VisualsRadialBlur
-            // 
-            this.VisualsRadialBlur.AutoSize = true;
-            this.VisualsRadialBlur.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.VisualsRadialBlur.Location = new System.Drawing.Point(6, 111);
-            this.VisualsRadialBlur.Name = "VisualsRadialBlur";
-            this.VisualsRadialBlur.Size = new System.Drawing.Size(76, 17);
-            this.VisualsRadialBlur.TabIndex = 4;
-            this.VisualsRadialBlur.Text = "Radial blur";
-            this.toolTip1.SetToolTip(this.VisualsRadialBlur, "De-/Activate radial blur.");
-            this.VisualsRadialBlur.UseVisualStyleBackColor = true;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(192, 28);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(41, 13);
-            this.label30.TabIndex = 1;
-            this.label30.Text = "TODO:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(192, 41);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(108, 13);
-            this.label31.TabIndex = 2;
-            this.label31.Text = " Presets for resolution";
+            this.btnStartGame.Location = new System.Drawing.Point(184, 386);
+            this.btnStartGame.Name = "btnStartGame";
+            this.btnStartGame.Size = new System.Drawing.Size(80, 25);
+            this.btnStartGame.TabIndex = 3;
+            this.btnStartGame.Text = "Start Fallout 4";
+            this.toolTip1.SetToolTip(this.btnStartGame, "Re-read from the config files.");
+            this.btnStartGame.UseVisualStyleBackColor = true;
+            this.btnStartGame.Click += new System.EventHandler( this.btnStartGame_Click );
             // 
             // Form1
             // 
@@ -1940,6 +1951,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(467, 478);
+            this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.btnDonate);
             this.Controls.Add(this.btnSource);
             this.Controls.Add(this.btnReWrite);
@@ -1951,9 +1963,14 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Fallout 4 - Extended settings";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
             this.tabVisuals.ResumeLayout(false);
             this.tabVisuals.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).EndInit();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -1980,6 +1997,8 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SavingAutoSaveTextBox)).EndInit();
             this.tabHUD.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -2029,12 +2048,6 @@
             this.groupBox13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovThird)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hudFovFirst)).EndInit();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2192,6 +2205,7 @@
         private System.Windows.Forms.CheckBox VisualsRadialBlur;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button btnStartGame;
 
     }
 }

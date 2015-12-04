@@ -7,7 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Fallout4MoreConfig.Properties;
-using Ini;
+using MyDLL;
 
 namespace Fallout4MoreConfig {
     /// TODO: This list
@@ -46,61 +46,61 @@ namespace Fallout4MoreConfig {
                 // Get values from current config
                 #region Visuals
                 #region Image Space
-                VisualsDoF.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bDoDepthOfField" ) ) == 1;
-                VisualsLensflare.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bLensFlare" ) ) == 1;
-                VisualsGore.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bDisableAllGore" ) ) == 1;
-                VisualsScreenBlood.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bBloodSplatterEnabled" ) ) == 1;
-                VisualsRadialBlur.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bDoRadialBlur" ) ) == 1;
-                VisualWaterSky.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectSky" ) ) == 1;
-                VisualWaterLand.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODLand" ) ) == 1;
-                VisualWaterTree.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODTrees" ) ) == 1;
-                VisualWaterObjects.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bReflectLODObjects" ) ) == 1;
+                VisualsDoF.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Imagespace", "bDoDepthOfField" ) ) == 1;
+                VisualsLensflare.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Imagespace", "bLensFlare" ) ) == 1;
+                VisualsGore.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "General", "bDisableAllGore" ) ) == 1;
+                VisualsScreenBlood.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "ScreenSplatter", "bBloodSplatterEnabled" ) ) == 1;
+                VisualsRadialBlur.Checked = Convert.ToInt32(Extras.GetLineValue( ConfigFile, "ImageSpace", "bDoRadialBlur" ) ) == 1;
+                VisualWaterSky.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "Water", "bReflectSky" ) ) == 1;
+                VisualWaterLand.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "Water", "bReflectLODLand" ) ) == 1;
+                VisualWaterTree.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "Water", "bReflectLODTrees" ) ) == 1;
+                VisualWaterObjects.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "Water", "bReflectLODObjects" ) ) == 1;
                 #endregion
                 #endregion
                 #region Audio
                 #region Master
-                var masterVolume = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fAudioMasterVolume" ) );
+                var masterVolume = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fAudioMasterVolume" ) );
                 AudioMasterTrackbar.Value = (int)( masterVolume * 100 );
                 AudioMasterText.Text = ( (int)( masterVolume * 100 ) ).ToString();
                 #endregion
                 #region Val
                 #region 0
-                var val0 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal0" ) );
+                var val0 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal0" ) );
                 AudioVal0TrackBar.Value = (int)( val0 * 100 );
                 AudioVal0Text.Text = ( (int)( val0 * 100 ) ).ToString();
                 #endregion
                 #region 1
-                var val1 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal1" ) );
+                var val1 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal1" ) );
                 AudioVal1TrackBar.Value = (int)( val1 * 100 );
                 AudioVal1Text.Text = ( (int)( val1 * 100 ) ).ToString();
                 #endregion
                 #region 2
-                var val2 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal2" ) );
+                var val2 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal2" ) );
                 AudioVal2TrackBar.Value = (int)( val2 * 100 );
                 AudioVal2Text.Text = ( (int)( val2 * 100 ) ).ToString();
                 #endregion
                 #region 3
-                var val3 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal3" ) );
+                var val3 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal3" ) );
                 AudioVal3TrackBar.Value = (int)( val3 * 100 );
                 AudioVal3Text.Text = ( (int)( val3 * 100 ) ).ToString();
                 #endregion
                 #region 4
-                var val4 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal4" ) );
+                var val4 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal4" ) );
                 AudioVal4TrackBar.Value = (int)( val4 * 100 );
                 AudioVal4Text.Text = ( (int)( val4 * 100 ) ).ToString();
                 #endregion
                 #region 5
-                var val5 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal5" ) );
+                var val5 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal5" ) );
                 AudioVal5TrackBar.Value = (int)( val5 * 100 );
                 AudioVal5Text.Text = ( (int)( val5 * 100 ) ).ToString();
                 #endregion
                 #region 6
-                var val6 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal6" ) );
+                var val6 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal6" ) );
                 AudioVal6TrackBar.Value = (int)( val6 * 100 );
                 AudioVal6Text.Text = ( (int)( val6 * 100 ) ).ToString();
                 #endregion
                 #region 7
-                var val7 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fVal7" ) );
+                var val7 = Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "AudioMenu", "fVal7" ) );
                 AudioVal7TrackBar.Value = (int)( val7 * 100 );
                 AudioVal7Text.Text = ( (int)( val7 * 100 ) ).ToString();
                 #endregion
@@ -108,33 +108,33 @@ namespace Fallout4MoreConfig {
                 #endregion
                 #region Saving
                 #region Auto-Save
-                SavingAutoSaveTextBox.Text = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fAutosaveEveryXMins" ) ) ).ToString();
+                SavingAutoSaveTextBox.Text = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "SaveGame", "fAutosaveEveryXMins" ) ) ).ToString();
                 #endregion
                 #region Quick-Save
-                SavingQuickPause.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnPause" ) ) == 1;
-                SavingQuickTravel.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnTravel" ) ) == 1;
-                SavingQuickWaiting.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnWait" ) ) == 1;
-                SavingQuickSleeping.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bSaveOnRest" ) ) == 1;
+                SavingQuickPause.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "MAIN", "bSaveOnPause" ) ) == 1;
+                SavingQuickTravel.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "MAIN", "bSaveOnTravel" ) ) == 1;
+                SavingQuickWaiting.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "MAIN", "bSaveOnWait" ) ) == 1;
+                SavingQuickSleeping.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "MAIN", "bSaveOnRest" ) ) == 1;
                 #endregion
                 #endregion
                 #region HUD
                 #region Opacity
-                HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
-                HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "fHUDOpacity" ) ) * 100 );
+                HUDOpacityResult.Text = Convert.ToString( Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "MAIN", "fHUDOpacity" ) ) * 100 ) ) + Resources.Percentage;
+                HUDOpacityTrackBar.Value = Convert.ToInt32( Convert.ToDecimal( Extras.GetLineValue( PrefsConfigFile, "MAIN", "fHUDOpacity" ) ) * 100 );
                 #endregion
                 #region Color
                 #region Red
-                var hudColorRed = Extras.GetLineValue( PrefsConfigFile, "iHUDColorR" );
+                var hudColorRed = Extras.GetLineValue( PrefsConfigFile, "Interface", "iHUDColorR" );
                 hudColorRedTrackBar.Value = Convert.ToInt16( hudColorRed );
                 hudColorRedTextBox.Text = hudColorRed.ToString();
                 #endregion
                 #region Green
-                var hudColorGreen = Extras.GetLineValue( PrefsConfigFile, "iHUDColorG" );
+                var hudColorGreen = Extras.GetLineValue( PrefsConfigFile, "Interface", "iHUDColorG" );
                 hudColorGreenTrackBar.Value = Convert.ToInt16( hudColorGreen );
                 hudColorGreenTextBox.Text = hudColorGreen.ToString();
                 #endregion
                 #region Blue
-                var hudColorBlue = Extras.GetLineValue( PrefsConfigFile, "iHUDColorB" );
+                var hudColorBlue = Extras.GetLineValue( PrefsConfigFile, "Interface", "iHUDColorB" );
                 hudColorBlueTrackBar.Value = Convert.ToInt16( hudColorBlue );
                 hudColorBlueTextBox.Text = hudColorBlue.ToString();
                 #endregion
@@ -145,38 +145,38 @@ namespace Fallout4MoreConfig {
                 #endregion
                 #region FOV
                 #region First Person
-                var hudFirstFov = Extras.GetLineValue( ConfigFile, "fDefault1stPersonFOV" );
+                var hudFirstFov = Extras.GetLineValue( ConfigFile, "Display", "fDefault1stPersonFOV" );
                 hudFovFirst.Text = Convert.ToInt32( hudFirstFov ).ToString();
                 #endregion
                 #region World Person
-                var hudThirdFov = Extras.GetLineValue( ConfigFile, "fDefaultWorldFOV" );
+                var hudThirdFov = Extras.GetLineValue( ConfigFile, "Display", "fDefaultWorldFOV" );
                 hudFovThird.Text = Convert.ToInt32( hudThirdFov ).ToString();
                 #endregion
                 #endregion
                 #region Quest Markers
-                hudQuestMarkShow.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bShowQuestMarkers" ) ) == 1;
-                hudQuestFloatingShow.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bShowFloatingQuestMarkers" ) ) == 1;
+                hudQuestMarkShow.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "GamePlay", "bShowQuestMarkers" ) ) == 1;
+                hudQuestFloatingShow.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "GamePlay", "bShowFloatingQuestMarkers" ) ) == 1;
                 #endregion
                 #region Other
-                hudCrosshair.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bCrosshairEnabled" ) ) == 1;
-                hudCompass.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bShowCompass" ) ) == 1;
-                hudDialogCam.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bDialogueCameraEnable" ) ) == 1;
-                hudDialogSubs.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bDialogueSubtitles" ) ) == 1;
-                hudGeneralSubs.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bGeneralSubtitles" ) ) == 1;
+                hudCrosshair.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "MAIN", "bCrosshairEnabled" ) ) == 1;
+                hudCompass.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Interface", "bShowCompass" ) ) == 1;
+                hudDialogCam.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Interface", "bDialogueCameraEnable" ) ) == 1;
+                hudDialogSubs.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Interface", "bDialogueSubtitles" ) ) == 1;
+                hudGeneralSubs.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Interface", "bGeneralSubtitles" ) ) == 1;
                 #endregion
                 #endregion
                 #region Pip-Boy
                 #region Color
                 #region Red
-                PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fPipboyEffectColorR" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorRedTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "Pipboy", "fPipboyEffectColorR" ).ToString() ) * 100 * 2.55 );
                 PipBoyColorRedTextBox.Text = PipBoyColorRedTrackBar.Value.ToString();
                 #endregion
                 #region Green
-                PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fPipboyEffectColorG" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorGreenTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "Pipboy", "fPipboyEffectColorG" ).ToString() ) * 100 * 2.55 );
                 PipBoyColorGreenTextBox.Text = PipBoyColorGreenTrackBar.Value.ToString();
                 #endregion
                 #region Blue
-                PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fPipboyEffectColorB" ).ToString() ) * 100 * 2.55 );
+                PipBoyColorBlueTrackBar.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "Pipboy", "fPipboyEffectColorB" ).ToString() ) * 100 * 2.55 );
                 PipBoyColorBlueTextBox.Text = PipBoyColorBlueTrackBar.Value.ToString();
                 #endregion
                 #region Preview
@@ -186,39 +186,39 @@ namespace Fallout4MoreConfig {
                 #endregion
                 #region VATS
                 #region Color
-                VATSColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectColorR" ).ToString() ) * 100 * 2.55 );
-                VATSColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectColorG" ).ToString() ) * 100 * 2.55 );
-                VATSColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectColorB" ).ToString() ) * 100 * 2.55 );
+                VATSColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectColorR" ).ToString() ) * 100 * 2.55 );
+                VATSColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectColorG" ).ToString() ) * 100 * 2.55 );
+                VATSColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #region Highlight Color
-                VATSHighlightColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightColorR" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightColorG" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightColorB" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectHighlightColorR" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectHighlightColorG" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectHighlightColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #region PA Color
-                VATSPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectPAColorR" ).ToString() ) * 100 * 2.55 );
-                VATSPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectPAColorG" ).ToString() ) * 100 * 2.55 );
-                VATSPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectPAColorB" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectPAColorR" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectPAColorG" ).ToString() ) * 100 * 2.55 );
+                VATSPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectPAColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #region PA Highlight Color
-                VATSHighlightPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightPAColorR" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightPAColorG" ).ToString() ) * 100 * 2.55 );
-                VATSHighlightPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "fModMenuEffectHighlightPAColorB" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorR.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectHighlightPAColorR" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorG.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectHighlightPAColorG" ).ToString() ) * 100 * 2.55 );
+                VATSHighlightPAColorB.Value = Convert.ToInt32( Convert.ToDouble( Extras.GetLineValue( PrefsConfigFile, "VATS", "fModMenuEffectHighlightPAColorB" ).ToString() ) * 100 * 2.55 );
                 #endregion
                 #endregion
                 #region Controls
-                gamepadEnable.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bGamepadEnable" ) ) == 1;
-                gamepadRumble.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bGamepadRumble" ) ) == 1;
-                controlsInverty.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bInvertYValues" ) ) == 1;
-                controlsRunByDefault.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "bAlwaysRunByDefault" ) ) == 1;
-                controlsMouseAcceleration.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "bMouseAcceleration" ) ) == 1;
+                gamepadEnable.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Controls", "bGamepadEnable" ) ) == 1;
+                gamepadRumble.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Controls", "bGamepadRumble" ) ) == 1;
+                controlsInverty.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Controls", "bInvertYValues" ) ) == 1;
+                controlsRunByDefault.Checked = Convert.ToInt16( Extras.GetLineValue( PrefsConfigFile, "Controls", "bAlwaysRunByDefault" ) ) == 1;
+                controlsMouseAcceleration.Checked = Convert.ToInt16( Extras.GetLineValue( ConfigFile, "Controls", "bMouseAcceleration" ) ) == 1;
                 #endregion
                 #region Resolution
-                ResolutionHeight.Text = Extras.GetLineValue( PrefsConfigFile, "iSize H" ).ToString();
-                ResolutionWidth.Text = Extras.GetLineValue( PrefsConfigFile, "iSize W" ).ToString();
+                ResolutionHeight.Text = Extras.GetLineValue( PrefsConfigFile, "Display", "iSize H" ).ToString();
+                ResolutionWidth.Text = Extras.GetLineValue( PrefsConfigFile, "Display", "iSize W" ).ToString();
                 #region Fullscreen / Borderless
-                ResolutionFullscreen.Checked = Convert.ToInt32( Extras.GetLineValue( PrefsConfigFile, "bFull Screen" ) ) == 1;
-                ResolutionBorderless.Checked = Convert.ToInt32( Extras.GetLineValue( PrefsConfigFile, "bBorderless" ) ) == 1;
+                ResolutionFullscreen.Checked = Convert.ToInt32( Extras.GetLineValue( PrefsConfigFile, "Display", "bFull Screen" ) ) == 1;
+                ResolutionBorderless.Checked = Convert.ToInt32( Extras.GetLineValue( PrefsConfigFile, "Display", "bBorderless" ) ) == 1;
                 #endregion
                 #endregion
                 Text = @"Fallout 4 - Extended settings -- Version: " + CurrentVersion;
@@ -257,6 +257,8 @@ namespace Fallout4MoreConfig {
             InitializeComponent();
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             AutoSize = true;
+        }
+        private void Form1_Load( object sender, EventArgs e ) {
             GetAllValues();
         }
         public sealed override bool AutoSize {
@@ -439,8 +441,15 @@ namespace Fallout4MoreConfig {
             #region Constols
             var gpEnable = gamepadEnable.Checked ? "1" : "0";
             var gpRumble = gamepadRumble.Checked ? "1" : "0";
+            var invert = controlsInverty.Checked ? "1" : "0";
+            var mouseAccel = controlsMouseAcceleration.Checked ? "1" : "0";
+            var runByDefault = controlsRunByDefault.Checked ? "1" : "0";
             prefsConfigFile.Write( "Controls", "bGamepadEnable", gpEnable );
             prefsConfigFile.Write( "Controls", "bGamepadRumble", gpRumble );
+            prefsConfigFile.Write( "Controls", "bInvertYValues", invert );
+            configFile.Write( "Controls", "bMouseAcceleration", mouseAccel );
+            configFile.Write( "Controls", "bAlwaysRunByDefault", runByDefault );
+            prefsConfigFile.Write( "Controls", "bAlwaysRunByDefault", runByDefault );
             #endregion
             #region Resolution
             var resBorder = ResolutionBorderless.Checked ? "1" : "0";
@@ -556,6 +565,15 @@ namespace Fallout4MoreConfig {
         }
         private void hudFovThird_ValueChanged( object sender, EventArgs e ) {
             fovHeHe.Visible = hudFovThird.Value > 120 || hudFovFirst.Value > 120;
+        }
+        private void btnStartGame_Click( object sender, EventArgs e ) {
+            var fo4 = new Process {
+                StartInfo = {
+                    FileName = Extras.SteamExePath(),
+                    Arguments = "-applaunch 377160"
+                }
+            };
+            fo4.Start();
         }
     }
 }
