@@ -29,7 +29,7 @@ namespace Fallout4MoreConfig {
     /// TODO: This list - Resolution
     /// Presets.
     /// 
-    public partial class Form1 : Form {
+    public partial class Form1 : XCoolForm.XCoolForm {
         private static readonly Extras Extras = new Extras();
         public string CurrentVersion {
             get {
@@ -277,6 +277,7 @@ namespace Fallout4MoreConfig {
             PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
         }
         // Audio Track Bars
+        // Voice?
         private void AudioMasterTrackbar_Scroll( object sender, EventArgs e ) {
             AudioMasterText.Text = AudioMasterTrackbar.Value.ToString();
         }
@@ -284,15 +285,19 @@ namespace Fallout4MoreConfig {
         private void AudioVal0TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal0Text.Text = AudioVal0TrackBar.Value.ToString();
         }
+        // Music?
         private void AudioVal1TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal1Text.Text = AudioVal1TrackBar.Value.ToString();
         }
+        // Effects?
         private void AudioVal2TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal2Text.Text = AudioVal2TrackBar.Value.ToString();
         }
+        // Foorstpes?
         private void AudioVal3TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal3Text.Text = AudioVal3TrackBar.Value.ToString();
         }
+        // Radio?
         private void AudioVal4TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal4Text.Text = AudioVal4TrackBar.Value.ToString();
         }

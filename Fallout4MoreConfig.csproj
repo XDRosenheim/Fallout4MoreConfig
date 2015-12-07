@@ -75,6 +75,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="XCoolForm">
+      <HintPath>..\..\..\..\Downloads\XCoolForm\XCoolForm\bin\Debug\XCoolForm.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extras.cs" />
