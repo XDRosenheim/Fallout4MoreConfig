@@ -134,4 +134,14 @@
   <data name="Error_Sorry" xml:space="preserve">
     <value>Sorry, and error has occurred..</value>
   </data>
+  <data name="NoFound_SteamPath" xml:space="preserve">
+    <value>Steam path was not found in registry!</value>
+    <comment>Used to start Fallout 4.</comment>
+  </data>
+  <data name="Generate_Default" xml:space="preserve">
+    <value>Generate the default file?</value>
+  </data>
+  <data name="Run_Game" xml:space="preserve">
+    <value>Run game.</value>
+  </data>
 </root>

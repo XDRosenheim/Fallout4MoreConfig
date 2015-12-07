@@ -167,12 +167,19 @@
             this.ResolutionWidth = new System.Windows.Forms.NumericUpDown();
             this.ResolutionBorderless = new System.Windows.Forms.CheckBox();
             this.ResolutionFullscreen = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnReWrite = new System.Windows.Forms.Button();
-            this.btnSource = new System.Windows.Forms.Button();
-            this.btnDonate = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnStartGame = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tabVisuals.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -238,6 +245,7 @@
             this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -251,8 +259,8 @@
             this.tabControl.Controls.Add(this.tabControls);
             this.tabControl.Controls.Add(this.tabResolution);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabControl.Location = new System.Drawing.Point(9, 9);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(0, 0, 9, 0);
+            this.tabControl.Location = new System.Drawing.Point(9, 24);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(9);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.Padding = new System.Drawing.Point(9, 3);
@@ -1890,76 +1898,111 @@
             this.ResolutionFullscreen.UseVisualStyleBackColor = true;
             this.ResolutionFullscreen.CheckedChanged += new System.EventHandler(this.resolutionFullscreen_CheckedChanged);
             // 
-            // btnSave
+            // menuStrip1
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 386);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(80, 25);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.toolTip1.SetToolTip(this.btnSave, "Write changes to config files.");
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem,
+            this.donateToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(461, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // btnReWrite
+            // fileToolStripMenuItem
             // 
-            this.btnReWrite.Location = new System.Drawing.Point(98, 386);
-            this.btnReWrite.Name = "btnReWrite";
-            this.btnReWrite.Size = new System.Drawing.Size(80, 25);
-            this.btnReWrite.TabIndex = 2;
-            this.btnReWrite.Text = "Refresh";
-            this.toolTip1.SetToolTip(this.btnReWrite, "Re-read from the config files.");
-            this.btnReWrite.UseVisualStyleBackColor = true;
-            this.btnReWrite.Click += new System.EventHandler(this.btnReWrite_Click);
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startGameToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.saveToolStripMenuItem,
+            this.reloadToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.backupToolStripMenuItem,
+            this.restoreToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // btnSource
+            // startGameToolStripMenuItem
             // 
-            this.btnSource.Location = new System.Drawing.Point(281, 385);
-            this.btnSource.Name = "btnSource";
-            this.btnSource.Size = new System.Drawing.Size(56, 20);
-            this.btnSource.TabIndex = 4;
-            this.btnSource.Text = "Github";
-            this.toolTip1.SetToolTip(this.btnSource, "See the source code. It\'s free.");
-            this.btnSource.UseVisualStyleBackColor = true;
-            this.btnSource.Click += new System.EventHandler(this.btnSource_Click);
+            this.startGameToolStripMenuItem.Name = "startGameToolStripMenuItem";
+            this.startGameToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.startGameToolStripMenuItem.Text = "Start game";
+            this.startGameToolStripMenuItem.Click += new System.EventHandler(this.startGameToolStripMenuItem_Click);
             // 
-            // btnDonate
+            // toolStripSeparator2
             // 
-            this.btnDonate.Location = new System.Drawing.Point(343, 386);
-            this.btnDonate.Name = "btnDonate";
-            this.btnDonate.Size = new System.Drawing.Size(56, 20);
-            this.btnDonate.TabIndex = 5;
-            this.btnDonate.Text = "Donate?";
-            this.toolTip1.SetToolTip(this.btnDonate, "You don\'t have to. Seriously.");
-            this.btnDonate.UseVisualStyleBackColor = true;
-            this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(128, 6);
             // 
-            // btnStartGame
+            // saveToolStripMenuItem
             // 
-            this.btnStartGame.Location = new System.Drawing.Point(184, 386);
-            this.btnStartGame.Name = "btnStartGame";
-            this.btnStartGame.Size = new System.Drawing.Size(80, 25);
-            this.btnStartGame.TabIndex = 3;
-            this.btnStartGame.Text = "Start Fallout 4";
-            this.toolTip1.SetToolTip(this.btnStartGame, "Re-read from the config files.");
-            this.btnStartGame.UseVisualStyleBackColor = true;
-            this.btnStartGame.Click += new System.EventHandler( this.btnStartGame_Click );
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // reloadToolStripMenuItem
+            // 
+            this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
+            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.reloadToolStripMenuItem.Text = "Reload";
+            this.reloadToolStripMenuItem.Click += new System.EventHandler(this.reloadToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
+            // 
+            // restoreToolStripMenuItem
+            // 
+            this.restoreToolStripMenuItem.Name = "restoreToolStripMenuItem";
+            this.restoreToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.restoreToolStripMenuItem.Text = "Restore";
+            this.restoreToolStripMenuItem.Click += new System.EventHandler(this.restoreToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sourceCodeToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // sourceCodeToolStripMenuItem
+            // 
+            this.sourceCodeToolStripMenuItem.Name = "sourceCodeToolStripMenuItem";
+            this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.sourceCodeToolStripMenuItem.Text = "Source code";
+            this.sourceCodeToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeToolStripMenuItem_Click);
+            // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.donateToolStripMenuItem.Text = "Donate";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(467, 478);
-            this.Controls.Add(this.btnStartGame);
-            this.Controls.Add(this.btnDonate);
-            this.Controls.Add(this.btnSource);
-            this.Controls.Add(this.btnReWrite);
-            this.Controls.Add(this.btnSave);
+            this.ClientSize = new System.Drawing.Size(461, 445);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Fallout 4 - Extended settings";
@@ -2048,7 +2091,10 @@
             this.groupBox13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResolutionWidth)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2101,11 +2147,6 @@
         private System.Windows.Forms.Label AudioVal7Text;
         private System.Windows.Forms.Label HUDOpacityResult;
         private System.Windows.Forms.Label SavingMinutLabel;
-
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnReWrite;
-        private System.Windows.Forms.Button btnSource;
-        private System.Windows.Forms.Button btnDonate;
 
         private System.Windows.Forms.TrackBar HUDOpacityTrackBar;
         private System.Windows.Forms.TrackBar hudColorBlueTrackBar;
@@ -2205,7 +2246,18 @@
         private System.Windows.Forms.CheckBox VisualsRadialBlur;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Button btnStartGame;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sourceCodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem restoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
 
     }
 }

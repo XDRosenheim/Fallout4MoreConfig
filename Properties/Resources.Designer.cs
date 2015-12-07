@@ -98,11 +98,38 @@ namespace Fallout4MoreConfig.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate the default file?.
+        /// </summary>
+        internal static string Generate_Default {
+            get {
+                return ResourceManager.GetString("Generate_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Steam path was not found in registry!.
+        /// </summary>
+        internal static string NoFound_SteamPath {
+            get {
+                return ResourceManager.GetString("NoFound_SteamPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to %.
         /// </summary>
         internal static string Percentage {
             get {
                 return ResourceManager.GetString("Percentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run game..
+        /// </summary>
+        internal static string Run_Game {
+            get {
+                return ResourceManager.GetString("Run_Game", resourceCulture);
             }
         }
         
