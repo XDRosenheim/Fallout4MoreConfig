@@ -50,9 +50,6 @@
             this.VisualsGore = new System.Windows.Forms.CheckBox();
             this.VisualsDoF = new System.Windows.Forms.CheckBox();
             this.tabAudio = new System.Windows.Forms.TabPage();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
             this.AudioVal0TrackBar = new System.Windows.Forms.TrackBar();
@@ -511,49 +508,16 @@
             this.tabAudio.BackColor = System.Drawing.Color.White;
             this.tabAudio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tabAudio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabAudio.Controls.Add(this.label17);
-            this.tabAudio.Controls.Add(this.label29);
-            this.tabAudio.Controls.Add(this.label25);
             this.tabAudio.Controls.Add(this.groupBox12);
             this.tabAudio.Controls.Add(this.groupBox4);
             this.tabAudio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabAudio.ForeColor = System.Drawing.Color.Lime;
+            this.tabAudio.ForeColor = System.Drawing.SystemColors.Desktop;
             this.tabAudio.Location = new System.Drawing.Point(4, 40);
             this.tabAudio.Name = "tabAudio";
             this.tabAudio.Padding = new System.Windows.Forms.Padding(5);
             this.tabAudio.Size = new System.Drawing.Size(382, 330);
             this.tabAudio.TabIndex = 1;
             this.tabAudio.Text = "Audio[WIP]";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label17.Location = new System.Drawing.Point(14, 231);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(143, 13);
-            this.label17.TabIndex = 38;
-            this.label17.Text = "please contact me on Github";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label29.Location = new System.Drawing.Point(14, 218);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(129, 13);
-            this.label29.TabIndex = 37;
-            this.label29.Text = "If you know what they do,";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label25.Location = new System.Drawing.Point(14, 205);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(139, 13);
-            this.label25.TabIndex = 36;
-            this.label25.Text = "All of these have a purpose.";
             // 
             // groupBox12
             // 
@@ -583,7 +547,7 @@
             this.groupBox12.Controls.Add(this.label27);
             this.groupBox12.Location = new System.Drawing.Point(8, 63);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(362, 139);
+            this.groupBox12.Size = new System.Drawing.Size(362, 255);
             this.groupBox12.TabIndex = 35;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Val";
@@ -591,22 +555,21 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.Lime;
             this.label20.Location = new System.Drawing.Point(6, 24);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(13, 13);
+            this.label20.Size = new System.Drawing.Size(34, 13);
             this.label20.TabIndex = 7;
-            this.label20.Text = "0";
+            this.label20.Text = "Voice";
             // 
             // AudioVal0TrackBar
             // 
             this.AudioVal0TrackBar.AutoSize = false;
             this.AudioVal0TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal0TrackBar.LargeChange = 10;
-            this.AudioVal0TrackBar.Location = new System.Drawing.Point(25, 19);
+            this.AudioVal0TrackBar.Location = new System.Drawing.Point(87, 19);
             this.AudioVal0TrackBar.Maximum = 100;
             this.AudioVal0TrackBar.Name = "AudioVal0TrackBar";
-            this.AudioVal0TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal0TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal0TrackBar.TabIndex = 8;
             this.AudioVal0TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal0TrackBar.Scroll += new System.EventHandler(this.AudioVal0TrackBar_Scroll);
@@ -615,7 +578,7 @@
             // 
             this.AudioVal7Text.AutoSize = true;
             this.AudioVal7Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal7Text.Location = new System.Drawing.Point(322, 114);
+            this.AudioVal7Text.Location = new System.Drawing.Point(322, 234);
             this.AudioVal7Text.Name = "AudioVal7Text";
             this.AudioVal7Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal7Text.TabIndex = 33;
@@ -626,10 +589,10 @@
             this.AudioVal2TrackBar.AutoSize = false;
             this.AudioVal2TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal2TrackBar.LargeChange = 10;
-            this.AudioVal2TrackBar.Location = new System.Drawing.Point(25, 49);
+            this.AudioVal2TrackBar.Location = new System.Drawing.Point(87, 79);
             this.AudioVal2TrackBar.Maximum = 100;
             this.AudioVal2TrackBar.Name = "AudioVal2TrackBar";
-            this.AudioVal2TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal2TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal2TrackBar.TabIndex = 10;
             this.AudioVal2TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal2TrackBar.Scroll += new System.EventHandler(this.AudioVal2TrackBar_Scroll);
@@ -637,22 +600,21 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.Lime;
-            this.label21.Location = new System.Drawing.Point(6, 54);
+            this.label21.Location = new System.Drawing.Point(6, 84);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(13, 13);
+            this.label21.Size = new System.Drawing.Size(40, 13);
             this.label21.TabIndex = 9;
-            this.label21.Text = "2";
+            this.label21.Text = "Effects";
             // 
             // AudioVal7TrackBar
             // 
             this.AudioVal7TrackBar.AutoSize = false;
             this.AudioVal7TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal7TrackBar.LargeChange = 10;
-            this.AudioVal7TrackBar.Location = new System.Drawing.Point(216, 109);
+            this.AudioVal7TrackBar.Location = new System.Drawing.Point(87, 229);
             this.AudioVal7TrackBar.Maximum = 100;
             this.AudioVal7TrackBar.Name = "AudioVal7TrackBar";
-            this.AudioVal7TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal7TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal7TrackBar.TabIndex = 16;
             this.AudioVal7TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal7TrackBar.Scroll += new System.EventHandler(this.AudioVal7TrackBar_Scroll);
@@ -662,10 +624,10 @@
             this.AudioVal4TrackBar.AutoSize = false;
             this.AudioVal4TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal4TrackBar.LargeChange = 10;
-            this.AudioVal4TrackBar.Location = new System.Drawing.Point(25, 79);
+            this.AudioVal4TrackBar.Location = new System.Drawing.Point(87, 139);
             this.AudioVal4TrackBar.Maximum = 100;
             this.AudioVal4TrackBar.Name = "AudioVal4TrackBar";
-            this.AudioVal4TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal4TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal4TrackBar.TabIndex = 12;
             this.AudioVal4TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal4TrackBar.Scroll += new System.EventHandler(this.AudioVal4TrackBar_Scroll);
@@ -675,10 +637,10 @@
             this.AudioVal6TrackBar.AutoSize = false;
             this.AudioVal6TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal6TrackBar.LargeChange = 10;
-            this.AudioVal6TrackBar.Location = new System.Drawing.Point(25, 109);
+            this.AudioVal6TrackBar.Location = new System.Drawing.Point(87, 199);
             this.AudioVal6TrackBar.Maximum = 100;
             this.AudioVal6TrackBar.Name = "AudioVal6TrackBar";
-            this.AudioVal6TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal6TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal6TrackBar.TabIndex = 14;
             this.AudioVal6TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal6TrackBar.Scroll += new System.EventHandler(this.AudioVal6TrackBar_Scroll);
@@ -688,10 +650,10 @@
             this.AudioVal5TrackBar.AutoSize = false;
             this.AudioVal5TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal5TrackBar.LargeChange = 10;
-            this.AudioVal5TrackBar.Location = new System.Drawing.Point(216, 79);
+            this.AudioVal5TrackBar.Location = new System.Drawing.Point(87, 169);
             this.AudioVal5TrackBar.Maximum = 100;
             this.AudioVal5TrackBar.Name = "AudioVal5TrackBar";
-            this.AudioVal5TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal5TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal5TrackBar.TabIndex = 24;
             this.AudioVal5TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal5TrackBar.Scroll += new System.EventHandler(this.AudioVal5TrackBar_Scroll);
@@ -700,7 +662,7 @@
             // 
             this.AudioVal6Text.AutoSize = true;
             this.AudioVal6Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal6Text.Location = new System.Drawing.Point(131, 114);
+            this.AudioVal6Text.Location = new System.Drawing.Point(322, 204);
             this.AudioVal6Text.Name = "AudioVal6Text";
             this.AudioVal6Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal6Text.TabIndex = 32;
@@ -711,10 +673,10 @@
             this.AudioVal3TrackBar.AutoSize = false;
             this.AudioVal3TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal3TrackBar.LargeChange = 10;
-            this.AudioVal3TrackBar.Location = new System.Drawing.Point(216, 49);
+            this.AudioVal3TrackBar.Location = new System.Drawing.Point(87, 109);
             this.AudioVal3TrackBar.Maximum = 100;
             this.AudioVal3TrackBar.Name = "AudioVal3TrackBar";
-            this.AudioVal3TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal3TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal3TrackBar.TabIndex = 22;
             this.AudioVal3TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal3TrackBar.Scroll += new System.EventHandler(this.AudioVal3TrackBar_Scroll);
@@ -723,7 +685,7 @@
             // 
             this.AudioVal5Text.AutoSize = true;
             this.AudioVal5Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal5Text.Location = new System.Drawing.Point(322, 84);
+            this.AudioVal5Text.Location = new System.Drawing.Point(322, 174);
             this.AudioVal5Text.Name = "AudioVal5Text";
             this.AudioVal5Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal5Text.TabIndex = 31;
@@ -732,8 +694,7 @@
             // AudioVal0Text
             // 
             this.AudioVal0Text.AutoSize = true;
-            this.AudioVal0Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal0Text.Location = new System.Drawing.Point(131, 24);
+            this.AudioVal0Text.Location = new System.Drawing.Point(322, 24);
             this.AudioVal0Text.Name = "AudioVal0Text";
             this.AudioVal0Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal0Text.TabIndex = 26;
@@ -742,8 +703,7 @@
             // AudioVal1Text
             // 
             this.AudioVal1Text.AutoSize = true;
-            this.AudioVal1Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal1Text.Location = new System.Drawing.Point(322, 24);
+            this.AudioVal1Text.Location = new System.Drawing.Point(322, 54);
             this.AudioVal1Text.Name = "AudioVal1Text";
             this.AudioVal1Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal1Text.TabIndex = 27;
@@ -754,10 +714,10 @@
             this.AudioVal1TrackBar.AutoSize = false;
             this.AudioVal1TrackBar.BackColor = System.Drawing.Color.White;
             this.AudioVal1TrackBar.LargeChange = 10;
-            this.AudioVal1TrackBar.Location = new System.Drawing.Point(216, 19);
+            this.AudioVal1TrackBar.Location = new System.Drawing.Point(87, 49);
             this.AudioVal1TrackBar.Maximum = 100;
             this.AudioVal1TrackBar.Name = "AudioVal1TrackBar";
-            this.AudioVal1TrackBar.Size = new System.Drawing.Size(100, 24);
+            this.AudioVal1TrackBar.Size = new System.Drawing.Size(199, 24);
             this.AudioVal1TrackBar.TabIndex = 20;
             this.AudioVal1TrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.AudioVal1TrackBar.Scroll += new System.EventHandler(this.AudioVal1TrackBar_Scroll);
@@ -765,28 +725,25 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.ForeColor = System.Drawing.Color.Lime;
-            this.label22.Location = new System.Drawing.Point(6, 84);
+            this.label22.Location = new System.Drawing.Point(6, 144);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(13, 13);
+            this.label22.Size = new System.Drawing.Size(35, 13);
             this.label22.TabIndex = 11;
-            this.label22.Text = "4";
+            this.label22.Text = "Radio";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.Lime;
-            this.label26.Location = new System.Drawing.Point(197, 24);
+            this.label26.Location = new System.Drawing.Point(6, 54);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(13, 13);
+            this.label26.Size = new System.Drawing.Size(35, 13);
             this.label26.TabIndex = 19;
-            this.label26.Text = "1";
+            this.label26.Text = "Music";
             // 
             // AudioVal4Text
             // 
             this.AudioVal4Text.AutoSize = true;
-            this.AudioVal4Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal4Text.Location = new System.Drawing.Point(131, 84);
+            this.AudioVal4Text.Location = new System.Drawing.Point(322, 144);
             this.AudioVal4Text.Name = "AudioVal4Text";
             this.AudioVal4Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal4Text.TabIndex = 30;
@@ -795,8 +752,7 @@
             // AudioVal3Text
             // 
             this.AudioVal3Text.AutoSize = true;
-            this.AudioVal3Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal3Text.Location = new System.Drawing.Point(322, 54);
+            this.AudioVal3Text.Location = new System.Drawing.Point(322, 114);
             this.AudioVal3Text.Name = "AudioVal3Text";
             this.AudioVal3Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal3Text.TabIndex = 29;
@@ -806,7 +762,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.Lime;
-            this.label23.Location = new System.Drawing.Point(6, 114);
+            this.label23.Location = new System.Drawing.Point(6, 204);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(13, 13);
             this.label23.TabIndex = 13;
@@ -815,8 +771,7 @@
             // AudioVal2Text
             // 
             this.AudioVal2Text.AutoSize = true;
-            this.AudioVal2Text.ForeColor = System.Drawing.Color.Lime;
-            this.AudioVal2Text.Location = new System.Drawing.Point(131, 54);
+            this.AudioVal2Text.Location = new System.Drawing.Point(322, 84);
             this.AudioVal2Text.Name = "AudioVal2Text";
             this.AudioVal2Text.Size = new System.Drawing.Size(34, 13);
             this.AudioVal2Text.TabIndex = 28;
@@ -826,7 +781,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.Color.Lime;
-            this.label24.Location = new System.Drawing.Point(197, 114);
+            this.label24.Location = new System.Drawing.Point(6, 234);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(13, 13);
             this.label24.TabIndex = 15;
@@ -836,7 +791,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.Color.Lime;
-            this.label28.Location = new System.Drawing.Point(197, 84);
+            this.label28.Location = new System.Drawing.Point(6, 174);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(13, 13);
             this.label28.TabIndex = 23;
@@ -845,12 +800,11 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.Color.Lime;
-            this.label27.Location = new System.Drawing.Point(197, 54);
+            this.label27.Location = new System.Drawing.Point(6, 114);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(13, 13);
+            this.label27.Size = new System.Drawing.Size(53, 13);
             this.label27.TabIndex = 21;
-            this.label27.Text = "3";
+            this.label27.Text = "Footsteps";
             // 
             // groupBox4
             // 
@@ -893,10 +847,10 @@
             this.tabSaving.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabSaving.Controls.Add(this.groupBox6);
             this.tabSaving.Controls.Add(this.groupBox5);
-            this.tabSaving.Location = new System.Drawing.Point(4, 40);
+            this.tabSaving.Location = new System.Drawing.Point(4, 22);
             this.tabSaving.Name = "tabSaving";
             this.tabSaving.Padding = new System.Windows.Forms.Padding(5);
-            this.tabSaving.Size = new System.Drawing.Size(382, 330);
+            this.tabSaving.Size = new System.Drawing.Size(382, 348);
             this.tabSaving.TabIndex = 2;
             this.tabSaving.Text = "Saving";
             // 
@@ -1003,10 +957,10 @@
             this.tabHUD.Controls.Add(this.groupBox7);
             this.tabHUD.Controls.Add(this.groupBox1);
             this.tabHUD.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tabHUD.Location = new System.Drawing.Point(4, 40);
+            this.tabHUD.Location = new System.Drawing.Point(4, 22);
             this.tabHUD.Name = "tabHUD";
             this.tabHUD.Padding = new System.Windows.Forms.Padding(5);
-            this.tabHUD.Size = new System.Drawing.Size(382, 330);
+            this.tabHUD.Size = new System.Drawing.Size(382, 348);
             this.tabHUD.TabIndex = 3;
             this.tabHUD.Text = "HUD";
             // 
@@ -2019,7 +1973,6 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.tabAudio.ResumeLayout(false);
-            this.tabAudio.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AudioVal0TrackBar)).EndInit();
@@ -2224,12 +2177,9 @@
         private System.Windows.Forms.FlowLayoutPanel hudColorPreviewBox;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.NumericUpDown PipBoyColorRedTextBox;
         private System.Windows.Forms.NumericUpDown PipBoyColorBlueTextBox;
         private System.Windows.Forms.NumericUpDown PipBoyColorGreenTextBox;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.CheckBox controlsRunByDefault;
         private System.Windows.Forms.CheckBox controlsInverty;

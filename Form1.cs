@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
@@ -29,7 +28,7 @@ namespace Fallout4MoreConfig {
     /// TODO: This list - Resolution
     /// Presets.
     /// 
-    public partial class Form1 : XCoolForm.XCoolForm {
+    public partial class Form1 : Form {
         private static readonly Extras Extras = new Extras();
         public string CurrentVersion {
             get {
@@ -277,11 +276,11 @@ namespace Fallout4MoreConfig {
             PipBoyColorPreview.BackColor = Color.FromArgb( PipBoyColorRedTrackBar.Value, PipBoyColorGreenTrackBar.Value, PipBoyColorBlueTrackBar.Value );
         }
         // Audio Track Bars
-        // Voice?
         private void AudioMasterTrackbar_Scroll( object sender, EventArgs e ) {
             AudioMasterText.Text = AudioMasterTrackbar.Value.ToString();
         }
         // I still don't know what these do.
+        // Voice?
         private void AudioVal0TrackBar_Scroll( object sender, EventArgs e ) {
             AudioVal0Text.Text = AudioVal0TrackBar.Value.ToString();
         }
