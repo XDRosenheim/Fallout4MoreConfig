@@ -63,7 +63,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MyDLL">
-      <HintPath>..\..\..\MyDLL\MyDLL\bin\Debug\MyDLL.dll</HintPath>
+      <HintPath>.\MyDLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
